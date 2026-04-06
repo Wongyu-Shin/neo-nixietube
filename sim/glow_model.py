@@ -24,9 +24,9 @@ import numpy as np
 # Vc = cathode fall voltage (V) — approximately constant for normal glow
 # Source: Raizer (1991) Table 8.1, von Engel (1965) Table 7.3
 CATHODE_PARAMS = {
-    "Ne": {"dc_pd_0": 0.4, "p_ref": 20, "alpha": 0.6, "Vc": 120, "j_n_p2": 0.2},
-    "Ar": {"dc_pd_0": 0.3, "p_ref": 20, "alpha": 0.5, "Vc": 100, "j_n_p2": 5.0},
-    "He": {"dc_pd_0": 0.8, "p_ref": 20, "alpha": 0.45, "Vc": 140, "j_n_p2": 2.0},
+    "Ne": {"dc_pd_0": 0.375497, "p_ref": 133.742, "alpha": 0.83051, "Vc": 120, "j_n_p2": 0.2},
+    "Ar": {"dc_pd_0": 0.274999, "p_ref": 154.4741, "alpha": 0.698966, "Vc": 100, "j_n_p2": 5.0},
+    "He": {"dc_pd_0": 0.775999, "p_ref": 187.8612, "alpha": 0.958579, "Vc": 140, "j_n_p2": 2.0},
 }
 
 
