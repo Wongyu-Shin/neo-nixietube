@@ -24,9 +24,9 @@ import numpy as np
 # Vc = cathode fall voltage (V) — approximately constant for normal glow
 # Source: Raizer (1991) Table 8.1, von Engel (1965) Table 7.3
 CATHODE_PARAMS = {
-    "Ne": {"dc_pd": 0.4, "Vc": 120, "j_n_p2": 0.2},    # j_n/p² in mA/(cm²·Torr²)
-    "Ar": {"dc_pd": 0.3, "Vc": 100, "j_n_p2": 5.0},
-    "He": {"dc_pd": 0.8, "Vc": 140, "j_n_p2": 2.0},
+    "Ne": {"dc_pd_0": 0.4, "p_ref": 20, "alpha": 0.6, "Vc": 120, "j_n_p2": 0.2},
+    "Ar": {"dc_pd_0": 0.3, "p_ref": 20, "alpha": 0.5, "Vc": 100, "j_n_p2": 5.0},
+    "He": {"dc_pd_0": 0.8, "p_ref": 20, "alpha": 0.45, "Vc": 140, "j_n_p2": 2.0},
 }
 
 
@@ -44,7 +44,12 @@ def cathode_dark_space(p: float, gas: str = "Ne") -> float:
         Dark space thickness in cm
     """
     params = CATHODE_PARAMS[gas]
-    return params["dc_pd"] / p
+    dc_pd_0 = params["dc_pd_0"]
+    p_ref = params["p_ref"]
+    alpha = params["alpha"]
+    # Non-similarity correction: dc*p grows at high pressure
+    dc_pd = dc_pd_0 * (1 + (p / p_ref) ** alpha)
+    return dc_pd / p
 
 
 def cathode_glow_thickness(p: float, gas: str = "Ne") -> float:
