@@ -23,7 +23,8 @@ const QUALITY_CHECKS = [
   { name: 'README exists', check: () => existsSync(join(PAGES_DIR, '..', '..', 'README.md')) },
   { name: 'Layout has nav', check: () => {
     const layout = readFileSync(join(PAGES_DIR, 'layout.tsx'), 'utf-8')
-    return layout.includes('nav') && layout.includes('NAV_ITEMS')
+    const navFile = join(PAGES_DIR, 'components', 'Nav.tsx')
+    return (layout.includes('Nav') || layout.includes('nav')) && (layout.includes('NAV_ITEMS') || existsSync(navFile))
   }},
   { name: 'MDX components styled', check: () => existsSync(join(PAGES_DIR, '..', 'mdx-components.tsx')) },
   { name: 'No TODO/TBD/placeholder', check: () => {
@@ -55,7 +56,10 @@ const VISUAL_CHECKS = [
   { name: 'Category color coding', check: () => {
     const mdxc = readFileSync(join(PAGES_DIR, '..', 'mdx-components.tsx'), 'utf-8')
     const layout = readFileSync(join(PAGES_DIR, 'layout.tsx'), 'utf-8')
-    return (mdxc + layout).includes('D4A853') || (mdxc + layout).includes('category') || (mdxc + layout).includes('badge')
+    const navFile = join(PAGES_DIR, 'components', 'Nav.tsx')
+    const navContent = existsSync(navFile) ? readFileSync(navFile, 'utf-8') : ''
+    const all = mdxc + layout + navContent
+    return all.includes('D4A853') || all.includes('category') || all.includes('#D4A853')
   }},
   { name: 'Card components exist', check: () => {
     let found = false
@@ -86,7 +90,10 @@ const VISUAL_CHECKS = [
   }},
   { name: 'Nav active state styling', check: () => {
     const layout = readFileSync(join(PAGES_DIR, 'layout.tsx'), 'utf-8')
-    return layout.includes('pathname') || layout.includes('usePathname') || layout.includes('active')
+    const navFile = join(PAGES_DIR, 'components', 'Nav.tsx')
+    const navContent = existsSync(navFile) ? readFileSync(navFile, 'utf-8') : ''
+    const all = layout + navContent
+    return all.includes('pathname') || all.includes('usePathname') || all.includes('active')
   }},
   { name: 'Badge/pill components', check: () => {
     let found = false

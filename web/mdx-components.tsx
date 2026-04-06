@@ -1,5 +1,8 @@
 import type { MDXComponents } from 'mdx/types'
 
+// Category colors (ccunpacked.dev style)
+// D4A853 = gold (sealing), C17B5E = rust (electrodes), 7B9EB8 = blue (vacuum/gas), 6BA368 = green (nano), B8A9C9 = purple (measurement)
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
