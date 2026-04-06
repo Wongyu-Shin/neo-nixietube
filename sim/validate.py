@@ -18,26 +18,38 @@ from nist_data import REFERENCE_DATA
 
 def _predict_loocv(pd_query: float, pd_data: np.ndarray, vb_data: np.ndarray,
                    gas_constants: dict) -> float:
-    """Predict Vb at pd_query using all data EXCEPT the point at pd_query."""
+    """Predict Vb at pd_query using all data EXCEPT the point at pd_query.
+
+    Uses log-log cubic spline for interpolation, and power-law extrapolation
+    for points outside the training range.
+    """
     # Remove the query point
     mask = pd_data != pd_query
     pd_train = pd_data[mask]
     vb_train = vb_data[mask]
 
     if len(pd_train) < 3:
-        # Not enough points for spline, use analytical
         return _analytical_predict(pd_query, gas_constants)
 
-    # Log-log cubic spline on remaining points
     log_pd = np.log(pd_train)
     log_vb = np.log(vb_train)
 
     if pd_train.min() <= pd_query <= pd_train.max():
+        # Interpolation: cubic spline in log-log space
         cs = CubicSpline(log_pd, log_vb)
         return float(np.exp(cs(np.log(pd_query))))
     else:
-        # Extrapolation: use analytical formula
-        return _analytical_predict(pd_query, gas_constants)
+        # Extrapolation: power-law fit on nearest 3 points
+        if pd_query < pd_train.min():
+            # Left extrapolation (low pd)
+            idx = np.argsort(pd_train)[:3]
+        else:
+            # Right extrapolation (high pd)
+            idx = np.argsort(pd_train)[-3:]
+
+        # Fit log(Vb) = a * log(pd) + b (power law)
+        coeffs = np.polyfit(log_pd[idx], log_vb[idx], 1)
+        return float(np.exp(np.polyval(coeffs, np.log(pd_query))))
 
 
 def _analytical_predict(pd: float, constants: dict) -> float:
