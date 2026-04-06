@@ -44,17 +44,50 @@ import ProjectStatus from './components/ProjectStatus'
 
 ## 2개 실증 경로
 
-### 경로 1: 프릿 실링 (정확도 중시)
-
-**PDP(플라즈마 디스플레이) 산업**에서 발전한 유리 프릿 실링 + **나노기술**의 AAO 전극을 조합. 진공 장비 필요하나, 기존 대비 온도를 55% 낮추고 실링 난이도를 대폭 감소.
-
-- 비용: ~₩1,200,000 | 기간: 12주
-
-### 경로 2: 상온 봉착 (접근성 중시)
-
-**건축 복층유리(IGU)**의 부틸 실링 + **식품 산업(MAP)**의 가스 플러싱을 조합. **진공 펌프도 전기로도 토치도 불필요.** 부엌 테이블에서 제작 가능.
-
-- 비용: ~₩185,000 | 기간: 4주 | 필요 장비: 없음
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+  <div className="rounded-xl border border-[#D4A853]/20 bg-[#D4A853]/[0.04] p-5">
+    <div className="flex items-center gap-2 mb-2">
+      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#D4A853]/10 text-[#D4A853] border border-[#D4A853]/20">경로 1</span>
+      <span className="text-sm font-bold text-[#D4A853]">프릿 실링 (정확도 중시)</span>
+    </div>
+    <p className="text-sm text-stone-400 mb-3">PDP 산업의 유리 프릿 실링 + 나노기술 AAO 전극. 온도 55% 절감.</p>
+    <div className="grid grid-cols-3 gap-2 text-center">
+      <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-2">
+        <div className="text-xs text-stone-500">비용</div>
+        <div className="text-sm font-bold text-[#D4A853]">₩120만</div>
+      </div>
+      <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-2">
+        <div className="text-xs text-stone-500">기간</div>
+        <div className="text-sm font-bold text-[#D4A853]">12주</div>
+      </div>
+      <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-2">
+        <div className="text-xs text-stone-500">장비</div>
+        <div className="text-sm font-bold text-[#D4A853]">전기로+펌프</div>
+      </div>
+    </div>
+  </div>
+  <div className="rounded-xl border border-[#6BA368]/20 bg-[#6BA368]/[0.04] p-5">
+    <div className="flex items-center gap-2 mb-2">
+      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#6BA368]/10 text-[#6BA368] border border-[#6BA368]/20">경로 2</span>
+      <span className="text-sm font-bold text-[#6BA368]">상온 봉착 (접근성 중시)</span>
+    </div>
+    <p className="text-sm text-stone-400 mb-3">건축 IGU 부틸 실링 + 식품 MAP 가스 플러싱. 장비 불필요.</p>
+    <div className="grid grid-cols-3 gap-2 text-center">
+      <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-2">
+        <div className="text-xs text-stone-500">비용</div>
+        <div className="text-sm font-bold text-[#6BA368]">₩18.5만</div>
+      </div>
+      <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-2">
+        <div className="text-xs text-stone-500">기간</div>
+        <div className="text-sm font-bold text-[#6BA368]">4주</div>
+      </div>
+      <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-2">
+        <div className="text-xs text-stone-500">장비</div>
+        <div className="text-sm font-bold text-[#6BA368]">없음</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <CostComparison />
 
