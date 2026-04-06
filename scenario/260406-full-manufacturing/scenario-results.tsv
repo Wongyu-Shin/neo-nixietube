@@ -1,0 +1,51 @@
+iteration	dimension	classification	severity	title	description	parent
+1	happy_path	new	-	Phase 0 시뮬레이션 성공	파셴 곡선 시뮬레이터 + BOM 리스트 완성	-
+2	happy_path	new	-	Phase 1 전극 제작 성공	레이저 커터로 니켈 숫자 음극 완성	-
+3	happy_path	new	-	Phase 2 유리 봉착 성공	기술자 지도하 소다라임+듀멧 기밀 봉착	-
+4	happy_path	new	-	Phase 3 진공/가스 봉입 성공	10⁻⁴ Torr + Ne 15 Torr 봉입	-
+5	happy_path	new	-	Phase 4 첫 점등 성공	170V 인가 → 네온 오렌지 글로우 확인	-
+6	material_failure	new	HIGH	니켈 포일 순도 부족	니켈 도금 강판 → 스퍼터링 가속	-
+7	material_failure	new	MEDIUM	듀멧 와이어 직경 불일치	표기 0.5mm vs 실제 0.6mm → 봉착 불가	-
+8	material_failure	new	MEDIUM	유리관 내 기포	미세 기포 → 응력 집중 → 슬로우 리크	-
+9	process_failure	new	HIGH	유리 봉착 온도 과다	토치 과열 → 인접 봉착부 훼손	-
+10	process_failure	new	MEDIUM	베이킹 온도 불균일	히트건 국소 가열 → 부분 탈가스 → 불순물 잔류	-
+11	equipment_failure	new	HIGH	로터리 펌프 오일 오염	backstreaming → 관 내부 탄화수소 오염	-
+12	equipment_failure	new	MEDIUM	피라니 게이지 보정 오류	공기 교정 게이지로 네온 측정 → 압력 오차	-
+13	equipment_failure	new	HIGH	토치 산소 과다	산화 화염 → 금속 표면 산화 → 봉착 불량	-
+14	skill_gap	new	MEDIUM	유리 회전 불균일	한쪽 처짐 → 벽 두께 편차 → 취약점	-
+15	skill_gap	new	HIGH	팁오프 타이밍 실패	불완전 밀봉 → 핀홀 리크	-
+16	safety	new	CRITICAL	캐패시터 잔류 전하 감전	200V DC 잔류 → 근육 경직	-
+17	safety	new	CRITICAL	유리 내파 파편 비산	외부 충격 → 진공 유리관 내파	-
+18	safety	new	CRITICAL	토치 역화(Flashback)	가스 역류 → 호스 화재	-
+19	safety	new	HIGH	고온 유리 화상	비가시 열 → 맨손 접촉 → 3도 화상	-
+20	supply_chain	new	HIGH	네온 가스 소량 구매 거절	최소 주문량 미달 → 개인 판매 거절	-
+21	budget_time	new	MEDIUM	중고 펌프 수리비 초과	베인 마모 수리비 > 신품 가격	-
+22	budget_time	new	MEDIUM	반복 실패 재료비 누적	유리관+듀멧 10회 실패 → ₩250,000+ 추가	-
+23	budget_time	new	HIGH	본업 병행 번아웃	3개월 진전 없음 → 동기 상실 → 프로젝트 방치	-
+24	integration	new	HIGH	전극-유리 치수 불일치	전극 폭 > 유리관 내경	-
+25	integration	new	MEDIUM	봉착 핀-PCB 풋프린트 불일치	핀 간격 편차 → PCB 소켓 불일치	-
+26	physics_limit	new	HIGH	파셴 최소값 미달	전극간격 설계 오류 → 항복전압 급증	-
+27	physics_limit	new	MEDIUM	음극 글로우 비균일	날카로운 모서리 전계 집중 → 윤곽선만 발광	-
+28	physics_limit	new	HIGH	인접 음극 크로스토크 방전	전극 간격 내 2차 방전 경로 형성	-
+29	environmental	new	MEDIUM	아파트 작업 제약	펌프 소음 + 화재 감지기 + 가스 실린더	-
+30	environmental	new	MEDIUM	장마철 습도	유리 표면 수분 흡착 → 봉착 불량	-
+31	recovery	new	LOW	팁오프 실패 재배기	배기관 연장 → 재배기 가능 (2-3회)	-
+32	recovery	new	MEDIUM	봉착 크랙 토치 보수	50% 성공률 → 대형 크랙은 폐기	-
+33	material+process	new	HIGH	소다라임-코바르 불일치	CTE 차이 → 방사형 크랙	-
+34	skill+safety	new	LOW	O-링 누락	KF 플랜지 O-링 미삽입 → 진공 미도달	-
+35	supply+time	new	MEDIUM	해외 특수금속 통관 지연	세관 MSDS 요청 → 2-3주 추가 지연	-
+36	process+physics	new	HIGH	게터 활성화 시 유리 손상	RF 가열 → 인접 봉착부 연화	-
+37	process+integration	new	MEDIUM	에이징 중 비대칭 스퍼터링	음극 표면적 차이 → 전류 밀도 불균일	-
+38	safety+environmental	new	HIGH	가스 실린더 전도	낙하 → 밸브 파손 → 실린더 비행	-
+39	budget+supply	new	MEDIUM	네온 가스 가격 급등	반도체 수요 → 가격 2배	-
+40	physics+integration	new	HIGH	항복 전압 예측 불일치	시뮬 180V vs 실제 250V → 점등 불가	-
+41	edge_case	new	MEDIUM	스파크 코일 리크 테스트 위양성	내부 가스 반응을 리크로 오판	-
+42	edge_case	new	MEDIUM	어닐링 온도 오버슈트	PID 오버슈트 → 봉착부 열화	-
+43	edge_case	new	HIGH	배기 중 전극 이탈	압력차 → 전극 밀림 → 정렬 파괴	-
+44	edge_case	new	MEDIUM	네온 가스 순도 부족	질소 혼입 → 방전 전압 상승 + 수명 감소	-
+45	temporal	new	LOW	봉입 후 느린 열화	3-6개월 → 스퍼터링 축적 → 점등 불가	-
+46	meta	new	HIGH	네온사인 기술자 은퇴	핵심 enabler 상실	-
+47	meta	new	MEDIUM	GitHub 공개 피드백	긍정+부정 피드백 + 법적 우려	-
+48	edge_case	new	LOW	완성 관 운송 중 파손	진동/충격 → 유리 파손 → 내파	-
+49	integration+temporal	new	MEDIUM	다중 숫자 열 관리	열 사이클 → 봉착부 피로 크랙	-
+50	meta	new	LOW	PoC 성공 후 방향성	재현성 확보 = 진정한 PoC 완성	-

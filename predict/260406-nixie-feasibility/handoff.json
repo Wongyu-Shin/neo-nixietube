@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "tool": "predict",
+  "generated_at": "2026-04-06T12:00:00+09:00",
+  "commit_hash": "510a951",
+  "scope": ["NOTES.md", "domain research context"],
+  "summary": {
+    "personas": 8,
+    "rounds": 3,
+    "findings_confirmed": 10,
+    "findings_probable": 0,
+    "findings_minority": 0,
+    "anti_herd_passed": true,
+    "predict_score": 195
+  },
+  "findings": [
+    {
+      "id": "SR-1",
+      "type": "safety",
+      "severity": "CRITICAL",
+      "confidence": "HIGH",
+      "title": "고전압 감전 위험 (170-200V DC)",
+      "description": "동작 전압이 치명적 수준. 절연 장갑, 전류 제한 5mA, one-hand rule 필수.",
+      "personas_agreed": 6,
+      "personas_total": 8
+    },
+    {
+      "id": "DM-3",
+      "type": "enabler",
+      "severity": "KEY_ENABLER",
+      "confidence": "HIGH",
+      "title": "네온사인 기술자 협업 확보",
+      "description": "을지로 네온사인 기술자가 유리 봉착/배기/봉입 기술의 70-80%를 커버. 기술 이전 목표.",
+      "personas_agreed": 7,
+      "personas_total": 8
+    },
+    {
+      "id": "GW-1",
+      "type": "technical",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "title": "유리-금속 봉착 난이도",
+      "description": "10+ 핀 기밀 봉착. 열팽창계수 매칭 필요. 소다라임+듀멧 조합 권장.",
+      "personas_agreed": 6,
+      "personas_total": 8
+    },
+    {
+      "id": "VE-1",
+      "type": "technical",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "title": "진공 도달 한계",
+      "description": "DIY 시스템으로 10⁻⁴ Torr 가능, PoC 충분. 10⁻⁵ Torr는 확산펌프 필요.",
+      "personas_agreed": 5,
+      "personas_total": 8
+    },
+    {
+      "id": "DA-5",
+      "type": "strategy",
+      "severity": "HIGH",
+      "confidence": "HIGH",
+      "title": "SWE 강점 미활용",
+      "description": "파셴 곡선 시뮬레이터, SPICE, 자동화, 데이터 로깅이 아마추어의 핵심 경쟁력.",
+      "personas_agreed": 4,
+      "personas_total": 8
+    }
+  ],
+  "hypotheses": [
+    {"rank": 1, "id": "H-01", "hypothesis": "네온사인 기술자 기술 이전 협업 가능", "confidence": "MEDIUM"},
+    {"rank": 2, "id": "H-02", "hypothesis": "파셴 곡선 시뮬레이터로 최적 파라미터 사전 결정 가능", "confidence": "HIGH"},
+    {"rank": 3, "id": "H-03", "hypothesis": "중고 로터리펌프+트랩으로 10⁻⁴ Torr 도달 가능", "confidence": "HIGH"},
+    {"rank": 4, "id": "H-04", "hypothesis": "소다라임+듀멧으로 아마추어 기밀 봉착 가능", "confidence": "MEDIUM"},
+    {"rank": 5, "id": "H-05", "hypothesis": "레이저커터로 니켈 포일 숫자 형상 커팅 가능", "confidence": "HIGH"}
+  ],
+  "feasibility_verdict": "CONDITIONALLY_FEASIBLE",
+  "success_probability": "60-70%",
+  "conditions": [
+    "네온사인 기술자 협업 확보",
+    "진공 목표 10⁻⁴ Torr로 현실화",
+    "MVP를 단일 숫자 점등으로 축소",
+    "6-12개월 + ₩1,000,000-2,000,000 예산"
+  ]
+}
