@@ -41,6 +41,70 @@ const QUALITY_CHECKS = [
   }},
 ]
 
+// Visual quality checks (ccunpacked.dev style)
+const VISUAL_CHECKS = [
+  { name: 'Custom font (Space Grotesk)', check: () => {
+    const layout = readFileSync(join(PAGES_DIR, 'layout.tsx'), 'utf-8')
+    return layout.includes('Space_Grotesk') || layout.includes('space-grotesk') || layout.includes('Space Grotesk')
+  }},
+  { name: 'Dark background (#0D0D0D)', check: () => {
+    const css = readFileSync(join(PAGES_DIR, 'globals.css'), 'utf-8')
+    const layout = readFileSync(join(PAGES_DIR, 'layout.tsx'), 'utf-8')
+    return css.includes('0D0D0D') || css.includes('#0d0d0d') || layout.includes('bg-[#0D0D0D]') || layout.includes('#0D0D0D')
+  }},
+  { name: 'Category color coding', check: () => {
+    const mdxc = readFileSync(join(PAGES_DIR, '..', 'mdx-components.tsx'), 'utf-8')
+    const layout = readFileSync(join(PAGES_DIR, 'layout.tsx'), 'utf-8')
+    return (mdxc + layout).includes('D4A853') || (mdxc + layout).includes('category') || (mdxc + layout).includes('badge')
+  }},
+  { name: 'Card components exist', check: () => {
+    let found = false
+    for (const page of REQUIRED_PAGES) {
+      const fp = join(PAGES_DIR, page.path)
+      if (existsSync(fp)) {
+        const content = readFileSync(fp, 'utf-8')
+        if (content.includes('Card') || content.includes('card') || content.includes('rounded-xl') || content.includes('border-')) {
+          found = true; break
+        }
+      }
+    }
+    return found
+  }},
+  { name: 'Hero section on homepage', check: () => {
+    const fp = join(PAGES_DIR, 'page.mdx')
+    if (!existsSync(fp)) return false
+    const content = readFileSync(fp, 'utf-8')
+    return content.includes('Hero') || content.includes('hero') || content.includes('gradient')
+  }},
+  { name: 'Animated/transition elements', check: () => {
+    const files = [join(PAGES_DIR, 'layout.tsx'), join(PAGES_DIR, '..', 'mdx-components.tsx')]
+    return files.some(f => {
+      if (!existsSync(f)) return false
+      const c = readFileSync(f, 'utf-8')
+      return c.includes('transition') || c.includes('animate') || c.includes('hover:')
+    })
+  }},
+  { name: 'Nav active state styling', check: () => {
+    const layout = readFileSync(join(PAGES_DIR, 'layout.tsx'), 'utf-8')
+    return layout.includes('pathname') || layout.includes('usePathname') || layout.includes('active')
+  }},
+  { name: 'Badge/pill components', check: () => {
+    let found = false
+    const allFiles = [...REQUIRED_PAGES.map(p => join(PAGES_DIR, p.path)),
+                      join(PAGES_DIR, 'layout.tsx'),
+                      join(PAGES_DIR, '..', 'mdx-components.tsx')]
+    for (const fp of allFiles) {
+      if (existsSync(fp)) {
+        const c = readFileSync(fp, 'utf-8')
+        if (c.includes('Badge') || c.includes('badge') || c.includes('pill') || c.includes('rounded-full')) {
+          found = true; break
+        }
+      }
+    }
+    return found
+  }},
+]
+
 let totalScore = 0
 let maxScore = 0
 const results = []
@@ -74,6 +138,18 @@ for (const qc of QUALITY_CHECKS) {
   const pass = qc.check()
   if (pass) totalScore += 5
   results.push({ page: `[QC] ${qc.name}`, score: pass ? 5 : 0, status: pass ? 'PASS' : 'FAIL' })
+}
+
+// Visual quality checks (5 points each)
+for (const vc of VISUAL_CHECKS) {
+  maxScore += 5
+  try {
+    const pass = vc.check()
+    if (pass) totalScore += 5
+    results.push({ page: `[VIS] ${vc.name}`, score: pass ? 5 : 0, status: pass ? 'PASS' : 'FAIL' })
+  } catch {
+    results.push({ page: `[VIS] ${vc.name}`, score: 0, status: 'ERR' })
+  }
 }
 
 const pct = Math.round(totalScore / maxScore * 100)
