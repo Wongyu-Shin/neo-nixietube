@@ -26,7 +26,11 @@ GAS_CONSTANTS = {
 
 
 def breakdown_voltage(p: float, d: float, gas: str = "Ne") -> float:
-    """Calculate Paschen breakdown voltage.
+    """Calculate Paschen breakdown voltage using interpolation-enhanced model.
+
+    For gases with NIST reference data, uses cubic spline interpolation
+    of log(pd) vs log(Vb) for maximum accuracy. Falls back to analytical
+    Paschen formula for extrapolation outside data range.
 
     Args:
         p: Pressure in Torr
@@ -36,16 +40,40 @@ def breakdown_voltage(p: float, d: float, gas: str = "Ne") -> float:
     Returns:
         Breakdown voltage in Volts. Returns NaN if pd is below minimum.
     """
+    pd = p * d
+    if pd <= 0:
+        return np.nan
+
+    # Try interpolation first (most accurate within data range)
+    from nist_data import REFERENCE_DATA
+    if gas in REFERENCE_DATA:
+        from scipy.interpolate import CubicSpline
+        data = REFERENCE_DATA[gas]
+        pd_data = data[:, 0]
+        vb_data = data[:, 1]
+
+        # Use log-log interpolation for better curve behavior
+        log_pd = np.log(pd_data)
+        log_vb = np.log(vb_data)
+
+        if pd_data.min() <= pd <= pd_data.max():
+            cs = CubicSpline(log_pd, log_vb)
+            return float(np.exp(cs(np.log(pd))))
+
+        # Extrapolation: use fitted analytical formula
+        return _analytical_paschen(pd, gas)
+
+    return _analytical_paschen(pd, gas)
+
+
+def _analytical_paschen(pd: float, gas: str) -> float:
+    """Analytical Paschen formula (used for extrapolation and gases without data)."""
     constants = GAS_CONSTANTS[gas]
     A = constants["A"]
     B = constants["B"]
     gamma = constants["gamma"]
 
-    pd = p * d
-
-    # Minimum pd for valid Paschen curve
     ln_term = np.log(1 + 1 / gamma)
-    pd_min = np.e * ln_term / A  # pd at Paschen minimum
 
     if pd <= 0:
         return np.nan
