@@ -1,3 +1,16 @@
-autoresearch-results.tsv
+# Autoresearch logs (local only)
+autoresearch-*.tsv
+
+# Python
 __pycache__/
-autoresearch-glow-results.tsv
+*.pyc
+*.pyo
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
