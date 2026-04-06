@@ -16,6 +16,10 @@
   </div>
 </div>
 
+import NixieDiagram from './components/NixieDiagram'
+import BottleneckFlow from './components/BottleneckFlow'
+import CostComparison from './components/CostComparison'
+
 ## 프로젝트 동기
 
 닉시관은 1950-60년대에 설계된 냉음극 가스방전 디스플레이다. 숫자 형상의 금속 전극이 네온 가스 속에서 따뜻한 오렌지빛으로 빛나는 독특한 미학 때문에 오늘날에도 매니아 층이 두텁다.
@@ -24,7 +28,11 @@
 
 **이 프로젝트의 질문:** 50년간의 발전 중 닉시관의 근본적 병목을 우회할 수 있는 "연결되지 않은 지식(disconnected knowledge)"이 존재하는가? 그리고 그것을 아마추어가 실증할 수 있는가?
 
+<NixieDiagram />
+
 ## 4대 병목과 발견된 해법
+
+<BottleneckFlow />
 
 | 병목 | 전통 방식 | 현대 해법 1 (프릿 경로) | 현대 해법 2 (상온 경로) |
 |------|----------|----------------------|----------------------|
@@ -46,6 +54,8 @@
 **건축 복층유리(IGU)**의 부틸 실링 + **식품 산업(MAP)**의 가스 플러싱을 조합. **진공 펌프도 전기로도 토치도 불필요.** 부엌 테이블에서 제작 가능.
 
 - 비용: ~₩185,000 | 기간: 4주 | 필요 장비: 없음
+
+<CostComparison />
 
 ## 시뮬레이션 결과
 

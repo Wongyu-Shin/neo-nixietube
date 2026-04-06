@@ -7,6 +7,13 @@ const nextConfig = {
   images: { unoptimized: true },
 }
 
-const withMDX = createMDX({})
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [
+      'remark-gfm',
+    ],
+    rehypePlugins: [],
+  },
+})
 
 export default withMDX(nextConfig)
