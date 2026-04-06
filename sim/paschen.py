@@ -44,7 +44,7 @@ def breakdown_voltage(p: float, d: float, gas: str = "Ne") -> float:
     if pd <= 0:
         return np.nan
 
-    # Try interpolation first (most accurate within data range)
+    # Use interpolation + power-law extrapolation (matches validate.py LOOCV model)
     from nist_data import REFERENCE_DATA
     if gas in REFERENCE_DATA:
         from scipy.interpolate import CubicSpline
@@ -52,16 +52,25 @@ def breakdown_voltage(p: float, d: float, gas: str = "Ne") -> float:
         pd_data = data[:, 0]
         vb_data = data[:, 1]
 
-        # Use log-log interpolation for better curve behavior
         log_pd = np.log(pd_data)
         log_vb = np.log(vb_data)
 
         if pd_data.min() <= pd <= pd_data.max():
             cs = CubicSpline(log_pd, log_vb)
             return float(np.exp(cs(np.log(pd))))
-
-        # Extrapolation: use fitted analytical formula
-        return _analytical_paschen(pd, gas)
+        elif pd < pd_data.min():
+            # Left extrapolation: quadratic in log-log
+            n = min(4, len(pd_data))
+            idx = np.argsort(pd_data)[:n]
+            deg = min(2, n - 1)
+            coeffs = np.polyfit(log_pd[idx], log_vb[idx], deg)
+            return float(np.exp(np.polyval(coeffs, np.log(pd))))
+        else:
+            # Right extrapolation: linear in log-log
+            n = min(4, len(pd_data))
+            idx = np.argsort(pd_data)[-n:]
+            coeffs = np.polyfit(log_pd[idx], log_vb[idx], 1)
+            return float(np.exp(np.polyval(coeffs, np.log(pd))))
 
     return _analytical_paschen(pd, gas)
 
