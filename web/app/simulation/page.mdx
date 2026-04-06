@@ -1,3 +1,6 @@
+import PaschenChart from '../components/PaschenChart'
+import GlowStructure from '../components/GlowStructure'
+
 # 시뮬레이션 결과 (Simulation)
 
 Python 기반 파셴 곡선 시뮬레이터와 글로우 방전 모델. autoresearch 반복 루프로 MAPE 147% → 1.79%까지 개선.
@@ -26,6 +29,8 @@ Python 기반 파셴 곡선 시뮬레이터와 글로우 방전 모델. autorese
 | 6 | 1.79% | — | paschen.py 동기화 |
 | 7 | 1.79% | — | 시각화 추가 |
 
+<PaschenChart />
+
 ### 3 Bridge 최적 조건
 
 | Bridge | Gas | Pressure | Gap | Vb | p·d |
@@ -40,6 +45,8 @@ Python 기반 파셴 곡선 시뮬레이터와 글로우 방전 모델. autorese
 ### 모델 정확도
 
 dc (음극 암부) 예측: MAPE **1.77%** — 고압(100-500 Torr) 비유사(non-similarity) 보정 포함.
+
+<GlowStructure />
 
 ### Bridge 3 가시성 분석 — 핵심 결과
 
