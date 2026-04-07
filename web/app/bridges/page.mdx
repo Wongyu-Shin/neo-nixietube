@@ -1,123 +1,276 @@
-import NixieDiagram from '../components/NixieDiagram'
 import BridgeNetwork from '../components/BridgeNetwork'
 import PermeabilityChart from '../components/PermeabilityChart'
+import BridgeSection, { InfoGrid, Caution, WhyNeeded, Expectation, ProcessSteps, Evidence } from '../components/BridgeSection'
+import { FritSealingDiagram, ButylSealDiagram, MicroBarrierDiagram, MAPFlushDiagram, MgOCoatingDiagram, PenningDiagram, MicrowaveKilnBridgeDiagram } from '../components/BridgeDiagrams'
 
-# 발견된 브릿지 기술 (Disconnected Knowledge)
+# 발견된 브릿지 기술
 
-<div className="flex gap-2 mb-6">
-  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#D4A853]/10 text-[#D4A853] border border-[#D4A853]/20">Round 1: 인접 분야</span>
-  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#7B9EB8]/10 text-[#7B9EB8] border border-[#7B9EB8]/20">Round 2: 원거리 분야</span>
-  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#6BA368]/10 text-[#6BA368] border border-[#6BA368]/20">8 Bridges Total</span>
+<div className="rounded-xl border border-amber-400/20 bg-amber-400/[0.04] p-5 my-6 text-sm text-stone-300 leading-relaxed">
+  50년간 닉시관과 무관하게 발전한 분야에서, 닉시관의 핵심 병목을 우회하는 <strong className="text-amber-300">15개의 "연결되지 않은 지식"</strong>을 발견했다.
+  각 브릿지는 PDP 산업, 건축, 식품 공학, 나노기술, 방전 물리, Arduino 메이커, 광섬유 패키징 등 전혀 다른 분야에서 유래.
+  이 페이지를 읽으면 각 기술의 원리, 도입 이유, 기대 효과, 주의사항, 실제 공정을 설명할 수 있다.
 </div>
-
-2라운드의 적대적 토론(reason)을 통해 발견된 8개의 "연결되지 않은 지식". 각각 닉시관과 무관한 분야에서 발전했으나, 닉시관의 핵심 병목을 우회하는 데 적용 가능.
 
 <BridgeNetwork />
 
-<NixieDiagram />
+---
 
-## Round 1: 인접 분야 탐색
+## 병목 1: 유리-금속 실링
 
-PDP, 나노기술, MEMS에서 발견된 3개 브릿지.
+전통 닉시관은 토치로 유리를 800-1000°C에서 녹여 금속 핀 주변에 봉착한다. Dalibor Farny도 이 기술을 마스터하는 데 2년 이상 소요. 아마추어의 최대 장벽. 이것을 대체하는 3가지 브릿지:
 
-<div className="rounded-xl border border-[#D4A853]/20 bg-[#D4A853]/[0.04] p-5 mb-6">
+<BridgeSection
+  color="#D4A853"
+  title="프릿 실링"
+  sourceTag="PDP 산업 (1990-2014)"
+  cost="₩50-100K"
+  diagram={<FritSealingDiagram />}
+>
 
-### Bridge 1: PDP 프릿 실링
+<WhyNeeded>전통 토치 봉착(800-1000°C)은 숙련도에 2년+가 필요하고, 초기 실패율이 30-50%에 달한다. 프릿 실링은 이 온도를 450°C로 55% 낮추고, 토치 대신 전기로(또는 미니가마)를 사용하여 **재현 가능한 온도 프로파일**로 봉착한다.</WhyNeeded>
 
-| 항목 | 내용 |
-|------|------|
-| **출처** | PDP(플라즈마 디스플레이) 산업, 1990-2014 |
-| **우회 병목** | 유리-금속 실링 (800°C → 450°C) |
-| **원리** | Bi₂O₃ 기반 저융점 유리 프릿을 스크린 프린팅/디스펜싱 → 전기로 450°C 소성 → 기밀 접합 |
-| **혁신성** | ★★★★☆ |
-| **아마추어 비용** | ₩50,000-100,000 |
-| **미검증 가정** | 0.5mm 금속 와이어의 embedded lead seal 기밀성 |
-| **학술 검증** | "glass frit" AND "nixie" = 0건 |
+프릿 실링은 PDP(플라즈마 디스플레이 패널) 산업에서 1990-2014년 사이 수억 개의 셀 봉착에 사용된 산업 검증 기술이다. Bi₂O₃(산화비스무트) 기반 무연 유리 분말("프릿")을 450°C에서 용융하면, 유리-유리 접합과 금속 와이어 매립 봉착을 동시에 달성한다.
 
-</div>
+<InfoGrid items={[
+  { label: "소성 온도", value: "450°C (전통 800°C의 55%)", color: "#D4A853" },
+  { label: "소성 시간", value: "30분 (2단계)", color: "#D4A853" },
+  { label: "기밀 수준", value: "<10⁻⁸ Torr·L/s", color: "#6BA368" },
+  { label: "장비", value: "미니가마+Arduino ₩71K", color: "#C17B5E" },
+]} />
 
-<div className="rounded-xl border border-[#D4A853]/20 bg-[#D4A853]/[0.04] p-5 mb-6">
+<ProcessSteps steps={[
+  { step: "프릿 페이스트 조합 (또는 상용 프리폼 사용)", why: "Bi₂O₃:B₂O₃:ZnO = 70:20:10 (wt%). 터피네올 바인더로 치약 점도. 상용 유리 솔더 프리폼(Bridge 15)을 사용하면 이 단계 생략." },
+  { step: "유리 디스크에 프릿 도포 + 듀멧 와이어 배치", why: "듀멧 와이어(Cu코어+FeNi외피)는 CTE가 소다라임 유리와 일치(~9.0×10⁻⁶/K). 프릿 위에 방사형 배치하면 소성 시 프릿이 와이어를 감싸며 기밀 관통 형성." },
+  { step: "350°C 30분 — 바인더 번아웃 (개방)", why: "터피네올 바인더를 연소 제거. 미니가마 뚜껑을 약간 개방하여 가스 배출. 이 단계를 건너뛰면 프릿 내부에 기포 발생 → 기밀 실패." },
+  { step: "450°C 30분 — 프릿 융착 (밀폐)", why: "Bi₂O₃ 프릿이 용융하여 유리-유리 + 유리-금속 접합. 미니가마 PID로 정확한 온도 유지." },
+  { step: "서냉 2°C/min", why: "급냉 시 열응력으로 봉착부 크랙. Arduino PID가 냉각 속도를 모니터링." },
+]} />
 
-### Bridge 2: AAO 나노구조 전극
+<Expectation items={[
+  { label: "성공률 (초기)", value: "20-30% (프릿 + 듀멧 매립 첫 시도)" },
+  { label: "성공률 (5회 후)", value: "50-60% (공정 파라미터 최적화)" },
+  { label: "수명", value: "10,000시간+ (프릿은 유리와 동등한 기밀)" },
+  { label: "비용 절감", value: "토치+전기로(₩150-300K) → 미니가마(₩71K)" },
+]} />
 
-| 항목 | 내용 |
-|------|------|
-| **출처** | 나노기술/재료과학, 1995~ |
-| **우회 병목** | 전극 제조 + 글로우 균일성 + 수명 |
-| **원리** | 양극산화알루미늄(AAO) 나노채널에 Ni 전해도금 → 나노팁 어레이 → 전계 집중 + 스퍼터링 포집 |
-| **혁신성** | ★★★★★ |
-| **아마추어 비용** | ₩115,000 |
-| **기대 효과** | 글로우 균일성 향상, 유리 흑화 억제, 항복전압 소폭 감소 |
-| **학술 검증** | "cold cathode" AND "AAO" AND "glow discharge" = 0건 |
+<Caution>프릿 소성 시 가장 큰 위험은 **embedded lead seal의 기밀 실패**. 듀멧 와이어 ∅0.5mm가 프릿에 완전히 매립되지 않으면 리크 발생. 대응: Hold test(10⁻² Torr, 1시간)로 반드시 사전 검증. 실패 시 와이어 표면 사전 연마(pre-polish) 또는 프릿 도포량 증가로 재시도.</Caution>
 
-</div>
+<Evidence items={[
+  "PDP 산업에서 20년간 수억 개 셀에 적용 — 산업 규모 검증",
+  "학술 검색 'glass frit' AND 'nixie' = 0건 → 닉시관 분야에서 미연결 지식",
+  "Bi₂O₃ 계 프릿: PDP 후기(2005+)에 무연(Pb-free)으로 전환, 환경 안전",
+  "프릿 소성 온도(450°C)는 AAO(600°C 내열)와 MgO(2852°C 용융점)보다 낮음 → 동시 적용 가능",
+]} />
 
-<div className="rounded-xl border border-[#D4A853]/20 bg-[#D4A853]/[0.04] p-5 mb-6">
+</BridgeSection>
 
-### Bridge 3: 마이크로 격벽 고압 방전
+<BridgeSection
+  color="#6BA368"
+  title="부틸+폴리설파이드 상온 2중 실링"
+  sourceTag="건축 IGU + 자동차"
+  cost="₩25K"
+  diagram={<ButylSealDiagram />}
+>
 
-| 항목 | 내용 |
-|------|------|
-| **출처** | MEMS 마이크로플라즈마 연구, 2000s~ |
-| **우회 병목** | 진공 시스템 (대기압에 가까운 조건에서 동작) |
-| **원리** | 파셴 법칙 V_b=f(p·d)에서 d를 줄이면 p를 올릴 수 있음 → 500μm-1mm 갭에서 100-500 Torr 동작 |
-| **혁신성** | ★★★★★ |
-| **아마추어 비용** | ₩40,000 |
-| **시뮬레이션 결과** | 글로우 비율 0.11-0.15 (전통 0.33), 발광 강도 40-180x |
-| **학술 검증** | "microplasma" AND "nixie" = 0건 |
+<WhyNeeded>프릿 실링(450°C)조차 장비가 필요하다. 장비 없이, 상온에서, 자택에서, 즉시 시작할 수 있는 봉착 방법은 없는가? 건축 복층유리(IGU)와 자동차 전조등에서 40년간 사용된 부틸+폴리설파이드 2중 실링이 그 답이다.</WhyNeeded>
 
-</div>
+부틸 고무(IIR)는 모든 고무 중 가스 투과율이 가장 낮다. 핫멜트 부틸 테이프를 200°C 히트건으로 연화 → 유리 돔과 TO-8 헤더 사이에 밀착 → 폴리설파이드 실란트를 외부에 2차 도포(구조적 강도). 24시간 경화.
 
-## Round 2: 원거리 분야 탐색
+<InfoGrid items={[
+  { label: "작업 온도", value: "상온 ~ 200°C (히트건)", color: "#6BA368" },
+  { label: "PoC 수명", value: "~100일 (네온 투과 기준)", color: "#D4A853" },
+  { label: "장비", value: "없음 (히트건만)", color: "#6BA368" },
+  { label: "졸-겔 보강 시", value: "1,000일+", color: "#6BA368" },
+]} />
 
-건축, 자동차, 식품, 화학에서 발견된 5개 브릿지.
+<ProcessSteps steps={[
+  { step: "TO-8 헤더에 전극 장착 + 납땜", why: "기밀 헤더가 핀 관통 문제를 해결. 14핀으로 숫자 0-9 + 양극 + 도트 수용." },
+  { step: "유리 돔을 부틸 테이프로 헤더에 봉착", why: "부틸의 낮은 투과율(~10⁻¹⁰ CGS)이 1차 가스 차단. 히트건 200°C로 연화 후 압착." },
+  { step: "폴리설파이드 실란트 2차 도포", why: "부틸은 점착력이 약함. 폴리설파이드가 구조적 강도를 보강. IGU에서 40년 검증." },
+  { step: "졸-겔 SiO₂ 또는 MgO 오버코팅 (선택)", why: "유기 실링 위에 유리질 나노코팅 → 투과율 10-100x 감소 → 수명 100일 → 1,000일+." },
+]} />
 
-### Bridge G1: 부틸+폴리설파이드 상온 2중 실링
+<Expectation items={[
+  { label: "성공률", value: "60-70% (단순한 공정, 낮은 실패율)" },
+  { label: "비용", value: "₩185K (전체 경로 2)" },
+  { label: "전략적 의미", value: "장비 없이 즉시 시작 가능한 유일한 경로" },
+]} />
 
-| 항목 | 내용 |
-|------|------|
-| **출처** | 건축 복층유리(IGU) + 자동차 전조등, 40년 산업 검증 |
-| **우회 병목** | 유리-금속 실링 (800°C → **상온**) |
-| **원리** | 부틸 고무(1차: 가스 차단) + 폴리설파이드(2차: 구조적 강도) |
-| **혁신성** | ★★★★★ |
-| **아마추어 비용** | ₩25,000 |
-| **PoC 수명** | ~100일 (네온 투과 기준) |
+<Caution>네온의 원자 반경(38pm)은 매우 작아 부틸을 서서히 투과한다. 100일 후 내부 가스 조성 변화 → 방전 불안정 가능. 졸-겔 오버코팅으로 대응하거나, PoC 기간(100시간 점등)에는 충분하다고 판단.</Caution>
 
-### Bridge G2: 졸-겔 SiO₂ 기밀 보강 + 스퍼터링 방호
+<Evidence items={[
+  "건축 IGU에서 네온/아르곤 봉입 40년 검증 — 복층유리 내부 가스 유지",
+  "자동차 전조등: 열 사이클(-40°C ~ 120°C) 내구성 검증",
+  "부틸 네온 투과율: ~10⁻¹⁰ cm³·cm/(cm²·s·cmHg) — PoC 100일 충분",
+]} />
 
-| 항목 | 내용 |
-|------|------|
-| **출처** | 화학/소재 공학 + 반도체 |
-| **우회 병목** | 기밀 보강 + 전극 수명 |
-| **원리** | TEOS 졸-겔로 유리질 나노코팅 → 유기 실링 위 오버코팅(투과율 10-100x 감소) + 전극 표면 스퍼터링 방호 |
-| **아마추어 비용** | ₩25,000 |
+</BridgeSection>
 
-### Bridge G3: MAP 가스 플러싱
+---
 
-| 항목 | 내용 |
-|------|------|
-| **출처** | 식품 산업 (Modified Atmosphere Packaging) |
-| **우회 병목** | 가스 정량 충전 (진공 펌프 제거 가능) |
-| **원리** | 네온 가스를 관류 플러싱하여 공기 치환 + O₂ 센서 모니터링 |
-| **아마추어 비용** | ₩80,000 (가스 + 센서) |
-| **제한** | 잔류 산소 0.5% → 3회 플러싱+게터로 &lt;10 ppm 달성 필요 |
+## 병목 2: 전극 제조
 
-### Bridge G4: 태양전지 PIB 장기 실링
+<BridgeSection
+  color="#6BA368"
+  title="MgO 졸-겔 코팅"
+  sourceTag="PDP 보호층 + 졸-겔 화학"
+  cost="₩15-20K"
+  diagram={<MgOCoatingDiagram />}
+>
 
-| 항목 | 내용 |
-|------|------|
-| **출처** | 에너지/태양전지 산업 |
-| **우회 병목** | 장기 수명 (부틸의 100일 → PIB의 1000일+) |
-| **아마추어 비용** | ₩15,000 |
+<WhyNeeded>닉시관의 수명은 **스퍼터링**(이온이 전극을 깎아내는 현상)에 의해 결정된다. MgO는 PDP에서 20년간 사용된 검증된 보호층으로, (1) 높은 2차 전자 방출 계수(γ≈0.5)로 방전 전압을 크게 낮추고, (2) 높은 결합 에너지로 이온 충돌에 강하다. SiO₂ 졸-겔이 "방어"만 한다면, MgO는 "방어 + 공격 전압 저감"을 동시에 달성.</WhyNeeded>
 
-### Bridge G5: MIL-spec 기밀 커넥터
+마그네슘 아세테이트 4수화물을 에탄올에 용해 → 옥살산으로 pH 조절 → 졸 형성 → 니켈 전극을 딥코팅 → 미니가마 400°C에서 30분 어닐링 → 결정질 MgO 박막 형성.
 
-| 항목 | 내용 |
-|------|------|
-| **출처** | 우주/항공 산업 |
-| **우회 병목** | 핀 관통 봉착 (직접 제조 → 구매) |
-| **원리** | D-sub, circular 등 다양한 형태의 기밀 피드스루를 산업 부품으로 조달 |
-| **아마추어 비용** | ₩20,000-50,000 |
+<InfoGrid items={[
+  { label: "2차 전자 방출", value: "γ ≈ 0.5 (벌크 Ni의 5배)", color: "#6BA368" },
+  { label: "어닐링 온도", value: "400°C (미니가마로 가능)", color: "#D4A853" },
+  { label: "Penning 시너지", value: "Vb 30-50% ↓", color: "#7B9EB8" },
+  { label: "스퍼터링 저항", value: "Ni 대비 3-5x", color: "#6BA368" },
+]} />
+
+<Caution>MgO는 수분에 민감 — Mg(OH)₂로 수화 시 γ 감소. 코팅 후 건조 환경 보관 필요. 관 봉입 전까지 데시케이터 보관 권장.</Caution>
+
+<Evidence items={[
+  "PDP 셀에서 MgO: 방전 전압 저감 + 수명 결정 요인 (20년 상용 검증)",
+  "졸-겔 MgO 박막: Springer, MDPI 학술 논문 — 400°C 어닐링으로 유기물 완전 제거 확인",
+  "MgO 용융점 2,852°C → 프릿 소성(450°C)에서 안전 (안전 마진 2,400°C)",
+  "Monte Carlo 시뮬레이션: Ne 이온에 의한 MgO 스퍼터링 yield = Ni의 1/3~1/5",
+]} />
+
+</BridgeSection>
+
+---
+
+## 병목 3: 진공/가스 봉입
+
+<BridgeSection
+  color="#7B9EB8"
+  title="마이크로 격벽 고압 방전"
+  sourceTag="MEMS 마이크로플라즈마"
+  cost="₩40K"
+  diagram={<MicroBarrierDiagram />}
+>
+
+<WhyNeeded>전통 닉시관은 15 Torr 네온(대기압의 1/50)에서 동작하므로 진공 펌프가 필수. 그런데 파셴 법칙 V_b = f(p·d)에서 **전극 간격 d를 줄이면, 압력 p를 올려도 동일한 항복 전압**을 얻을 수 있다. 극단적으로 d를 500μm로 줄이면 200 Torr(대기압의 1/4)에서 동작 가능 → 진공 펌프 자체가 불필요해진다.</WhyNeeded>
+
+MEMS 마이크로플라즈마 연구(2000s~)에서 대기압 근접 조건의 마이크로 방전이 활발히 연구되고 있다. 전통 닉시관의 1.5mm 갭을 500μm-1mm로 줄이면 100-500 Torr에서 동작.
+
+<InfoGrid items={[
+  { label: "전극 간격", value: "500μm ~ 1mm (전통 1.5mm)", color: "#7B9EB8" },
+  { label: "동작 압력", value: "100-500 Torr (전통 15)", color: "#7B9EB8" },
+  { label: "발광 강도", value: "전통 대비 40-180x", color: "#6BA368" },
+  { label: "글로우 비율", value: "0.11-0.15 (전통 0.33)", color: "#D4A853" },
+]} />
+
+<Caution>고압 방전은 발광이 "전극 전체를 감싸는" 전통 미학과 다르다. 글로우 비율 0.11-0.15는 전통의 1/3~1/2로, **"얇지만 밝은 윤곽선"**이라는 새로운 미학. 실험으로 시각적 수용 가능성 확인 필요. Ar 비율이 높으면 색상도 변할 수 있음.</Caution>
+
+<Evidence items={[
+  "프로젝트 시뮬레이터: 200 Torr, 500μm → Vb 350V, 밝기 180x (MAPE 1.79%)",
+  "학술 검색 'microplasma' AND 'nixie' = 0건 → 완전 미연결 지식",
+  "MEMS 마이크로플라즈마: Nature, IEEE에서 수백 편 논문",
+]} />
+
+</BridgeSection>
+
+<BridgeSection
+  color="#7B9EB8"
+  title="MAP 가스 플러싱"
+  sourceTag="식품 산업"
+  cost="₩80K (가스+센서)"
+  diagram={<MAPFlushDiagram />}
+>
+
+<WhyNeeded>전통 닉시관은 진공 배기 후 정밀 가스 충전한다 — 고가의 진공 펌프 + 피라니 게이지 필요. MAP(Modified Atmosphere Packaging)는 식품 산업에서 육류/채소 포장 시 공기를 N₂/CO₂로 치환하는 기법. 원리는 동일: **공기를 빼는 대신, 네온으로 밀어낸다.**</WhyNeeded>
+
+네온 가스를 관에 관류(flow-through) 플러싱하여 공기를 물리적으로 밀어내고, O₂ 센서로 잔존 산소를 모니터링. 3회 플러싱-퍼지 사이클로 O₂ < 0.5% 달성.
+
+<ProcessSteps steps={[
+  { step: "네온 가스 실린더 + 레귤레이터 연결", why: "0.5 L/min 유량. 소형 실린더(₩50K) 또는 네온사인 업체에서 충전." },
+  { step: "관 입구(배기관)에서 출구(배출구)로 플러싱", why: "네온이 위에서 아래로 흐르며 공기를 밀어냄. 네온은 공기보다 가벼워 윗쪽에서 유입이 효율적." },
+  { step: "O₂ 센서로 배출구 산소 농도 실시간 모니터링", why: "O₂ < 0.5% 달성 확인. 전기화학식 O₂ 센서(₩30K, AliExpress)." },
+  { step: "3회 플러싱-퍼지 사이클", why: "1회 플러싱으로 O₂ ~1-2% → 3회 반복으로 < 0.5%. 게터(Ti 와이어)가 잔류 산소 추가 흡착." },
+  { step: "에폭시로 입구+출구 밀봉", why: "가스 치환 완료 후 즉시 밀봉. 5분 경화 에폭시 사용." },
+]} />
+
+<Evidence items={[
+  "식품 MAP: O₂ < 0.1% 달성 실적 (닉시관 요구 0.5%보다 엄격)",
+  "진공 펌프 완전 제거 → 경로 2의 '장비 불필요' 전제를 가능하게 하는 핵심 기술",
+]} />
+
+</BridgeSection>
+
+<BridgeSection
+  color="#7B9EB8"
+  title="Penning 혼합가스 (Ne + Ar)"
+  sourceTag="방전 물리 + 네온사인"
+  cost="₩0 추가"
+  diagram={<PenningDiagram />}
+>
+
+<WhyNeeded>순수 네온의 항복 전압(170-200V)은 감전 위험을 수반한다. Penning 혼합가스는 순수 네온 대신 소량의 아르곤(0.5-2%)을 첨가하여 **이온화 경로를 추가하고 항복 전압을 10-30% 낮추는** 물리 법칙을 활용한다. 120V 네온 램프의 표준 충전 가스로 40년+ 사용. 추가 비용 ₩0.</WhyNeeded>
+
+Ne의 준안정 상태(metastable, 16.62 eV)가 Ar 원자(이온화 에너지 15.76 eV)와 충돌하면 Ar를 이온화할 수 있다 — 이것이 Penning 효과. 추가적인 이온+전자 쌍이 생성되므로 방전 개시가 용이해진다.
+
+<InfoGrid items={[
+  { label: "최적 Ar 비율", value: "0.5-1% (유리 흡착 고려 시 1-2%)", color: "#7B9EB8" },
+  { label: "전압 저감 (단독)", value: "10-30%", color: "#6BA368" },
+  { label: "+MgO 결합", value: "30-50% 저감", color: "#6BA368" },
+  { label: "비용", value: "₩0 추가", color: "#6BA368" },
+]} />
+
+<Caution>Ar 비율 > 2%이면 글로우 색상이 오렌지에서 핑크/보라로 변화. 닉시관의 "따뜻한 오렌지" 미학에 영향. 0.5-1% 범위를 유지할 것. 보로실리케이트 유리는 Ar를 흡착하므로 소다라임 유리에서는 흡착 비율이 다를 수 있음 — 실험으로 최적화.</Caution>
+
+<Evidence items={[
+  "Wikipedia 'Penning mixture' — 120V 네온 글로우 램프 표준",
+  "US3814971A — Fill gas mixture for glow lamps (1974)",
+  "Ar 최적 비율 ~0.25%이지만 유리 흡착 보상으로 0.5-2% 사용 (문헌)",
+]} />
+
+</BridgeSection>
+
+---
+
+## 자택 제조 인프라
+
+<BridgeSection
+  color="#C17B5E"
+  title="전자레인지 미니가마 + Arduino PID"
+  sourceTag="유리공예 + Arduino 메이커"
+  cost="₩71-101K"
+  diagram={<MicrowaveKilnBridgeDiagram />}
+>
+
+<WhyNeeded>프릿 소성(450°C)과 MgO 어닐링(400°C)에는 전기로가 필요하다. 중고 머플로(₩150-300K)는 비싸고 무겁다. 도자기 공방 가마는 외부 접근이 필요하다. 전자레인지 미니가마(₩50K)는 SiC 서셉터가 마이크로파를 열로 변환하여 900°C까지 도달 — 450°C의 2배. Arduino + K-type 열전대 + SSR로 PID 제어를 추가하면 **₩71K로 정밀 전기로를 자택에서 구현.**</WhyNeeded>
+
+SWE의 핵심 역량(코드)으로 하드웨어(장비)를 대체하는 상징적 브릿지. 동일 Arduino가 가마 PID + 피라니 게이지 + 데이터 로깅 + 안전 모니터를 동시 수행.
+
+<InfoGrid items={[
+  { label: "미니가마", value: "₩50K (Large, ∅110mm)", color: "#C17B5E" },
+  { label: "Arduino 키트", value: "₩42.5K (4가지 역할)", color: "#B8A9C9" },
+  { label: "대체 장비 가치", value: "₩200-400K", color: "#6BA368" },
+  { label: "절감율", value: "90%", color: "#6BA368" },
+]} />
+
+<ProcessSteps steps={[
+  { step: "미니가마(Large) 구매 + K-type 열전대 관통 홀 가공", why: "가마 뚜껑에 ∅3mm 홀. 차폐 열전대 삽입. 마이크로파 누출 방지: 홀 직경 < 파장(12cm)의 1/4." },
+  { step: "Arduino Nano + MAX6675 + SSR 배선", why: "MAX6675이 열전대 신호를 디지털 변환. SSR이 전자레인지 220V 전원 on/off. PID 라이브러리로 ~50줄 코드." },
+  { step: "캘리브레이션: 빈 관으로 350°C/450°C 도달 확인", why: "열전대 위치에 따라 서셉터 표면 vs 관 표면 ΔT ≈ 100°C. 보정 계수 결정." },
+  { step: "소성 프로파일 프로그래밍", why: "Phase 1: 350°C hold 30min → Phase 2: 450°C hold 30min → Phase 3: 서냉 모니터링. Arduino 코드에 프로파일 내장." },
+]} />
+
+<Caution>전자레인지와 고전압 부스트 컨버터를 같은 작업대에서 사용할 때 물리적 분리(최소 1m) 필수. SSR 고장 대비 기계식 타이머(30분) 추가 권장. 열전대 간섭: 전자레인지 off 구간(PID duty cycle)에만 온도 측정.</Caution>
+
+<Evidence items={[
+  "nuboart.com 미니가마: ₩50K, Large ∅110mm, 900°C max",
+  "MDPI Applied Sciences (2025): Microwave Firing of Ceramics — 차폐 K-type 열전대로 마이크로웨이브 가마 내 온도 측정 성공",
+  "PIDKiln (GitHub): ESP32 PID 가마 컨트롤러 오픈소스",
+  "Arduino PID Library (Brett Beauregard): 산업 수준 PID 알고리즘",
+]} />
+
+</BridgeSection>
+
+---
 
 ## 네온 투과 기준표
 

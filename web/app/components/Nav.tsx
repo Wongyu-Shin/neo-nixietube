@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { href: "/", label: "Overview" },
   { href: "/glossary", label: "Glossary" },
   { href: "/bridges", label: "Bridges" },
+  { href: "/bootstrap", label: "Phase 0" },
   { href: "/path-frit", label: "Path 1: Frit" },
   { href: "/path-roomtemp", label: "Path 2: Room-Temp" },
   { href: "/simulation", label: "Simulation" },

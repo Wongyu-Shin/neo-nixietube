@@ -1,0 +1,140 @@
+import WorkspaceStrategy from '../components/WorkspaceStrategy'
+import EquipmentAccess from '../components/EquipmentAccess'
+
+# Phase 0: 장소와 장비 확보
+
+<div className="rounded-xl border border-amber-400/20 bg-amber-400/[0.04] p-5 my-6">
+  <div className="text-sm text-stone-300 leading-relaxed">
+    이 프로젝트는 <strong className="text-amber-300">아무것도 없는 상태</strong>에서 시작한다.
+    전용 작업실도, 로터리 펌프도, 전기로도 없다. 이 페이지는 <strong className="text-amber-300">비용효율적으로 장소와 장비를 확보</strong>하는 전략을 다룬다.
+    핵심 원칙: <strong className="text-amber-300">소유보다 접근</strong> — 장비를 사는 대신, 이미 존재하는 인프라에 접근한다.
+  </div>
+</div>
+
+## 핵심 원칙: "소유 vs 접근" 패러다임
+
+이 프로젝트에 필요한 장비 중 상당수는 **이미 서울 어딘가에 존재한다.** 문제는 소유가 아니라 접근이다.
+
+| 전략 | 비용 | 예시 |
+|------|------|------|
+| **접근 (₩0)** | 무료 | 대학 실험실, 네온사인 업체 협업 |
+| **대여 (₩~)** | 시간당/회당 | 메이커스페이스 장비 (레이저 커터 등) |
+| **구독 (₩/월)** | 월정액 | 메이커스페이스 멤버십 |
+| **구매 (₩₩₩)** | 일회성 | 최후 수단 — 접근 경로가 모두 실패한 후 |
+
+### 비용 시뮬레이션
+
+<div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-6">
+  <div className="rounded-xl border border-red-400/20 bg-red-400/[0.04] p-4 text-center">
+    <div className="text-xs text-stone-500">모두 구매 시</div>
+    <div className="text-2xl font-bold text-red-400 my-1">₩850K+</div>
+    <div className="text-[10px] text-stone-500">펌프+전기로+게이지+레이저커터 접근</div>
+  </div>
+  <div className="rounded-xl border border-amber-400/20 bg-amber-400/[0.04] p-4 text-center">
+    <div className="text-xs text-stone-500">하이브리드 (추천)</div>
+    <div className="text-2xl font-bold text-amber-400 my-1">₩50~150K</div>
+    <div className="text-[10px] text-stone-500">메이커스페이스 + 네온사인 업체/대학</div>
+  </div>
+  <div className="rounded-xl border border-green-400/20 bg-green-400/[0.04] p-4 text-center">
+    <div className="text-xs text-stone-500">경로 2 (상온) 선택 시</div>
+    <div className="text-2xl font-bold text-green-400 my-1">₩0~50K</div>
+    <div className="text-[10px] text-stone-500">메이커스페이스(레이저 커터)만 필요</div>
+  </div>
+</div>
+
+## 작업 공간 옵션
+
+<WorkspaceStrategy />
+
+### 추천 조합 전략
+
+어느 하나에 의존하지 말고, **목적별로 장소를 분산**한다:
+
+| 작업 | 추천 장소 | 이유 |
+|------|----------|------|
+| 전극 커팅 (레이저) | 세운메이커스큐브 | 무료, 레이저 커터 보유 |
+| 프릿 소성 (450°C) | **자택 (미니가마+Arduino PID)** | ₩71\~101K 일회 투자. SiC 서셉터 + PID 제어 |
+| 진공 배기 + 가스 봉입 | 네온사인 업체 or 대학 | 펌프+게이지 완비 |
+| 부틸 봉착 (상온 경로) | 자택 | 장비 불필요, 환기만 확보 |
+| 납땜 + 회로 | 메이커스페이스 or 자택 | 인두기 접근 |
+| AAO 양극산화 (Phase 3) | 대학 화학과 | 후드+DC전원+폐액 처리 |
+
+## 장비 접근 전략
+
+<EquipmentAccess />
+
+## 단계별 확보 로드맵
+
+### Week 0-1: 탐색과 관계 구축 (비용 ₩0)
+
+| # | 행동 | 목적 | 소요 시간 |
+|---|------|------|----------|
+| 1 | **세운메이커스큐브 방문** | 레이저 커터 확인, 멤버십 등록 | 반나절 |
+| 2 | **을지로 네온사인 업체 방문** | 협업 가능성 타진, 장비 현황 파악 | 반나절 |
+| 3 | **대학 인맥 연락** | 물리/화학과 실험실 접근 가능성 | 전화/메시지 |
+| 4 | **미니가마 + Arduino PID 키트 주문** | 자택 프릿 소성 장비 확보. 온라인 즉시 구매 (₩71\~101K) | 쿠팡/AliExpress |
+
+### Week 1-2: 확보 결과에 따른 경로 결정
+
+<div className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-5 my-6 text-sm">
+  <div className="font-medium text-stone-300 mb-3">의사결정 트리</div>
+  <div className="space-y-2 text-stone-400">
+    <div>
+      <strong className="text-amber-300">네온사인 업체 협업 성공?</strong>
+      <div className="ml-4 mt-1">
+        <div className="text-green-400">YES → 경로 1 (프릿) 가능. 펌프+가스+기술 이전 한 번에 해결</div>
+        <div className="text-stone-500 mt-1">NO ↓</div>
+      </div>
+    </div>
+    <div>
+      <strong className="text-amber-300">대학 실험실 접근 가능?</strong>
+      <div className="ml-4 mt-1">
+        <div className="text-green-400">YES → 경로 1 가능. 펌프+게이지+전기로 접근</div>
+        <div className="text-stone-500 mt-1">NO ↓</div>
+      </div>
+    </div>
+    <div>
+      <strong className="text-[#ef8f44]">전자레인지 미니가마 + Arduino PID (자택 대안)</strong>
+      <div className="ml-4 mt-1">
+        <div className="text-[#ef8f44]">₩71\~101K로 자택에서 프릿 소성 가능. SWE 역량으로 PID 온도 제어 구현. 도자기 공방 접근 불필요.</div>
+        <div className="text-stone-500 mt-1">진공 펌프만 외부 접근 필요 (네온사인 업체/대학) ↓</div>
+      </div>
+    </div>
+    <div>
+      <strong className="text-[#6BA368]">진공 접근도 불가 → 경로 2 (상온 봉착) 선택</strong>
+      <div className="ml-4 mt-1 text-stone-500">
+        진공 펌프 불필요, 전기로 불필요. 자택+메이커스페이스(레이저 커터)만으로 시작 가능. ₩185,000.
+      </div>
+    </div>
+  </div>
+</div>
+
+> **경로 2의 전략적 의미:** 경로 2(상온 봉착)는 단순히 "저렴한 대안"이 아니다. **장소와 장비가 확보되지 않은 현실에서 즉시 시작할 수 있는 유일한 경로**다. 경로 2로 PoC를 달성하면서 동시에 경로 1에 필요한 관계(네온사인 업체, 대학)를 구축하는 것이 최적 전략이다.
+
+## 자택 작업 가능 범위
+
+경로 2(상온 봉착)의 대부분은 자택에서 가능하다. 다만 조건이 있다:
+
+| 작업 | 자택 가능? | 조건 |
+|------|-----------|------|
+| 전극 설계 (CAD) | **가능** | PC만 필요 |
+| 니켈 포일 화학 에칭 | **가능** | FeCl₃, 환기 |
+| 부틸 봉착 | **가능** | 히트건, 환기 |
+| 폴리설파이드 도포 | **가능** | 환기 (유기 용매) |
+| 네온 가스 플러싱 | **주의** | 네온은 무독성이나 O₂ 치환 → 환기 필수 |
+| 고전압 점등 테스트 | **가능** | 절연 장갑, one-hand rule |
+| 납땜 | **가능** | 환기 |
+| AAO 양극산화 | **불가** | 산성 용액 → 대학 화학 후드 필요 |
+| 프릿 소성 | **불가** | 450°C → 전기로 필요 |
+| 진공 배기 | **불가** | 로터리 펌프 필요 |
+
+## 비용 요약: 기존 분석과의 비교
+
+| 시나리오 | 장비 비용 | 재료 비용 | 총 비용 |
+|---------|----------|----------|---------|
+| 기존 분석 (경로 1, 모두 구매) | ₩500~800K | ₩400K | **₩1,200K** |
+| **접근 전략 (경로 1, 하이브리드)** | **₩50~150K** | ₩400K | **₩387~462K** |
+| 기존 분석 (경로 2) | ₩0 | ₩185K | **₩185K** |
+| **접근 전략 (경로 2, 메이커스페이스)** | **₩0~50K** | ₩185K | **₩185~235K** |
+
+접근 전략을 활용하면 경로 1도 **₩387~462K으로 절반 이하**로 가능하다.

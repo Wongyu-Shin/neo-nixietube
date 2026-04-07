@@ -198,7 +198,7 @@ export default function BridgeNetwork() {
       )}
 
       <figcaption className="text-center text-stone-500 text-xs mt-3">
-        4대 병목 → 8개 브릿지 기술 연결 맵. 노드를 호버/클릭하여 상세 정보 확인.
+        4대 병목 → 15개 브릿지 기술 연결 맵. 노드를 호버/클릭하여 상세 정보 확인.
       </figcaption>
     </figure>
   );

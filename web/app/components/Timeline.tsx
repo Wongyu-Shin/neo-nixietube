@@ -3,10 +3,11 @@
 import { useState } from "react";
 
 const WEEKS = [
-  { week: "W1", label: "재료 주문", tasks: ["을지로 방문", "TO-8 헤더 주문", "안전장비 구매", "부틸+폴리설파이드"], status: "ready", color: "#6BA368" },
-  { week: "W2", label: "소싱 대기 + 준비", tasks: ["시그마알드리치 시약 도착 대기", "메이커스페이스 답사", "전극 설계 CAD"], status: "ready", color: "#7B9EB8" },
-  { week: "W3", label: "핵심 실험", tasks: ["실험 A: 부틸 기밀 테스트", "실험 B: 프릿 기밀 테스트", "실험 C: 네온 플러싱 순도"], status: "todo", color: "#D4A853" },
-  { week: "W4-5", label: "첫 점등 시도", tasks: ["상온 경로: TO-8 + 부틸 + 플러싱", "프릿 경로: 프릿 봉착 + 진공"], status: "todo", color: "#C17B5E" },
+  { week: "W0", label: "장소/장비 확보", tasks: ["세운메이커스큐브 방문·등록", "을지로 네온사인 업체 탐방", "대학 실험실 인맥 연락", "미니가마(₩50K) + Arduino PID 키트 주문", "경로 결정 (접근 결과에 따라)"], status: "ready", color: "#ef8f44" },
+  { week: "W1", label: "재료 주문", tasks: ["안전장비 구매", "TO-8 헤더 주문", "부틸+폴리설파이드 주문", "경로 결정 후 시약/장비 주문"], status: "ready", color: "#6BA368" },
+  { week: "W2", label: "소싱 대기 + 준비", tasks: ["시그마알드리치 시약 도착 대기", "전극 설계 CAD", "메이커스페이스 레이저 커터 예약"], status: "ready", color: "#7B9EB8" },
+  { week: "W3", label: "핵심 실험", tasks: ["실험 A: 부틸 기밀 테스트", "실험 B: 프릿 기밀 테스트 (장비 접근 시)", "실험 C: 네온 플러싱 순도"], status: "todo", color: "#D4A853" },
+  { week: "W4-5", label: "첫 점등 시도", tasks: ["상온 경로: TO-8 + 부틸 + 플러싱", "프릿 경로: 프릿 봉착 + 진공 (접근 확보 시)"], status: "todo", color: "#C17B5E" },
   { week: "W6-8", label: "반복 개선", tasks: ["실패 원인 분석", "공정 파라미터 조정", "2차 시도"], status: "todo", color: "#B8A9C9" },
   { week: "W9-12", label: "AAO/졸겔 적용", tasks: ["AAO 나노구조 전극 제작", "졸-겔 SiO₂ 코팅 시도", "정량 비교 실험"], status: "future", color: "#B8A9C9" },
 ];

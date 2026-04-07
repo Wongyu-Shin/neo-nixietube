@@ -4,31 +4,42 @@ import { useState } from "react";
 
 const PRIORITIES = [
   {
+    priority: 0,
+    label: "먼저: 장소/장비 접근 확보",
+    color: "#ef8f44",
+    items: [
+      { name: "세운메이커스큐브 방문·등록", source: "세운상가", lead: "반나절", cost: "₩0" },
+      { name: "을지로 네온사인 업체 탐방", source: "을지로3-4가", lead: "반나절", cost: "₩0" },
+      { name: "대학 실험실 인맥 연락", source: "전화/메시지", lead: "1-3일", cost: "₩0" },
+      { name: "미니가마(Large) + Arduino PID 키트 주문", source: "쿠팡/AliExpress", lead: "2-5일", cost: "₩71~101K" },
+    ],
+  },
+  {
     priority: 1,
-    label: "즉시 주문",
+    label: "즉시 주문 (경로 무관)",
     color: "#ef4444",
     items: [
+      { name: "안전 장비 (보안경+장갑+소화기)", source: "쿠팡", lead: "1-2일", cost: "₩90K" },
       { name: "TO-8 기밀 헤더", source: "DigiKey", lead: "5-7일", cost: "₩20K" },
-      { name: "안전 장비", source: "쿠팡", lead: "1-2일", cost: "₩90K" },
       { name: "부틸 + 폴리설파이드", source: "쿠팡/건축자재몰", lead: "2-3일", cost: "₩25K" },
     ],
   },
   {
     priority: 2,
-    label: "이번 주",
+    label: "경로 결정 후 주문",
     color: "#D4A853",
     items: [
-      { name: "시그마알드리치 화학 시약", source: "시그마알드리치", lead: "1-2주", cost: "₩60K" },
-      { name: "듀멧 와이어", source: "AliExpress", lead: "2-3주", cost: "₩40K" },
+      { name: "시그마알드리치 시약 (프릿 경로)", source: "시그마알드리치", lead: "1-2주", cost: "₩90K" },
+      { name: "듀멧 와이어 + 니켈 포일", source: "AliExpress", lead: "2-3주", cost: "₩40K" },
+      { name: "네온 가스 소량", source: "네온사인 업체", lead: "업체 방문 시", cost: "₩50K" },
     ],
   },
   {
     priority: 3,
-    label: "다음 주",
+    label: "접근 실패 시에만 구매",
     color: "#6BA368",
     items: [
-      { name: "중고 진공 펌프 탐색", source: "중고나라", lead: "1-4주", cost: "₩200-400K" },
-      { name: "네온 가스 확보", source: "네온사인 업체", lead: "1-2주", cost: "₩50-100K" },
+      { name: "중고 로터리 펌프 (접근 불가 시)", source: "중고나라", lead: "1-4주", cost: "₩200-400K" },
     ],
   },
 ];

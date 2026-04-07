@@ -19,11 +19,13 @@
 
 ### 경로 1: 프릿 실링 경로 (정확도 중시)
 - 프릿 실링 + AAO 나노구조 전극 + 전통 진공 충전
-- 비용: ~₩1,200,000 | 기간: 12주
+- 비용: ~₩387-462K (접근+Round 3 전략) | ~~₩1,200K (구매 전제)~~ | 기간: 12주
+- 장비 접근: 전자레인지 미니가마+Arduino PID(자택, ₩71-101K), 네온사인 업체/대학(진공 펌프)
 
-### 경로 2: 상온 봉착 경로 (접근성 중시)
+### 경로 2: 상온 봉착 경로 (즉시 시작 가능)
 - 부틸+폴리설파이드 봉착 + 졸-겔 코팅 + 네온 플러싱
 - 비용: ~₩185,000 | 기간: 4주 | 장비: 없음
+- **장소/장비 미확보 상태에서 즉시 시작 가능한 유일한 경로**
 
 ## Simulation
 
@@ -93,13 +95,14 @@ neo-nixetube/
 | 1mm @ 100 Torr | 0.11 | 40x | Thin but bright |
 | 500μm @ 200 Torr | 0.15 | 180x | Thin but very bright |
 
-### Cost Comparison
+### Cost Comparison (접근 전략 적용)
 
 | Approach | Cost | Equipment | Timeline |
 |----------|------|-----------|----------|
-| Traditional | ₩2,500,000+ | Torch + furnace + vacuum | 6-12 months |
-| Frit path | ₩1,200,000 | Furnace + vacuum | 12 weeks |
-| Room-temp path | ₩185,000 | **None** | 4 weeks |
+| Traditional | ₩2,500,000+ | Torch + furnace + vacuum (소유) | 6-12 months |
+| Frit path (구매 전제) | ~~₩1,200,000~~ | Furnace + vacuum (소유) | 12 weeks |
+| **Frit path (접근+Round 3)** | **₩387-462K** | **미니가마+Arduino + 업체/대학 펌프** | **12 weeks** |
+| Room-temp path | ₩185,000 | **None** (자택+메이커스페이스) | 4 weeks |
 
 ## Status
 
@@ -108,8 +111,9 @@ neo-nixetube/
 - [x] Disconnected knowledge search (2 rounds, 8 bridges)
 - [x] Paschen curve simulator (MAPE 1.79%)
 - [x] Glow discharge model (MAPE 1.77%)
-- [ ] Physical experiments — frit sealing validation
+- [ ] **Phase 0: 장소/장비 접근 확보** (미니가마+Arduino 구매, 메이커스페이스, 네온사인 업체, 대학)
 - [ ] Physical experiments — room-temp sealing validation
+- [ ] Physical experiments — frit sealing validation (장비 접근 확보 후)
 - [ ] PoC: first glow discharge in self-made tube
 
 ## Author

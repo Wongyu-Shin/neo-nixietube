@@ -1,111 +1,235 @@
 import { FritProcessFlow } from '../components/ProcessFlow'
 import FiringProfile from '../components/FiringProfile'
+import FritSealProcess from '../components/FritSealProcess'
+import AAOProcessDiagram from '../components/AAOProcessDiagram'
+import HeaderAssemblyDiagram from '../components/HeaderAssemblyDiagram'
+import MicrowaveKilnSetup from '../components/MicrowaveKilnSetup'
+import StickyProcessNav, { StepHeader, GoNoGo, ToolList, Reference, FailureRecovery, SafetyWarning } from '../components/StickyProcessNav'
 
-# Path 1: 프릿 실링 경로 (Tutorial)
+export const STEPS = [
+  { id: "phase1-prep", label: "프릿 준비", day: "Week 2", duration: "1시간", color: "#D4A853" },
+  { id: "phase1-fire", label: "프릿 소성", day: "Week 2", duration: "2시간", color: "#ef4444" },
+  { id: "phase1-test", label: "기밀 테스트", day: "Week 3", duration: "2시간", color: "#6BA368" },
+  { id: "phase2-aao", label: "AAO 전극", day: "Week 4-6", duration: "3일", color: "#ef8f44" },
+  { id: "phase3-mgo", label: "MgO 코팅", day: "Week 7", duration: "2시간", color: "#6BA368" },
+  { id: "phase3-assemble", label: "통합 봉입", day: "Week 8-10", duration: "1일", color: "#7B9EB8" },
+  { id: "phase3-validate", label: "검증 실험", day: "Week 11-12", duration: "2주", color: "#B8A9C9" },
+]
+
+# Path 1: 프릿 실링 경로
 
 <FritProcessFlow />
 
+<StickyProcessNav steps={STEPS} title="경로 1" />
+
 <FiringProfile />
 
-정확도와 장기 수명을 중시하는 경로. PDP 프릿 실링 + AAO 나노구조 전극.
+<div className="rounded-xl border border-[#D4A853]/20 bg-[#D4A853]/[0.04] p-5 my-6 text-sm text-stone-300 leading-relaxed">
+  <strong className="text-[#D4A853]">PDP 산업의 프릿 실링 + 나노기술의 AAO 전극 + MgO 코팅의 시너지.</strong>
+  <div className="mt-2 text-stone-400">
+    정확도와 장기 수명을 중시하는 경로. 전통 토치 봉착(800°C)을 프릿 실링(450°C)으로 대체.
+    전자레인지 미니가마+Arduino PID로 자택 소성. 로터리 펌프만 외부 접근(네온사인 업체/대학).
+    MgO 코팅 + Penning 가스로 방전 전압 30-50% 저감.
+  </div>
+</div>
 
-## 난이도 및 비용
+## 총 비용 및 난이도
 
 | 항목 | 값 |
 |------|---|
-| 예상 비용 | ₩1,200,000 |
-| 기간 | 12주 |
-| 필요 장비 | 전기로, 로터리 펌프 |
-| 난이도 | 중-상 |
+| 총 비용 | **₩387\~462,000** |
+| 기간 | 12주 (Phase 1: 3주, Phase 2: 3주, Phase 3: 6주) |
+| 필요 장비 | 미니가마+Arduino(₩71K, 자택) + 로터리 펌프(외부) |
+| 작업 장소 | 자택 + 대학 화학과(AAO) + 네온사인 업체/대학(진공) |
+| 난이도 | **중-상** |
 
-## Phase 1: 프릿 실링 검증 (Week 2-3)
+---
 
-### 재료
+## Phase 1: 프릿 실링 검증
 
-| 재료 | 사양 | 구매처 | 가격 |
-|------|------|--------|------|
-| Bi₂O₃ 분말 | 99%, 100g | 시그마알드리치 코리아 | ₩40,000 |
-| B₂O₃ 분말 | 99%, 50g | 시그마알드리치 | ₩20,000 |
-| ZnO 분말 | 99%, 50g | 시그마알드리치 | ₩15,000 |
-| 터피네올 (바인더) | 50mL | 시그마알드리치 | ₩15,000 |
-| 소다라임 유리관 | OD 25mm | AliExpress / 과학기자재 | ₩10,000 |
-| 듀멧 와이어 | ∅0.5mm | AliExpress / eBay | ₩20,000 |
+<FritSealProcess />
 
-### 프릿 페이스트 제조
+<StepHeader id="phase1-prep" step={1} day="Week 2" duration="약 1시간" color="#D4A853">
+  프릿 페이스트 준비
+</StepHeader>
 
-1. Bi₂O₃ : B₂O₃ : ZnO = 70 : 20 : 10 (wt%) 혼합
-2. 분말 총량의 40% 만큼 터피네올 첨가
-3. 유리 막자사발(mortar & pestle)에서 30분 균질 혼합
-4. 점도: 치약 정도 → 주사기로 디스펜싱 가능
+Bi₂O₃ 기반 저융점 유리 분말을 바인더와 혼합하여 디스펜싱 가능한 페이스트를 제조한다.
 
-### 봉착 공정
+> **대안: 상용 유리 솔더 프리폼 (Bridge 15)** — NAMICS/OZ Optics에서 링 형태 프리폼 구매 시 이 단계 전체 생략. ₩30-50K. 320°C 소성.
 
-1. 유리 디스크(관 양끝 뚜껑) 절단 및 연마
-2. 디스크 가장자리에 프릿 페이스트 도포 (주사기 사용)
-3. 듀멧 와이어 4-6개를 방사형으로 배치 (프릿 위에)
-4. 유리관을 디스크 위에 올림
-5. **2단계 소성:**
-   - (a) 350°C, 30분 — 바인더 번아웃 (개방 상태)
-   - (b) 450°C, 30분 — 프릿 융착
-6. 노 내에서 서냉 (2°C/분)
+### 자체 조합 (₩90K)
 
-### Go/No-Go 테스트
+| 재료 | 비율 (wt%) | 양 | 구매처 | 가격 |
+|------|----------|---|--------|------|
+| Bi₂O₃ | 70 | 70g | 시그마알드리치 | ₩40K |
+| B₂O₃ | 20 | 20g | 시그마알드리치 | ₩20K |
+| ZnO | 10 | 10g | 시그마알드리치 | ₩15K |
+| 터피네올 (바인더) | 분말의 40% | 40mL | 시그마알드리치 | ₩15K |
 
-**Hold test:** 프릿 봉착된 관을 로터리 펌프로 10⁻² Torr까지 배기 → 펌프 차단 → 1시간 후 압력 변화 측정.
-- **PASS:** 압력 변화 < 1 Torr → 기밀 충분
-- **FAIL:** 압력 급상승 → 리크 지점 탐색 (스파크 코일 테스트)
+1. **분말 계량** — 정밀 저울(0.1g)으로 Bi₂O₃ 70g, B₂O₃ 20g, ZnO 10g 계량.
+2. **건식 혼합** — 유리 막자사발(mortar & pestle)에서 15분 균질 혼합. 분말 색상이 균일한 황백색이 될 때까지.
+3. **바인더 첨가** — 분말 총량(100g)의 40% = 40mL 터피네올 첨가.
+4. **습식 혼합** — 30분 추가 혼합. 목표 점도: 치약 정도 (주사기로 디스펜싱 가능).
+5. **도포** — 유리 디스크(∅25mm, 두께 3mm, 소다라임) 가장자리에 폭 3-4mm, 두께 0.5-1mm로 도포. 주사기 또는 스패튤라 사용.
+6. **듀멧 와이어 배치** — ∅0.5mm 듀멧 4-6개를 방사형으로 프릿 위에 배치. 와이어 끝이 프릿 밖으로 10mm+ 돌출.
 
-## Phase 2: AAO 나노구조 전극 (Week 4-6)
+<GoNoGo criteria={[
+  { check: "페이스트 점도", pass: "주사기로 디스펜싱 가능 (치약 수준)", fail: "너무 됨 → 터피네올 5mL 추가. 너무 묽음 → 분말 10g 추가" },
+  { check: "도포 연속성", pass: "디스크 둘레 전체에 끊김 없는 비드", fail: "끊김 → 재도포" },
+  { check: "듀멧 위치", pass: "프릿 위에 완전히 안착, 방사형 등간격", fail: "비틀림 → 핀셋으로 재배치" },
+]} />
 
-### DIY AAO 프로토콜
+---
 
-**필요 재료:**
+<MicrowaveKilnSetup />
 
-| 재료 | 사양 | 비용 |
-|------|------|------|
-| Al 판 | 99.5%+, 0.5mm, 5×5cm | ₩5,000 |
-| 옥살산 | 0.3M 용액 제조용 | ₩10,000 |
-| 인산 (H₃PO₄) | 5% 수용액 | ₩10,000 |
-| DC 전원 | 0-60V, 5A | ₩80,000 |
-| Ni 도금액 (Watts bath) | NiSO₄+NiCl₂+H₃BO₃ | ₩20,000 |
+<StepHeader id="phase1-fire" step={2} day="Week 2" duration="약 2시간 (소성+서냉)" color="#ef4444">
+  프릿 소성 (미니가마 + Arduino PID)
+</StepHeader>
 
-**7단계 프로토콜:**
+<SafetyWarning>전자레인지 동작 중 마이크로파 누출 주의. 열전대 관통 홀은 ∅3mm 이하(파장 12cm의 1/40). 소성 중 가마/전자레인지에 손 대지 않기. 소성 완료 후 가마 온도가 100°C 이하로 떨어질 때까지 개봉하지 않기.</SafetyWarning>
 
-1. **전해연마:** H₃PO₄ + 에탄올 (4:1), 20V, 5분 → 표면 경면화
-2. **1차 양극산화:** 옥살산 0.3M, 40V, 12시간, 5-15°C (아이스박스)
-3. **산화막 제거:** 인산+크롬프리 에칭액, 60°C, 2시간
-4. **2차 양극산화:** 동일 조건, 4시간 → 고정렬 나노채널
-5. **채널 확대:** 인산 5%, 30°C, 30분 → ∅70-80nm
-6. **Ni 전해도금:** Watts bath, DC 2-5V → 나노팁 충전
-7. **Al 기판 에칭:** CuCl₂ → 자립형 Ni 나노팁 어레이
+**2단계 소성 프로파일 (Arduino PID가 자동 제어):**
 
-### 전극 패턴화
+1. **Phase A: 바인더 번아웃 (350°C, 30분)**
+   - Arduino PID 목표: 350°C. 승온 속도 5°C/min (상온→350°C에 65분).
+   - **미니가마 뚜껑을 약간 개방** (2-3mm 간극) — 터피네올 바인더가 연소 제거. 가스 배출 필요.
+   - 완료 기준: 350°C ±10°C에서 30분 유지. Arduino 로그로 확인.
 
-**"패턴 후 양극산화" 방식 권장:**
-1. Al 판에 포토레지스트로 숫자 패턴 (UV 노광)
-2. 레지스트 없는 영역만 양극산화 → 패턴화된 나노구조
-3. 레지스트 제거 → 나노구조 숫자 전극
+2. **Phase B: 프릿 융착 (450°C, 30분)**
+   - Arduino PID 목표: 450°C. 350°C→450°C 승온에 20분.
+   - **뚜껑 완전 밀폐** — 이 단계에서는 분위기 제어 불필요.
+   - Bi₂O₃ 프릿이 용융하여 유리-유리 접합 + 듀멧 와이어 매립.
 
-## Phase 3: 통합 조립 + 봉입 (Week 7-12)
+3. **Phase C: 서냉 (2°C/min)**
+   - 전자레인지 off. 가마 내 자연 냉각.
+   - Arduino 열전대로 냉각 속도 모니터링. 목표: 2°C/min 이하.
+   - 450°C→200°C (125분 이상). 너무 빠르면 잠깐 전자레인지 재가동(10초).
 
-1. AAO 나노구조 전극을 프릿 봉착 관에 삽입
-2. 프릿 소성 (450°C) — AAO는 600°C까지 내열
-3. 로터리 펌프로 진공 배기 (10⁻³~10⁻⁴ Torr)
-4. 히트건 베이킹 (200°C, 2시간)
-5. 네온 가스 충전 (15-20 Torr, 피라니 게이지)
-6. 배기관 팁오프
+<GoNoGo criteria={[
+  { check: "프릿 외관", pass: "유리질 광택, 균일한 색상, 기포 없음", fail: "다공성/백탁 → 소성 온도 부족. 재소성" },
+  { check: "듀멧 매립", pass: "와이어가 프릿에 완전 매립, 당기면 고정됨", fail: "와이어 유동 → 프릿 양 부족. 프릿 추가 후 재소성" },
+  { check: "크랙", pass: "봉착부 및 유리 디스크에 균열 없음", fail: "크랙 → 서냉 속도 과다. 2°C/min 이하로 재시도" },
+]} />
 
-## 검증 실험
+---
+
+<StepHeader id="phase1-test" step={3} day="Week 3" duration="약 2시간" color="#6BA368">
+  기밀 테스트 (Hold Test)
+</StepHeader>
+
+**장소: 네온사인 업체 또는 대학 실험실 (로터리 펌프 접근 필요)**
+
+1. **프릿 봉착된 관을 로터리 펌프에 연결** — 배기관(OD 5mm)을 KF25 어댑터로 진공 배관에 연결.
+2. **배기** — 로터리 펌프 가동. Arduino DIY 피라니 게이지로 압력 모니터링. 목표: 10⁻² Torr 도달.
+3. **펌프 차단** — 밸브 잠금. 시각: t=0.
+4. **1시간 유지** — Arduino 피라니가 압력을 10초 간격으로 로깅.
+5. **판정:** 1시간 후 압력 변화 < 1 Torr → **PASS** (기밀 충분).
+
+<GoNoGo criteria={[
+  { check: "Hold test (1시간)", pass: "ΔP < 1 Torr", fail: "ΔP > 10 Torr → 대형 리크. 스파크 코일 테스트로 위치 탐색" },
+  { check: "도달 압력", pass: "< 10⁻² Torr (피라니 측정)", fail: "10⁻¹ Torr 이상 → 배관 리크 또는 프릿 봉착 불완전" },
+]} />
+
+<FailureRecovery failures={[
+  { mode: "Hold test 실패 (ΔP > 10 Torr)", cause: "듀멧 embedded seal 기밀 불량", recovery: "1) 스파크 코일로 리크 위치 탐색. 2) 리크 부위에 추가 프릿 도포 후 재소성. 3) 실패 시 듀멧 표면 #600 사포 연마(pre-polish) 후 재시도" },
+  { mode: "10⁻² Torr 미도달", cause: "대형 리크 또는 배관 연결 불량", recovery: "1) 배관 연결부 점검 (O-링, 클램프). 2) 에폭시로 의심 부위 임시 밀봉 후 재테스트" },
+]} />
+
+---
+
+## Phase 2: AAO 나노구조 전극
+
+<AAOProcessDiagram />
+
+<StepHeader id="phase2-aao" step={4} day="Week 4-6" duration="3일 (간헐적)" color="#ef8f44">
+  AAO 나노구조 전극 제작
+</StepHeader>
+
+<SafetyWarning>산성 용액(옥살산, 인산) 사용. **대학 화학과 화학 후드(fume hood) 필수.** 니트릴 장갑 + 보안경. 피부 접촉 시 즉시 흐르는 물로 세척. 폐액은 대학 폐액 수거 시스템으로 처리.</SafetyWarning>
+
+**7단계 프로토콜 (각 단계 상세):**
+
+1. **전해연마** — Al 판(99.5%+, 0.5mm, 5×5cm) + H₃PO₄:에탄올 = 4:1, 20V, 5분. 표면 경면화. 이후 양극산화의 균일성 결정.
+2. **1차 양극산화** — 옥살산 0.3M, 40V, 12시간, 5-15°C (아이스박스). 비정렬 나노채널 형성.
+3. **산화막 제거** — 인산 5% + CrO₃-free 에칭, 60°C, 2시간. 정렬된 dimple 패턴만 남김.
+4. **2차 양극산화** — 동일 조건, 4시간. dimple을 따라 고정렬 나노채널 성장. ∅50nm, 간격 100nm.
+5. **채널 확대** — 인산 5%, 30°C, 30분. ∅50→70-80nm. Ni 도금이 채널에 침투 가능.
+6. **Ni 전해도금** — Watts bath (NiSO₄ 300g/L + NiCl₂ 45g/L + H₃BO₃ 38g/L), 2-5V, 50°C. 채널 바닥부터 Ni 성장 → 나노팁 형성.
+7. **Al 기판 에칭** — CuCl₂ 용액. Al 선택적 제거 → 자립형 Ni 나노팁 어레이.
+
+<GoNoGo criteria={[
+  { check: "나노채널 형성 (2차 양극산화 후)", pass: "표면이 무지개빛 반사(회절) → 규칙 구조 확인", fail: "불균일한 표면 → 1차 양극산화 조건 재검토" },
+  { check: "Ni 도금 완료", pass: "채널 위로 Ni 오버그로스 시작 → 도금 중단", fail: "채널 내부만 부분 도금 → 전류 밀도 증가 또는 시간 연장" },
+  { check: "Al 에칭 완료", pass: "자립형 Ni 구조물 (Al 잔류 없음)", fail: "Al 잔류 → CuCl₂ 추가 에칭" },
+]} />
+
+---
+
+## Phase 3: 통합 조립 + 봉입
+
+<StepHeader id="phase3-mgo" step={5} day="Week 7" duration="약 2시간" color="#6BA368">
+  MgO 졸-겔 코팅 (Bridge 12)
+</StepHeader>
+
+AAO 나노구조 전극(또는 벌크 Ni 전극)에 MgO 박막을 코팅하여 방전 전압 저감 + 스퍼터링 방호.
+
+1. **MgO 졸 제조** — 마그네슘 아세테이트 4수화물 5g + 에탄올 50mL + 옥살산으로 pH 5 조절. 30분 교반.
+2. **딥코팅** — 전극을 졸에 3초 침지 → 1mm/s 속도로 인상. 3회 반복(건조 사이 5분).
+3. **어닐링** — 미니가마 400°C, 30분. Arduino PID로 온도 제어. 유기물 완전 제거 → 결정질 MgO.
+
+<GoNoGo criteria={[
+  { check: "코팅 균일성", pass: "전극 표면 전체에 균일한 박막 (간섭색)", fail: "얼룩/미코팅 부위 → 졸 농도 조절 후 재코팅" },
+]} />
+
+---
+
+<HeaderAssemblyDiagram />
+
+<StepHeader id="phase3-assemble" step={6} day="Week 8-10" duration="1일" color="#7B9EB8">
+  통합 조립 + 진공 봉입
+</StepHeader>
+
+**장소: 네온사인 업체 또는 대학 실험실**
+
+1. MgO 코팅된 전극을 프릿 봉착 관에 삽입
+2. 프릿 소성 (450°C) — 미니가마. MgO는 2,852°C 용융점이므로 안전
+3. **로터리 펌프로 진공 배기** (10⁻³~10⁻⁴ Torr)
+4. 히트건 베이킹 (200°C, 2시간) — 내벽 흡착 가스 탈착
+5. **Penning 혼합가스 충전** — Ne + 0.5-1% Ar, 15-20 Torr. Arduino 피라니로 압력 정밀 모니터링
+6. Ti 와이어 게터 플래싱 (700°C+, 전류 인가로 자체 발열)
+7. 배기관 팁오프
+
+---
+
+<StepHeader id="phase3-validate" step={7} day="Week 11-12" duration="2주" color="#B8A9C9">
+  검증 실험
+</StepHeader>
 
 ### 실험 1: AAO vs 벌크 전극 항복 전압 비교
-- 동일 관, 동일 가스 조건
-- 가설: AAO 전극에서 5-15% 낮은 Vb
-- N=5 반복
+- 동일 관, 동일 가스 조건에서 AAO 전극과 벌크 Ni 전극의 Vb 비교
+- 가설: AAO 전극에서 5-15% 낮은 Vb (나노팁 전계 집중)
+- N=5 반복, t-test 유의성 검증
 
-### 실험 2: 글로우 균일성 비교
-- 사진 촬영 → 픽셀 밝기 표준편차
-- 가설: AAO의 밝기 CV(변동계수) < 벌크의 50%
+### 실험 2: MgO 코팅 효과
+- MgO 코팅 유/무 전극에서 Vb 비교
+- 가설: MgO γ≈0.5 → Vb 20-30% 저감
+- Penning 가스 결합 시 추가 10-20% 저감
 
-### 실험 3: 가속 수명 테스트
-- 정격 전류(2mA)에서 연속 점등
-- 매 24시간 사진 → 흑화 진행 정량화
+### 실험 3: 글로우 균일성 비교
+- 사진 촬영 → 픽셀 밝기 표준편차(CV)
+- 가설: AAO의 CV < 벌크의 50%
+
+### 실험 4: 가속 수명 테스트
+- 2mA 연속 점등, 매 24시간 사진
+- 흑화 진행 정량화. 100시간 목표.
+
+## 참고 문헌
+
+1. PDP 프릿 실링: Choi, S.C. et al. (2002). "Low temperature glass frit for hermetic sealing of PDP." J. Non-Cryst. Solids.
+2. AAO 나노구조: Masuda, H. & Fukuda, K. (1995). "Ordered Metal Nanohole Arrays Made by a Two-Step Replication of Honeycomb Structures of Anodic Alumina." Science 268:1466.
+3. MgO 2차 전자 방출: Choi, K.C. et al. (2001). "Effect of MgO thin film quality on plasma display panel performance." Thin Solid Films.
+4. Penning 혼합: Penning, F.M. (1927). "Über Ionisation durch metastabile Atome." Naturwissenschaften.
+5. 전자레인지 가마: Pinto, A.H. et al. (2025). "Microwave Firing of Ceramics: Developing Homemade Susceptors." Applied Sciences (MDPI).
+6. Arduino PID: Beauregard, B. (2011). "Arduino PID Library." GitHub.
+7. 파셴 법칙: Paschen, F. (1889). "Ueber die zum Funkenübergang nöthige Potentialdifferenz." Annalen der Physik.
