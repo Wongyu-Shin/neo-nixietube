@@ -7,7 +7,7 @@ const STEPS = [
     id: 1,
     label: "전해연마",
     sub: "H₃PO₄ + EtOH, 20V",
-    detail: "알루미늄 표면의 미세 요철을 제거하여 경면화. 균일한 나노채널 형성의 전제조건.",
+    detail: "셋업: Al 판(99.5%+, 0.5mm, 5×5cm)을 양극, Pt 또는 스테인리스강을 음극으로 연결. 전해액: 인산(H₃PO₄):에탄올 = 4:1 (v/v). DC 전원 20V, 5분. 표면이 거울처럼 반사되면 완료. 장소: 화학 후드.",
     color: "#7B9EB8",
     illustration: "polish",
   },
@@ -15,7 +15,7 @@ const STEPS = [
     id: 2,
     label: "1차 양극산화",
     sub: "옥살산 0.3M, 40V, 12h",
-    detail: "알루미늄 표면에 비정렬 산화알루미늄(AAO) 나노채널 형성. 5-15°C 저온 유지 (아이스박스).",
+    detail: "셋업: 옥살산 0.3M 수용액(옥살산 3.78g + 증류수 100mL), Al을 양극, Pt/graphite를 음극. DC 40V, 12시간. 온도 5-15°C 유지 — 아이스박스에 비커를 넣고 얼음+소금으로 냉각. 30분마다 온도 확인.",
     color: "#D4A853",
     illustration: "anodize1",
   },
@@ -23,7 +23,7 @@ const STEPS = [
     id: 3,
     label: "산화막 제거",
     sub: "인산 에칭, 60°C, 2h",
-    detail: "1차 산화막을 완전 제거. 바닥에 정렬된 오목 패턴(dimple)만 남김 — 2차 양극산화의 핵 역할.",
+    detail: "인산 5% 수용액(인산 5mL + 증류수 95mL)을 60±5°C로 가열(핫플레이트). Al 판을 침지하여 2시간. 1차 산화막이 완전 용해되면 바닥에 정렬된 오목 패턴(dimple)만 남음 — 이것이 2차 양극산화의 핵 역할.",
     color: "#C17B5E",
     illustration: "etch",
   },
@@ -31,7 +31,7 @@ const STEPS = [
     id: 4,
     label: "2차 양극산화",
     sub: "동일 조건, 4h",
-    detail: "오목 패턴을 따라 고도로 정렬된 나노채널 성장. 채널 직경 ~50nm, 간격 ~100nm.",
+    detail: "1차와 동일한 셋업 재사용(옥살산 0.3M, 40V, 5-15°C). 4시간. dimple 패턴을 따라 고도로 정렬된 나노채널 성장. 채널 직경 ~50nm, 간격 ~100nm. 완료 판정: 표면에 무지개빛 간섭색 관찰.",
     color: "#6BA368",
     illustration: "anodize2",
   },
@@ -39,7 +39,7 @@ const STEPS = [
     id: 5,
     label: "채널 확대",
     sub: "인산 5%, 30°C, 30min",
-    detail: "나노채널 직경을 50nm → 70-80nm로 확대. 이후 니켈 도금이 채널 내부에 침투 가능.",
+    detail: "인산 5% 수용액, 30±3°C, 30분 침지. 나노채널 직경 50nm → 70-80nm로 확대. 이후 Ni 도금이 채널 내부에 침투 가능. 과도한 확대(>40분) 시 채널 벽 붕괴 주의.",
     color: "#B8A9C9",
     illustration: "widen",
   },
@@ -47,7 +47,7 @@ const STEPS = [
     id: 6,
     label: "Ni 전해도금",
     sub: "Watts bath, 2-5V",
-    detail: "나노채널 바닥부터 니켈이 성장하여 나노팁(nanotip) 어레이 형성. 전계 집중으로 항복전압 저감.",
+    detail: "Watts bath: NiSO₄ 300g/L + NiCl₂ 45g/L + H₃BO₃ 38g/L. 50±5°C, pH 4.0-4.5. DC 2-5V. 채널 바닥부터 Ni 성장 → 나노팁 형성. 오버그로스(채널 위로 Ni 돌출) 시작되면 즉시 중단.",
     color: "#D4A853",
     illustration: "deposit",
   },
@@ -55,7 +55,7 @@ const STEPS = [
     id: 7,
     label: "Al 기판 에칭",
     sub: "CuCl₂ 용액",
-    detail: "배면 알루미늄 기판을 선택적 에칭. 자립형(free-standing) Ni 나노팁 어레이 음극 완성.",
+    detail: "CuCl₂ 포화 수용액에 배면 Al 침지. Al만 선택적 용해, Ni는 잔존. 완료 판정: Al 잔류 없는 자립형(free-standing) Ni 나노팁 어레이. Al 잔류 시 에칭 시간 연장.",
     color: "#ef8f44",
     illustration: "release",
   },
@@ -78,7 +78,7 @@ function StepIllustration({ step, isActive }: { step: typeof STEPS[0]; isActive:
           <path d="M 0 20 L 5 18 L 10 22 L 15 17 L 20 21 L 25 18 L 30 22 L 35 17 L 40 21 L 45 18 L 50 22 L 55 19 L 60 20"
             fill="none" stroke={c} strokeWidth={1} opacity={baseOpacity * 0.8} />
           {/* Arrow down = smooth */}
-          <text x={30} y={14} fill={c} fontSize="5" textAnchor="middle" opacity={baseOpacity * 0.7}>거친 표면</text>
+          <text x={30} y={14} fill={c} fontSize="7" textAnchor="middle" opacity={baseOpacity * 0.7}>거친 표면</text>
         </g>
       );
     case "anodize1":
@@ -91,7 +91,7 @@ function StepIllustration({ step, isActive }: { step: typeof STEPS[0]; isActive:
             <rect key={i} x={cx} y={8 + (i % 3) * 2} width={3} height={22 - (i % 3) * 2}
               fill={c + "35"} stroke={c + "65"} strokeWidth={0.5} rx={0.5} />
           ))}
-          <text x={30} y={7} fill={c} fontSize="5" textAnchor="middle" opacity={baseOpacity * 0.7}>비정렬 채널</text>
+          <text x={30} y={7} fill={c} fontSize="7" textAnchor="middle" opacity={baseOpacity * 0.7}>비정렬 채널</text>
         </g>
       );
     case "etch":
@@ -104,7 +104,7 @@ function StepIllustration({ step, isActive }: { step: typeof STEPS[0]; isActive:
             <path key={i} d={`M ${cx - 2} 30 Q ${cx} 34 ${cx + 2} 30`}
               fill="none" stroke={c} strokeWidth={1} opacity={baseOpacity * 0.8} />
           ))}
-          <text x={30} y={24} fill={c} fontSize="5" textAnchor="middle" opacity={baseOpacity * 0.7}>정렬 오목</text>
+          <text x={30} y={24} fill={c} fontSize="7" textAnchor="middle" opacity={baseOpacity * 0.7}>정렬 오목</text>
         </g>
       );
     case "anodize2":
@@ -117,7 +117,7 @@ function StepIllustration({ step, isActive }: { step: typeof STEPS[0]; isActive:
             <rect key={i} x={cx - 1.5} y={5} width={3} height={25}
               fill={c + "40"} stroke={c + "78"} strokeWidth={0.6} rx={0.5} />
           ))}
-          <text x={30} y={3} fill={c} fontSize="5" textAnchor="middle" opacity={baseOpacity * 0.7}>정렬 나노채널</text>
+          <text x={30} y={3} fill={c} fontSize="7" textAnchor="middle" opacity={baseOpacity * 0.7}>정렬 나노채널</text>
         </g>
       );
     case "widen":
@@ -132,7 +132,7 @@ function StepIllustration({ step, isActive }: { step: typeof STEPS[0]; isActive:
           ))}
           {/* Width annotation */}
           <line x1={4.5} y1={2} x2={9.5} y2={2} stroke={c} strokeWidth={0.5} />
-          <text x={7} y={0} fill={c} fontSize="4" textAnchor="middle" opacity={baseOpacity * 0.7}>80nm</text>
+          <text x={7} y={0} fill={c} fontSize="6" textAnchor="middle" opacity={baseOpacity * 0.7}>80nm</text>
         </g>
       );
     case "deposit":
@@ -152,7 +152,7 @@ function StepIllustration({ step, isActive }: { step: typeof STEPS[0]; isActive:
               <circle cx={cx} cy={17} r={1.5} fill={c} opacity={baseOpacity * 0.8} />
             </g>
           ))}
-          <text x={30} y={3} fill={c} fontSize="5" textAnchor="middle" opacity={baseOpacity * 0.7}>Ni 나노팁</text>
+          <text x={30} y={3} fill={c} fontSize="7" textAnchor="middle" opacity={baseOpacity * 0.7}>Ni 나노팁</text>
         </g>
       );
     case "release":
@@ -171,7 +171,7 @@ function StepIllustration({ step, isActive }: { step: typeof STEPS[0]; isActive:
           ))}
           {/* Base plate (thin) */}
           <rect x={0} y={35} width={60} height={5} fill={c + "40"} stroke={c + "78"} strokeWidth={0.5} rx={1} />
-          <text x={30} y={10} fill={c} fontSize="5" textAnchor="middle" fontWeight="bold" opacity={baseOpacity}>자립형 어레이</text>
+          <text x={30} y={10} fill={c} fontSize="7" textAnchor="middle" fontWeight="bold" opacity={baseOpacity}>자립형 어레이</text>
         </g>
       );
     default:
@@ -238,7 +238,7 @@ export default function AAOProcessDiagram() {
               </g>
 
               {/* Sub label */}
-              <text x={x + stepW / 2} y={140} fill={c + "80"} fontSize="5" textAnchor="middle">
+              <text x={x + stepW / 2} y={140} fill={c + "80"} fontSize="7" textAnchor="middle">
                 {step.sub}
               </text>
 

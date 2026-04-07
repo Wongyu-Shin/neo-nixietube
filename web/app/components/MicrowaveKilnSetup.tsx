@@ -56,7 +56,7 @@ export default function MicrowaveKilnSetup() {
             fill="#7B9EB815" stroke="#7B9EB840" strokeWidth={0.5} />
           <text x={195} y={73} fill="#7B9EB8" fontSize="6" textAnchor="middle">POWER</text>
           <circle cx={195} cy={95} r={10} fill="#7B9EB810" stroke="#7B9EB850" strokeWidth={0.5} />
-          <text x={195} y={98} fill="#7B9EB8" fontSize="5" textAnchor="middle">다이얼</text>
+          <text x={195} y={98} fill="#7B9EB8" fontSize="7" textAnchor="middle">다이얼</text>
           <text x={130} y={190} fill="#7B9EB8" fontSize="7" textAnchor="middle" opacity={0.8}>전자레인지</text>
         </g>
 
@@ -70,7 +70,7 @@ export default function MicrowaveKilnSetup() {
           <rect x={65} y={140} width={70} height={8} rx={2}
             fill="#ef8f4420" stroke="#ef8f4460" strokeWidth={0.8} />
           {/* SiC label */}
-          <text x={100} y={85} fill="#ef8f44" fontSize="5" fontWeight="bold" textAnchor="middle">SiC</text>
+          <text x={100} y={85} fill="#ef8f44" fontSize="7" fontWeight="bold" textAnchor="middle">SiC</text>
           {/* Heat glow (animated) */}
           {profileTemp > 200 && (
             <circle cx={100} cy={115} r={15 + (profileTemp / 100)} fill="#ef8f44"
@@ -83,7 +83,7 @@ export default function MicrowaveKilnSetup() {
           <rect x={88} y={105} width={24} height={30} rx={3}
             fill={hovered === "tube" ? "#D4A85340" : "#D4A85320"}
             stroke={hovered === "tube" ? "#D4A853" : "#D4A85370"} strokeWidth={0.8} />
-          <text x={100} y={124} fill="#D4A853" fontSize="5" textAnchor="middle">관</text>
+          <text x={100} y={124} fill="#D4A853" fontSize="7" textAnchor="middle">관</text>
         </g>
 
         {/* === Thermocouple wire === */}
@@ -92,7 +92,7 @@ export default function MicrowaveKilnSetup() {
             fill="none" stroke={hovered === "thermocouple" ? "#6BA368" : "#6BA36880"}
             strokeWidth={1.5} strokeDasharray="4 2" />
           <circle cx={100} cy={70} r={3} fill="#6BA368" />
-          <text x={155} y={45} fill="#6BA368" fontSize="5" textAnchor="middle">K-type 열전대</text>
+          <text x={155} y={45} fill="#6BA368" fontSize="7" textAnchor="middle">K-type 열전대</text>
         </g>
 
         {/* === Arduino board === */}
@@ -101,11 +101,11 @@ export default function MicrowaveKilnSetup() {
             fill={hovered === "arduino" ? "#B8A9C925" : "#B8A9C912"}
             stroke={hovered === "arduino" ? "#B8A9C9" : "#B8A9C970"} strokeWidth={1} />
           <text x={320} y={55} fill="#B8A9C9" fontSize="7" fontWeight="bold" textAnchor="middle">Arduino</text>
-          <text x={320} y={67} fill="#B8A9C9" fontSize="5" textAnchor="middle" opacity={0.8}>PID Control</text>
+          <text x={320} y={67} fill="#B8A9C9" fontSize="7" textAnchor="middle" opacity={0.8}>PID Control</text>
           {/* MAX6675 */}
           <rect x={255} y={42} width={22} height={12} rx={2}
             fill="#6BA36815" stroke="#6BA36850" strokeWidth={0.5} />
-          <text x={266} y={51} fill="#6BA368" fontSize="4" textAnchor="middle">MAX</text>
+          <text x={266} y={51} fill="#6BA368" fontSize="6" textAnchor="middle">MAX</text>
           {/* Wire from thermocouple to MAX */}
           <line x1={240} y1={50} x2={255} y2={48} stroke="#6BA36860" strokeWidth={1} />
         </g>
@@ -116,13 +116,13 @@ export default function MicrowaveKilnSetup() {
             fill={hovered === "ssr" ? "#C17B5E25" : "#C17B5E12"}
             stroke={hovered === "ssr" ? "#C17B5E" : "#C17B5E70"} strokeWidth={1} />
           <text x={330} y={128} fill="#C17B5E" fontSize="6" fontWeight="bold" textAnchor="middle">SSR</text>
-          <text x={330} y={137} fill="#C17B5E" fontSize="4" textAnchor="middle" opacity={0.7}>25A</text>
+          <text x={330} y={137} fill="#C17B5E" fontSize="6" textAnchor="middle" opacity={0.7}>25A</text>
           {/* Wire from Arduino to SSR */}
           <line x1={320} y1={85} x2={320} y2={110} stroke="#B8A9C960" strokeWidth={1} />
-          <text x={312} y={100} fill="#B8A9C9" fontSize="4" textAnchor="end">PID →</text>
+          <text x={312} y={100} fill="#B8A9C9" fontSize="6" textAnchor="end">PID →</text>
           {/* Wire from SSR to microwave power */}
           <path d="M 300 125 L 230 125 L 230 140" fill="none" stroke="#C17B5E60" strokeWidth={1.5} />
-          <text x={260} y={120} fill="#C17B5E" fontSize="4" textAnchor="middle">전원 on/off</text>
+          <text x={260} y={120} fill="#C17B5E" fontSize="6" textAnchor="middle">전원 on/off</text>
         </g>
 
         {/* === Temperature profile (bottom) === */}
@@ -136,11 +136,11 @@ export default function MicrowaveKilnSetup() {
             fill="none" stroke="#D4A85360" strokeWidth={1} />
 
           {/* Phase labels */}
-          <text x={80} y={248} fill="#D4A853" fontSize="4" textAnchor="middle">승온</text>
-          <text x={140} y={230} fill="#C17B5E" fontSize="4" textAnchor="middle">350°C 유지</text>
-          <text x={185} y={221} fill="#D4A853" fontSize="4" textAnchor="middle">승온</text>
-          <text x={230} y={220} fill="#ef4444" fontSize="4" textAnchor="middle" fontWeight="bold">450°C 유지</text>
-          <text x={310} y={240} fill="#7B9EB8" fontSize="4" textAnchor="middle">서냉</text>
+          <text x={80} y={248} fill="#D4A853" fontSize="6" textAnchor="middle">승온</text>
+          <text x={140} y={230} fill="#C17B5E" fontSize="6" textAnchor="middle">350°C 유지</text>
+          <text x={185} y={221} fill="#D4A853" fontSize="6" textAnchor="middle">승온</text>
+          <text x={230} y={220} fill="#ef4444" fontSize="6" textAnchor="middle" fontWeight="bold">450°C 유지</text>
+          <text x={310} y={240} fill="#7B9EB8" fontSize="6" textAnchor="middle">서냉</text>
 
           {/* Current temp indicator */}
           {(() => {
@@ -157,15 +157,15 @@ export default function MicrowaveKilnSetup() {
           })()}
 
           {/* Y axis */}
-          <text x={45} y={225} fill="#666" fontSize="4" textAnchor="end">450</text>
-          <text x={45} y={235} fill="#666" fontSize="4" textAnchor="end">350</text>
-          <text x={45} y={255} fill="#666" fontSize="4" textAnchor="end">25</text>
+          <text x={45} y={225} fill="#666" fontSize="6" textAnchor="end">450</text>
+          <text x={45} y={235} fill="#666" fontSize="6" textAnchor="end">350</text>
+          <text x={45} y={255} fill="#666" fontSize="6" textAnchor="end">25</text>
         </g>
 
         {/* Cost badge */}
         <rect x={380} y={165} width={80} height={28} rx={4} fill="#6BA36815" stroke="#6BA36840" strokeWidth={0.5} />
         <text x={420} y={178} fill="#6BA368" fontSize="7" fontWeight="bold" textAnchor="middle">₩71K</text>
-        <text x={420} y={188} fill="#6BA368" fontSize="4" textAnchor="middle" opacity={0.7}>전체 비용</text>
+        <text x={420} y={188} fill="#6BA368" fontSize="6" textAnchor="middle" opacity={0.7}>전체 비용</text>
       </svg>
 
       {activePart ? (

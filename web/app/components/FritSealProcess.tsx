@@ -10,8 +10,53 @@ const PARTS = [
   { id: "electrode", label: "전극 어셈블리", detail: "니켈 숫자 전극 + 마이카 스페이서. 듀멧 와이어를 통해 외부 핀에 연결.", color: "#ef8f44" },
 ];
 
+const RESULTS = [
+  {
+    id: "pass",
+    label: "PASS — 유리질 광택",
+    color: "#6BA368",
+    checks: [
+      { item: "프릿 외관", result: "유리질 광택, 균일 색상", pass: true },
+      { item: "듀멧 매립", result: "와이어 당김 시 고정됨", pass: true },
+      { item: "크랙", result: "봉착부+디스크 균열 없음", pass: true },
+      { item: "기포", result: "육안 기포 없음", pass: true },
+    ],
+  },
+  {
+    id: "fail-porous",
+    label: "FAIL — 다공성/백탁",
+    color: "#ef4444",
+    checks: [
+      { item: "프릿 외관", result: "백탁, 분말감 잔존", pass: false },
+      { item: "원인", result: "소성 온도 부족 (<430°C)", pass: false },
+      { item: "대응", result: "재소성 (450°C 확인)", pass: false },
+    ],
+  },
+  {
+    id: "fail-crack",
+    label: "FAIL — 균열 발생",
+    color: "#ef4444",
+    checks: [
+      { item: "프릿 외관", result: "유리질이나 크랙 관찰", pass: false },
+      { item: "원인", result: "서냉 속도 초과 (>3°C/min)", pass: false },
+      { item: "대응", result: "2°C/min 이하로 재시도", pass: false },
+    ],
+  },
+  {
+    id: "fail-wire",
+    label: "FAIL — 와이어 미매립",
+    color: "#ef4444",
+    checks: [
+      { item: "듀멧 상태", result: "와이어 당기면 빠짐", pass: false },
+      { item: "원인", result: "프릿 도포량 부족", pass: false },
+      { item: "대응", result: "프릿 추가 도포 후 재소성", pass: false },
+    ],
+  },
+];
+
 export default function FritSealProcess() {
   const [hovered, setHovered] = useState<string | null>(null);
+  const [resultView, setResultView] = useState(0);
   const activePart = PARTS.find((p) => p.id === hovered);
 
   const svgW = 500;
@@ -174,6 +219,116 @@ export default function FritSealProcess() {
           각 부분을 호버하여 상세 확인. 좌: 소성 전 (분말), 우: 소성 후 (융착). 전통 봉착(800°C) 대비 450°C.
         </figcaption>
       )}
+
+      {/* 소성 결과 판정 비교 */}
+      <div className="max-w-xl mx-auto mt-6">
+        <div className="text-xs font-bold text-stone-400 mb-2">소성 결과 판정 — 성공 vs 실패 비교</div>
+        <div className="flex gap-1 mb-3">
+          {RESULTS.map((r, i) => (
+            <button
+              key={r.id}
+              onClick={() => setResultView(i)}
+              className="px-2.5 py-1.5 rounded-md text-[11px] font-medium transition-all"
+              style={{
+                backgroundColor: resultView === i ? r.color + "22" : "transparent",
+                borderColor: resultView === i ? r.color + "55" : "#ffffff15",
+                border: `1px solid ${resultView === i ? r.color + "55" : "#ffffff15"}`,
+                color: resultView === i ? r.color : "#888",
+              }}
+            >
+              {r.label}
+            </button>
+          ))}
+        </div>
+        <div
+          className="rounded-lg border p-4"
+          style={{
+            borderColor: RESULTS[resultView].color + "35",
+            backgroundColor: RESULTS[resultView].color + "08",
+          }}
+        >
+          {/* Visual representation */}
+          <svg viewBox="0 0 300 80" className="w-full max-w-xs mx-auto mb-3">
+            <rect width={300} height={80} fill="#111116" rx={6} />
+            {resultView === 0 ? (
+              <>
+                {/* PASS: smooth glassy frit */}
+                <rect x={40} y={20} width={220} height={12} rx={3} fill="#D4A85340" stroke="#D4A853" strokeWidth={1.5} />
+                <text x={150} y={29} fill="#D4A853" fontSize="7" textAnchor="middle" fontWeight="bold">유리질 광택 — 균일 색상</text>
+                {/* Dumet wires embedded solidly */}
+                {[80, 120, 180, 220].map((dx, i) => (
+                  <g key={i}>
+                    <line x1={dx} y1={10} x2={dx} y2={50} stroke="#C17B5E" strokeWidth={2.5} />
+                    <circle cx={dx} cy={26} r={4} fill="#D4A85355" stroke="#6BA368" strokeWidth={1} />
+                  </g>
+                ))}
+                {/* Checkmark */}
+                <circle cx={270} cy={60} r={10} fill="#6BA36830" stroke="#6BA368" strokeWidth={1} />
+                <path d="M264 60 L268 64 L276 56" fill="none" stroke="#6BA368" strokeWidth={2} strokeLinecap="round" />
+                <text x={40} y={68} fill="#6BA368" fontSize="7">기밀 봉착 완료</text>
+              </>
+            ) : resultView === 1 ? (
+              <>
+                {/* FAIL: porous/chalky frit */}
+                <rect x={40} y={20} width={220} height={12} rx={3} fill="#ffffff12" stroke="#ef4444" strokeWidth={1} strokeDasharray="2 2" />
+                {/* Dots showing unconsolidated powder */}
+                {Array.from({ length: 20 }, (_, i) => (
+                  <circle key={i} cx={50 + i * 11} cy={26} r={1.5} fill="#ffffff25" />
+                ))}
+                <text x={150} y={29} fill="#ef4444" fontSize="7" textAnchor="middle">백탁 — 분말 잔존</text>
+                {/* X mark */}
+                <circle cx={270} cy={60} r={10} fill="#ef444420" stroke="#ef4444" strokeWidth={1} />
+                <path d="M265 55 L275 65 M275 55 L265 65" stroke="#ef4444" strokeWidth={2} strokeLinecap="round" />
+                <text x={40} y={68} fill="#ef4444" fontSize="7">소성 온도 부족</text>
+              </>
+            ) : resultView === 2 ? (
+              <>
+                {/* FAIL: cracked */}
+                <rect x={40} y={20} width={220} height={12} rx={3} fill="#D4A85325" stroke="#D4A853" strokeWidth={1} />
+                {/* Crack lines */}
+                <path d="M100 20 L105 26 L98 32" fill="none" stroke="#ef4444" strokeWidth={1.5} />
+                <path d="M180 20 L175 25 L182 32" fill="none" stroke="#ef4444" strokeWidth={1.5} />
+                <path d="M140 20 L143 28 L138 32" fill="none" stroke="#ef4444" strokeWidth={1} />
+                <text x={150} y={29} fill="#ef4444" fontSize="7" textAnchor="middle">균열 발생</text>
+                <circle cx={270} cy={60} r={10} fill="#ef444420" stroke="#ef4444" strokeWidth={1} />
+                <path d="M265 55 L275 65 M275 55 L265 65" stroke="#ef4444" strokeWidth={2} strokeLinecap="round" />
+                <text x={40} y={68} fill="#ef4444" fontSize="7">서냉 속도 초과</text>
+              </>
+            ) : (
+              <>
+                {/* FAIL: wire not embedded */}
+                <rect x={40} y={20} width={220} height={12} rx={3} fill="#D4A85330" stroke="#D4A853" strokeWidth={1} />
+                {/* Wires partially detached */}
+                {[80, 120, 180, 220].map((dx, i) => (
+                  <g key={i}>
+                    <line x1={dx} y1={10} x2={dx + (i % 2 ? 3 : -3)} y2={50} stroke="#C17B5E" strokeWidth={2} strokeDasharray={i === 1 ? "3 2" : "none"} />
+                    {i === 1 && <text x={dx + 8} y={42} fill="#ef4444" fontSize="5">빠짐</text>}
+                    {i === 1 && (
+                      <path d={`M${dx} 32 L${dx + 4} 38 L${dx} 44`} fill="none" stroke="#ef4444" strokeWidth={1} />
+                    )}
+                  </g>
+                ))}
+                <circle cx={270} cy={60} r={10} fill="#ef444420" stroke="#ef4444" strokeWidth={1} />
+                <path d="M265 55 L275 65 M275 55 L265 65" stroke="#ef4444" strokeWidth={2} strokeLinecap="round" />
+                <text x={40} y={68} fill="#ef4444" fontSize="7">듀멧 매립 불량</text>
+              </>
+            )}
+          </svg>
+
+          {/* Check items */}
+          <div className="space-y-1">
+            {RESULTS[resultView].checks.map((c, i) => (
+              <div key={i} className="flex items-start gap-2 text-[11px]">
+                <span className={c.pass ? "text-green-400" : "text-red-400"}>
+                  {c.pass ? "✓" : "✗"}
+                </span>
+                <span className="text-stone-400 w-20 shrink-0 font-medium">{c.item}</span>
+                <span className={c.pass ? "text-stone-300" : "text-stone-400"}>{c.result}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </figure>
   );
 }

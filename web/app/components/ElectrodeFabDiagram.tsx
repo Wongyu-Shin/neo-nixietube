@@ -11,20 +11,20 @@ const STEPS = [
   },
   {
     id: "mask",
-    label: "마스킹",
-    detail: "레이저 프린터로 숫자 패턴 출력 → 포일에 전사. 또는 네일 폴리시로 직접 마스킹.",
+    label: "마스킹/CAD",
+    detail: "숫자 패턴 CAD 설계: 획 폭 ≥0.8mm (포일 두께의 4배), 커프 보정 포함. 레이저 프린터 전사 또는 네일 폴리시 마스킹. Inkscape SVG 또는 Fusion360 DXF.",
     color: "#D4A853",
   },
   {
     id: "cut",
     label: "커팅/에칭",
-    detail: "옵션 A: 메이커스페이스 레이저 커터 (정밀). 옵션 B: FeCl₃ 화학 에칭 (자택 가능).",
+    detail: "옵션 A: CO₂ 레이저 15-25W, 300-500mm/min, 3패스 (메이커스페이스). 옵션 B: FeCl₃ 40%, 40-50°C, 20분 에칭 (자택). 니켈 반사율 ~70%이므로 검정 마커 도포 후 커팅 권장.",
     color: "#ef8f44",
   },
   {
     id: "finish",
     label: "완성 전극",
-    detail: "디버링(#1000 사포) → IPA 세척 → 건조. 리드선 납땜 후 TO-8 헤더에 장착.",
+    detail: "#1000 사포 디버링 (버 높이 <0.05mm) → IPA 5분 초음파 세척 → 건조. 리드선(0.3mm Ni 와이어) 납땜 후 TO-8 헤더에 장착.",
     color: "#6BA368",
   },
 ];
@@ -106,30 +106,43 @@ export default function ElectrodeFabDiagram() {
                   <text x={x + 60} y={104} fill={c} fontSize="28" fontWeight="bold" textAnchor="middle" opacity={0.9}>
                     8
                   </text>
+                  {/* CAD dimension lines */}
+                  {/* Stroke width annotation */}
+                  <line x1={x + 42} y1={82} x2={x + 42} y2={92} stroke={c} strokeWidth={0.5} />
+                  <line x1={x + 48} y1={82} x2={x + 48} y2={92} stroke={c} strokeWidth={0.5} />
+                  <line x1={x + 42} y1={87} x2={x + 48} y2={87} stroke={c} strokeWidth={0.5} />
+                  <text x={x + 38} y={86} fill={c} fontSize="6" textAnchor="end" opacity={0.8}>≥0.8mm</text>
                   {/* Mask overlay indicator */}
                   <rect x={x + 30} y={73} width={60} height={44} rx={1}
                     fill="none" stroke={c + "78"} strokeWidth={0.8} strokeDasharray="3 2" />
-                  <text x={x + 60} y={132} fill={c + "80"} fontSize="6" textAnchor="middle">패턴 마스크</text>
+                  <text x={x + 60} y={132} fill={c + "80"} fontSize="6" textAnchor="middle">CAD 패턴</text>
                 </g>
               )}
 
               {step.id === "cut" && (
                 <g>
-                  {/* Laser beam or etch */}
-                  <rect x={x + 20} y={70} width={80} height={50} rx={2}
+                  {/* Split view: laser on left, etch on right */}
+                  <rect x={x + 20} y={70} width={38} height={50} rx={2}
                     fill="#B8A9C918" stroke="#B8A9C935" strokeWidth={0.5} />
-                  {/* Number "8" being cut - with glow */}
-                  <text x={x + 60} y={104} fill={c} fontSize="28" fontWeight="bold" textAnchor="middle" opacity={0.9}>
-                    8
-                  </text>
-                  {/* Cut lines / sparks */}
-                  <line x1={x + 42} y1={66} x2={x + 48} y2={78} stroke={c} strokeWidth={1.5} opacity={0.8} />
-                  <line x1={x + 44} y1={67} x2={x + 50} y2={76} stroke="#fff" strokeWidth={0.5} opacity={0.8} />
-                  {/* Removed material (faded background) */}
-                  {[75, 82, 89, 96, 103, 110].map((ly, j) => (
-                    <line key={j} x1={x + 22} y1={ly} x2={x + 38} y2={ly} stroke={c + "30"} strokeWidth={0.5} />
+                  <rect x={x + 62} y={70} width={38} height={50} rx={2}
+                    fill="#ef8f4412" stroke="#ef8f4435" strokeWidth={0.5} />
+                  {/* Option A: Laser */}
+                  <text x={x + 39} y={78} fill={c} fontSize="7" fontWeight="bold" textAnchor="middle">A: 레이저</text>
+                  <text x={x + 39} y={102} fill={c} fontSize="18" fontWeight="bold" textAnchor="middle" opacity={0.8}>8</text>
+                  <line x1={x + 30} y1={84} x2={x + 35} y2={92} stroke="#fff" strokeWidth={1} opacity={0.7} />
+                  <line x1={x + 32} y1={85} x2={x + 37} y2={91} stroke={c} strokeWidth={1.5} opacity={0.6} />
+                  <text x={x + 39} y={116} fill={c + "70"} fontSize="6" textAnchor="middle">15-25W, 3패스</text>
+                  {/* Option B: FeCl₃ */}
+                  <text x={x + 81} y={78} fill="#C17B5E" fontSize="7" fontWeight="bold" textAnchor="middle">B: 에칭</text>
+                  <text x={x + 81} y={102} fill="#C17B5E" fontSize="18" fontWeight="bold" textAnchor="middle" opacity={0.8}>8</text>
+                  {/* Etch bubbles */}
+                  {[68, 74, 80, 86, 92].map((dx, j) => (
+                    <circle key={j} cx={x + dx} cy={107 + (j % 2) * 3} r={1} fill="#C17B5E40" />
                   ))}
-                  <text x={x + 60} y={132} fill={c + "80"} fontSize="6" textAnchor="middle">레이저/FeCl₃</text>
+                  <text x={x + 81} y={116} fill="#C17B5E80" fontSize="6" textAnchor="middle">FeCl₃ 40°C 20분</text>
+                  {/* Divider */}
+                  <line x1={x + 59} y1={72} x2={x + 59} y2={118} stroke="#ffffff20" strokeWidth={0.5} strokeDasharray="2 2" />
+                  <text x={x + 60} y={132} fill={c + "80"} fontSize="6" textAnchor="middle">2가지 옵션</text>
                 </g>
               )}
 
