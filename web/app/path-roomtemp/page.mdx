@@ -1,5 +1,7 @@
 import { RoomTempProcessFlow } from '../components/ProcessFlow'
 import SealingDiagram from '../components/SealingDiagram'
+import CadBlueprint from '../components/CadBlueprint'
+import CadHero from '../components/CadHero'
 import SafetyChecklist from '../components/SafetyChecklist'
 import FailureModes from '../components/FailureModes'
 import ElectrodeFabDiagram from '../components/ElectrodeFabDiagram'
@@ -21,6 +23,16 @@ export const STEPS = [
 ]
 
 # Path 2: 상온 봉착 경로
+
+<CadHero />
+
+<figure className="my-6 flex flex-col items-center gap-4">
+  <div className="flex gap-4 flex-wrap justify-center">
+    <CadBlueprint src="/cad/assembly_iso.svg" alt="Full assembly — isometric view" label="ISO VIEW" className="w-full max-w-md" />
+    <CadBlueprint src="/cad/assembly_front.svg" alt="Full assembly — front view" label="FRONT VIEW" className="w-full max-w-sm" />
+  </div>
+  <figcaption className="text-xs text-stone-500 text-center">CAD 어셈블리 도면 — CadQuery 자동 렌더링 (등각투영 + 정면도)</figcaption>
+</figure>
 
 <RoomTempProcessFlow />
 
@@ -72,6 +84,12 @@ export const STEPS = [
 ## Step-by-Step Tutorial
 
 <ElectrodeFabDiagram />
+
+<figure className="my-6 flex gap-4 flex-wrap justify-center">
+  <CadBlueprint src="/cad/cathode_stack_front.svg" alt="Cathode stack — front view" label="CATHODE · FRONT" className="w-full max-w-xs" />
+  <CadBlueprint src="/cad/cathode_stack_iso.svg" alt="Cathode stack — isometric view" label="CATHODE · ISO" className="w-full max-w-xs" />
+  <figcaption className="w-full text-xs text-stone-500 text-center">음극 스택 CAD 도면 — 10개 숫자 전극 적층 (정면도 + 등각투영)</figcaption>
+</figure>
 
 <StepHeader id="step-1" step={1} day="Day 1" duration="약 2시간" color="#B8A9C9">
   전극 제작
@@ -126,17 +144,25 @@ export const STEPS = [
 
 <HeaderAssemblyDiagram />
 
+<figure className="my-6 flex gap-4 flex-wrap justify-center">
+  <CadBlueprint src="/cad/bottom_cap_front.svg" alt="Bottom end cap — front view" label="BOTTOM · CAP · FRONT" className="w-full max-w-xs" />
+  <CadBlueprint src="/cad/bottom_cap_iso.svg" alt="Bottom end cap — isometric view" label="BOTTOM · CAP · ISO" className="w-full max-w-xs" />
+  <CadBlueprint src="/cad/anode_mesh_front.svg" alt="Anode mesh — front view" label="ANODE · MESH · FRONT" className="w-full max-w-xs" />
+  <CadBlueprint src="/cad/anode_mesh_iso.svg" alt="Anode mesh — isometric view" label="ANODE · MESH · ISO" className="w-full max-w-xs" />
+  <figcaption className="w-full text-xs text-stone-500 text-center">하단 엔드캡(피드스루 + 필 포트) 및 양극 메쉬 CAD 도면</figcaption>
+</figure>
+
 <StepHeader id="step-2" step={2} day="Day 1" duration="약 1시간" color="#D4A853">
   전극을 기밀 헤더에 장착
 </StepHeader>
 
-커팅된 숫자 전극을 TO-8 기밀 헤더의 핀에 연결하고, 마이카 스페이서로 간격을 유지하는 공정.
+커팅된 숫자 전극을 기밀 헤더(12-pin 압축 헤더, 바디 OD 12.7mm, Kovar 핀 ∅0.46mm)의 핀에 연결하고, 마이카 스페이서로 간격을 유지하는 공정. 헤더와 엔드캡 사이는 Torr Seal(Varian 9530001, UHV급 에폭시, &lt;10⁻⁹ Torr·L/s)로 기밀 봉착한다.
 
 <PinAssignment />
 
 1. **핀 배치 확인** — TO-8 14핀 헤더의 각 핀에 번호를 유성펜으로 표기. 핀 0-9: 숫자 음극, 핀 10: 양극 메쉬, 핀 11: 도트(선택), 핀 12-13: 예비. 핀 배치도를 인쇄하여 작업대에 비치.
 2. **전극 리드선 납땜** — 각 숫자 전극의 리드선(0.3mm Ni 와이어, 길이 15-20mm)을 해당 핀에 납땜. **플럭스: 로진(RMA) 사용** — 산성 플럭스는 잔류물이 방전 시 오염 방출. 납땜 온도 350°C, 접촉 시간 3초 이내(과열 방지). 납땜 후 IPA로 플럭스 완전 세척.
-3. **마이카 스페이서 삽입** — 전극 간 0.5-1.0mm(±0.2mm) 간격 유지. 마이카 시트(두께 0.5mm, ₩5K)를 전극 크기에 맞게 가위로 커팅. 최전면에 양극 메쉬(Ni 메쉬 #100, 10×10mm). 전극 적층 순서: 양극 메쉬 → 마이카 → 숫자 0 → 마이카 → 숫자 1 → ... → 숫자 9.
+3. **마이카 스페이서 삽입** — 전극 간 0.5-1.0mm(±0.2mm) 간격 유지. 마이카 시트(두께 0.5mm, ₩5K)를 전극 크기에 맞게 가위로 커팅. 최전면에 양극 메쉬(Ni 메쉬 #100, 유효폭 13.1mm — 엔벨로프 내벽에 chord-clip). 전극 적층 순서: 양극 메쉬 → 마이카 → 숫자 0 → 마이카 → 숫자 1 → ... → 숫자 9.
 4. **절연 확인** — 멀티미터 저항 모드로 모든 핀 쌍(총 91쌍) 측정. 각 쌍에서 **> 1 MΩ** 이어야 함. kΩ 이하 → 납땜 브릿지 또는 마이카 오프셋. 특히 인접 핀 쌍에 집중.
 
 <ToolList tools={[
@@ -161,11 +187,19 @@ export const STEPS = [
 
 ---
 
+<figure className="my-6 flex gap-4 flex-wrap justify-center">
+  <CadBlueprint src="/cad/envelope_front.svg" alt="Glass envelope — front view" label="ENVELOPE · FRONT" className="w-full max-w-xs" />
+  <CadBlueprint src="/cad/envelope_iso.svg" alt="Glass envelope — isometric view" label="ENVELOPE · ISO" className="w-full max-w-xs" />
+  <CadBlueprint src="/cad/top_cap_front.svg" alt="Top end cap — front view" label="TOP · CAP · FRONT" className="w-full max-w-xs" />
+  <CadBlueprint src="/cad/top_cap_iso.svg" alt="Top end cap — isometric view" label="TOP · CAP · ISO" className="w-full max-w-xs" />
+  <figcaption className="w-full text-xs text-stone-500 text-center">유리 엔벨로프(OD 25mm × L 60mm) 및 상단 엔드캡(sight glass 보어) CAD 도면</figcaption>
+</figure>
+
 <StepHeader id="step-3" step={3} day="Day 2" duration="30분 작업 + 24시간 경화" color="#6BA368">
   유리 돔 부틸 봉착
 </StepHeader>
 
-유리 돔을 TO-8 헤더 위에 부틸 테이프로 1차 봉착하고, 폴리설파이드로 2차 보강하는 공정.
+유리 돔을 엔드캡 위에 IIR butyl rubber 내층(4mm 경로)으로 1차 봉착하고, Torr Seal 외층(3mm 경로)으로 2차 가스 차단하는 복합 실링 공정. Al CTE(23.6) vs 보로실리케이트 CTE(3.3)의 7배 차이를 부틸이 흡수.
 
 <ButylApplicationProcess />
 
@@ -176,6 +210,8 @@ export const STEPS = [
 5. **폴리설파이드 2차 도포** — 코킹건에 폴리설파이드 실란트 카트리지 장착. 부틸 봉착부 외부에 폭 3-4mm 연속 비드(bead)로 한 바퀴 도포. **끊김 없이 연속** — 끊김 부위가 구조적 약점. 24시간 경화 대기(20°C 이상 환경).
 
 > **배기관:** 유리 돔 상단에 OD 5mm 유리 튜브를 미리 에폭시로 접합해두어야 한다. 이것이 가스 플러싱의 입구 역할.
+>
+> **sight glass:** 상단 엔드캡의 중앙 관찰창(∅16mm 보로실리케이트/사파이어 디스크)은 butyl + Torr Seal 복합 실링으로 봉착 — IIR butyl rubber 내층이 CTE 차이를 흡수하고, Torr Seal 외층이 가스 차단.
 
 <GoNoGo criteria={[
   { check: "부틸 연속성", pass: "둘레 전체에 부틸이 끊김 없이 접촉", fail: "간극 > 1mm → 부틸 재도포" },
@@ -212,7 +248,7 @@ export const STEPS = [
   </div>
 </div>
 
-식품 산업의 MAP(Modified Atmosphere Packaging) 원리를 적용하여 관 내부의 공기를 네온 가스로 치환한다. **진공 펌프 불필요.**
+식품 산업의 MAP(Modified Atmosphere Packaging) 원리를 적용하여 관 내부의 공기를 **Ne + 0.5% Ar (Penning mixture)**로 치환한다. Ar 0.5% 첨가로 점화 전압이 순수 Ne의 250V 이상에서 ~170V로 낮아져 표준 K155ID1/74141 드라이버 IC 호환. **진공 펌프 불필요.**
 
 1. **배기관에 네온 가스 레귤레이터 연결** — 실리콘 호스(내경 5mm)로 배기관과 레귤레이터 연결. 유량 0.5 L/min 설정. 네온은 공기보다 가벼우므로 위에서 아래로 유입이 효율적.
 2. **배출구 확보** — 돔 하단(부틸 봉착부)에 가는 구멍(∅1-2mm) 또는 2번째 유리 튜브를 미리 확보. 공기가 빠져나가는 경로.
@@ -221,7 +257,7 @@ export const STEPS = [
 5. **O₂ 확인** — 배출구 O₂ 농도 확인. 목표: < 0.5%. 미달 시 추가 2분 플러싱.
 6. **반복** — 총 3회 플러싱-퍼지 사이클. 각 사이클 사이에 10초 정지 → 잔류 공기 확산 → 재플러싱.
 7. **배출구 밀봉** — O₂ < 0.5% 확인 후 배출구를 에폭시로 즉시 밀봉. 5분 경화 에폭시 사용.
-8. **배기관 밀봉** — 네온 가스 라인 분리 → 배기관도 에폭시 밀봉.
+8. **fill stem 크림핑** — 하단 엔드캡의 1/16" (1.5875mm OD) 구리 캐필러리 튜브를 주얼리 크림프 공구로 압착 밀봉. 크림프 후 Torr Seal로 크림프 부위를 덮어 2차 기밀 확보. 배기관(상단)도 에폭시로 밀봉.
 
 > **팁:** Ti 와이어 게터(₩5K)를 관 내부에 미리 배치하면 잔류 O₂/H₂O를 화학 흡착 → 가스 순도 추가 향상. 점등 후 전극 과열로 Ti가 700°C 도달 시 자동 활성화.
 
