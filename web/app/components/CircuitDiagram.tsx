@@ -205,7 +205,7 @@ export default function CircuitDiagram() {
 
         {/* Arrow marker for boost */}
         <defs>
-          <marker id="arrowPurple" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-auto">
+          <marker id="arrowPurple" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
             <path d="M 0 0 L 6 3 L 0 6 Z" fill="#B8A9C980" />
           </marker>
         </defs>

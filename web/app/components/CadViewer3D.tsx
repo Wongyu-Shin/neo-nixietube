@@ -5,8 +5,11 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const GLB_PATH = `${BASE}/cad/assembly.glb`;
+
 function AssemblyModel() {
-  const { scene } = useGLTF("/cad/assembly.glb");
+  const { scene } = useGLTF(GLB_PATH);
   const groupRef = useRef<THREE.Group>(null);
 
   scene.traverse((child) => {

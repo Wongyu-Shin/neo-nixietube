@@ -1,5 +1,7 @@
 "use client";
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function CadBlueprint({
   src,
   alt,
@@ -11,6 +13,7 @@ export default function CadBlueprint({
   label?: string;
   className?: string;
 }) {
+  const resolvedSrc = src.startsWith("/") ? `${BASE}${src}` : src;
   return (
     <div
       className={`relative rounded-lg border border-cyan-900/30 overflow-hidden ${className}`}
@@ -27,7 +30,7 @@ export default function CadBlueprint({
         }}
       />
       <img
-        src={src}
+        src={resolvedSrc}
         alt={alt}
         className="w-full h-auto relative z-10 p-3"
         style={{ filter: "brightness(1.1) drop-shadow(0 0 2px rgba(68,170,255,0.15))" }}
