@@ -9,7 +9,7 @@ const LAYERS = [
     y: 20,
     h: 60,
     color: "#7B9EB8",
-    detail: "소다라임 유리 OD 25-30mm. 전극이 내부에 위치. 상단에 가스 플러싱용 배기관.",
+    detail: "보로실리케이트(Pyrex) 유리 OD 25mm, L 60mm. 전극이 내부에 위치. 하단 fill stem으로 가스 주입.",
   },
   {
     id: "butyl",

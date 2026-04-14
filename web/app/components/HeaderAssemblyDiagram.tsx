@@ -10,7 +10,7 @@ type Part = {
 };
 
 const PARTS: Part[] = [
-  { id: "dome", label: "유리 돔", detail: "소다라임 유리 OD 25-30mm. 전극 어셈블리를 감싸는 외피. 상단에 가스 플러싱용 배기관.", color: "#7B9EB8" },
+  { id: "dome", label: "유리 엔벨로프", detail: "보로실리케이트(Pyrex) OD 25mm, 벽두께 1.5mm, L 60mm. 전극 어셈블리를 감싸는 외피.", color: "#7B9EB8" },
   { id: "anode", label: "양극 메쉬", detail: "니켈 메쉬. 최전면 배치. 숫자 전극 앞에서 균일한 전계 형성.", color: "#D4A853" },
   { id: "cathode", label: "음극 (숫자 전극)", detail: "전해 니켈 포일에서 레이저/에칭으로 제작한 숫자 '8'. 0.5-1mm 간격으로 적층.", color: "#ef8f44" },
   { id: "spacer", label: "마이카 스페이서", detail: "운모(마이카) 시트로 전극 간 절연 + 간격 유지. 크로스토크 방전 방지.", color: "#B8A9C9" },
