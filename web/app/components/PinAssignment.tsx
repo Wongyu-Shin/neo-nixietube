@@ -114,7 +114,7 @@ export default function PinAssignment() {
         <line x1={topCx - headerR} y1={topCy + headerR + 10} x2={topCx - headerR} y2={topCy + headerR + 18} stroke="#ffffff30" strokeWidth="0.5" />
         <line x1={topCx + headerR} y1={topCy + headerR + 10} x2={topCx + headerR} y2={topCy + headerR + 18} stroke="#ffffff30" strokeWidth="0.5" />
         <text x={topCx} y={topCy + headerR + 25} fill="#ffffff45" fontSize="7" textAnchor="middle">
-          ∅15.2 mm
+          ∅12.7 mm
         </text>
 
         {/* Center label */}
