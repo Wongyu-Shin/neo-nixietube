@@ -66,15 +66,15 @@ import { FritSealingDiagram, ButylSealDiagram, MicroBarrierDiagram, MAPFlushDiag
 
 <BridgeSection
   color="#6BA368"
-  title="부틸+폴리설파이드 상온 2중 실링"
-  sourceTag="건축 IGU + 자동차"
-  cost="₩25K"
+  title="부틸+Torr Seal 상온 복합 실링"
+  sourceTag="건축 IGU + UHV 진공"
+  cost="₩40K"
   diagram={<ButylSealDiagram />}
 >
 
-<WhyNeeded>프릿 실링(450°C)조차 장비가 필요하다. 장비 없이, 상온에서, 자택에서, 즉시 시작할 수 있는 봉착 방법은 없는가? 건축 복층유리(IGU)와 자동차 전조등에서 40년간 사용된 부틸+폴리설파이드 2중 실링이 그 답이다.</WhyNeeded>
+<WhyNeeded>프릿 실링(450°C)조차 장비가 필요하다. 장비 없이, 상온에서, 자택에서, 즉시 시작할 수 있는 봉착 방법은 없는가? IGU의 부틸 내층(CTE 흡수 + 가스차단)에 UHV 진공 기술의 Torr Seal 외층(가스 차단)을 결합한 복합 실링이 그 답이다.</WhyNeeded>
 
-부틸 고무(IIR)는 모든 고무 중 가스 투과율이 가장 낮다. 핫멜트 부틸 테이프를 200°C 히트건으로 연화 → 유리 돔과 TO-8 헤더 사이에 밀착 → 폴리설파이드 실란트를 외부에 2차 도포(구조적 강도). 24시간 경화.
+부틸 고무(IIR)는 모든 고무 중 가스 투과율이 가장 낮다. IIR butyl 테이프를 200°C 히트건으로 연화 → 엔드캡 립과 유리 엔벨로프 사이에 밀착(내층 4mm 경로) → Torr Seal UHV 에폭시를 외부 노출면에 도포(외층 3mm 경로). 24시간 경화.
 
 <InfoGrid items={[
   { label: "작업 온도", value: "상온 ~ 200°C (히트건)", color: "#6BA368" },
@@ -84,9 +84,9 @@ import { FritSealingDiagram, ButylSealDiagram, MicroBarrierDiagram, MAPFlushDiag
 ]} />
 
 <ProcessSteps steps={[
-  { step: "TO-8 헤더에 전극 장착 + 납땜", why: "기밀 헤더가 핀 관통 문제를 해결. 14핀으로 숫자 0-9 + 양극 + 도트 수용." },
-  { step: "유리 돔을 부틸 테이프로 헤더에 봉착", why: "부틸의 낮은 투과율(~10⁻¹⁰ CGS)이 1차 가스 차단. 히트건 200°C로 연화 후 압착." },
-  { step: "폴리설파이드 실란트 2차 도포", why: "부틸은 점착력이 약함. 폴리설파이드가 구조적 강도를 보강. IGU에서 40년 검증." },
+  { step: "커스텀 12핀 헤더에 전극 장착 + 납땜", why: "기밀 헤더가 핀 관통 문제를 해결. 12핀으로 숫자 0-9 + 양극 + 도트 수용." },
+  { step: "유리 엔벨로프를 부틸 테이프로 엔드캡에 봉착", why: "부틸의 낮은 투과율(~1.4×10⁻⁸)이 내층 가스 차단 + CTE 7배 차이 흡수. 히트건 200°C로 연화 후 밀착." },
+  { step: "Torr Seal UHV 에폭시 외층 도포", why: "Torr Seal 투과도 ~1×10⁻¹⁵ → 사실상 가스 차단 완벽. 부틸이 CTE strain을 흡수하여 Torr Seal 피로파괴 방지." },
   { step: "졸-겔 SiO₂ 또는 MgO 오버코팅 (선택)", why: "유기 실링 위에 유리질 나노코팅 → 투과율 10-100x 감소 → 수명 100일 → 1,000일+." },
 ]} />
 

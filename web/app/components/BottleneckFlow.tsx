@@ -9,7 +9,7 @@ const ITEMS = [
     icon: "🔥",
     solutions: [
       { label: "프릿 실링", temp: "450°C", color: "#D4A853", source: "PDP", detail: "Bi₂O₃ 저융점 유리 프릿 → 전기로 450°C 소성. 기존 대비 온도 44% 절감." },
-      { label: "부틸 봉착", temp: "상온", color: "#6BA368", source: "IGU", detail: "건축 복층유리의 부틸+폴리설파이드 2중 실링. 토치/전기로 불필요." },
+      { label: "부틸 봉착", temp: "상온", color: "#6BA368", source: "IGU + UHV", detail: "부틸 내층 + Torr Seal 외층 복합 실링. 토치/전기로 불필요." },
     ],
   },
   {

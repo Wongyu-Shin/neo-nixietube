@@ -8,7 +8,7 @@ const CATEGORIES = [
     color: "#D4A853",
     path1: 90000,
     path2: 25000,
-    items: ["Bi₂O₃ 프릿", "부틸 테이프", "폴리설파이드", "에폭시"],
+    items: ["Bi₂O₃ 프릿", "부틸 테이프", "Torr Seal", "에폭시"],
   },
   {
     name: "전극",

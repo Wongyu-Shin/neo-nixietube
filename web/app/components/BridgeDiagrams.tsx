@@ -68,7 +68,7 @@ export function ButylSealDiagram() {
   return (
     <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
       <rect width={svgW} height={svgH} fill="#111116" rx="8" stroke="#ffffff10" strokeWidth="0.5" />
-      <text x={svgW / 2} y={18} fill="#e8e8e8" fontSize="10" fontWeight="bold" textAnchor="middle">부틸+폴리설파이드 상온 2중 실링 단면</text>
+      <text x={svgW / 2} y={18} fill="#e8e8e8" fontSize="10" fontWeight="bold" textAnchor="middle">부틸+Torr Seal 상온 복합 실링 단면</text>
 
       {/* Glass dome */}
       <path d="M 110 180 L 110 60 Q 110 25 210 25 Q 310 25 310 60 L 310 180"
@@ -88,10 +88,10 @@ export function ButylSealDiagram() {
       <text x={330} y={185} fill="#6BA368" fontSize="6" fontWeight="bold">1차: 부틸</text>
       <text x={330} y={193} fill="#6BA368" fontSize="5" opacity={0.7}>가스 차단</text>
 
-      {/* Polysulfide layer (2nd seal) */}
+      {/* Torr Seal layer (outer gas barrier) */}
       <rect x={102} y={188} width={216} height={6} rx={1.5} fill="#D4A85335" stroke="#D4A853" strokeWidth={0.8} />
-      <text x={330} y={205} fill="#D4A853" fontSize="6" fontWeight="bold">2차: 폴리설파이드</text>
-      <text x={330} y={213} fill="#D4A853" fontSize="5" opacity={0.7}>구조 강도</text>
+      <text x={330} y={205} fill="#D4A853" fontSize="6" fontWeight="bold">외층: Torr Seal</text>
+      <text x={330} y={213} fill="#D4A853" fontSize="5" opacity={0.7}>UHV 가스 차단</text>
 
       {/* TO-8 Header */}
       <rect x={100} y={196} width={220} height={16} rx={3} fill="#B8A9C920" stroke="#B8A9C970" strokeWidth={1} />

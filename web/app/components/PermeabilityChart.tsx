@@ -6,8 +6,8 @@ const MATERIALS = [
   { name: "유리", perm: 1e-15, poc: true, comm: true, color: "#7B9EB8", note: "완벽한 기밀. 전통 닉시관 기준." },
   { name: "PIB", perm: 1e-11, poc: true, comm: "warn", color: "#6BA368", note: "태양전지 산업 검증. 수명 1000일+. Bridge G4." },
   { name: "부틸(IIR)", perm: 1e-10, poc: true, comm: false, color: "#6BA368", note: "모든 고무 중 최저 투과. PoC 100일 충분. 상온 경로 핵심." },
-  { name: "폴리설파이드", perm: 1e-10, poc: true, comm: false, color: "#D4A853", note: "2차 실링 구조 강도. 부틸과 함께 2중 실링." },
-  { name: "+ 졸겔", perm: 1e-12, poc: true, comm: "warn", color: "#C17B5E", note: "부틸/폴리설파이드 위에 졸-겔 SiO₂ 오버코팅 → 10-100x 감소." },
+  { name: "Torr Seal", perm: 1e-15, poc: true, comm: true, color: "#D4A853", note: "UHV급 에폭시. 외층 가스 차단. 부틸+Torr Seal 복합 실링." },
+  { name: "+ 졸겔", perm: 1e-12, poc: true, comm: "warn", color: "#C17B5E", note: "부틸/Torr Seal 위에 졸-겔 SiO₂ 오버코팅(선택) → 광학적 클래리티 향상." },
   { name: "에폭시", perm: 1e-9, poc: "warn", comm: false, color: "#ef4444", note: "투과율 높음. 보조 밀봉에만 제한적 사용." },
   { name: "PDMS", perm: 1e-7, poc: false, comm: false, color: "#ef4444", note: "투과율 너무 높아 사용 불가. 참고용." },
 ];

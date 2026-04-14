@@ -5,7 +5,7 @@ import { useState } from "react";
 const MATERIALS = [
   { name: "PDMS", cte: 310, type: "polymer", color: "#ef4444", note: "가스 투과 높음 → 부적합" },
   { name: "에폭시", cte: 60, type: "polymer", color: "#ef4444", note: "CTE 불일치 심각, PoC에만 한정 사용" },
-  { name: "폴리설파이드", cte: 100, type: "polymer", color: "#D4A853", note: "2차 실링(구조 강도), CTE 무관" },
+  { name: "Torr Seal", cte: 55, type: "polymer", color: "#D4A853", note: "외층 가스 차단. 부틸이 CTE 차이 흡수하므로 Torr Seal의 CTE 영향 미미" },
   { name: "부틸(IIR)", cte: 190, type: "polymer", color: "#6BA368", note: "탄성으로 CTE 차이 흡수 — 상온 경로 핵심" },
   { name: "소다라임 유리", cte: 9.0, type: "glass", color: "#7B9EB8", note: "가장 일반적 유리, 듀멧과 매칭" },
   { name: "보로실리케이트", cte: 3.3, type: "glass", color: "#7B9EB8", note: "파이렉스, 코바르와 매칭" },

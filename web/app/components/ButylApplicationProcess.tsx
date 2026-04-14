@@ -382,8 +382,8 @@ function StepIllustration({
         </g>
       );
 
-    /* Step 4 — Polysulfide application around outside */
-    case "polysulfide":
+    /* Step 4 — Torr Seal application around outside */
+    case "torrseal":
       return (
         <g opacity={o}>
           {/* Header flange */}
@@ -518,7 +518,7 @@ function StepIllustration({
             stroke="#B8A9C9"
             strokeWidth={active ? 1.2 : 0.6}
           />
-          {/* Butyl + polysulfide sealed ring */}
+          {/* Butyl + Torr Seal sealed ring */}
           <ellipse
             cx={50}
             cy={80}

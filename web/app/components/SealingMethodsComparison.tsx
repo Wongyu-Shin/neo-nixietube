@@ -49,10 +49,10 @@ const METHODS = [
     difficulty: 15,
     sections: [
       { label: "유리 돔", color: "#7B9EB8", h: 35 },
-      { label: "부틸 + 폴리설파이드", color: "#6BA368", h: 10, dashed: false },
-      { label: "TO-8 기밀 헤더", color: "#B8A9C9", h: 12, isPins: true },
+      { label: "부틸 + Torr Seal", color: "#6BA368", h: 10, dashed: false },
+      { label: "커스텀 12핀 기밀 헤더", color: "#B8A9C9", h: 12, isPins: true },
     ],
-    desc: "건축 복층유리 기술. 부틸 고무(가스 차단) + 폴리설파이드(구조 강도) 2중 실링. 장비 불필요. 즉시 시작 가능.",
+    desc: "부틸 내층(CTE 흡수 + 가스차단) + Torr Seal 외층(UHV 가스 차단) 복합 실링. 장비 불필요. 즉시 시작 가능.",
   },
 ];
 

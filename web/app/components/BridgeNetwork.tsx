@@ -13,7 +13,7 @@ const BRIDGES = [
   { id: "B1", label: "PDP 프릿 실링", bottleneck: "seal", round: 1, cost: "₩50-100K", innovation: 4, source: "PDP 산업", detail: "Bi₂O₃ 프릿으로 800°C→450°C 저감" },
   { id: "B2", label: "AAO 나노전극", bottleneck: "electrode", round: 1, cost: "₩115K", innovation: 5, source: "나노기술", detail: "양극산화 나노채널+Ni도금 → 전계집중" },
   { id: "B3", label: "마이크로격벽", bottleneck: "vacuum", round: 1, cost: "₩40K", innovation: 5, source: "MEMS", detail: "d↓→p↑ : 대기압 근접 동작 가능" },
-  { id: "G1", label: "부틸+폴리설파이드", bottleneck: "seal", round: 2, cost: "₩25K", innovation: 5, source: "건축 IGU", detail: "상온 2중 실링, 토치/전기로 불필요" },
+  { id: "G1", label: "부틸+Torr Seal", bottleneck: "seal", round: 2, cost: "₩40K", innovation: 5, source: "건축 IGU + UHV", detail: "부틸 내층 + Torr Seal 외층 복합 실링, 토치/전기로 불필요" },
   { id: "G2", label: "졸-겔 SiO₂", bottleneck: "electrode", round: 2, cost: "₩25K", innovation: 4, source: "화학 공학", detail: "나노코팅으로 기밀 보강+스퍼터링 방호" },
   { id: "G3", label: "MAP 가스 플러싱", bottleneck: "vacuum", round: 2, cost: "₩80K", innovation: 4, source: "식품 산업", detail: "진공 없이 가스 조성 제어" },
   { id: "G4", label: "PIB 장기 실링", bottleneck: "seal", round: 2, cost: "₩15K", innovation: 3, source: "태양전지", detail: "수명 100일→1000일+ 연장" },

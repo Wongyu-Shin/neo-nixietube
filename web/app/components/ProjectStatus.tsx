@@ -9,7 +9,7 @@ const ITEMS = [
   { label: "파셴 곡선 시뮬레이터 (MAPE 1.79%)", done: true, detail: "7 iteration autoresearch로 147%→1.79% 개선. Ne/Ar/He 41 데이터포인트.", phase: "시뮬" },
   { label: "글로우 방전 모델 (MAPE 1.77%)", done: true, detail: "고압 비유사(non-similarity) 보정 포함. 마이크로격벽 가시성 분석.", phase: "시뮬" },
   { label: "물리 실험 — 프릿 실링 검증", done: false, detail: "Bi₂O₃ 프릿 450°C 소성 → hold test. Week 2-3 예정.", phase: "실험" },
-  { label: "물리 실험 — 상온 봉착 검증", done: false, detail: "부틸+폴리설파이드 봉착 기밀 테스트. Week 2 예정.", phase: "실험" },
+  { label: "물리 실험 — 상온 봉착 검증", done: false, detail: "부틸+Torr Seal 복합 봉착 기밀 테스트. Week 2 예정.", phase: "실험" },
   { label: "PoC: 자작 관에서 첫 글로우 방전", done: false, detail: "Tier 1 성공 기준. 가스를 가두고 방전 확인. Week 4-6 목표.", phase: "실험" },
 ];
 

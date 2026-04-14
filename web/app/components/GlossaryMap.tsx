@@ -40,7 +40,7 @@ const CORES: Core[] = [
       { label: "부틸 고무", id: "butyl" },
       { label: "졸-겔", id: "solgel" },
       { label: "듀멧 와이어", id: "dumet" },
-      { label: "폴리설파이드", id: "polysulfide" },
+      { label: "Torr Seal", id: "torrseal" },
       { label: "PIB", id: "pib" },
       { label: "유리 프리폼", id: "preform" },
     ],

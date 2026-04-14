@@ -19,7 +19,7 @@ const BRIDGES: Bridge[] = [
   { id: "micro", label: "마이크로 격벽", source: "MEMS", bottleneck: "진공 시스템", color: "#7B9EB8",
     principle: "V=f(p·d): 갭 d를 줄이면 → 압력 p를 올려도 방전 가능 → 진공 불필요" },
   { id: "butyl", label: "부틸 2중 실링", source: "건축 IGU", bottleneck: "유리-금속 실링", color: "#6BA368",
-    principle: "부틸 고무(가스 차단) + 폴리설파이드(구조 강도) = 상온 2중 기밀 봉착" },
+    principle: "부틸 내층(CTE 흡수 + 가스차단) + Torr Seal 외층(UHV 가스 차단) = 상온 복합 기밀 봉착" },
   { id: "solgel", label: "졸-겔 코팅", source: "화학/반도체", bottleneck: "기밀+수명", color: "#B8A9C9",
     principle: "TEOS 가수분해 → SiO₂ 나노코팅 → 유기 실링 위 오버코팅(투과율 100x 감소)" },
   { id: "map", label: "MAP 플러싱", source: "식품 산업", bottleneck: "가스 충전", color: "#C17B5E",
@@ -105,9 +105,9 @@ function BridgeIllustration({ bridge, w, h }: { bridge: Bridge; w: number; h: nu
           {/* Butyl layer (green) */}
           <rect x={15} y={h - 18} width={w - 30} height={6} rx={1} fill={c + "50"} stroke={c} strokeWidth={0.8} />
           <text x={cx} y={h - 13} fill={c} fontSize="4" fontWeight="bold" textAnchor="middle">부틸 (가스 차단)</text>
-          {/* Polysulfide (orange) */}
+          {/* Torr Seal (orange) */}
           <rect x={12} y={h - 11} width={w - 24} height={5} rx={1} fill="#D4A85340" stroke="#D4A85380" strokeWidth={0.6} />
-          <text x={cx} y={h - 7} fill="#D4A853" fontSize="3.5" textAnchor="middle">폴리설파이드 (강도)</text>
+          <text x={cx} y={h - 7} fill="#D4A853" fontSize="3.5" textAnchor="middle">Torr Seal (가스 차단)</text>
           <text x={cx} y={20} fill="#7B9EB8" fontSize="5" textAnchor="middle">유리 돔</text>
           <text x={cx} y={h - 1} fill="#666" fontSize="4" textAnchor="middle">상온 2중 봉착</text>
         </g>

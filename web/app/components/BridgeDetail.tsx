@@ -51,7 +51,7 @@ function BridgeIllustration({ id, w, h }: { id: string; w: number; h: number }) 
           <rect x={10} y={h - 8} width={w - 20} height={4} rx={1} fill="#D4A85340" stroke="#D4A85380" strokeWidth={0.6} />
           <text x={cx} y={15} fill="#7B9EB8" fontSize="5" textAnchor="middle">유리 돔</text>
           <text x={cx} y={h - 11} fill="#6BA368" fontSize="3.5" textAnchor="middle">부틸</text>
-          <text x={cx} y={h - 4} fill="#D4A853" fontSize="3.5" textAnchor="middle">폴리설파이드</text>
+          <text x={cx} y={h - 4} fill="#D4A853" fontSize="3.5" textAnchor="middle">Torr Seal</text>
         </g>
       );
     case "preform":

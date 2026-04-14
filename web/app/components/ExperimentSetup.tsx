@@ -12,7 +12,7 @@ type Experiment = {
 };
 
 const EXPERIMENTS: Experiment[] = [
-  { id: "a", label: "실험 A: 부틸 기밀 테스트", goal: "부틸+폴리설파이드 봉착의 기밀 유지 확인",
+  { id: "a", label: "실험 A: 부틸 기밀 테스트", goal: "부틸+Torr Seal 복합 봉착의 기밀 유지 확인",
     pass: "24h 후 시각적 변화 없음", location: "자택", color: "#6BA368" },
   { id: "b", label: "실험 B: 프릿 기밀 테스트", goal: "프릿 봉착 + 듀멧 매립의 기밀 확인",
     pass: "압력 변화 < 1 Torr/h", location: "자택 (미니가마) + 대학 (펌프)", color: "#D4A853" },

@@ -21,7 +21,7 @@ const PRIORITIES = [
     items: [
       { name: "안전 장비 (보안경+장갑+소화기)", source: "쿠팡", lead: "1-2일", cost: "₩90K" },
       { name: "TO-8 기밀 헤더", source: "DigiKey", lead: "5-7일", cost: "₩20K" },
-      { name: "부틸 + 폴리설파이드", source: "쿠팡/건축자재몰", lead: "2-3일", cost: "₩25K" },
+      { name: "부틸 + Torr Seal", source: "쿠팡 + Agilent/eBay", lead: "2-7일", cost: "₩40K" },
     ],
   },
   {
