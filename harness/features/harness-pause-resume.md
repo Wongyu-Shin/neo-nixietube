@@ -33,3 +33,7 @@ stream).
 See `harness/research/harness-pause-resume.md` for the full command
 surface, checkpoint schema, and the operator-vs-agent HITL asymmetry
 argument.
+
+## Referenced by
+
+- `harness-graduated-confirm`

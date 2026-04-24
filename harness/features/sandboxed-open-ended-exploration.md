@@ -36,3 +36,4 @@ hostile-candidate rippable probe.
 ## Referenced by
 
 - `gcli-eval-compare-primitive`
+- `harness-graduated-confirm`

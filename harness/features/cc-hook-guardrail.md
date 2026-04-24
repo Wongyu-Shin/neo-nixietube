@@ -36,3 +36,4 @@ and the `scripts/hooks/` implementation sketch.
 - `sandboxed-open-ended-exploration`
 - `gcli-agent-run-telemetry`
 - `harness-pause-resume`
+- `harness-graduated-confirm`

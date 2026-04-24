@@ -41,3 +41,4 @@ conventions link.
 ## Referenced by
 
 - `harness-pause-resume`
+- `harness-graduated-confirm`
