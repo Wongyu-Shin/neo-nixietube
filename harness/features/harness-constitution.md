@@ -31,3 +31,7 @@ operators and agents can cite.
 See `harness/research/harness-constitution.md` for the spec-kit
 precedent, the 9-Article mapping, and the rename-to-root rippable
 probe.
+
+## Referenced by
+
+- `harness-clarify-gate`

@@ -36,3 +36,7 @@ written by `harness-clarify-gate`, `plan.md` gated by
 
 See `harness/research/harness-loop-scaffold.md` for the template
 contract and the `.claude/commands/harness/new-loop.md` sketch.
+
+## Referenced by
+
+- `harness-clarify-gate`
