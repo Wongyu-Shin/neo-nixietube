@@ -7,7 +7,7 @@
   https://github.com/github/spec-kit
 - US constitutional law metaphor — higher-law-lower-law hierarchy where
   per-loop spec docs cannot override articles.
-- Anthropic Constitutional AI (arXiv:2212.08073) — different mechanism
+- Anthropic Constitutional AI (arXiv:2212.08073 — https://arxiv.org/abs/2212.08073) — different mechanism
   (RLAIF), same design pattern (durable principles).
 
 ## Core idea
