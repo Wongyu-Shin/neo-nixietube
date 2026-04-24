@@ -72,7 +72,11 @@ held-out 3-Goal benchmark.
 
 ## Contrast
 
-Reflexion/Voyager work inside a single Goal. HyperAgent partitions one
-Goal across roles. ADAS operates one level higher: the Goal itself is
-"design a better agent", and individual autoresearch loops are the
-substrate.
+Reflexion/Voyager work inside a single Goal. The FPT HyperAgent (Phan
+2024, `fpt-hyperagent-multirole` — not to be confused with Meta
+HyperAgents Zhang 2026, tracked separately as
+`meta-hyperagents-metacognitive`) partitions one Goal across roles.
+ADAS operates one level higher: the Goal itself is "design a better
+agent", and individual autoresearch loops are the substrate. Meta
+HyperAgents goes one step further and makes the meta agent that
+proposes designs itself editable.

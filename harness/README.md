@@ -3,7 +3,9 @@
 Working repository for the **neo-nixetube agent-harness research loop**.
 
 The loop's job is to research published recursive-self-improvement harnesses
-(Meta HyperAgent, Reflexion, Voyager, SWE-agent, Devin-style scaffolds, …)
+(Meta HyperAgents — Zhang 2026, arXiv:2603.19461; FPT HyperAgent — Phan
+2024, arXiv:2409.16299; Reflexion, Voyager, SWE-agent, Devin-style
+scaffolds, …)
 and convert each reusable idea into a catalogued `feature` that is classified
 along two axes:
 

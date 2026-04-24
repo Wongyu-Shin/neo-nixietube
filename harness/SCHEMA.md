@@ -25,7 +25,7 @@ sources: [<url-or-citation>, ...]   # papers, blog posts, code repos
 - **applicability** — Machine-readable scope of when this feature should be active. `guard.sh` uses it to detect stale features after a CC or model upgrade.
 - **tc_script** — Path to a reproducible, parallel-safe test case. Must exit 0 when the feature is still needed (statistically differentiable from baseline); non-zero when upstream has absorbed it.
 - **rippable_check** — The signal you look for. E.g. "If Claude Code 2.5+ automatically runs schema validation on plan output, TC will see identical scores with/without this feature and fail (as expected) → rip."
-- **sources** — At least one citation (HyperAgent paper, Anthropic doc, GitHub repo, etc.).
+- **sources** — At least one citation (paper URL, Anthropic doc, GitHub repo, etc.). When citing HyperAgent(s)-family work, disambiguate Meta HyperAgents (Zhang 2026) from FPT HyperAgent (Phan 2024) — the two systems share only a name prefix.
 
 ## Scoring rules (verify.sh)
 
