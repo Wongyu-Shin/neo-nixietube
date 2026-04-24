@@ -30,3 +30,4 @@ protocol and the open question of cross-Goal skill transfer.
 
 - `dgm-h-archive-parent-selection`
 - `fpt-hyperagent-multirole`
+- `gcli-skill-pack-distribution`

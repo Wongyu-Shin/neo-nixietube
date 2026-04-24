@@ -37,3 +37,4 @@ concrete `scripts/harness/{propose,novelty}` implementation sketch.
 
 - `dgm-h-archive-parent-selection`
 - `meta-hyperagents-metacognitive`
+- `gcli-skill-pack-distribution`
