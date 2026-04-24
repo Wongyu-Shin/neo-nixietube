@@ -33,3 +33,4 @@ sketch and the σ̂-convergence rippable probe.
 ## Referenced by
 
 - `gcli-eval-compare-primitive`
+- `gcli-agent-run-telemetry`

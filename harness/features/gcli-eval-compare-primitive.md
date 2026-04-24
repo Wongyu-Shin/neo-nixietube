@@ -40,3 +40,7 @@ worktree-based isolation of each ref.
 See `harness/research/gcli-eval-compare-primitive.md` for the
 distinction table and the `scripts/harness/eval_compare.sh`
 contract.
+
+## Referenced by
+
+- `gcli-agent-run-telemetry`

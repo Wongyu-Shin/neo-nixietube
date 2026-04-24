@@ -34,3 +34,4 @@ and the `scripts/hooks/` implementation sketch.
 ## Referenced by
 
 - `sandboxed-open-ended-exploration`
+- `gcli-agent-run-telemetry`

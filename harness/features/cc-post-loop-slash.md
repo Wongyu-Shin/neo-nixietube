@@ -30,3 +30,7 @@ rippable signals.
 See `harness/research/cc-post-loop-slash.md` for the template contract,
 the artifact-citation invariant, and the probe against CC-native
 `/ultrareview`.
+
+## Referenced by
+
+- `gcli-agent-run-telemetry`

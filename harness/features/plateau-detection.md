@@ -32,3 +32,7 @@ rippable.
 
 See `harness/research/plateau-detection.md` for the detector formulas,
 the combined-criterion rule, and the noise-injection rippable probe.
+
+## Referenced by
+
+- `gcli-agent-run-telemetry`

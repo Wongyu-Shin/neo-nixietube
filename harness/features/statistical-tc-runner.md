@@ -42,3 +42,4 @@ schema and the cache/short-circuit protocol.
 
 - `harness-rip-test`
 - `gcli-eval-compare-primitive`
+- `gcli-agent-run-telemetry`

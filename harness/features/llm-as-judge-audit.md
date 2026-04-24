@@ -35,3 +35,4 @@ rippable signal (ratchet monotonicity over N iterations) differs.
 - `cross-domain-transfer-metric`
 - `noise-aware-ratchet`
 - `gcli-eval-compare-primitive`
+- `gcli-agent-run-telemetry`
