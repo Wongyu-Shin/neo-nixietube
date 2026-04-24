@@ -41,3 +41,4 @@ schema and the cache/short-circuit protocol.
 ## Referenced by
 
 - `harness-rip-test`
+- `gcli-eval-compare-primitive`

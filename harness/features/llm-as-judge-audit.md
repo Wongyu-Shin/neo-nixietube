@@ -34,3 +34,4 @@ rippable signal (ratchet monotonicity over N iterations) differs.
 - `cc-post-loop-slash`
 - `cross-domain-transfer-metric`
 - `noise-aware-ratchet`
+- `gcli-eval-compare-primitive`

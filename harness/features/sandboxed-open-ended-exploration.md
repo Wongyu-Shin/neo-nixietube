@@ -32,3 +32,7 @@ when the diff looks like archive manipulation or metric cheating.
 See `harness/research/sandboxed-open-ended-exploration.md` for the
 enumerated structural risks, the `sane_delta.sh` contract, and the
 hostile-candidate rippable probe.
+
+## Referenced by
+
+- `gcli-eval-compare-primitive`

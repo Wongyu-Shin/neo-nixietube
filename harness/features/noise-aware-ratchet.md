@@ -29,3 +29,7 @@ to whichever lucky iteration got a high score once.
 
 See `harness/research/noise-aware-ratchet.md` for the three-rule proof
 sketch and the σ̂-convergence rippable probe.
+
+## Referenced by
+
+- `gcli-eval-compare-primitive`

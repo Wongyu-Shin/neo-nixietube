@@ -36,3 +36,7 @@ subsumes the other.
 See `harness/research/cross-domain-transfer-metric.md` for the
 transfer protocol, the curated A/B pair list, and the agreement-
 threshold rippable probe.
+
+## Referenced by
+
+- `gcli-eval-compare-primitive`

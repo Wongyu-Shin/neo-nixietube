@@ -31,3 +31,7 @@ be backed by a script of this exact shape. Without it the
 
 See `harness/research/harness-rip-test.md` for the interface contract
 and the CI-matrix sketch.
+
+## Referenced by
+
+- `gcli-eval-compare-primitive`
