@@ -1,18 +1,22 @@
-# HyperAgent — Generalist Multi-Agent Software Engineering System
+# FPT HyperAgent — Generalist Multi-Agent Software Engineering System
 
 **Citation:** Phan, H.N., Nguyen, P.X., Nguyen, N.T.H., Bui, N.D.Q.
 *HyperAgent: Generalist Software Engineering Agents to Solve Coding Tasks at Scale.*
-ICLR 2025 submission / 2024 technical report (FPT AI Residency, FPT Software AI Center).
+2024. FPT Software AI Center.
 arXiv:2409.16299.
 
 **Primary source:** https://arxiv.org/abs/2409.16299
 **Reference code:** https://github.com/FSoft-AI4Code/HyperAgent
 
-> Note on attribution: the "Meta HyperAgent" branding that circulates in
-> Korean dev media refers to this FPT AI Center system, which has been
-> discussed in Meta's internal engineering workshops and was frequently
-> cited alongside Meta's TestGen-LLM work. The core architecture below is
-> what matters for harness design, regardless of who the publisher is.
+> **Attribution correction (2026-04-24):** This entry was originally filed
+> under the name "hyperagent-planner-routing" with a note claiming Meta
+> association. That was wrong. This paper is the **FPT Software AI Center
+> HyperAgent** — a multi-role SWE benchmark agent — and has no authorship
+> overlap with Meta/FAIR. The distinct system by Zhang et al. (2026)
+> published by FAIR/Meta at github.com/facebookresearch/Hyperagents is
+> a separate work tracked under `meta-hyperagents-metacognitive` and its
+> siblings. The two systems share only a name prefix; their mechanisms
+> and goals are entirely different.
 
 ## Core architecture
 
