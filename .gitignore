@@ -24,3 +24,6 @@ cad/path-2-room-temp/build/
 autoresearch-*.tsv
 web/autoresearch-*.tsv
 cad/*/autoresearch-*.tsv
+
+# autoresearch harness loop build artifacts
+harness/build/
