@@ -29,6 +29,9 @@ arXiv:2603.19461, §3 "Methods" + Appendix A.2 "Parent selection".
 > hyperagents that perform well and generate strong descendants while
 > preserving exploration** (Appendix A.2)."
 
+One-line rule (extracted from the quote above):
+`weight(i) = score(i) × 1 / (1 + n_compiled_children(i))` — proportional to performance, inversely proportional to number of successfully compiled children.
+
 Key structural points:
 
 1. **Archive = population, not skill store.** Every generated hyperagent
