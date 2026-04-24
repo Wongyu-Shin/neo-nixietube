@@ -9,7 +9,7 @@ arXiv:2603.19461, §3 "Methods" + Appendix A.2 "Parent selection".
 **Predecessor and related:**
 - Zhang et al., *The Darwin Gödel Machine.* 2025b — the archive+branch
   exploration process HyperAgents inherits.
-- Lehman & Stanley 2011, Mouret & Clune 2015 — Quality-Diversity /
+- Lehman & Stanley 2011, Mouret & Clune 2015 (https://doi.org/10.1162/EVCO_a_00025) — Quality-Diversity /
   MAP-Elites archive dynamics that motivate "keep stepping stones".
 - Stanley, Lehman, Soros 2017 — open-ended exploration theory.
 

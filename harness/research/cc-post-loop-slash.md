@@ -5,7 +5,7 @@ https://docs.claude.com/en/docs/claude-code/slash-commands
 
 **Related references:**
 - `ultrareview` and `/review` built-in CC commands (Anthropic docs, 2025).
-- Sakana AI Scientist, *Towards Fully Automated Open-Ended Scientific Discovery.* arXiv:2408.06292 — §4 "Automated Paper Writeup" is the canonical post-loop report pattern.
+- Sakana AI Scientist, *Towards Fully Automated Open-Ended Scientific Discovery.* arXiv:2408.06292 (https://arxiv.org/abs/2408.06292) — §4 "Automated Paper Writeup" is the canonical post-loop report pattern.
 - neo-nixetube practice: MDX result docs under `cad/path-2-room-temp/` already follow this pattern manually.
 
 ## Core idea

@@ -8,7 +8,7 @@ https://page.mi.fu-berlin.de/prechelt/Biblio/stop_tricks1997.pdf
 - Karpathy, A. *A Recipe for Training Neural Networks*, 2019.
   https://karpathy.github.io/2019/04/25/recipe/ — "patience" and "UP" criteria.
 - Snoek, J. et al. *Practical Bayesian Optimization of Machine Learning
-  Algorithms.* NeurIPS 2012. arXiv:1206.2944 — acquisition-function stopping.
+  Algorithms.* NeurIPS 2012. arXiv:1206.2944 (https://arxiv.org/abs/1206.2944) — acquisition-function stopping.
 - Autoresearch SKILL "When Stuck (>5 consecutive discards)" rule is a
   primitive plateau criterion already baked into the loop protocol.
 - neo-nixetube memory entry: "GAN noise handling — LLM-as-judge has ±10

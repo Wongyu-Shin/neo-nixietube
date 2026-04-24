@@ -7,8 +7,8 @@ selection rule that the ratchet implements.
 
 **Related references:**
 - Henderson, P. et al. *Deep Reinforcement Learning That Matters.* AAAI 2018.
-  arXiv:1709.06560 — why single-seed "best so far" is misleading.
-- Bradley, R.A., Terry, M.E. *Rank Analysis of Incomplete Block Designs.*
+  arXiv:1709.06560 (https://arxiv.org/abs/1709.06560) — why single-seed "best so far" is misleading.
+- Bradley, R.A., Terry, M.E. *Rank Analysis of Incomplete Block Designs.* https://doi.org/10.1093/biomet/39.3-4.324
   Biometrika 1952 — pairwise comparison foundation for anchor-vs-candidate.
 - neo-nixetube user-memory: `feedback_gan_noise_handling.md` — the rule
   "LLM-as-judge has ±10 noise; use ratchet MAX, never weaken anchor" was

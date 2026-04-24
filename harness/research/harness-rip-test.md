@@ -5,7 +5,7 @@ commit history under `cad/path-2-room-temp`). The script predates this
 catalog; it is the empirical precedent that the axis-1 charter formalises.
 
 **Related references:**
-- ADAS (arXiv:2408.08435) — archive-conditioned design suggests that each
+- ADAS (arXiv:2408.08435 (https://arxiv.org/abs/2408.08435)) — archive-conditioned design suggests that each
   past design should carry its own removal test.
 - OpenEvolve-style *ablation harness* patterns: every reported gain is
   paired with a one-line ablation that re-runs verify with the feature

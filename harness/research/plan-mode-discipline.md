@@ -4,10 +4,10 @@
 https://docs.claude.com/en/docs/claude-code/plan-mode
 
 **Related references:**
-- Wang, L. et al. *Plan-and-Solve Prompting.* ACL 2023. arXiv:2305.04091 —
+- Wang, L. et al. *Plan-and-Solve Prompting.* ACL 2023. arXiv:2305.04091 (https://arxiv.org/abs/2305.04091) —
   the canonical "decompose then execute" pattern Plan mode formalises.
 - Yao, S. et al. *ReAct: Synergizing Reasoning and Acting in Language
-  Models.* ICLR 2023. arXiv:2210.03629 — interleaved thought/action
+  Models.* ICLR 2023. arXiv:2210.03629 (https://arxiv.org/abs/2210.03629) — interleaved thought/action
   pattern; Plan mode is the "thought" half made HITL-gated.
 - HyperAgent (arXiv:2409.16299) — Planner role = this feature's function,
   but multi-agent; Plan-mode is the single-agent realisation.

@@ -9,9 +9,9 @@ when several different population variances are involved.* Biometrika,
   the Psychonomic Society, 1988 — establishes the pattern of pre-registering
   sample sizes and exclusion criteria.
 - Henderson, P. et al. *Deep Reinforcement Learning That Matters.* AAAI
-  2018. arXiv:1709.06560 — case study in why single-seed RL results mislead
+  2018. arXiv:1709.06560 (https://arxiv.org/abs/1709.06560) — case study in why single-seed RL results mislead
   and how to fix with N-seed multi-run + confidence intervals.
-- MLPerf Training benchmark — canonical parallel statistical test harness.
+- MLPerf Training benchmark (https://mlcommons.org/en/training-normal-21/) — canonical parallel statistical test harness.
 - neo-nixetube user-memory: "LLM-as-judge has ±10 noise; tests must be
   parallel + statistical" — explicit axis-1 requirement from the user.
 

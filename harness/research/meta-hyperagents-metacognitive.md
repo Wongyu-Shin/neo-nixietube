@@ -9,7 +9,7 @@ arXiv:2603.19461.
 
 **Related (predecessor):**
 - Zhang et al., *The Darwin Gödel Machine.* 2025b — the coding-only base that HyperAgents generalise.
-- Hu et al., *Automated Design of Agentic Systems* (ADAS). arXiv:2408.08435 —
+- Hu et al., *Automated Design of Agentic Systems* (ADAS). arXiv:2408.08435 (https://arxiv.org/abs/2408.08435) —
   the meta-level-fixed baseline that HyperAgents critique and surpass.
 - Kirsch & Schmidhuber 2022; Lu et al. 2023 — formal groundwork on
   self-referential improvement becoming unbounded when the mechanism is

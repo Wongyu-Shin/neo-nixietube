@@ -7,8 +7,8 @@ NeurIPS 2023. arXiv:2306.05685.
 **Primary source:** https://arxiv.org/abs/2306.05685
 
 **Related:**
-- Dubois, Y. et al. *AlpacaFarm: A Simulation Framework for Methods that Learn from Human Feedback.* NeurIPS 2023. arXiv:2305.14387.
-- Anthropic, *Constitutional AI: Harmlessness from AI Feedback.* arXiv:2212.08073.
+- Dubois, Y. et al. *AlpacaFarm: A Simulation Framework for Methods that Learn from Human Feedback.* NeurIPS 2023. arXiv:2305.14387 (https://arxiv.org/abs/2305.14387).
+- Anthropic, *Constitutional AI: Harmlessness from AI Feedback.* arXiv:2212.08073 (https://arxiv.org/abs/2212.08073).
 - neo-nixetube practice: already uses LLM-as-judge scoring (see `autoresearch-cad-path2-results.tsv` SUM=35/90 pattern in project_cad_loop_state.md).
 
 ## Core idea
