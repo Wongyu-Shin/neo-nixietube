@@ -27,7 +27,7 @@ done
 # Must be inner, pre-loop primary.
 grep -qi "inner" "$NOTE" \
     || { echo "TC_FAIL loop-scaffold: missing inner anchor"; exit 1; }
-grep -qi "pre-loop \(primary\)" "$NOTE" \
+grep -qFi "pre-loop (primary)" "$NOTE" \
     || { echo "TC_FAIL loop-scaffold: missing pre-loop primary mapping"; exit 1; }
 
 # Must contrast with harness-clarify-gate and cc-post-loop-slash.
