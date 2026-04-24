@@ -13,7 +13,7 @@ grep -qi "user memory\|~/.claude.*memory\|user-scoped" "$NOTE" \
     || { echo "TC_FAIL llm-wiki: missing user-memory layer reference"; exit 1; }
 grep -q "CLAUDE.md" "$NOTE" \
     || { echo "TC_FAIL llm-wiki: missing CLAUDE.md layer reference"; exit 1; }
-grep -q "research note" "$NOTE" \
+grep -qi "research note" "$NOTE" \
     || { echo "TC_FAIL llm-wiki: missing research-notes layer reference"; exit 1; }
 
 # Must spec the frontmatter with triggers.
