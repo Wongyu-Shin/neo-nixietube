@@ -46,10 +46,10 @@ The existing catalog has:
   feature redundant given the current CC/model?"
 
 None of these is `eval compare`. The gap: given two *catalog snapshots*
-(e.g., before Meta HyperAgents deep-dive vs. after, or Opus vs.
-Sonnet), run the *entire* feature catalog's TC suite on both and
-report paired deltas per feature. That is what `eval compare` would
-add to this project.
+(e.g., before the `meta-hyperagents-metacognitive` deep-dive vs. after
+— Zhang 2026, arXiv:2603.19461 — or Opus vs. Sonnet), run the
+*entire* feature catalog's TC suite on both and report paired deltas
+per feature. That is what `eval compare` would add to this project.
 
 ## Harness-relevant decomposition
 
