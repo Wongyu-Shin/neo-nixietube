@@ -2,15 +2,20 @@
 
 import { useState } from "react";
 
+/**
+ * Four-layer persistence picker — the "LLM-wiki question" from UX §7.
+ * Shows scope, load trigger, lifetime, and which Article governs.
+ */
+
 type Layer = {
   id: string;
   name: string;
   location: string;
-  scope: string;
+  scope: "cross-repo" | "project" | "project (on-demand)";
   trigger: string;
-  halfLife: string;
+  lifetime: string;
+  article: string;
   color: string;
-  widthPct: number;
 };
 
 const LAYERS: Layer[] = [
@@ -19,103 +24,122 @@ const LAYERS: Layer[] = [
     name: "User memory",
     location: "~/.claude/.../memory/*.md",
     scope: "cross-repo",
-    trigger: "always loaded",
-    halfLife: "no explicit half-life",
+    trigger: "Always loaded",
+    lifetime: "Indefinite",
+    article: "—",
     color: "#B8A9C9",
-    widthPct: 92,
   },
   {
     id: "claudemd",
     name: "CLAUDE.md",
-    location: "repo root + nested",
+    location: "repo root",
     scope: "project",
-    trigger: "always loaded",
-    halfLife: "as long as in repo",
-    color: "#7B9EB8",
-    widthPct: 78,
+    trigger: "Always loaded",
+    lifetime: "Indefinite; floods every session",
+    article: "—",
+    color: "#D4A853",
   },
   {
     id: "wiki",
     name: "Harness wiki",
     location: "harness/wiki/*.md",
     scope: "project",
-    trigger: "keyword-triggered (SessionStart surface)",
-    halfLife: "last_verified + half_life_days (tracked)",
-    color: "#D4A853",
-    widthPct: 64,
+    trigger: "Keyword-triggered (SessionStart)",
+    lifetime: "last_verified + half_life_days; stales flagged",
+    article: "VII",
+    color: "#6BA368",
   },
   {
     id: "research",
     name: "Research notes",
     location: "harness/research/*.md",
-    scope: "project",
-    trigger: "explicit read",
-    halfLife: "citations pinned",
-    color: "#6BA368",
-    widthPct: 48,
+    scope: "project (on-demand)",
+    trigger: "Explicit read only",
+    lifetime: "Versioned with the repo",
+    article: "—",
+    color: "#7B9EB8",
   },
 ];
 
 export default function PersistenceLayers() {
-  const [active, setActive] = useState<string | null>("wiki");
-
-  const activeLayer = active ? LAYERS.find((l) => l.id === active) ?? null : null;
+  const [active, setActive] = useState<string>("wiki");
+  const layer = LAYERS.find((l) => l.id === active)!;
 
   return (
     <figure className="my-8">
-      <div className="max-w-3xl mx-auto space-y-2">
-        {LAYERS.map((l, i) => {
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-4">
+        {LAYERS.map((l) => {
           const isActive = active === l.id;
           return (
             <button
               key={l.id}
               type="button"
-              onMouseEnter={() => setActive(l.id)}
-              onClick={() => setActive(isActive ? null : l.id)}
-              className={`block w-full text-left rounded-md border px-4 py-3 transition-all ${
-                isActive
-                  ? "bg-stone-900/80 border-stone-600"
-                  : "bg-stone-950/40 border-stone-800 hover:border-stone-700"
-              }`}
+              onClick={() => setActive(l.id)}
+              className="text-left rounded-xl border p-4 transition-colors"
               style={{
-                width: `${l.widthPct}%`,
-                marginLeft: `${(100 - l.widthPct) / 2}%`,
-                borderLeftWidth: "4px",
-                borderLeftColor: l.color,
+                background: isActive ? l.color + "18" : "#120d08",
+                borderColor: isActive ? l.color : "#2a2218",
               }}
             >
-              <div className="flex items-baseline gap-3 flex-wrap">
-                <span className="text-xs text-stone-600 font-mono">L{i + 1}</span>
-                <span className="text-sm font-semibold" style={{ color: l.color }}>
-                  {l.name}
-                </span>
-                <code className="text-[11px] text-stone-500 font-mono">{l.location}</code>
-                <span className="text-[10px] ml-auto px-1.5 py-0.5 rounded border border-stone-700 text-stone-500">
-                  {l.scope}
-                </span>
+              <div
+                className="text-[10px] uppercase tracking-widest mb-1"
+                style={{ color: l.color }}
+              >
+                layer · {l.scope}
               </div>
-              {isActive && (
-                <div className="mt-2 pt-2 border-t border-stone-800 grid grid-cols-2 gap-3 text-xs">
-                  <div>
-                    <div className="text-stone-600 uppercase text-[10px] tracking-wide">trigger</div>
-                    <div className="text-stone-300 mt-0.5">{l.trigger}</div>
-                  </div>
-                  <div>
-                    <div className="text-stone-600 uppercase text-[10px] tracking-wide">durability</div>
-                    <div className="text-stone-300 mt-0.5">{l.halfLife}</div>
-                  </div>
-                </div>
-              )}
+              <div className="text-sm font-semibold text-amber-200">{l.name}</div>
+              <code className="block text-[10px] text-stone-500 mt-1 truncate">
+                {l.location}
+              </code>
             </button>
           );
         })}
       </div>
-
-      <div className="max-w-3xl mx-auto mt-4 text-xs text-stone-500 text-center italic px-4">
-        {activeLayer
-          ? `${activeLayer.name}: ${activeLayer.scope} · ${activeLayer.trigger}`
-          : "Hover a layer. Only the harness wiki is project-scoped, cross-loop, committable, and keyword-triggered (Article VII)."}
+      <div
+        className="rounded-xl border p-5 text-sm"
+        style={{
+          borderColor: layer.color + "55",
+          background: layer.color + "0d",
+        }}
+      >
+        <div
+          className="uppercase tracking-widest text-[10px] mb-1"
+          style={{ color: layer.color }}
+        >
+          {layer.name}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 text-xs">
+          <div>
+            <div className="text-stone-500 mb-1">Load trigger</div>
+            <div className="text-stone-200">{layer.trigger}</div>
+          </div>
+          <div>
+            <div className="text-stone-500 mb-1">Lifetime</div>
+            <div className="text-stone-200">{layer.lifetime}</div>
+          </div>
+          <div>
+            <div className="text-stone-500 mb-1">Scope</div>
+            <div className="text-stone-200">{layer.scope}</div>
+          </div>
+          <div>
+            <div className="text-stone-500 mb-1">Article</div>
+            <div className="text-stone-200">{layer.article}</div>
+          </div>
+        </div>
+        {layer.id === "wiki" && (
+          <p className="text-xs text-stone-400 mt-4 leading-relaxed">
+            The wiki is the only project-scoped, cross-loop, committable
+            knowledge store. Entries are surfaced on SessionStart by matching
+            the operator's opening message + last N transcript lines against
+            each entry's <code className="text-amber-200">triggers</code> field
+            (top-3 surfaced as <code className="text-amber-200">&lt;system-reminder&gt;</code>).
+          </p>
+        )}
       </div>
+      <figcaption className="text-xs text-stone-500 text-center mt-3">
+        Source: <code className="text-amber-200">harness/UX.md</code> §7 ·
+        Feature: <code className="text-amber-200">harness-llm-wiki</code>.
+      </figcaption>
     </figure>
   );
 }
