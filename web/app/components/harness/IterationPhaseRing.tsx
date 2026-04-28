@@ -32,106 +32,106 @@ const PHASES: Phase[] = [
   {
     n: 1,
     key: "review",
-    label: "Review",
-    action: "git log + TSV + wiki surface",
+    label: "리뷰",
+    action: "git log + TSV + 위키 표면화",
     article: "VII",
     feature: "harness-constitution",
     hitl: "forbidden",
     detail:
-      "Loads CONSTITUTION.md, surfaces wiki entries by keyword, reads prior reflexion notes. Nothing is mutated.",
+      "CONSTITUTION.md를 로드하고, 키워드로 위키 항목을 표면화하며, 이전 reflexion 노트를 읽는다. 변경은 일어나지 않는다.",
     writes: [],
-    guard: "none (read-only)",
+    guard: "없음 (읽기 전용)",
   },
   {
     n: 2,
     key: "ideate",
-    label: "Ideate",
-    action: "pick next candidate",
+    label: "발상",
+    action: "다음 후보 선택",
     article: "IV",
     feature: "reflexion",
     hitl: "forbidden",
     detail:
-      "Chooses the next candidate from the axis-coverage gap list. Influenced by reflexion entries from previous iterations.",
-    writes: ["iter-log line"],
-    guard: "none",
+      "축 커버리지 갭 목록에서 다음 후보를 고른다. 이전 이터레이션의 reflexion 항목이 영향을 준다.",
+    writes: ["이터레이션 로그 행"],
+    guard: "없음",
   },
   {
     n: 3,
     key: "modify",
-    label: "Modify",
-    action: "edit scope files",
+    label: "수정",
+    action: "scope 파일 편집",
     article: "III",
     feature: "harness-graduated-confirm",
     hitl: "gated",
     detail:
-      "Edits files inside Scope (Article IV domain boundary). L0 silent; L1 notify + 30s auto-approve; L2 pause + blocking HITL (one of the two in-loop carve-outs).",
-    writes: ["scope files", "report.mdx (L2 events)"],
-    guard: "cc-hook-guardrail (per-op)",
+      "Scope 안의 파일을 편집한다 (조항 IV 도메인 경계). L0 침묵; L1 알림 + 30초 자동 승인; L2 일시 정지 + 차단 HITL (루프 내부 두 예외 중 하나).",
+    writes: ["scope 파일", "report.mdx (L2 이벤트)"],
+    guard: "cc-hook-guardrail (작업별)",
   },
   {
     n: 4,
     key: "commit",
-    label: "Commit",
+    label: "커밋",
     action: "experiment(scope): desc",
     article: "VIII",
     feature: "harness-loop-scaffold",
     hitl: "forbidden",
     detail:
-      "Commits BEFORE Verify, with the experiment(scope): prefix. Git is memory — even discards stay in history as lessons (Article VIII).",
-    writes: ["git commit"],
-    guard: "none",
+      "Verify 이전에 experiment(scope): 접두어로 커밋. Git이 곧 메모리 — 폐기된 후보도 교훈으로서 히스토리에 남는다 (조항 VIII).",
+    writes: ["git 커밋"],
+    guard: "없음",
   },
   {
     n: 5,
     key: "verify",
-    label: "Verify",
-    action: "run verify.sh",
+    label: "검증",
+    action: "verify.sh 실행",
     article: "II",
     feature: "statistical-tc-runner",
     hitl: "forbidden",
     detail:
-      "Runs the measurement command specified in spec.md Metric. Outputs SCORE. Variance handled by noise-aware-ratchet.",
-    writes: ["results TSV row"],
+      "spec.md Metric에 명시된 측정 명령을 실행한다. SCORE를 출력. 분산은 noise-aware-ratchet이 처리.",
+    writes: ["results TSV 행"],
     guard: "verify exit=0",
   },
   {
     n: 6,
     key: "decide",
-    label: "Decide",
+    label: "결정",
     action: "keep | discard | rework",
     article: "VI",
     feature: "noise-aware-ratchet",
     hitl: "forbidden",
     detail:
-      "composite-guard.sh = guard.sh + crosscheck.sh = 11/11 (Article VI). On discard: git revert (not reset). Ratchet uses SUM=MAX to dampen ±10 judge noise.",
-    writes: ["decision in iter-log"],
+      "composite-guard.sh = guard.sh + crosscheck.sh = 11/11 (조항 VI). 폐기 시 git revert (reset 금지). 래칫은 SUM=MAX로 ±10 저지 노이즈를 약화시킨다.",
+    writes: ["이터레이션 로그의 결정"],
     guard: "composite-guard (11/11)",
   },
   {
     n: 7,
     key: "log",
-    label: "Log",
-    action: "cadence + statusline",
+    label: "로그",
+    action: "케이던스 + 상태 줄",
     article: "VIII",
     feature: "harness-progress-cadence",
     hitl: "forbidden",
     detail:
-      "Per-iter line + (every 5) milestone block + continuous statusline. Final summary on exit. No-op on checkpoint resume.",
-    writes: ["iter-log", "statusline", "milestone block every 5"],
-    guard: "none",
+      "이터레이션 행 + (5회마다) 마일스톤 블록 + 연속 상태 줄. 종료 시 최종 요약. 체크포인트 재개 시 no-op.",
+    writes: ["이터레이션 로그", "상태 줄", "5회마다 마일스톤 블록"],
+    guard: "없음",
   },
   {
     n: 8,
     key: "repeat",
-    label: "Repeat / exit",
-    action: "→ 1 or stop condition",
+    label: "반복 / 종료",
+    action: "→ 1 또는 정지 조건",
     article: "III",
     feature: "plateau-detection",
     hitl: "gated",
     detail:
-      "Six possible exits: bounded N, goal-achieved, plateau (ratchet-patience + trend-slope under σ), operator pause, operator abandon, emergency Ctrl+C. Operator messages arrive async via /harness:send.",
-    writes: ["checkpoint on exit"],
-    guard: "stop-condition check",
+      "6개 가능한 종료: 유한 N, 목표 달성, 플래토 (ratchet-patience + trend-slope가 σ 아래), 운영자 일시 정지, 운영자 포기, 비상 Ctrl+C. 운영자 메시지는 /harness:send로 비동기 도착.",
+    writes: ["종료 시 체크포인트"],
+    guard: "정지 조건 검사",
   },
 ];
 
@@ -142,9 +142,9 @@ const HITL_COLOR: Record<Phase["hitl"], string> = {
 };
 
 const HITL_LABEL: Record<Phase["hitl"], string> = {
-  forbidden: "HITL forbidden",
-  gated: "HITL gated (carve-out)",
-  silent: "silent",
+  forbidden: "HITL 금지",
+  gated: "HITL 게이트 (예외)",
+  silent: "침묵",
 };
 
 // --- geometry helpers ---------------------------------------------------
@@ -507,7 +507,7 @@ export default function IterationPhaseRing() {
               fontSize="10"
               fill="#6b7280"
             >
-              Article {active.article}
+              조항 {active.article}
             </text>
             <text
               x={CX}
@@ -557,7 +557,7 @@ export default function IterationPhaseRing() {
           <header className="flex items-baseline justify-between gap-2">
             <div>
               <div className="text-[10px] uppercase tracking-wider text-neutral-500">
-                Phase {active.n}
+                단계 {active.n}
               </div>
               <div className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
                 {active.label}
@@ -576,7 +576,7 @@ export default function IterationPhaseRing() {
 
           <div>
             <div className="text-[10px] uppercase tracking-wider text-neutral-500">
-              Action
+              동작
             </div>
             <code className="font-mono text-[12px] text-neutral-800 dark:text-neutral-200">
               {active.action}
@@ -589,7 +589,7 @@ export default function IterationPhaseRing() {
 
           <div className="flex flex-wrap gap-2 text-[10px]">
             <span className="rounded border border-neutral-300 px-1.5 py-0.5 font-mono text-neutral-600 dark:border-neutral-700 dark:text-neutral-400">
-              Article {active.article}
+              조항 {active.article}
             </span>
             <span className="rounded border border-neutral-300 px-1.5 py-0.5 font-mono text-neutral-600 dark:border-neutral-700 dark:text-neutral-400">
               {active.feature}
@@ -598,11 +598,11 @@ export default function IterationPhaseRing() {
 
           <div>
             <div className="text-[10px] uppercase tracking-wider text-neutral-500">
-              Writes
+              쓰기
             </div>
             {active.writes.length === 0 ? (
               <div className="text-[11px] italic text-neutral-500">
-                nothing (read-only phase)
+                없음 (읽기 전용 단계)
               </div>
             ) : (
               <ul className="mt-1 space-y-0.5 text-[11.5px] text-neutral-700 dark:text-neutral-300">
@@ -618,7 +618,7 @@ export default function IterationPhaseRing() {
 
           <div>
             <div className="text-[10px] uppercase tracking-wider text-neutral-500">
-              Guard
+              가드
             </div>
             <code className="font-mono text-[11.5px] text-neutral-700 dark:text-neutral-300">
               {active.guard}
@@ -627,10 +627,10 @@ export default function IterationPhaseRing() {
 
           <footer className="mt-auto border-t border-neutral-200 pt-2 text-[10.5px] text-neutral-500 dark:border-neutral-800">
             {hover
-              ? "Hovering — click to lock"
+              ? "호버 중 — 클릭으로 고정"
               : locked
-                ? "Locked — hover to preview"
-                : "Hover or click a wedge"}
+                ? "고정됨 — 호버로 미리보기"
+                : "조각 위에 호버 또는 클릭"}
           </footer>
         </aside>
       </div>

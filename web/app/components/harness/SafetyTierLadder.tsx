@@ -19,39 +19,39 @@ type Tier = {
 const TIERS: Tier[] = [
   {
     id: "L0",
-    label: "Silent",
+    label: "침묵",
     color: "#6BA368",
-    behavior: "No interrupt, no log line. Assumes reversibility by construction.",
-    examples: ["Read file", "Edit inside Scope", "git log / git diff", "Run Verify"],
-    hitl: "none",
+    behavior: "인터럽트 없음, 로그 없음. 설계상 가역성을 가정한다.",
+    examples: ["파일 읽기", "Scope 내부 편집", "git log / git diff", "Verify 실행"],
+    hitl: "없음",
   },
   {
     id: "L1",
-    label: "Notify + 30s",
+    label: "알림 + 30초",
     color: "#D4A853",
     behavior:
-      "Statusline ping; loop blocks 30s for operator veto, then auto-approves and continues.",
+      "상태 줄 핑; 운영자의 거부를 위해 루프가 30초 블록 후 자동 승인 및 계속.",
     examples: [
-      "rm of scope-owned files",
-      "Package install",
-      "Rename directory within scope",
-      "Create new branch",
+      "Scope 소유 파일 rm",
+      "패키지 설치",
+      "Scope 내 디렉터리 이름 변경",
+      "새 브랜치 생성",
     ],
-    hitl: "advisory",
+    hitl: "권고",
   },
   {
     id: "L2",
-    label: "Pause + keystroke",
+    label: "일시 정지 + 키 입력",
     color: "#C1563E",
     behavior:
-      "Loop pauses. Requires explicit operator keystroke. Logged to report.mdx. One of the two Article III in-loop carve-outs.",
+      "루프 일시 정지. 운영자의 명시적 키 입력 필요. report.mdx에 로깅. 조항 III 루프 내부 예외 둘 중 하나.",
     examples: [
       "git push --force",
-      "rm outside Scope",
-      "sudo / release publish",
-      "Amend / delete a signed commit",
+      "Scope 밖 rm",
+      "sudo / 릴리스 publish",
+      "서명된 커밋 amend / 삭제",
     ],
-    hitl: "blocking",
+    hitl: "차단",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function SafetyTierLadder() {
           className="w-full rounded-xl border border-white/10 bg-stone-950"
           xmlns="http://www.w3.org/2000/svg"
           role="img"
-          aria-label="L0/L1/L2 safety tier ladder"
+          aria-label="L0/L1/L2 안전 등급 사다리"
         >
           <defs>
             <linearGradient id="tl-bg" x1="0" y1="0" x2="0" y2="1">
@@ -82,10 +82,10 @@ export default function SafetyTierLadder() {
           <circle cx="58" cy="36" r="4" fill="#8a7a58" />
           <circle cx="58" cy="226" r="4" fill="#8a7a58" />
           <text x="58" y="22" fill="#8a7a58" fontSize="10" textAnchor="middle">
-            safe
+            안전
           </text>
           <text x="58" y="246" fill="#8a7a58" fontSize="10" textAnchor="middle">
-            irreversible
+            비가역
           </text>
 
           {TIERS.map((t, i) => {
@@ -149,7 +149,7 @@ export default function SafetyTierLadder() {
             className="uppercase tracking-widest text-[10px] mb-1"
             style={{ color: active.color }}
           >
-            tier {active.id}
+            등급 {active.id}
           </div>
           <div className="text-lg font-semibold text-amber-200 mb-2">
             {active.label}
@@ -157,7 +157,7 @@ export default function SafetyTierLadder() {
           <p className="text-xs text-stone-400 leading-relaxed mb-3">
             {active.behavior}
           </p>
-          <div className="text-xs text-stone-500 mb-1">examples</div>
+          <div className="text-xs text-stone-500 mb-1">예시</div>
           <ul className="text-xs text-stone-300 space-y-1">
             {active.examples.map((ex) => (
               <li key={ex} className="flex gap-2">
@@ -169,9 +169,9 @@ export default function SafetyTierLadder() {
         </aside>
       </div>
       <figcaption className="text-xs text-stone-500 text-center mt-3">
-        Feature: <code className="text-amber-200">harness-graduated-confirm</code>
+        피처: <code className="text-amber-200">harness-graduated-confirm</code>
         {" · "}
-        Article III in-loop HITL carve-out.
+        조항 III 루프 내부 HITL 예외.
       </figcaption>
     </figure>
   );

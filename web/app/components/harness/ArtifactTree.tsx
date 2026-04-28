@@ -15,15 +15,15 @@ type Node = {
 };
 
 const NODES: Node[] = [
-  { name: "loops/NNN-<slug>/", kind: "dir", detail: "One directory per loop, numbered monotonically by harness-loop-scaffold.", article: "VIII" },
-  { name: "spec.md", kind: "file", detail: "Goal / Scope / Metric / direction / baseline. Declares Article references block.", article: "I" },
-  { name: "clarifications.md", kind: "file", detail: "Operator Q/A record from /harness:clarify. [ASSUMPTION] markers for implicit choices.", article: "V" },
-  { name: "plan.md", kind: "file", detail: "Approved plan from /autoresearch:plan. Entry requires ExitPlanMode.", article: "III" },
-  { name: "results.tsv", kind: "file", detail: "Per-iteration log: iter, score, delta, verdict, commit. Gitignored (reconstructable).", article: "VIII" },
-  { name: "checkpoints/", kind: "dir", detail: "Pause-resume JSON snapshots written by harness-pause-resume.", article: "III" },
-  { name: "  <ts>.json", kind: "file", detail: "Structured state at a checkpoint boundary; resumable via /harness:resume <run_id>.", article: "III" },
-  { name: "report.mdx", kind: "file", detail: "Narrative handback rendered by cc-post-loop-slash. Template-bound sections.", article: "VIII" },
-  { name: "wiki-refs.md", kind: "file", detail: "Which wiki entries this loop read AND wrote — traces knowledge lineage forward/backward.", article: "VII" },
+  { name: "loops/NNN-<slug>/", kind: "dir", detail: "루프당 디렉터리 하나, harness-loop-scaffold가 단조 증가 번호 부여.", article: "VIII" },
+  { name: "spec.md", kind: "file", detail: "Goal / Scope / Metric / direction / baseline. 조항 참조 블록을 선언.", article: "I" },
+  { name: "clarifications.md", kind: "file", detail: "/harness:clarify 의 운영자 Q/A 기록. 암묵적 선택은 [ASSUMPTION] 마커.", article: "V" },
+  { name: "plan.md", kind: "file", detail: "/autoresearch:plan 의 승인된 계획. 진입은 ExitPlanMode 필요.", article: "III" },
+  { name: "results.tsv", kind: "file", detail: "이터레이션 로그: iter, score, delta, verdict, commit. Gitignored (재구성 가능).", article: "VIII" },
+  { name: "checkpoints/", kind: "dir", detail: "harness-pause-resume이 작성하는 일시 정지/재개용 JSON 스냅샷.", article: "III" },
+  { name: "  <ts>.json", kind: "file", detail: "체크포인트 경계의 구조화된 상태; /harness:resume <run_id> 로 재개 가능.", article: "III" },
+  { name: "report.mdx", kind: "file", detail: "cc-post-loop-slash가 렌더하는 서사형 인계. 템플릿 결속 절.", article: "VIII" },
+  { name: "wiki-refs.md", kind: "file", detail: "이 루프가 읽은 위키 항목과 작성한 위키 항목 — 지식 계보를 양방향으로 추적.", article: "VII" },
 ];
 
 export default function ArtifactTree() {
@@ -56,7 +56,7 @@ export default function ArtifactTree() {
                 </span>
                 {n.article && (
                   <span className="ml-auto text-[10px] text-stone-600">
-                    Art. {n.article}
+                    조항 {n.article}
                   </span>
                 )}
               </div>
@@ -65,8 +65,8 @@ export default function ArtifactTree() {
         </div>
         <aside className="rounded-xl border border-white/10 bg-stone-900/60 p-5 text-sm">
           <div className="uppercase tracking-widest text-[10px] text-amber-400 mb-2">
-            {node.kind === "dir" ? "directory" : "file"}
-            {node.article ? ` · Article ${node.article}` : ""}
+            {node.kind === "dir" ? "디렉터리" : "파일"}
+            {node.article ? ` · 조항 ${node.article}` : ""}
           </div>
           <div className="text-base font-semibold text-amber-200 mb-3 font-mono break-all">
             {node.name.trim()}
@@ -75,7 +75,7 @@ export default function ArtifactTree() {
         </aside>
       </div>
       <figcaption className="text-xs text-stone-500 text-center mt-3">
-        Artifact tree · <code className="text-amber-200">harness/UX.md §6</code>.
+        산출물 트리 · <code className="text-amber-200">harness/UX.md §6</code>.
       </figcaption>
     </figure>
   );

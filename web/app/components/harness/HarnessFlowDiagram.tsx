@@ -33,7 +33,7 @@ const PHASES: Phase[] = [
     article: "VIII",
     feature: "harness-loop-scaffold",
     detail:
-      "Auto-increments NNN, copies loops/TEMPLATE, opens spec.md for Goal/Scope/Metric. Binds the loop to Article III–VII invariants.",
+      "NNN을 자동 증가시키고 loops/TEMPLATE을 복사하며 Goal/Scope/Metric 입력용 spec.md를 연다. 루프를 조항 III–VII 불변 조건에 결속한다.",
     hitl: "active",
   },
   {
@@ -44,7 +44,7 @@ const PHASES: Phase[] = [
     article: "V",
     feature: "harness-clarify-gate",
     detail:
-      "7-dimension ambiguity pass (D1 scope, D2 metric, D3 direction, D4 HITL, D5 stop, D6 wiki, D7 guard). Unresolved [ASSUMPTION] markers fail composite-guard.",
+      "7차원 모호성 패스 (D1 scope, D2 metric, D3 direction, D4 HITL, D5 stop, D6 wiki, D7 guard). 미해결 [ASSUMPTION] 마커는 composite-guard를 실패시킨다.",
     hitl: "active",
   },
   {
@@ -55,7 +55,7 @@ const PHASES: Phase[] = [
     article: "V",
     feature: "plan-mode-discipline",
     detail:
-      "Interactive wizard consumes clarifications.md, dry-runs verify, measures baseline. ExitPlanMode is the only legal HITL boundary into in-loop execution.",
+      "인터랙티브 위저드가 clarifications.md를 소비하고 verify를 드라이런하며 baseline을 측정한다. ExitPlanMode가 루프 내부 실행으로 들어가는 유일한 HITL 경계다.",
     hitl: "active",
   },
   {
@@ -65,7 +65,7 @@ const PHASES: Phase[] = [
     article: "VII",
     feature: "harness-constitution",
     detail:
-      "Loads CONSTITUTION.md, surfaces wiki entries by keyword, reads prior reflexion entries. First phase of every iteration.",
+      "CONSTITUTION.md를 로드하고, 키워드로 위키 항목을 표면화하며, 이전 reflexion 항목을 읽는다. 모든 이터레이션의 첫 단계.",
     hitl: "forbidden",
   },
   {
@@ -75,7 +75,7 @@ const PHASES: Phase[] = [
     article: "III",
     feature: "harness-graduated-confirm",
     detail:
-      "Ideate → Modify → Commit → Verify → Guard. L0 ops silent. L1 ops notify with 30s auto-approve. L2 ops pause + blocking HITL (one of the two Article III carve-outs).",
+      "발상 → 수정 → 커밋 → 검증 → 가드. L0 작업은 침묵. L1 작업은 30초 자동 승인 알림. L2 작업은 일시 정지 + 차단 HITL (조항 III 두 예외 중 하나).",
     hitl: "gated",
   },
   {
@@ -85,7 +85,7 @@ const PHASES: Phase[] = [
     article: "VI",
     feature: "noise-aware-ratchet",
     detail:
-      "Keep / discard / rework gated by composite-guard. Discards use git revert so the lesson stays in history (Article VIII).",
+      "composite-guard가 게이팅하는 keep / discard / rework. 폐기는 git revert로 — 교훈이 히스토리에 남는다 (조항 VIII).",
     hitl: "forbidden",
   },
   {
@@ -95,7 +95,7 @@ const PHASES: Phase[] = [
     article: "VIII",
     feature: "harness-progress-cadence",
     detail:
-      "Per-iter TSV row, milestone block every 5, statusline update. Final summary on exit with report path + wiki-refs path.",
+      "이터레이션 TSV 행, 5회마다 마일스톤 블록, 상태 줄 갱신. 종료 시 리포트 경로 + wiki-refs 경로와 함께 최종 요약.",
     hitl: "forbidden",
   },
   {
@@ -105,7 +105,7 @@ const PHASES: Phase[] = [
     article: "III",
     feature: "plateau-detection",
     detail:
-      "Loop back to Phase 1 unless bounded N reached, Goal achieved, plateau detected, or operator abandon/pause received.",
+      "유한 N 도달, 목표 달성, 플래토 감지, 또는 운영자의 포기/일시 정지를 받지 않는 한 Phase 1로 되돌아간다.",
     hitl: "gated",
   },
   {
@@ -116,7 +116,7 @@ const PHASES: Phase[] = [
     article: "VIII",
     feature: "cc-post-loop-slash",
     detail:
-      "Renders report.mdx with TL;DR, axis-coverage delta, kept/reworked/discarded experiments, L2 confirmations, wiki contributions, next steps.",
+      "TL;DR, 축 커버리지 델타, kept/reworked/discarded 실험, L2 확인, 위키 기여, 다음 단계와 함께 report.mdx를 렌더한다.",
     hitl: "active",
   },
   {
@@ -127,7 +127,7 @@ const PHASES: Phase[] = [
     article: "VII",
     feature: "harness-llm-wiki",
     detail:
-      "Agent proposes 0–N keyword-triggered entries. Operator approves/edits/rejects each. Accepted entries committed to harness/wiki/<slug>.md.",
+      "에이전트가 0–N개의 키워드 트리거 항목을 제안한다. 운영자가 각각을 승인/편집/거부. 수락된 항목은 harness/wiki/<slug>.md 에 커밋된다.",
     hitl: "active",
   },
 ];
@@ -168,7 +168,7 @@ export default function HarnessFlowDiagram() {
           className="w-full rounded-xl border border-white/10 bg-stone-950"
           xmlns="http://www.w3.org/2000/svg"
           role="img"
-          aria-label="Harness loop flow diagram"
+          aria-label="하네스 루프 플로우 다이어그램"
         >
           <defs>
             <radialGradient id="hf-bg" cx="50%" cy="50%" r="60%">
@@ -257,7 +257,7 @@ export default function HarnessFlowDiagram() {
               textAnchor="middle"
               letterSpacing="0.1em"
             >
-              PRE-LOOP
+              루프 진입 전
             </text>
             <text
               x="114"
@@ -267,7 +267,7 @@ export default function HarnessFlowDiagram() {
               opacity="0.7"
               textAnchor="middle"
             >
-              Article III · HITL OK
+              조항 III · HITL 허용
             </text>
           </g>
 
@@ -293,7 +293,7 @@ export default function HarnessFlowDiagram() {
               textAnchor="middle"
               letterSpacing="0.1em"
             >
-              POST-LOOP
+              루프 종료 후
             </text>
             <text
               x="846"
@@ -303,7 +303,7 @@ export default function HarnessFlowDiagram() {
               opacity="0.7"
               textAnchor="middle"
             >
-              Article III · HITL OK
+              조항 III · HITL 허용
             </text>
           </g>
 
@@ -343,7 +343,7 @@ export default function HarnessFlowDiagram() {
             textAnchor="middle"
             letterSpacing="0.1em"
           >
-            IN-LOOP
+            루프 내부
           </text>
           <text
             x={centerX}
@@ -353,7 +353,7 @@ export default function HarnessFlowDiagram() {
             opacity="0.7"
             textAnchor="middle"
           >
-            Article III · HITL forbidden (two carve-outs)
+            조항 III · HITL 금지 (예외 둘)
           </text>
 
           {/* Ring connector arrows between in-phases */}
@@ -420,7 +420,7 @@ export default function HarnessFlowDiagram() {
                   fontSize="9"
                   textAnchor="middle"
                 >
-                  Art. {p.article}
+                  조항 {p.article}
                 </text>
                 {i < prePhases.length - 1 && (
                   <line
@@ -547,7 +547,7 @@ export default function HarnessFlowDiagram() {
               fontSize="9"
               textAnchor="middle"
             >
-              Article III
+              조항 III
             </text>
             <text
               x={centerX}
@@ -556,7 +556,7 @@ export default function HarnessFlowDiagram() {
               fontSize="9"
               textAnchor="middle"
             >
-              (only two carve-outs)
+              (예외는 둘뿐)
             </text>
           </g>
 
@@ -579,7 +579,7 @@ export default function HarnessFlowDiagram() {
             textAnchor="middle"
             opacity="0.8"
           >
-            stop cond.
+            정지 조건
           </text>
 
           {/* Post-loop nodes */}
@@ -622,7 +622,7 @@ export default function HarnessFlowDiagram() {
                   fontSize="9"
                   textAnchor="middle"
                 >
-                  Art. {p.article}
+                  조항 {p.article}
                 </text>
                 {i < postPhases.length - 1 && (
                   <line
@@ -645,19 +645,19 @@ export default function HarnessFlowDiagram() {
             <rect width="912" height="32" rx="8" fill="#120d08" stroke="#3a2e1e" />
             <g transform="translate(16, 16)">
               <circle cx="6" cy="0" r="6" fill={HITL_COLORS.active} opacity="0.6" />
-              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL active (pre/post)</text>
+              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL 능동 (진입 전/종료 후)</text>
             </g>
             <g transform="translate(210, 16)">
               <circle cx="6" cy="0" r="6" fill={HITL_COLORS.forbidden} opacity="0.7" />
-              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL forbidden (in-loop)</text>
+              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL 금지 (루프 내부)</text>
             </g>
             <g transform="translate(420, 16)">
               <circle cx="6" cy="0" r="6" fill={HITL_COLORS.gated} opacity="0.7" />
-              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL gated (L2 carve-out)</text>
+              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL 게이트 (L2 예외)</text>
             </g>
             <g transform="translate(620, 16)">
               <rect x="-2" y="-6" width="12" height="12" rx="2" fill="#D4A853" opacity="0.35" />
-              <text x="18" y="3" fill="#c7c7c7" fontSize="10">click a node to lock the panel</text>
+              <text x="18" y="3" fill="#c7c7c7" fontSize="10">노드를 클릭해 패널 고정</text>
             </g>
           </g>
         </svg>
@@ -672,29 +672,29 @@ export default function HarnessFlowDiagram() {
             style={{ color: ZONE_COLORS[activePhase.zone] }}
           >
             {activePhase.zone === "pre"
-              ? "pre-loop"
+              ? "루프 진입 전"
               : activePhase.zone === "in"
-              ? "in-loop"
-              : "post-loop"}
+              ? "루프 내부"
+              : "루프 종료 후"}
           </div>
           <div className="text-lg font-semibold text-amber-200 mb-3">
             {activePhase.label}
           </div>
           {activePhase.command && (
             <div className="mb-3">
-              <div className="text-xs text-stone-500 mb-1">command</div>
+              <div className="text-xs text-stone-500 mb-1">명령</div>
               <code className="block bg-stone-950 border border-white/5 px-2 py-1.5 rounded text-amber-300 text-xs">
                 {activePhase.command}
               </code>
             </div>
           )}
           <div className="mb-3">
-            <div className="text-xs text-stone-500 mb-1">feature</div>
+            <div className="text-xs text-stone-500 mb-1">피처</div>
             <code className="text-xs text-amber-200">{activePhase.feature}</code>
           </div>
           <div className="mb-3">
-            <div className="text-xs text-stone-500 mb-1">article</div>
-            <div className="text-xs text-amber-100">Article {activePhase.article}</div>
+            <div className="text-xs text-stone-500 mb-1">조항</div>
+            <div className="text-xs text-amber-100">조항 {activePhase.article}</div>
           </div>
           <div className="mb-3">
             <div className="text-xs text-stone-500 mb-1">HITL</div>
@@ -713,8 +713,8 @@ export default function HarnessFlowDiagram() {
         </aside>
       </div>
       <figcaption className="text-xs text-stone-500 text-center mt-3">
-        Interactive loop diagram — hover to preview, click to lock. 10 phases ·
-        3 zones · Article III HITL boundary highlighted.
+        인터랙티브 루프 다이어그램 — 호버로 미리보기, 클릭으로 고정. 10단계 ·
+        3개 영역 · 조항 III HITL 경계 강조.
       </figcaption>
     </figure>
   );

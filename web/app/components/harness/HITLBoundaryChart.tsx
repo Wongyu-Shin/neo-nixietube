@@ -6,11 +6,11 @@
  */
 
 const SEGMENTS = [
-  { phase: "pre", width: 22, color: "#6BA368", label: "pre-loop", hitl: "active" },
+  { phase: "pre", width: 22, color: "#6BA368", label: "루프 진입 전", hitl: "active" },
   { phase: "gate", width: 4, color: "#f6c95a", label: "ExitPlanMode", hitl: "gate" },
-  { phase: "in", width: 48, color: "#D4A853", label: "in-loop (Phases 1-8 × N)", hitl: "forbidden" },
-  { phase: "gate2", width: 4, color: "#c38a60", label: "stop cond.", hitl: "gate" },
-  { phase: "post", width: 22, color: "#B8A9C9", label: "post-loop", hitl: "active" },
+  { phase: "in", width: 48, color: "#D4A853", label: "루프 내부 (단계 1–8 × N)", hitl: "forbidden" },
+  { phase: "gate2", width: 4, color: "#c38a60", label: "정지 조건", hitl: "gate" },
+  { phase: "post", width: 22, color: "#B8A9C9", label: "루프 종료 후", hitl: "active" },
 ];
 
 export default function HITLBoundaryChart() {
@@ -29,7 +29,7 @@ export default function HITLBoundaryChart() {
         className="w-full rounded-xl border border-white/10 bg-stone-950"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
-        aria-label="HITL boundary chart"
+        aria-label="HITL 경계 차트"
       >
         <defs>
           <pattern id="hitl-deny" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
@@ -46,10 +46,10 @@ export default function HITLBoundaryChart() {
 
         {/* Title */}
         <text x={viewW / 2} y="28" fill="#D4A853" fontSize="12" fontWeight="600" textAnchor="middle" letterSpacing="0.12em">
-          ARTICLE III · HITL BOUNDARY
+          조항 III · HITL 경계
         </text>
         <text x={viewW / 2} y="46" fill="#8a7a58" fontSize="10" textAnchor="middle">
-          active HITL is allowed only at the two blue bands — everything else is machine-driven
+          능동 HITL은 두 파란 띠에서만 허용된다 — 나머지는 머신 주도
         </text>
 
         {/* Bar segments */}
@@ -95,7 +95,7 @@ export default function HITLBoundaryChart() {
                     fontWeight="700"
                     opacity="0.85"
                   >
-                    NO AskUserQuestion
+                    AskUserQuestion 금지
                   </text>
                   <text
                     x={labelX}
@@ -105,7 +105,7 @@ export default function HITLBoundaryChart() {
                     textAnchor="middle"
                     opacity="0.9"
                   >
-                    carve-outs: L2 confirm · Ctrl+C
+                    예외: L2 확인 · Ctrl+C
                   </text>
                 </g>
               )}
@@ -119,7 +119,7 @@ export default function HITLBoundaryChart() {
                   fontWeight="600"
                   opacity="0.9"
                 >
-                  HITL OK
+                  HITL 허용
                 </text>
               )}
             </g>
@@ -135,16 +135,16 @@ export default function HITLBoundaryChart() {
           strokeWidth="1"
         />
         <text x={viewW / 2} y={barY - 20} fill="#8a7a58" fontSize="9" textAnchor="middle">
-          full loop lifecycle
+          루프 전체 라이프사이클
         </text>
 
         {/* Bottom note */}
         <text x={viewW / 2} y={viewH - 18} fill="#7a6850" fontSize="9" textAnchor="middle">
-          Transcript linter flags any in-loop AskUserQuestion as a protocol violation.
+          트랜스크립트 린터가 루프 내부 AskUserQuestion을 프로토콜 위반으로 표시한다.
         </text>
       </svg>
       <figcaption className="text-xs text-stone-500 text-center mt-3">
-        Article III · Features: <code className="text-amber-200">plan-mode-discipline</code>,{" "}
+        조항 III · 피처: <code className="text-amber-200">plan-mode-discipline</code>,{" "}
         <code className="text-amber-200">harness-graduated-confirm</code>,{" "}
         <code className="text-amber-200">harness-pause-resume</code>.
       </figcaption>
