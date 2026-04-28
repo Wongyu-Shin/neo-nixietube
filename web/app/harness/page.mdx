@@ -23,157 +23,146 @@ import LoopCadenceCard from '../components/harness/LoopCadenceCard'
 
 export const metadata = { title: 'Agent Harness — Overview' }
 
-# Agent Harness — Overview
+# 에이전트 하네스 — 오버뷰
 
-> A rippable, constitution-bound autoresearch harness for Claude Code.
-> Every feature in this catalog is declared against two axes — **inner/outer**
-> (who owns the surface) and **pre/in/post-loop** (which phase it gates) —
-> and carries a mechanical test that fails the moment CC absorbs it upstream.
+> Claude Code를 위한, 흡수 가능하고 헌법에 묶인 오토리서치 하네스다.
+> 이 카탈로그의 모든 피처는 두 축 — **내부/외부**(누가 표면을 소유하는가)와
+> **루프 진입 전/내부/종료 후**(어느 단계를 게이팅하는가) — 에 대해 선언되며,
+> CC가 본체로 흡수하는 순간 실패하는 기계적 테스트를 함께 가진다.
 
 <div className="my-6 grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
   <div className="rounded-md border border-stone-800 bg-stone-950/40 p-3">
-    <div className="text-[10px] uppercase tracking-wide text-stone-600">Articles</div>
+    <div className="text-[10px] uppercase tracking-wide text-stone-600">조항</div>
     <div className="text-xl font-mono text-[#D4A853] mt-1">9</div>
-    <div className="text-[11px] text-stone-500 mt-0.5">durable invariants</div>
+    <div className="text-[11px] text-stone-500 mt-0.5">지속되는 불변 조건</div>
   </div>
   <div className="rounded-md border border-stone-800 bg-stone-950/40 p-3">
-    <div className="text-[10px] uppercase tracking-wide text-stone-600">Features</div>
+    <div className="text-[10px] uppercase tracking-wide text-stone-600">피처</div>
     <div className="text-xl font-mono text-[#B8A9C9] mt-1">28</div>
-    <div className="text-[11px] text-stone-500 mt-0.5">axis-classified, rippable</div>
+    <div className="text-[11px] text-stone-500 mt-0.5">축 분류 완료, 흡수 가능</div>
   </div>
   <div className="rounded-md border border-stone-800 bg-stone-950/40 p-3">
-    <div className="text-[10px] uppercase tracking-wide text-stone-600">Axis matrix</div>
+    <div className="text-[10px] uppercase tracking-wide text-stone-600">축 매트릭스</div>
     <div className="text-xl font-mono text-[#7B9EB8] mt-1">2×3</div>
-    <div className="text-[11px] text-stone-500 mt-0.5">inner/outer × pre/in/post</div>
+    <div className="text-[11px] text-stone-500 mt-0.5">내부/외부 × 진입 전/내부/종료 후</div>
   </div>
   <div className="rounded-md border border-stone-800 bg-stone-950/40 p-3">
-    <div className="text-[10px] uppercase tracking-wide text-stone-600">HITL carve-outs</div>
+    <div className="text-[10px] uppercase tracking-wide text-stone-600">HITL 예외</div>
     <div className="text-xl font-mono text-[#C17B5E] mt-1">2</div>
-    <div className="text-[11px] text-stone-500 mt-0.5">L2 confirm + Ctrl-C</div>
+    <div className="text-[11px] text-stone-500 mt-0.5">L2 확인 + Ctrl-C</div>
   </div>
 </div>
 
-## 1. The 2×3 axis matrix
+## 1. 2×3 축 매트릭스
 
-Every feature declares `axis1 ∈ {inner, outer}` and `axis2 ∈ {pre-loop, in-loop, post-loop}`
-(**Article I**). The horizontal dashed line below is the **rippability boundary**
-(**Article II**) — outer features get absorbed as CC matures and the line migrates
-upward over time.
+모든 피처는 `axis1 ∈ {inner, outer}` 와 `axis2 ∈ {pre-loop, in-loop, post-loop}` 를
+선언한다 (**조항 I**). 아래 점선은 **흡수 가능성 경계**(**조항 II**) 이며 — CC가 성숙함에 따라
+외부 피처가 본체로 흡수되고 이 경계선은 시간이 지나며 위쪽으로 이동한다.
 
 <AxisMatrix />
 
-The distribution is not uniform: `outer × in-loop` carries 10 features
-(the longest-running phase, where most of the mechanics live), while
-`inner × post-loop` carries exactly one (`cc-post-loop-slash` — the
-report writer). A healthy harness pushes mass upward and leftward: when
-`outer × pre-loop` entries like `harness-llm-wiki` become native CC
-features, the catalog shrinks.
+분포는 균일하지 않다. `outer × in-loop` 가 10개 피처를 차지한다
+(가장 오래 지속되는 단계이며, 대부분의 메커니즘이 여기에 산다). 반면
+`inner × post-loop` 는 정확히 하나뿐이다 (`cc-post-loop-slash` — 리포트 작성기).
+건강한 하네스는 질량을 위쪽·왼쪽으로 밀어낸다. `outer × pre-loop` 항목인
+`harness-llm-wiki` 같은 피처가 CC 네이티브가 되면 카탈로그는 줄어든다.
 
-## 2. Entry → completion flow
+## 2. 진입 → 종료 플로우
 
-From `/harness:new-loop` to `report.mdx`, every loop walks the same
-ten phases. HITL policy is enforced per phase (**Article III**) — the
-top dot on each node is green (allowed), amber (carve-out only), or
-rust (forbidden).
+`/harness:new-loop` 에서 `report.mdx` 까지, 모든 루프는 동일한 10개 단계를 밟는다.
+HITL (사람 개입) 정책은 단계별로 강제된다 (**조항 III**) — 각 노드 상단의 점은
+초록(허용), 호박(예외만), 적갈(금지) 셋 중 하나다.
 
 <PhaseTimeline />
 
-The only legal HITL boundary into in-loop execution is `ExitPlanMode`
-(`plan-mode-discipline`). Once crossed, the agent forbids all
-`AskUserQuestion` calls except the two carve-outs — the transcript
-linter flags any violation post-hoc. See `harness/UX.md` §3.
+루프 내부 실행으로 들어가는 유일하게 합법적인 HITL 경계는 `ExitPlanMode` 다
+(`plan-mode-discipline`). 이 선을 넘으면 에이전트는 두 가지 예외를 제외한 모든
+`AskUserQuestion` 호출을 금지하며, 트랜스크립트 린터가 위반을 사후에 표시한다.
+`harness/UX.md` §3 을 참고한다.
 
-## 3. The nine Articles
+## 3. 9개 조항
 
-The Constitution (`harness/CONSTITUTION.md`) is the single document no
-loop can redefine. Each feature cites the Articles it implements; the
-table below is the authoritative surface.
+헌법(`harness/CONSTITUTION.md`)은 어떤 루프도 재정의할 수 없는 단일 문서다.
+각 피처는 자신이 구현하는 조항을 인용하며, 아래 표가 권위 있는 표면이다.
 
 <ConstitutionCards />
 
-Article IX is self-referential: amending the Constitution requires a
-loop whose `Scope:` is `harness/CONSTITUTION.md` alone, an explicit
-`[RATIFIED]` marker from the operator, and a re-audit of every
-feature's `applicability` field.
+조항 IX는 자기 참조적이다. 헌법을 개정하려면 `Scope:` 가 오직
+`harness/CONSTITUTION.md` 단일 파일인 루프, 운영자가 명시적으로 부여하는 `[RATIFIED]`
+마커, 그리고 모든 피처의 `applicability` 필드 재감사가 필요하다.
 
-## 4. Safety tiers — the in-loop carve-out
+## 4. 안전 등급 — 루프 내부의 예외
 
-In-loop HITL is forbidden by **Article III** with two exceptions.
-`harness-graduated-confirm` codifies the first: a three-tier split on
-reversibility + scope.
+루프 내부 HITL은 **조항 III** 에 의해 금지되며, 두 가지 예외가 있다.
+`harness-graduated-confirm` 이 첫 번째를 정의한다. 가역성과 범위를 기준으로 한
+3단계 분할이다.
 
 <SafetyTiers />
 
-L0 stays silent, L1 notifies with a 30-second auto-approve window, and
-only L2 actually pauses the loop — the operator's explicit keystroke is
-required, and the event is logged to `report.mdx`. The second carve-out
-is `Ctrl+C` (lossy emergency stop).
+L0는 침묵을 유지하고, L1은 30초 자동 승인 창과 함께 알림을 띄우며, 실제로 루프를
+일시 정지시키는 것은 L2 뿐이다. 운영자의 명시적 키 입력이 요구되고, 이 이벤트는
+`report.mdx` 에 기록된다. 두 번째 예외는 `Ctrl+C` (손실을 감수하는 비상 정지) 다.
 
-## 5. Progress cadence
+## 5. 진행 케이던스
 
-Four visibility channels run in parallel during every in-loop iteration.
-None of them asks the operator for input — visibility without HITL is
-the whole point of `harness-progress-cadence`.
+루프 내부 매 이터레이션 동안 4개의 가시성 채널이 병렬로 동작한다. 그중 어느 것도
+운영자에게 입력을 요구하지 않는다 — HITL 없는 가시성, 그것이 `harness-progress-cadence`
+의 핵심이다.
 
 <LoopCadenceCard />
 
-The statusline entry is persistent at the bottom of the terminal so
-the operator can glance-monitor without scrolling. `gcli-agent-run-telemetry`
-additionally emits one event per iteration for off-box audit.
+상태 줄 항목은 터미널 하단에 영구적으로 자리 잡아, 운영자가 스크롤 없이 한눈에
+모니터링하도록 한다. `gcli-agent-run-telemetry` 는 추가로 이터레이션마다 1개 이벤트를
+발행해 외부 감사를 가능하게 한다.
 
-## 6. Persistence layers
+## 6. 영속 계층
 
-The wiki (`harness/wiki/*.md`, implementing **Article VII**) is the
-only layer that is *project-scoped, cross-loop, committable, and
-keyword-triggered*. Everything else leaks — user memory is cross-repo,
-CLAUDE.md floods every session, research notes require explicit reads.
+위키(`harness/wiki/*.md`, **조항 VII** 를 구현)는 *프로젝트 범위, 루프 횡단, 커밋
+가능, 키워드 트리거* 라는 네 속성을 모두 갖춘 유일한 계층이다. 그 외는 모두 누수된다.
+사용자 메모리는 레포 간 횡단이고, CLAUDE.md는 모든 세션에 범람하며, 리서치 노트는
+명시적인 읽기를 요구한다.
 
 <PersistenceLayers />
 
-Writing to the wiki is a post-loop operator gesture (`/harness:wiki-add`);
-reading from it happens automatically at SessionStart, via the
-`wiki-surface` inner skill that tokenizes the operator's first message
-and surfaces top-3 matches as `<system-reminder>` blocks with citations.
-Half-life tracking (`last_verified + half_life_days`) surfaces stale
-entries with a warning.
+위키 쓰기는 루프 종료 후 운영자의 동작이다 (`/harness:wiki-add`). 읽기는 SessionStart
+시점에 자동으로 일어나는데, `wiki-surface` 내부 스킬이 운영자의 첫 메시지를 토큰화하고
+상위 3개 매치를 인용과 함께 `<system-reminder>` 블록으로 표면화한다. 반감기 추적
+(`last_verified + half_life_days`)은 노후화된 항목을 경고와 함께 노출시킨다.
 
-## 7. Stop conditions
+## 7. 정지 조건
 
-A loop stops on exactly one of five triggers. Three are automatic;
-two require the operator.
+루프는 정확히 5개 트리거 중 하나에서 정지한다. 셋은 자동, 둘은 운영자가 요구된다.
 
-| # | Trigger | Feature |
+| # | 트리거 | 피처 |
 |---|---|---|
-| 1 | `Iterations: N` in spec reached | `harness-progress-cadence` |
-| 2 | Goal-achieved (metric hits target) | fix-mode / `autoresearch:fix` |
-| 3 | Plateau (patience AND slope both fire) | `plateau-detection` |
-| 4 | Operator abandon | `harness-pause-resume` (`/harness:abandon`) |
-| 5 | Operator emergency | `Ctrl+C` (Article III carve-out 2) |
+| 1 | 스펙의 `Iterations: N` 도달 | `harness-progress-cadence` |
+| 2 | 목표 달성 (메트릭이 타깃에 도달) | fix 모드 / `autoresearch:fix` |
+| 3 | 플래토 (patience와 slope 둘 다 발화) | `plateau-detection` |
+| 4 | 운영자의 포기 | `harness-pause-resume` (`/harness:abandon`) |
+| 5 | 운영자의 비상 | `Ctrl+C` (조항 III 예외 2) |
 
-Discards inside the loop use `git revert`, not `git reset --hard`
-(**Article VIII**) — every candidate stays in history as a lesson.
+루프 내부의 폐기는 `git reset --hard` 가 아니라 `git revert` 를 사용한다
+(**조항 VIII**) — 모든 후보는 교훈으로서 히스토리에 남는다.
 
-## 8. Where to go next
+## 8. 다음으로 갈 곳
 
-- **[Feature catalog](/harness/catalog)** — all 28 entries with full
-  frontmatter, `rippable_check` text, and applicability bounds.
-- **[Flow walkthrough](/harness/flow)** — the `harness/UX.md` flow
-  rendered with interactive phase detail.
-- **[Constitution](/harness/constitution)** — full text of all nine
-  Articles with inline feature links.
-- **[LLM-wiki](/harness/wiki)** — live view of `harness/wiki/*.md`
-  entries, triggers, and half-life.
+- **[피처 카탈로그](/harness/catalog)** — 28개 항목 전체. 프론트매터, `rippable_check`
+  텍스트, 적용 범위까지.
+- **[플로우 워크스루](/harness/flow)** — `harness/UX.md` 플로우를 인터랙티브 단계
+  상세와 함께 렌더.
+- **[헌법](/harness/constitution)** — 9개 조항 전문, 인라인 피처 링크 포함.
+- **[LLM 위키](/harness/wiki)** — `harness/wiki/*.md` 항목, 트리거, 반감기의 라이브 뷰.
 
-The catalog is exhaustive: every UX primitive in `harness/UX.md` §9 maps
-to at least one of the 28 features. Nothing is purely theoretical; each
-is load-bearing for some concrete operator experience.
+카탈로그는 망라적이다. `harness/UX.md` §9 의 모든 UX 프리미티브가 28개 피처 중 적어도
+하나에 매핑된다. 어느 것도 순수 이론이 아니며, 모두가 어떤 구체적인 운영자 경험을
+지지하는 하중 부재다.
 
 ---
 
-## 9. Appendix — cross-component thumbnails
+## 9. 부록 — 컴포넌트 교차 썸네일
 
-Each thumbnail below previews a component fully expanded on its
-dedicated page. Click through for the interactive version.
+아래 각 썸네일은 자체 페이지에 풀로 펼쳐진 컴포넌트의 미리보기다. 인터랙티브 버전은
+클릭해서 본다.
 
 import InLoopTick from '../components/harness/InLoopTick'
 import StopConditionsChart from '../components/harness/StopConditionsChart'
@@ -185,28 +174,28 @@ import AmendmentProcedureFlow from '../components/harness/AmendmentProcedureFlow
 import AxisMatrix2x3 from '../components/harness/AxisMatrix2x3'
 import KnowledgeStack from '../components/harness/KnowledgeStack'
 
-### In-loop tick (preview of `flow` page)
+### 루프 내부 틱 (`flow` 페이지 미리보기)
 <InLoopTick />
 
-### Stop conditions overview
+### 정지 조건 개요
 <StopConditionsChart />
 
-### Ratchet trajectory
+### 래칫 궤적
 <RatchetTimeline />
 
-### Clarify-gate dimensions (D1–D7)
+### 클래리파이 게이트 차원 (D1–D7)
 <ClarifyDimensionsRadar />
 
-### Article weave (constitution preview)
+### 조항 위빙 (헌법 미리보기)
 <ArticleWeave />
 
-### Article badge: <ArticleBadge n="VI" status="enforced" />
+### 조항 배지: <ArticleBadge n="VI" status="enforced" />
 
-### Amendment procedure (full version on `/constitution`)
+### 개정 절차 (전체 버전은 `/constitution`)
 <AmendmentProcedureFlow />
 
-### Axis matrix (compact 2×3)
+### 축 매트릭스 (컴팩트 2×3)
 <AxisMatrix2x3 />
 
-### Persistence-layer stack (preview of `/wiki` §1)
+### 영속 계층 스택 (`/wiki` §1 미리보기)
 <KnowledgeStack />
