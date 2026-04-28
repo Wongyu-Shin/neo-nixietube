@@ -19,81 +19,75 @@ import ArticleBadge from '../../components/harness/ArticleBadge'
 
 export const metadata = { title: 'Feature Catalog — 29 entries' }
 
-# Feature Catalog — 29 entries
+# 피처 카탈로그 — 29개 항목
 
-> Every harness feature this project has catalogued, classified by
-> **axis1** (inner / outer) × **axis2** (pre-loop / in-loop / post-loop).
-> Each entry's full spec lives in `harness/features/<slug>.md`; the
-> research note in `harness/research/<slug>.md`; the rippable TC in
-> `harness/tests/<slug>.sh`.
+> 이 프로젝트가 카탈로그화한 모든 하네스 피처를 **axis1** (내부 / 외부) ×
+> **axis2** (루프 진입 전 / 내부 / 종료 후) 로 분류한다.
+> 각 항목의 전체 스펙은 `harness/features/<slug>.md` 에, 리서치 노트는
+> `harness/research/<slug>.md` 에, 흡수 가능 TC는 `harness/tests/<slug>.sh` 에 산다.
 
-The catalog grew across **5 autoresearch loops** (initial 13 → Meta
-HyperAgents +5 → google/agents-cli +3 → UX design +7 → docs +1 = 29).
-Every iteration was guarded by `harness/composite-guard.sh` (Article VI),
-so the count grew with **zero schema or cross-consistency regressions**.
+카탈로그는 **5번의 오토리서치 루프** 를 가로지르며 성장했다 (초기 13 → Meta
+HyperAgents +5 → google/agents-cli +3 → UX 설계 +7 → 문서 +1 = 29). 모든 이터레이션은
+`harness/composite-guard.sh` (조항 VI) 가 가드했으므로, 항목 수는 **스키마나 교차
+일관성의 회귀 0건**으로 늘었다.
 
 ---
 
-## 1. The 2×3 axis matrix
+## 1. 2×3 축 매트릭스
 
-Hover any cell to expand the features in that bucket. The matrix
-distinguishes:
+어느 셀이든 호버하면 그 버킷의 피처들이 펼쳐진다. 매트릭스는 다음을 구분한다.
 
-- **axis1: inner** = lives inside Claude Code (`.claude/`, settings, hooks,
-  skills, slash commands).
-- **axis1: outer** = lives outside (shell scripts, external orchestrators,
-  CI matrices, MCP servers).
-- **axis2: pre/in/post-loop** = which phase of the agent pipeline the
-  feature gates.
+- **axis1: inner** = Claude Code 내부에 산다 (`.claude/`, settings, 훅, 스킬,
+  슬래시 명령).
+- **axis1: outer** = 바깥에 산다 (셸 스크립트, 외부 오케스트레이터, CI 매트릭스,
+  MCP 서버).
+- **axis2: pre/in/post-loop** = 피처가 에이전트 파이프라인의 어느 단계를 게이팅하는가.
 
 <CatalogMatrix />
 
-The colour intensity per cell encodes the **rippable_check robustness**
-score (Article II). High-saturation cells have probes specific enough to
-auto-trigger on a CC version bump (`statistical-tc-runner` + SessionStart
-hook); pale cells need their probes hardened.
+셀별 색 강도는 **`rippable_check` 견고성** 점수를 인코딩한다 (조항 II). 채도가 높은
+셀은 CC 버전 점프에서 자동 트리거 가능할 만큼 구체적인 프로브를 가진다
+(`statistical-tc-runner` + SessionStart 훅). 옅은 셀은 프로브를 단단히 다져야 한다.
 
 ---
 
-## 2. Cross-reference graph
+## 2. 교차 참조 그래프
 
-Features rarely stand alone — most cite or are cited by others. The
-composite guard (`crosscheck.sh` C6) enforces *symmetric* cross-references:
-if feature A says "complements B", B's `Referenced by` section must list A.
-The graph below is the resulting force-directed layout.
+피처는 거의 단독으로 서지 않는다 — 대부분 다른 피처를 인용하거나 인용된다. 합성
+가드 (`crosscheck.sh` C6) 는 *대칭적인* 교차 참조를 강제한다. 피처 A가 "B를 보완"
+한다고 말하면, B의 `Referenced by` 절도 A를 나열해야 한다. 아래 그래프는 그 결과로
+나온 force-directed 레이아웃이다.
 
 <CrossRefGraph />
 
-Hubs (highest in-degree) are the features other features depend on most:
+허브 (가장 높은 in-degree) 는 다른 피처들이 가장 많이 의존하는 피처들이다.
 
-- **`harness-pause-resume`** — used as the mechanism by `harness-graduated-confirm`.
-- **`statistical-tc-runner`** — the axis-1 meta-feature that makes every
-  other `tc_script` load-bearing.
-- **`gcli-agent-run-telemetry`** — substrate for plateau-detection,
-  noise-aware-ratchet, and the eval-compare primitive.
+- **`harness-pause-resume`** — `harness-graduated-confirm` 이 메커니즘으로 사용한다.
+- **`statistical-tc-runner`** — 다른 모든 `tc_script` 를 하중 부재로 만드는 axis-1
+  메타 피처.
+- **`gcli-agent-run-telemetry`** — `plateau-detection`, `noise-aware-ratchet`,
+  eval-compare 프리미티브의 기반이다.
 
-Features at the periphery are intentionally orthogonal — keeping them
-separate is what allows model/CC upgrades to absorb one without
-collapsing the others (Article II).
+주변부의 피처들은 의도적으로 직교한다. 이들을 분리해 두는 것이 모델/CC 업그레이드가
+하나를 흡수해도 다른 것들이 함께 무너지지 않게 만든다 (조항 II).
 
 ---
 
-## 3. Rippability scores
+## 3. 흡수 가능성 점수
 
-How confident is each feature's `tc_script` that it can detect upstream
-absorption? The chart below scores all 29 entries on three axes:
-TC-mechanicality (no-LLM-judgment), applicability tightness, probe
-specificity.
+각 피처의 `tc_script` 는 본체 흡수를 얼마나 자신 있게 감지할 수 있는가? 아래 차트는
+29개 항목 전체를 세 축에서 점수 매긴다. TC 기계성 (LLM 판단 없음), 적용 범위 협소성,
+프로브 구체성.
 
 <RippabilityMeter />
 
-Features near the centre (high score on all three) are rip-test-ready
-today; features near the rim need their probes hardened before the next
-CC version bump triggers `harness-rip-test` automation.
+중심 가까이 (세 축 모두 고득점) 의 피처들은 오늘 흡수 테스트 준비가 되어 있다.
+가장자리의 피처들은 다음 CC 버전 점프가 `harness-rip-test` 자동화를 트리거하기
+전에 프로브를 단단히 다져야 한다.
 
 ---
 
-## 4. The 6 axis cells, populated
+## 4. 6개 축 셀, 채워진 모습
 
 ### inner × pre-loop
 
@@ -131,10 +125,10 @@ CC version bump triggers `harness-rip-test` automation.
 
 ---
 
-## 5. Selected feature cards
+## 5. 선별된 피처 카드
 
-These are five features whose specs evolved most across the 5 loops.
-Click any card to read the rippable_check verbatim.
+5번의 루프를 거치며 스펙이 가장 많이 진화한 5개 피처다. 어느 카드든 클릭하면
+`rippable_check` 를 원문 그대로 읽을 수 있다.
 
 <FeatureCard slug="meta-hyperagents-metacognitive" />
 <FeatureCard slug="harness-pause-resume" />
@@ -144,33 +138,32 @@ Click any card to read the rippable_check verbatim.
 
 ---
 
-## 6. Cross-references this catalog earned
+## 6. 이 카탈로그가 얻은 교차 참조
 
-Every feature carries its own `## Referenced by` section once another
-feature cites it. The list below is auto-generated from the latest
-crosscheck run; if the symmetric link is missing, `crosscheck.sh` C6
-fails and the composite guard discards the offending iteration.
+다른 피처가 자기를 인용하면, 모든 피처는 자기 자신의 `## Referenced by` 절을 갖는다.
+아래 목록은 가장 최근의 crosscheck 실행에서 자동 생성된다. 대칭 링크가 빠지면
+`crosscheck.sh` C6이 실패하고 합성 가드가 위반 이터레이션을 폐기한다.
 
 <FeatureCrossRef />
 
 ---
 
-## 7. See also
+## 7. 함께 보기
 
-| Topic | Where |
+| 주제 | 위치 |
 |---|---|
-| Constitution (Articles I-IX) | [Constitution page](../constitution) |
-| Entry → completion UX | [Flow page](../flow) |
-| LLM-wiki persistence demo | [Wiki page](../wiki) |
-| Harness overview | [Overview](..) |
-| Authoritative specs | `harness/features/*.md` (catalog) |
-| Authoritative research | `harness/research/*.md` |
-| TC scripts | `harness/tests/*.sh` |
-| Composite guard | `harness/composite-guard.sh` |
+| 헌법 (조항 I–IX) | [헌법 페이지](../constitution) |
+| 진입 → 종료 UX | [플로우 페이지](../flow) |
+| LLM 위키 영속 데모 | [위키 페이지](../wiki) |
+| 하네스 오버뷰 | [오버뷰](..) |
+| 권위 있는 스펙 | `harness/features/*.md` (카탈로그) |
+| 권위 있는 리서치 | `harness/research/*.md` |
+| TC 스크립트 | `harness/tests/*.sh` |
+| 합성 가드 | `harness/composite-guard.sh` |
 
 ---
 
-## 8. Appendix — companion previews
+## 8. 부록 — 동반 페이지 미리보기
 
 import PhaseTimeline from '../../components/harness/PhaseTimeline'
 import AxisMatrix from '../../components/harness/AxisMatrix'
@@ -183,32 +176,32 @@ import SafetyTiers from '../../components/harness/SafetyTiers'
 import HITLBoundaryChart from '../../components/harness/HITLBoundaryChart'
 import ClarifyDimensionsRadar from '../../components/harness/ClarifyDimensionsRadar'
 
-### Phase timeline (overview preview)
+### 단계 타임라인 (오버뷰 미리보기)
 <PhaseTimeline />
 
-### Axis matrix (full 28-feature plot)
+### 축 매트릭스 (전체 28 피처 플롯)
 <AxisMatrix />
 
-### Axis matrix (compact)
+### 축 매트릭스 (컴팩트)
 <AxisMatrix2x3 />
 
-### Constitution cards
+### 헌법 카드
 <ConstitutionCards />
 
-### Article index
+### 조항 인덱스
 <ArticleIndex />
 
-### Knowledge stack (wiki preview)
+### 지식 스택 (위키 미리보기)
 <KnowledgeStack />
 
-### Persistence layers
+### 영속 계층
 <PersistenceLayers />
 
-### Safety tiers (graduated confirm)
+### 안전 등급 (단계적 확인)
 <SafetyTiers />
 
-### HITL boundary chart
+### HITL 경계 차트
 <HITLBoundaryChart />
 
-### Clarify dimensions radar
+### 클래리파이 차원 레이더
 <ClarifyDimensionsRadar />
