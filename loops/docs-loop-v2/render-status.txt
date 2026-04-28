@@ -1,0 +1,8 @@
+ALL_PASS=1
+overview      OK title="Agent Harness — Overview"               console_errors=0
+constitution  OK title="Harness Constitution — 9 Articles"      console_errors=0
+flow          OK title="Harness UX Flow — Entry to Completion"  console_errors=0
+wiki          OK title="LLM-Wiki — Keyword-Triggered Knowledge" console_errors=0
+catalog       OK title="Feature Catalog — 29 entries"           console_errors=0
+verified_at=2026-04-28
+verifier=mcp__claude-in-chrome
