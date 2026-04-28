@@ -77,54 +77,17 @@ else
     fail=$((fail+1))
 fi
 
-# --- G3 glossary consistency ---
+# --- G3 glossary consistency (advisory; bash 3.x compatible) ---
 echo "=== G3 glossary ==="
-# Extract glossary mappings: lines like `| English | 한국어 | ... |` from the
-# 핵심 용어 매핑 table.
-mapfile -t MAPPINGS < <(awk '
-    /^## 핵심 용어 매핑/ {in_table=1; next}
-    in_table && /^## / {in_table=0}
-    in_table && /^\| / && !/^\| English/ && !/^\|---/ {
-        # Split on |, fields 2 and 3 are en and ko
-        n=split($0, a, /[[:space:]]*\|[[:space:]]*/)
-        if (n>=4) {
-            en=a[2]; ko=a[3]
-            gsub(/`/, "", en); gsub(/`/, "", ko)
-            if (en!="" && ko!="" && en!="English") print en "\t" ko
-        }
-    }
-' "$GLOSSARY")
-
-g3_fail=0
-declare -A SEEN_KO
-for entry in "${MAPPINGS[@]}"; do
-    en="${entry%%$'\t'*}"
-    ko="${entry##*$'\t'}"
-    # Skip multi-token mappings with slashes — they have context-dependent rules.
-    [[ "$en" == */* ]] && continue
-    [[ "$ko" == */* ]] && continue
-    [ -z "$en" ] || [ -z "$ko" ] && continue
-
-    # For each page, check if BOTH the English term (in prose) AND a different
-    # Korean rendering coexist. Inconsistent renderings are the failure.
-    inconsistent_pages=()
-    for slug in "${PAGES[@]}"; do
-        cur=$(page_path "$slug")
-        # Strip code fences and import lines for prose-level check.
-        prose=$(awk '
-            /^```/ {fence=!fence; next}
-            fence {next}
-            /^import / {next}
-            {print}
-        ' "$cur")
-        # Heuristic: if the page contains the mapped Korean ko, fine.
-        # If page contains the English en in prose without ko anywhere, that
-        # is a missed translation (soft warning, not a fail — fidelity is the
-        # GAN's job; the guard only fails on cross-page *inconsistency*).
-        :
-    done
-done
-echo "G3=PASS glossary (cross-page consistency check is advisory in v1; tighten in iter ≥3)"
+# Cross-page consistency check is intentionally lightweight in v1: we just
+# verify the glossary file exists and has at least the required structure.
+# Tighter cross-page Korean-rendering enforcement is deferred to iter ≥3
+# (see harness/glossary-ko.md '다음 갱신 트리거').
+if [ -f "$GLOSSARY" ] && grep -q '^## 핵심 용어 매핑' "$GLOSSARY"; then
+    echo "G3=PASS glossary (advisory — file present, mapping table found)"
+else
+    echo "G3=WARN glossary (file or mapping table missing)" >&2
+fi
 
 # --- Aggregate ---
 echo "==="
