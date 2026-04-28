@@ -35,3 +35,5 @@ loops/docs-*/results.tsv
 loops/docs-*/iter*
 loops/docs-*/tmux.out.log
 loops/docs-*/thresholds.txt
+autoresearch-harness-stages-results.tsv
+loops/docs-loop-v2/stage-status.txt
