@@ -43,3 +43,7 @@ loops/docs-loop-translate/gan-translate-*.txt
 loops/docs-loop-translate/prev-scores-*.txt
 loops/docs-loop-translate/ratchet.txt
 autoresearch-translate-results.tsv
+
+# Component translation loop state
+loops/docs-loop-translate-comp/baseline-residue.txt
+autoresearch-comp-translate-results.tsv
