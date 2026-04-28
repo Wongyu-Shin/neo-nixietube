@@ -12,48 +12,48 @@ type Node = {
   color: string;
 };
 
-const CENTER = { id: "harness-llm-wiki", label: "harness-llm-wiki", role: "Article VII" };
+const CENTER = { id: "harness-llm-wiki", label: "harness-llm-wiki", role: "조항 VII" };
 
 const LINKS: Node[] = [
   {
     id: "cc-post-loop-slash",
     label: "cc-post-loop-slash",
-    role: "write-mechanic host",
+    role: "쓰기 메커니즘 호스트",
     angle: -90,
     color: "#6BA368",
   },
   {
     id: "gcli-agent-run-telemetry",
     label: "gcli-agent-run-telemetry",
-    role: "citation audit",
+    role: "인용 감사",
     angle: -25,
     color: "#7B9EB8",
   },
   {
     id: "harness-constitution",
     label: "harness-constitution",
-    role: "Article VII mandate",
+    role: "조항 VII 의무",
     angle: 40,
     color: "#D4A853",
   },
   {
     id: "voyager-skill-library",
     label: "voyager-skill-library",
-    role: "non-overlap (skills ≠ facts)",
+    role: "비중첩 (스킬 ≠ 사실)",
     angle: 110,
     color: "#B8A9C9",
   },
   {
     id: "harness-rip-test",
     label: "harness-rip-test",
-    role: "rippable probe runner",
+    role: "흡수 가능 프로브 러너",
     angle: 180,
     color: "#C17B5E",
   },
   {
     id: "harness-progress-cadence",
     label: "harness-progress-cadence",
-    role: "surfaces wiki-hits inline",
+    role: "위키 히트 인라인 표면화",
     angle: -155,
     color: "#FF8C42",
   },
@@ -75,7 +75,7 @@ export default function FeatureCrossRef() {
     <figure className="my-8 rounded-2xl border border-stone-800 bg-stone-950/60 p-4 sm:p-5">
       <div className="mb-2 flex items-baseline justify-between gap-3 flex-wrap">
         <div className="text-xs font-mono uppercase tracking-wider text-stone-400">
-          cross-reference graph
+          교차 참조 그래프
         </div>
         <div className="text-[10px] font-mono text-stone-500">
           features/harness-llm-wiki.md §Integrates-with
@@ -86,7 +86,7 @@ export default function FeatureCrossRef() {
         viewBox={`0 0 ${W} ${H}`}
         className="w-full h-auto"
         role="img"
-        aria-label="harness-llm-wiki integration graph"
+        aria-label="harness-llm-wiki 통합 그래프"
       >
         <defs>
           <radialGradient id="fcr-halo" cx="50%" cy="50%" r="50%">
@@ -210,10 +210,9 @@ export default function FeatureCrossRef() {
       </svg>
 
       <figcaption className="mt-2 text-[11px] text-stone-500 leading-relaxed">
-        Edges are named integrations declared in the feature frontmatter and
-        in the <code>Contrast</code> section of the research note.{" "}
-        <em>voyager-skill-library</em> is deliberately a non-overlap link —
-        skills ≠ facts.
+        간선은 피처 프론트매터와 리서치 노트의 <code>Contrast</code> 절에 명시된
+        명명된 통합이다. <em>voyager-skill-library</em> 는 의도적으로 비중첩 링크다 —
+        스킬 ≠ 사실.
       </figcaption>
     </figure>
   );

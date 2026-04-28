@@ -20,39 +20,39 @@ type Layer = {
 const LAYERS: Layer[] = [
   {
     id: "user",
-    title: "User memory",
+    title: "사용자 메모리",
     path: "~/.claude/.../memory/*.md",
-    scope: "cross-repo",
-    trigger: "always loaded",
+    scope: "레포 횡단",
+    trigger: "항상 로드",
     color: "#B8A9C9",
-    note: "Persists across every project. Great for who-you-are facts; bad for project-specific nuance.",
+    note: "모든 프로젝트를 가로질러 영속한다. 사용자 정체성 사실에는 좋지만, 프로젝트별 미묘함에는 부적합.",
   },
   {
     id: "claude-md",
     title: "CLAUDE.md",
     path: "repo-root/CLAUDE.md",
-    scope: "project",
-    trigger: "always loaded",
+    scope: "프로젝트",
+    trigger: "항상 로드",
     color: "#7B9EB8",
-    note: "Loaded in every session for this repo. Avoid for facts that matter only in specific contexts.",
+    note: "이 레포의 모든 세션에서 로드된다. 특정 맥락에서만 의미 있는 사실은 피하라.",
   },
   {
     id: "wiki",
-    title: "Harness wiki",
+    title: "하네스 위키",
     path: "harness/wiki/<slug>.md",
-    scope: "project",
-    trigger: "keyword-triggered",
+    scope: "프로젝트",
+    trigger: "키워드 트리거",
     color: "#6BA368",
-    note: "Article VII. Committable, scoped, surfaced only when message tokens match entry triggers.",
+    note: "조항 VII. 커밋 가능, 범위 제한, 메시지 토큰이 항목 트리거에 매칭될 때만 표면화된다.",
   },
   {
     id: "research",
-    title: "Research notes",
+    title: "리서치 노트",
     path: "harness/research/*.md",
-    scope: "project",
-    trigger: "explicit read",
+    scope: "프로젝트",
+    trigger: "명시적 읽기",
     color: "#D4A853",
-    note: "Long-form citations + design rationale. Never auto-surfaced; agent reads on demand.",
+    note: "장문 인용 + 설계 근거. 자동 표면화되지 않는다; 에이전트가 요청 시 읽는다.",
   },
 ];
 
@@ -63,10 +63,10 @@ export default function KnowledgeStack() {
     <figure className="my-8 rounded-2xl border border-stone-800 bg-stone-950/60 p-5">
       <div className="mb-3 flex items-baseline justify-between gap-3 flex-wrap">
         <div className="text-xs font-mono uppercase tracking-wider text-stone-400">
-          4-layer persistence stack
+          4계층 영속 스택
         </div>
         <div className="text-[10px] font-mono text-stone-500">
-          constitution · Article VII
+          헌법 · 조항 VII
         </div>
       </div>
 
@@ -162,9 +162,8 @@ export default function KnowledgeStack() {
       </div>
 
       <figcaption className="mt-3 text-[11px] text-stone-500 leading-relaxed">
-        Hover or tap a layer. Only <em>harness wiki</em> (L2) uses keyword-triggered
-        surfacing &mdash; this gap is the motivation for <code>harness-llm-wiki</code>
-        (Article VII).
+        계층 위에 호버하거나 탭한다. 키워드 트리거 표면화는 오직 <em>하네스 위키</em>(L2) 만이
+        사용한다 &mdash; 바로 이 공백이 <code>harness-llm-wiki</code>(조항 VII)의 동기다.
       </figcaption>
     </figure>
   );

@@ -17,65 +17,65 @@ type Step = {
 const READ_STEPS: Step[] = [
   {
     id: "r1",
-    label: "SessionStart hook fires",
-    detail: "wiki-surface SKILL.md reads the operator's initial message + last N lines of transcript.",
+    label: "SessionStart 훅 발동",
+    detail: "wiki-surface SKILL.md가 운영자의 첫 메시지 + 트랜스크립트 마지막 N줄을 읽는다.",
     cite: ".claude/skills/wiki-surface/SKILL.md",
   },
   {
     id: "r2",
-    label: "Tokenize + lowercase",
-    detail: "split on non-alphanum; discard ≤1-char tokens; preserve kebab-case hyphens.",
+    label: "토큰화 + 소문자화",
+    detail: "비영숫자에서 분리; 1자 이하 토큰 폐기; kebab-case 하이픈은 보존.",
     cite: "scripts/harness/wiki_match.sh",
   },
   {
     id: "r3",
-    label: "Score every entry",
-    detail: "count trigger overlap per harness/wiki/*.md entry.",
-    cite: "feature harness-llm-wiki",
+    label: "모든 항목 점수화",
+    detail: "harness/wiki/*.md 항목별로 트리거 겹침 카운트.",
+    cite: "피처 harness-llm-wiki",
   },
   {
     id: "r4",
-    label: "Cap top-3, inject <system-reminder>",
-    detail: "stale entries still surface, tagged restale-due.",
-    cite: "Article VII",
+    label: "상위 3개 제한, <system-reminder> 주입",
+    detail: "노후 항목도 표면화되며 restale-due 태그가 붙는다.",
+    cite: "조항 VII",
   },
   {
     id: "r5",
-    label: "Log usage",
-    detail: "gcli-agent-run-telemetry records which entries the agent cited during the loop.",
-    cite: "feature gcli-agent-run-telemetry",
+    label: "사용 로그",
+    detail: "gcli-agent-run-telemetry가 루프 도중 에이전트가 인용한 항목을 기록.",
+    cite: "피처 gcli-agent-run-telemetry",
   },
 ];
 
 const WRITE_STEPS: Step[] = [
   {
     id: "w1",
-    label: "Post-loop reporter prompt",
-    detail: "cc-post-loop-slash asks: 'What should the wiki remember from this loop?'",
-    cite: "feature cc-post-loop-slash",
+    label: "루프 종료 후 리포터 프롬프트",
+    detail: "cc-post-loop-slash가 묻는다: '이 루프에서 위키가 기억할 만한 것은?'",
+    cite: "피처 cc-post-loop-slash",
   },
   {
     id: "w2",
-    label: "Agent drafts candidate entries",
-    detail: "0-N entries with slug, triggers, body, proposed half_life_days.",
+    label: "에이전트가 후보 항목 작성",
+    detail: "슬러그, 트리거, 본문, 제안 half_life_days를 가진 0–N개 항목.",
     cite: "/harness:wiki-add",
   },
   {
     id: "w3",
-    label: "Operator review",
-    detail: "approve / edit / reject each candidate interactively (pre-/post-loop HITL is allowed — Article III).",
-    cite: "Article III",
+    label: "운영자 리뷰",
+    detail: "각 후보를 인터랙티브하게 승인/편집/거부 (루프 진입 전/종료 후 HITL은 허용 — 조항 III).",
+    cite: "조항 III",
   },
   {
     id: "w4",
-    label: "Commit",
-    detail: "accepted entries committed to harness/wiki/<slug>.md; iteration logged to results.tsv.",
-    cite: "Article VIII (git-is-memory)",
+    label: "커밋",
+    detail: "수락된 항목을 harness/wiki/<slug>.md 에 커밋; 이터레이션은 results.tsv 에 로깅.",
+    cite: "조항 VIII (git이 곧 메모리)",
   },
   {
     id: "w5",
-    label: "Lineage log",
-    detail: "loops/NNN-<slug>/wiki-refs.md records what this loop read AND wrote.",
+    label: "계보 로그",
+    detail: "loops/NNN-<slug>/wiki-refs.md가 이 루프가 읽은 것과 쓴 것을 기록한다.",
     cite: "UX §6",
   },
 ];
@@ -88,7 +88,7 @@ export default function ReadWriteFlow() {
     <figure className="my-8 rounded-2xl border border-stone-800 bg-stone-950/60 p-5">
       <div className="mb-4 flex items-center justify-between gap-3 flex-wrap">
         <div className="text-xs font-mono uppercase tracking-wider text-stone-400">
-          read / write flow
+          읽기 / 쓰기 플로우
         </div>
         <div
           className="inline-flex rounded-lg border border-stone-700 bg-stone-900/70 p-0.5"
@@ -104,7 +104,7 @@ export default function ReadWriteFlow() {
                 : "text-stone-400 hover:text-stone-200"
             }`}
           >
-            ← read (pre-loop)
+            ← 읽기 (루프 진입 전)
           </button>
           <button
             role="tab"
@@ -116,7 +116,7 @@ export default function ReadWriteFlow() {
                 : "text-stone-400 hover:text-stone-200"
             }`}
           >
-            write (post-loop) →
+            쓰기 (루프 종료 후) →
           </button>
         </div>
       </div>
@@ -164,9 +164,9 @@ export default function ReadWriteFlow() {
       </ol>
 
       <figcaption className="mt-2 text-[11px] text-stone-500">
-        Switch the tab to see the inverse flow. Both sides are HITL-bracketed
-        (pre- and post-loop only &mdash; Article III forbids in-loop{" "}
-        <code>AskUserQuestion</code>).
+        탭을 전환하면 반대 플로우가 보인다. 양쪽 모두 HITL 괄호 안에 있다
+        (루프 진입 전/종료 후만 &mdash; 조항 III가 루프 내부의{" "}
+        <code>AskUserQuestion</code> 을 금지).
       </figcaption>
     </figure>
   );

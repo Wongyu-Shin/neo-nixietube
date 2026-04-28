@@ -16,10 +16,10 @@ const BAR_Y = 80;
 const BAR_H = 14;
 
 const ZONES = [
-  { from: 0, to: 0.5, color: "#6BA368", label: "fresh" },
-  { from: 0.5, to: 1.0, color: "#D4A853", label: "warming" },
-  { from: 1.0, to: 1.5, color: "#C17B5E", label: "restale-due" },
-  { from: 1.5, to: 2.0, color: "#8b1f1f", label: "purge candidate" },
+  { from: 0, to: 0.5, color: "#6BA368", label: "신선" },
+  { from: 0.5, to: 1.0, color: "#D4A853", label: "데워짐" },
+  { from: 1.0, to: 1.5, color: "#C17B5E", label: "재검증 필요" },
+  { from: 1.5, to: 2.0, color: "#8b1f1f", label: "폐기 후보" },
 ];
 
 export default function HalfLifeTimeline() {
@@ -35,10 +35,10 @@ export default function HalfLifeTimeline() {
     <figure className="my-8 rounded-2xl border border-stone-800 bg-stone-950/60 p-4 sm:p-5">
       <div className="mb-3 flex items-baseline justify-between gap-3 flex-wrap">
         <div className="text-xs font-mono uppercase tracking-wider text-stone-400">
-          half-life timeline
+          반감기 타임라인
         </div>
         <div className="text-[10px] font-mono text-stone-500">
-          Article VII · half_life_days = {halfLifeDays}
+          조항 VII · half_life_days = {halfLifeDays}
         </div>
       </div>
 
@@ -46,7 +46,7 @@ export default function HalfLifeTimeline() {
         viewBox={`0 0 ${W} ${H}`}
         className="w-full h-auto"
         role="img"
-        aria-label="half-life zones with draggable age marker"
+        aria-label="드래그 가능한 나이 마커가 있는 반감기 영역"
       >
         <defs>
           <linearGradient id="hlt-fresh" x1="0" y1="0" x2="0" y2="1">
@@ -179,7 +179,7 @@ export default function HalfLifeTimeline() {
           fontFamily="ui-monospace, monospace"
           fill={zone.color}
         >
-          zone: {zone.label}
+          영역: {zone.label}
         </text>
 
         {/* Title row */}
@@ -190,7 +190,7 @@ export default function HalfLifeTimeline() {
           fontFamily="ui-monospace, monospace"
           fill="#d6d3d1"
         >
-          entry age (× half_life_days)
+          항목 나이 (× half_life_days)
         </text>
       </svg>
 
@@ -202,23 +202,24 @@ export default function HalfLifeTimeline() {
         value={pct}
         onChange={(e) => setPct(parseFloat(e.target.value))}
         className="mt-1 w-full accent-emerald-500 cursor-pointer"
-        aria-label="entry age slider"
+        aria-label="항목 나이 슬라이더"
       />
 
       <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-stone-400 leading-relaxed">
         <div>
-          <strong className="text-stone-200">fresh → warming</strong> at 50%:
-          entry still authoritative, no operator action required.
+          <strong className="text-stone-200">신선 → 데워짐</strong> 50% 지점:
+          항목은 여전히 권위가 있으며, 운영자 조치는 필요 없다.
         </div>
         <div>
-          <strong className="text-stone-200">restale-due</strong> at 100%:
-          still surfaces, but with a staleness <code>&lt;system-reminder&gt;</code>{" "}
-          wrapper. Operator re-verifies (<code>last_verified</code> bumped) or edits.
+          <strong className="text-stone-200">재검증 필요</strong> 100% 지점:
+          여전히 표면화되지만, 노후 표시를 단{" "}
+          <code>&lt;system-reminder&gt;</code> 래퍼와 함께 표면화된다. 운영자가
+          재검증하거나 (<code>last_verified</code> 갱신) 편집한다.
         </div>
         <div className="sm:col-span-2 text-stone-500">
-          Stale entries never auto-delete &mdash; deletion is an operator
-          decision via <code>/harness:wiki-add --cull</code>. Article IX
-          (amendment procedure) is the template for culls.
+          노후 항목은 절대 자동 삭제되지 않는다 &mdash; 삭제는 운영자가
+          <code>/harness:wiki-add --cull</code> 로 결정한다. 폐기 템플릿은
+          조항 IX (개정 절차) 다.
         </div>
       </div>
     </figure>

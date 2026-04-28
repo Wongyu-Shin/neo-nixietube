@@ -36,7 +36,7 @@ const CORPUS: Entry[] = [
     last_verified: "2026-04-10",
     half_life_days: 30,
     sources: ["features/harness-llm-wiki", "cad/path2"],
-    oneliner: "Path-2 CAD uses butyl + Torr-Seal composite, 100h goal.",
+    oneliner: "경로 2 CAD는 부틸 + Torr-Seal 복합재 사용, 100시간 목표.",
     color: "#6BA368",
   },
   {
@@ -46,7 +46,7 @@ const CORPUS: Entry[] = [
     last_verified: "2026-03-28",
     half_life_days: 30,
     sources: ["sim/paschen", "research/noise-aware-ratchet"],
-    oneliner: "Paschen fit for Ne at 15 Torr, min V≈135V at pd≈5 Torr·cm.",
+    oneliner: "15 Torr Ne의 Paschen 곡선, pd≈5 Torr·cm에서 최소 V≈135V.",
     color: "#FF8C42",
   },
   {
@@ -56,7 +56,7 @@ const CORPUS: Entry[] = [
     last_verified: "2026-04-22",
     half_life_days: 30,
     sources: ["features/noise-aware-ratchet", "features/llm-as-judge-audit"],
-    oneliner: "Never weaken anchor; use MAX over last-N; ±10 judge noise.",
+    oneliner: "앵커 약화 절대 금지; 최근 N개에 MAX 사용; 저지 노이즈 ±10.",
     color: "#7B9EB8",
   },
   {
@@ -74,7 +74,7 @@ const CORPUS: Entry[] = [
     last_verified: "2026-04-18",
     half_life_days: 60,
     sources: ["features/meta-hyperagents-metacognitive", "features/fpt-hyperagent-multirole"],
-    oneliner: "Two distinct 'HyperAgent' lines — Meta (Zhang 2026) vs FPT (Phan 2024).",
+    oneliner: "별개의 'HyperAgent' 계보 둘 — Meta (Zhang 2026) vs FPT (Phan 2024).",
     color: "#B8A9C9",
   },
   {
@@ -84,7 +84,7 @@ const CORPUS: Entry[] = [
     last_verified: "2026-02-20",
     half_life_days: 30,
     sources: ["features/plateau-detection", "features/harness-loop-scaffold"],
-    oneliner: "Modify→Verify→Keep/Discard; guard = composite-guard.sh.",
+    oneliner: "수정→검증→유지/폐기; 가드 = composite-guard.sh.",
     color: "#D4A853",
   },
   {
@@ -94,7 +94,7 @@ const CORPUS: Entry[] = [
     last_verified: "2026-04-15",
     half_life_days: 45,
     sources: ["features/harness-rip-test", "CONSTITUTION Article II"],
-    oneliner: "Probe: migrate one entry to CC-native; if surfaced, rip.",
+    oneliner: "프로브: 항목 하나를 CC 네이티브로 이전; 표면화되면 폐기.",
     color: "#C17B5E",
   },
 ];
@@ -149,10 +149,10 @@ export default function KeywordMatcher() {
       <div className="mb-3 flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-2 text-xs font-mono text-stone-400">
           <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-          SessionStart hook — live keyword matcher
+          SessionStart 훅 — 라이브 키워드 매처
         </div>
         <div className="text-[10px] font-mono uppercase tracking-wider text-stone-500">
-          Article VII · harness-llm-wiki
+          조항 VII · harness-llm-wiki
         </div>
       </div>
 
@@ -161,17 +161,17 @@ export default function KeywordMatcher() {
 
       {/* Input row ------------------------------------------------ */}
       <label className="block">
-        <span className="sr-only">User message (tokens matched against wiki triggers)</span>
+        <span className="sr-only">사용자 메시지 (위키 트리거와 매칭되는 토큰)</span>
         <div className="relative">
           <textarea
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             rows={2}
             className="w-full resize-none rounded-lg bg-stone-900/70 border border-stone-700/60 px-3 py-2 font-mono text-sm text-stone-100 placeholder-stone-500 focus:border-emerald-500/50 focus:outline-none"
-            placeholder="Type a user message containing trigger keywords…"
+            placeholder="트리거 키워드를 포함하는 사용자 메시지를 입력하세요…"
           />
           <div className="absolute right-2 bottom-2 text-[10px] font-mono text-stone-500">
-            {tokens.length} tokens
+            토큰 {tokens.length}개
           </div>
         </div>
       </label>
@@ -179,7 +179,7 @@ export default function KeywordMatcher() {
       {/* Token pills ---------------------------------------------- */}
       <div className="mt-3 flex flex-wrap gap-1.5 min-h-[22px]">
         {tokens.length === 0 && (
-          <span className="text-xs font-mono text-stone-500">no tokens extracted</span>
+          <span className="text-xs font-mono text-stone-500">추출된 토큰 없음</span>
         )}
         {tokens.map((t, i) => {
           const isHit = CORPUS.some((e) => e.triggers.includes(t));
@@ -191,7 +191,7 @@ export default function KeywordMatcher() {
                   ? "border-emerald-500/50 bg-emerald-500/10 text-emerald-300"
                   : "border-stone-700/60 bg-stone-900/50 text-stone-500"
               }`}
-              title={isHit ? "matched at least one trigger" : "no trigger match"}
+              title={isHit ? "최소 한 트리거 매치" : "트리거 매치 없음"}
             >
               {t}
             </span>
@@ -203,7 +203,7 @@ export default function KeywordMatcher() {
       <div className="mt-5 grid gap-3">
         {surfaced.length === 0 && (
           <div className="rounded-lg border border-stone-800 bg-stone-900/40 p-4 text-sm text-stone-400 font-mono">
-            no wiki entries surfaced for this message.
+            이 메시지에 대해 표면화된 위키 항목이 없습니다.
           </div>
         )}
 
@@ -216,7 +216,7 @@ export default function KeywordMatcher() {
             onClick={() => setRevealAll(true)}
             className="mt-1 rounded-md border border-dashed border-stone-700/60 bg-stone-900/30 px-3 py-2 text-[11px] font-mono text-stone-500 hover:text-stone-300 hover:border-stone-600 transition-colors"
           >
-            + {suppressed.length} suppressed (cap=3, per loading-mechanic step 4)
+            + {suppressed.length}개 억제됨 (상한=3, 로딩 메커니즘 4단계에 따라)
           </button>
         )}
         {revealAll && scored.length > 3 && (
@@ -224,25 +224,25 @@ export default function KeywordMatcher() {
             onClick={() => setRevealAll(false)}
             className="mt-1 rounded-md border border-dashed border-stone-700/60 bg-stone-900/30 px-3 py-2 text-[11px] font-mono text-stone-500 hover:text-stone-300 hover:border-stone-600 transition-colors"
           >
-            collapse back to top-3
+            상위 3개로 다시 접기
           </button>
         )}
       </div>
 
       {/* Legend --------------------------------------------------- */}
       <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] font-mono text-stone-400">
-        <LegendSwatch color="#6BA368" label="fresh · age ≤ 50% half-life" />
-        <LegendSwatch color="#D4A853" label="warming · 50-100%" />
-        <LegendSwatch color="#C17B5E" label="stale · > 100%, still surfaces" />
-        <LegendSwatch color="#7B9EB8" label="trigger hit in message" />
+        <LegendSwatch color="#6BA368" label="신선 · 나이 ≤ 반감기의 50%" />
+        <LegendSwatch color="#D4A853" label="데워짐 · 50–100%" />
+        <LegendSwatch color="#C17B5E" label="노후 · 100% 초과, 여전히 표면화" />
+        <LegendSwatch color="#7B9EB8" label="메시지의 트리거 히트" />
       </div>
 
       <figcaption className="mt-4 text-[11px] text-stone-500 leading-relaxed">
-        Demo of <code className="text-stone-300">scripts/harness/wiki_match.sh</code>{" "}
-        (feature <em>harness-llm-wiki</em>). Tokens are lowercased, split on non-alphanum,
-        matched against each entry&rsquo;s <code>triggers</code> field. Top-3 by hit count
-        are injected as <code>&lt;system-reminder&gt;</code> blocks at SessionStart.
-        Stale entries still surface, but flagged (Article VII allows revisable knowledge).
+        <code className="text-stone-300">scripts/harness/wiki_match.sh</code> 의 데모 (피처{" "}
+        <em>harness-llm-wiki</em>). 토큰은 소문자화되어 비영숫자에서 분리되고, 각 항목의{" "}
+        <code>triggers</code> 필드에 매칭된다. 히트 수 기준 상위 3개가 SessionStart에서{" "}
+        <code>&lt;system-reminder&gt;</code> 블록으로 주입된다. 노후 항목도 표시된 채로
+        표면화된다 (조항 VII는 개정 가능한 지식을 허용).
       </figcaption>
     </figure>
   );
@@ -295,7 +295,7 @@ function EntryCard({
           height="56"
           viewBox="0 0 48 48"
           className="flex-shrink-0"
-          aria-label={`half-life ring, ${Math.round(staleness * 100)}% consumed`}
+          aria-label={`반감기 고리, ${Math.round(staleness * 100)}% 소모됨`}
         >
           <defs>
             <radialGradient id={`ring-bg-${entry.slug}`} cx="50%" cy="50%" r="50%">
@@ -366,12 +366,12 @@ function EntryCard({
             )}
             {warming && (
               <span className="rounded px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider bg-[#D4A853]/20 text-[#D4A853] border border-[#D4A853]/40">
-                warming
+                데워짐
               </span>
             )}
             {!stale && !warming && (
               <span className="rounded px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider bg-[#6BA368]/20 text-[#6BA368] border border-[#6BA368]/40">
-                fresh
+                신선
               </span>
             )}
           </div>
@@ -400,17 +400,17 @@ function EntryCard({
           {/* Meta line -------------------------------------------- */}
           <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-mono text-stone-500">
             <span>
-              created <span className="text-stone-400">{entry.created}</span>
+              생성 <span className="text-stone-400">{entry.created}</span>
             </span>
             <span>
-              last_verified <span className="text-stone-400">{entry.last_verified}</span>
+              최근 검증 <span className="text-stone-400">{entry.last_verified}</span>
             </span>
             <span>
-              age <span className="text-stone-400">{age}d</span> / hl{" "}
+              나이 <span className="text-stone-400">{age}d</span> / 반감기{" "}
               <span className="text-stone-400">{entry.half_life_days}d</span>
             </span>
             <span>
-              sources{" "}
+              출처{" "}
               <span className="text-stone-400">
                 [{entry.sources.map((s) => s.split("/").pop()).join(", ")}]
               </span>
@@ -419,7 +419,7 @@ function EntryCard({
 
           {/* Hits summary ----------------------------------------- */}
           <div className="mt-2 text-[10px] font-mono text-stone-500">
-            match{score === 1 ? "" : "es"}:{" "}
+            매치{score === 1 ? "" : ""}:{" "}
             {hits.map((h, i) => (
               <span key={h}>
                 <span className="text-emerald-300">{h}</span>
@@ -463,7 +463,7 @@ function CorpusConstellation({
         className="w-full h-auto"
         preserveAspectRatio="xMidYMid meet"
         role="img"
-        aria-label="wiki corpus constellation"
+        aria-label="위키 코퍼스 별자리"
       >
         <defs>
           <radialGradient id="km-center" cx="50%" cy="50%" r="50%">
@@ -624,7 +624,7 @@ function CorpusConstellation({
             fontFamily="ui-monospace, monospace"
             fill="#10b981"
           >
-            query · {tokens.length} tok
+            쿼리 · 토큰 {tokens.length}
           </text>
         </g>
 
@@ -636,7 +636,7 @@ function CorpusConstellation({
           fontFamily="ui-monospace, monospace"
           fill="#78716c"
         >
-          harness/wiki/ · corpus n={CORPUS.length}
+          harness/wiki/ · 코퍼스 n={CORPUS.length}
         </text>
         <text
           x={W - 10}
@@ -646,7 +646,7 @@ function CorpusConstellation({
           fontFamily="ui-monospace, monospace"
           fill="#78716c"
         >
-          surfaced {Math.min(scored.length, 3)} / {scored.length}
+          표면화 {Math.min(scored.length, 3)} / {scored.length}
         </text>
       </svg>
     </div>

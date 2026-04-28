@@ -18,43 +18,43 @@ const FIELDS: Field[] = [
   {
     key: "name",
     value: "cad-path-2-room-temp",
-    role: "slug",
-    note: "Must match filename (harness/wiki/<name>.md). kebab-case, lowercase.",
+    role: "슬러그",
+    note: "파일명과 일치해야 한다 (harness/wiki/<name>.md). kebab-case, 소문자.",
     color: "#B8A9C9",
   },
   {
     key: "triggers",
     value: "[nixie, cad, path-2, seal, butyl]",
-    role: "match keys",
-    note: "Lowercased tokens. SessionStart hook matches any overlap with the user's latest message tokens.",
+    role: "매치 키",
+    note: "소문자 토큰. SessionStart 훅이 사용자의 최근 메시지 토큰과 겹치는 것을 매칭한다.",
     color: "#6BA368",
   },
   {
     key: "created",
     value: "2026-01-14",
-    role: "provenance",
-    note: "Inserted by /harness:wiki-add. Never edited after creation.",
+    role: "출처",
+    note: "/harness:wiki-add 가 삽입한다. 생성 후에는 수정하지 않는다.",
     color: "#7B9EB8",
   },
   {
     key: "last_verified",
     value: "2026-04-10",
-    role: "freshness anchor",
-    note: "Updated whenever an operator or loop re-validates the fact. Drives the half-life ring.",
+    role: "신선도 앵커",
+    note: "운영자 또는 루프가 사실을 재검증할 때마다 갱신된다. 반감기 고리를 구동.",
     color: "#D4A853",
   },
   {
     key: "half_life_days",
     value: "30",
-    role: "stale horizon",
-    note: "After last_verified + half_life_days, the entry still surfaces but is flagged restale-due.",
+    role: "노후 지평",
+    note: "last_verified + half_life_days 이후에도 항목은 표면화되지만 restale-due 로 표시된다.",
     color: "#C17B5E",
   },
   {
     key: "sources",
     value: "[features/harness-llm-wiki, cad/path2]",
-    role: "citation",
-    note: "Feature-slug or external URL. Used by gcli-agent-run-telemetry for audit.",
+    role: "인용",
+    note: "피처 슬러그 또는 외부 URL. gcli-agent-run-telemetry 가 감사용으로 사용.",
     color: "#FF8C42",
   },
 ];
@@ -93,11 +93,11 @@ export default function WikiEntrySchema() {
         ))}
         <span className="text-stone-500">---</span>
         {"\n\n"}
-        <span className="text-stone-500"># Body: free-form markdown.</span>
+        <span className="text-stone-500"># 본문: 자유 형식 마크다운.</span>
         {"\n"}
-        <span className="text-stone-500"># Keep to &lt; 40 lines; link out to</span>
+        <span className="text-stone-500"># 40줄 미만으로 유지; 장문 증명은</span>
         {"\n"}
-        <span className="text-stone-500"># research notes for long-form proofs.</span>
+        <span className="text-stone-500"># 리서치 노트로 링크아웃.</span>
       </pre>
 
       {/* Hovered field panel --------------------------------------- */}
@@ -119,11 +119,11 @@ export default function WikiEntrySchema() {
         </div>
         <p className="mt-3 text-sm text-stone-300 leading-relaxed">{active.note}</p>
         <div className="mt-auto pt-4 text-[10px] font-mono text-stone-500 border-t border-stone-800">
-          defined in{" "}
+          정의:{" "}
           <code className="text-stone-400">
             harness/research/harness-llm-wiki.md
           </code>
-          ; enforced by <code className="text-stone-400">harness/wiki/SCHEMA.md</code>.
+          ; 강제: <code className="text-stone-400">harness/wiki/SCHEMA.md</code>.
         </div>
       </aside>
     </figure>
