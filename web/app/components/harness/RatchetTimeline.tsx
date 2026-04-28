@@ -19,18 +19,18 @@ type Iter = {
 };
 
 const RAW: Iter[] = [
-  { n: 1, raw: 42, decision: "keep", note: "baseline established" },
-  { n: 2, raw: 51, decision: "keep", note: "response caching" },
-  { n: 3, raw: 48, decision: "discard", note: "noise — raw below anchor" },
-  { n: 4, raw: 55, decision: "keep", note: "batching" },
-  { n: 5, raw: 54, decision: "rework", note: "within σ" },
-  { n: 6, raw: 62, decision: "keep", note: "parallel reads" },
-  { n: 7, raw: 60, decision: "discard", note: "judge flake" },
-  { n: 8, raw: 65, decision: "keep", note: "prompt caching" },
-  { n: 9, raw: 63, decision: "rework", note: "plateau candidate" },
-  { n: 10, raw: 64, decision: "rework", note: "no new max" },
-  { n: 11, raw: 62, decision: "discard", note: "regression + plateau trip" },
-  { n: 12, raw: 65, decision: "keep", note: "tie to anchor" },
+  { n: 1, raw: 42, decision: "keep", note: "baseline 확립" },
+  { n: 2, raw: 51, decision: "keep", note: "응답 캐싱" },
+  { n: 3, raw: 48, decision: "discard", note: "노이즈 — raw가 앵커 아래" },
+  { n: 4, raw: 55, decision: "keep", note: "배치 처리" },
+  { n: 5, raw: 54, decision: "rework", note: "σ 이내" },
+  { n: 6, raw: 62, decision: "keep", note: "병렬 읽기" },
+  { n: 7, raw: 60, decision: "discard", note: "저지 플레이크" },
+  { n: 8, raw: 65, decision: "keep", note: "프롬프트 캐싱" },
+  { n: 9, raw: 63, decision: "rework", note: "플래토 후보" },
+  { n: 10, raw: 64, decision: "rework", note: "신규 최대값 없음" },
+  { n: 11, raw: 62, decision: "discard", note: "회귀 + 플래토 발화" },
+  { n: 12, raw: 65, decision: "keep", note: "앵커 동률" },
 ];
 
 const SIGMA = 10;
@@ -73,12 +73,12 @@ export default function RatchetTimeline() {
     <div className="my-6 rounded-lg border border-neutral-300/70 bg-white/70 p-4 dark:border-neutral-700/70 dark:bg-neutral-900/60">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
         <h4 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
-          SUM=MAX ratchet — 12 iterations (simulated ±{SIGMA} judge noise)
+          SUM=MAX 래칫 — 12 이터레이션 (모의 ±{SIGMA} 저지 노이즈)
         </h4>
         <div className="flex gap-3 text-[11px] text-neutral-600 dark:text-neutral-400">
           <span className="inline-flex items-center gap-1">
             <span className="inline-block h-0.5 w-5 bg-emerald-600" />
-            ratchet
+            래칫
           </span>
           <span className="inline-flex items-center gap-1">
             <span
@@ -97,7 +97,7 @@ export default function RatchetTimeline() {
         viewBox={`0 0 ${W} ${H}`}
         className="w-full"
         role="img"
-        aria-label="Ratchet timeline chart"
+        aria-label="래칫 타임라인 차트"
       >
         <defs>
           <linearGradient id="ratchetFill" x1="0" y1="0" x2="0" y2="1">
@@ -245,7 +245,7 @@ export default function RatchetTimeline() {
             fontWeight="600"
             fill="#92400e"
           >
-            plateau window
+            플래토 구간
           </text>
         </g>
 
@@ -293,7 +293,7 @@ export default function RatchetTimeline() {
               <span className="ml-2 italic text-neutral-500">{active.note}</span>
             </>
           ) : (
-            <span className="italic text-neutral-500">hover a point</span>
+            <span className="italic text-neutral-500">점 위에 호버</span>
           )}
         </div>
         <div className="flex gap-3 text-[10.5px]">

@@ -70,7 +70,7 @@ export default function AxisMatrix2x3() {
   return (
     <figure className="my-8 rounded-xl border border-[#D4A853]/15 bg-[#0e0a06] p-5">
       <div className="mb-3 flex flex-wrap gap-2 items-center text-xs text-stone-400 font-mono">
-        <span className="opacity-60">filter:</span>
+        <span className="opacity-60">필터:</span>
         {AX1.map((a) => (
           <button
             key={a}
@@ -171,7 +171,7 @@ export default function AxisMatrix2x3() {
       </div>
 
       <figcaption className="text-xs text-stone-500 text-center mt-4">
-        <strong className="text-[#D4A853]">Article I</strong> — 28 catalog features classified by axis1 × axis2. Click chips above to filter.
+        <strong className="text-[#D4A853]">조항 I</strong> — 28개 카탈로그 피처를 axis1 × axis2로 분류. 위 칩을 클릭해 필터링한다.
       </figcaption>
     </figure>
   );

@@ -23,57 +23,57 @@ type Dim = {
 const DIMS: Dim[] = [
   {
     id: "D1",
-    short: "Scope-domain",
-    question: "harness/ domain or content domain? (Article IV)",
-    failure: "Unresolved D1 = scope straddle → composite-guard fail.",
+    short: "Scope 도메인",
+    question: "harness/ 도메인인가 콘텐츠 도메인인가? (조항 IV)",
+    failure: "D1 미해결 = 범위 가로지름 → composite-guard 실패.",
     coverage: 1.0,
     article: "IV",
   },
   {
     id: "D2",
-    short: "Metric",
-    question: "Extractable by a single verify command?",
-    failure: "Hand-judged metric → noise-aware-ratchet cannot apply SUM=MAX.",
+    short: "메트릭",
+    question: "단일 verify 명령으로 추출 가능한가?",
+    failure: "수동 채점 메트릭 → noise-aware-ratchet이 SUM=MAX를 적용 불가.",
     coverage: 0.92,
     article: "II",
   },
   {
     id: "D3",
-    short: "Direction",
-    question: "Higher or lower is better?",
-    failure: "Ambiguous direction → ratchet ratchets the wrong way.",
+    short: "방향",
+    question: "높은 쪽이 좋은가, 낮은 쪽이 좋은가?",
+    failure: "방향 모호 → 래칫이 잘못된 방향으로 래칫.",
     coverage: 1.0,
     article: "II",
   },
   {
     id: "D4",
-    short: "HITL carve-outs",
-    question: "Any irreversible ops expected? Which L2 tier?",
-    failure: "Underspecified → L2 op surprises operator mid-loop.",
+    short: "HITL 예외",
+    question: "예상되는 비가역 작업이 있는가? 어느 L2 등급?",
+    failure: "명세 부족 → L2 작업이 루프 도중 운영자를 놀라게 한다.",
     coverage: 0.78,
     article: "III",
   },
   {
     id: "D5",
-    short: "Stop",
-    question: "Bounded / unbounded / plateau-detected?",
-    failure: "Unbounded w/o plateau config → runs indefinitely.",
+    short: "정지",
+    question: "유한 / 무한 / 플래토 감지?",
+    failure: "플래토 설정 없는 무한 → 무기한 실행.",
     coverage: 0.88,
     article: "III",
   },
   {
     id: "D6",
-    short: "Wiki",
-    question: "Which keywords will this loop emit on completion?",
-    failure: "Empty D6 → wiki-refs.md write side is empty.",
+    short: "위키",
+    question: "이 루프가 종료 시 어떤 키워드를 발행하는가?",
+    failure: "D6 공백 → wiki-refs.md 쓰기 측이 비어 있다.",
     coverage: 0.65,
     article: "VII",
   },
   {
     id: "D7",
-    short: "Guard",
-    question: "Extra guards beyond composite-guard?",
-    failure: "Domain-specific assertions not wired → silent pass-through.",
+    short: "가드",
+    question: "composite-guard 외 추가 가드가 있는가?",
+    failure: "도메인별 단언이 배선되지 않음 → 조용한 통과.",
     coverage: 0.84,
     article: "VI",
   },
@@ -103,7 +103,7 @@ export default function ClarifyDimensionsRadar() {
         viewBox="0 0 400 400"
         className="mx-auto w-full max-w-[400px]"
         role="img"
-        aria-label="Seven-dimension radar for clarify coverage"
+        aria-label="명료화 커버리지 7차원 레이더"
       >
         <defs>
           <radialGradient id="clarifyFill" cx="50%" cy="50%" r="50%">
@@ -203,7 +203,7 @@ export default function ClarifyDimensionsRadar() {
         </div>
         <div>
           <div className="text-[10px] uppercase tracking-wider text-neutral-500">
-            Question
+            질문
           </div>
           <div className="text-[12.5px] text-neutral-700 dark:text-neutral-300">
             {active.question}
@@ -211,15 +211,15 @@ export default function ClarifyDimensionsRadar() {
         </div>
         <div>
           <div className="text-[10px] uppercase tracking-wider text-neutral-500">
-            Failure mode
+            실패 모드
           </div>
           <div className="text-[12px] italic text-red-700 dark:text-red-400">
             {active.failure}
           </div>
         </div>
         <div className="mt-auto flex items-center justify-between text-[11px] text-neutral-500">
-          <span>Article {active.article}</span>
-          <span>coverage {(active.coverage * 100).toFixed(0)}%</span>
+          <span>조항 {active.article}</span>
+          <span>커버리지 {(active.coverage * 100).toFixed(0)}%</span>
         </div>
       </aside>
     </div>

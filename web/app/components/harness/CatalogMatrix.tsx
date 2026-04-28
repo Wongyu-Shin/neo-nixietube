@@ -23,55 +23,55 @@ type Feature = {
 
 const FEATURES: Feature[] = [
   // pre-loop × inner (5)
-  { slug: "harness-clarify-gate", short: "clarify-gate", axis1: "inner", axis2: "pre-loop", article: "V", blurb: "7-dim ambiguity pass → clarifications.md. Blocks loop entry on unresolved [ASSUMPTION]." },
-  { slug: "harness-constitution", short: "constitution", axis1: "inner", axis2: "pre-loop", article: "IX", blurb: "Load-time invariants. 9 Articles bound into every loop's spec." },
-  { slug: "harness-loop-scaffold", short: "loop-scaffold", axis1: "inner", axis2: "pre-loop", article: "VIII", blurb: "/harness:new-loop scaffolds loops/NNN-<slug>/ with spec/clarif/plan/report/wiki-refs." },
-  { slug: "plan-mode-discipline", short: "plan-discipline", axis1: "inner", axis2: "pre-loop", article: "III", blurb: "ExitPlanMode is the only legal HITL boundary for entering in-loop execution." },
-  { slug: "swe-agent-aci", short: "swe-aci", axis1: "inner", axis2: "pre-loop", article: "I", blurb: "Agent-Computer Interface primitives — structured tool surface baked into CC." },
+  { slug: "harness-clarify-gate", short: "clarify-gate", axis1: "inner", axis2: "pre-loop", article: "V", blurb: "7차원 모호성 패스 → clarifications.md. 미해결 [ASSUMPTION] 시 루프 진입 차단." },
+  { slug: "harness-constitution", short: "constitution", axis1: "inner", axis2: "pre-loop", article: "IX", blurb: "로드 타임 불변 조건. 9개 조항이 모든 루프 spec에 결속된다." },
+  { slug: "harness-loop-scaffold", short: "loop-scaffold", axis1: "inner", axis2: "pre-loop", article: "VIII", blurb: "/harness:new-loop이 spec/clarif/plan/report/wiki-refs와 함께 loops/NNN-<slug>/ 를 스캐폴드." },
+  { slug: "plan-mode-discipline", short: "plan-discipline", axis1: "inner", axis2: "pre-loop", article: "III", blurb: "ExitPlanMode이 루프 내부 실행 진입을 위한 유일한 합법 HITL 경계." },
+  { slug: "swe-agent-aci", short: "swe-aci", axis1: "inner", axis2: "pre-loop", article: "I", blurb: "에이전트-컴퓨터 인터페이스 프리미티브 — CC에 내장된 구조화된 도구 표면." },
 
   // pre-loop × outer (6)
-  { slug: "adas-meta-agent-search", short: "adas", axis1: "outer", axis2: "pre-loop", article: "IV", blurb: "Meta-agent searches the agent space — outer script, content-domain evaluator." },
-  { slug: "alignment-free-self-improvement", short: "align-free", axis1: "outer", axis2: "pre-loop", article: "IV", blurb: "Separates eval skill from self-modification skill. DGM-style alignment fails here." },
-  { slug: "fpt-hyperagent-multirole", short: "fpt-hyper", axis1: "outer", axis2: "pre-loop", article: "IV", blurb: "Multi-role hyperagent planner (Meta FPT) — pre-loop role-synthesis primitive." },
-  { slug: "gcli-skill-pack-distribution", short: "skill-pack", axis1: "outer", axis2: "pre-loop", article: "VII", blurb: "Skill-pack shipping over gcli — cross-repo distribution for harness skills." },
-  { slug: "harness-llm-wiki", short: "llm-wiki", axis1: "outer", axis2: "pre-loop", article: "VII", blurb: "Keyword-triggered, project-scoped, committable knowledge — the 4th persistence layer." },
-  { slug: "voyager-skill-library", short: "voyager", axis1: "outer", axis2: "pre-loop", article: "VII", blurb: "Skill library substrate — Voyager-style curriculum that feeds wiki surfacing." },
+  { slug: "adas-meta-agent-search", short: "adas", axis1: "outer", axis2: "pre-loop", article: "IV", blurb: "메타 에이전트가 에이전트 공간을 탐색 — 외부 스크립트, 콘텐츠 도메인 평가기." },
+  { slug: "alignment-free-self-improvement", short: "align-free", axis1: "outer", axis2: "pre-loop", article: "IV", blurb: "평가 스킬과 자기 수정 스킬을 분리. DGM 스타일 정렬은 여기서 실패한다." },
+  { slug: "fpt-hyperagent-multirole", short: "fpt-hyper", axis1: "outer", axis2: "pre-loop", article: "IV", blurb: "다중 역할 하이퍼에이전트 플래너 (Meta FPT) — 루프 진입 전 역할 합성 프리미티브." },
+  { slug: "gcli-skill-pack-distribution", short: "skill-pack", axis1: "outer", axis2: "pre-loop", article: "VII", blurb: "gcli를 통한 스킬 팩 출하 — 하네스 스킬의 레포 횡단 배포." },
+  { slug: "harness-llm-wiki", short: "llm-wiki", axis1: "outer", axis2: "pre-loop", article: "VII", blurb: "키워드 트리거, 프로젝트 범위, 커밋 가능 지식 — 4번째 영속 계층." },
+  { slug: "voyager-skill-library", short: "voyager", axis1: "outer", axis2: "pre-loop", article: "VII", blurb: "스킬 라이브러리 기반 — 위키 표면화에 공급되는 Voyager 스타일 커리큘럼." },
 
   // in-loop × inner (3)
-  { slug: "cc-hook-guardrail", short: "cc-hook", axis1: "inner", axis2: "in-loop", article: "III", blurb: "PreToolUse hook denies off-scope ops before the tool call fires. L2 carve-out trigger." },
-  { slug: "harness-graduated-confirm", short: "graduated", axis1: "inner", axis2: "in-loop", article: "III", blurb: "L0 silent / L1 30s auto / L2 blocking. The only in-loop HITL permitted." },
-  { slug: "harness-pause-resume", short: "pause-resume", axis1: "inner", axis2: "in-loop", article: "III", blurb: "/harness:pause writes checkpoint at atomic boundary. /harness:resume restores." },
+  { slug: "cc-hook-guardrail", short: "cc-hook", axis1: "inner", axis2: "in-loop", article: "III", blurb: "PreToolUse 훅이 도구 호출 전에 범위 밖 작업을 거부. L2 예외 트리거." },
+  { slug: "harness-graduated-confirm", short: "graduated", axis1: "inner", axis2: "in-loop", article: "III", blurb: "L0 침묵 / L1 30초 자동 / L2 차단. 루프 내부에서 허용되는 유일한 HITL." },
+  { slug: "harness-pause-resume", short: "pause-resume", axis1: "inner", axis2: "in-loop", article: "III", blurb: "/harness:pause가 원자 경계에서 체크포인트 작성. /harness:resume이 복원." },
 
   // in-loop × outer (10)
-  { slug: "dgm-h-archive-parent-selection", short: "dgm-h", axis1: "outer", axis2: "in-loop", article: "VIII", blurb: "Darwin-Gödel archive parent-selection — branches from kept ancestors only." },
-  { slug: "gcli-agent-run-telemetry", short: "telemetry", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "Run-level telemetry — wiki-surface hits, tool calls, guard outcomes." },
-  { slug: "harness-progress-cadence", short: "cadence", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "Per-iter line + every-5 milestone block + statusline. Full summary on exit." },
-  { slug: "harness-rip-test", short: "rip-test", axis1: "outer", axis2: "in-loop", article: "II", blurb: "Runs feature tc_scripts on the current CC+model combo. Pass=still-needed." },
-  { slug: "meta-hyperagents-metacognitive", short: "meta-hyper", axis1: "outer", axis2: "in-loop", article: "IV", blurb: "Metacognitive supervisor — notices the harness is solving the wrong problem." },
-  { slug: "noise-aware-ratchet", short: "ratchet", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "LLM-as-judge has ±10 σ noise. Use MAX ratchet; never weaken the anchor." },
-  { slug: "plateau-detection", short: "plateau", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "Ratchet-patience AND trend-slope both flat → stop or trigger radical branch." },
-  { slug: "reflexion", short: "reflexion", axis1: "outer", axis2: "in-loop", article: "VIII", blurb: "Verbal self-critique appended as reflexion entries, read back at Phase 1." },
-  { slug: "sandboxed-open-ended-exploration", short: "sandbox", axis1: "outer", axis2: "in-loop", article: "III", blurb: "Worktree isolation + sandboxed shell — L2 ops cannot escape the bubble." },
-  { slug: "statistical-tc-runner", short: "stat-tc", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "Multi-seed TC with confidence intervals. Noise-controlled pass/fail." },
+  { slug: "dgm-h-archive-parent-selection", short: "dgm-h", axis1: "outer", axis2: "in-loop", article: "VIII", blurb: "Darwin-Gödel 아카이브 부모 선택 — 유지된 조상에서만 분기한다." },
+  { slug: "gcli-agent-run-telemetry", short: "telemetry", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "런 수준 텔레메트리 — wiki-surface 히트, 도구 호출, 가드 결과." },
+  { slug: "harness-progress-cadence", short: "cadence", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "이터레이션 행 + 5회마다 마일스톤 블록 + 상태 줄. 종료 시 전체 요약." },
+  { slug: "harness-rip-test", short: "rip-test", axis1: "outer", axis2: "in-loop", article: "II", blurb: "현재 CC+모델 조합에서 피처 tc_script 실행. 통과=여전히 필요." },
+  { slug: "meta-hyperagents-metacognitive", short: "meta-hyper", axis1: "outer", axis2: "in-loop", article: "IV", blurb: "메타인지 감독자 — 하네스가 잘못된 문제를 풀고 있음을 알아챈다." },
+  { slug: "noise-aware-ratchet", short: "ratchet", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "LLM 저지의 ±10 σ 노이즈. MAX 래칫 사용; 앵커는 절대 약화 금지." },
+  { slug: "plateau-detection", short: "plateau", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "Ratchet-patience와 trend-slope가 둘 다 평탄 → 정지 또는 급진 분기 발동." },
+  { slug: "reflexion", short: "reflexion", axis1: "outer", axis2: "in-loop", article: "VIII", blurb: "언어적 자기 비평을 reflexion 항목으로 추가, Phase 1에서 다시 읽는다." },
+  { slug: "sandboxed-open-ended-exploration", short: "sandbox", axis1: "outer", axis2: "in-loop", article: "III", blurb: "워크트리 격리 + 샌드박스 셸 — L2 작업이 버블을 빠져나갈 수 없다." },
+  { slug: "statistical-tc-runner", short: "stat-tc", axis1: "outer", axis2: "in-loop", article: "VI", blurb: "신뢰 구간이 있는 다중 시드 TC. 노이즈 통제 통과/실패." },
 
   // post-loop × inner (1)
-  { slug: "cc-post-loop-slash", short: "post-slash", axis1: "inner", axis2: "post-loop", article: "VIII", blurb: "/harness:report composes report.mdx from results.tsv + wiki-refs + Article bindings." },
+  { slug: "cc-post-loop-slash", short: "post-slash", axis1: "inner", axis2: "post-loop", article: "VIII", blurb: "/harness:report이 results.tsv + wiki-refs + 조항 결속으로 report.mdx를 합성." },
 
   // post-loop × outer (3)
-  { slug: "cross-domain-transfer-metric", short: "transfer", axis1: "outer", axis2: "post-loop", article: "II", blurb: "Runs loop's verify against a paired held-out domain — catches overfit-to-TC." },
-  { slug: "gcli-eval-compare-primitive", short: "eval-cmp", axis1: "outer", axis2: "post-loop", article: "VI", blurb: "Paired A/B vs. baseline ref — turns verify output into a statistical comparison." },
-  { slug: "llm-as-judge-audit", short: "judge-audit", axis1: "outer", axis2: "post-loop", article: "IV", blurb: "Rubric grade with self-enhancement-bias control (judge model ≠ candidate model)." },
+  { slug: "cross-domain-transfer-metric", short: "transfer", axis1: "outer", axis2: "post-loop", article: "II", blurb: "루프의 verify를 짝 보류 도메인에서 실행 — TC 과적합을 잡아낸다." },
+  { slug: "gcli-eval-compare-primitive", short: "eval-cmp", axis1: "outer", axis2: "post-loop", article: "VI", blurb: "baseline 참조에 대한 짝 A/B — verify 출력을 통계적 비교로 전환." },
+  { slug: "llm-as-judge-audit", short: "judge-audit", axis1: "outer", axis2: "post-loop", article: "IV", blurb: "자기 강화 편향 통제와 함께 루브릭 채점 (저지 모델 ≠ 후보 모델)." },
 ];
 
 const PHASES: { key: Axis2; label: string; hint: string }[] = [
-  { key: "pre-loop", label: "pre-loop", hint: "HITL allowed" },
-  { key: "in-loop", label: "in-loop", hint: "HITL forbidden (Art. III)" },
-  { key: "post-loop", label: "post-loop", hint: "HITL allowed" },
+  { key: "pre-loop", label: "루프 진입 전", hint: "HITL 허용" },
+  { key: "in-loop", label: "루프 내부", hint: "HITL 금지 (조항 III)" },
+  { key: "post-loop", label: "루프 종료 후", hint: "HITL 허용" },
 ];
 
 const TIERS: { key: Axis1; label: string; hint: string; color: string }[] = [
-  { key: "inner", label: "inner", hint: "lives inside CC (.claude/)", color: "#7B9EB8" },
-  { key: "outer", label: "outer", hint: "lives outside CC (shell / MCP)", color: "#D4A853" },
+  { key: "inner", label: "내부", hint: "CC 내부에 산다 (.claude/)", color: "#7B9EB8" },
+  { key: "outer", label: "외부", hint: "CC 바깥에 산다 (셸 / MCP)", color: "#D4A853" },
 ];
 
 /* SVG layout constants */
@@ -174,7 +174,7 @@ export default function CatalogMatrix() {
         className="w-full rounded-xl border border-stone-800 bg-[#0f0d0a]"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
-        aria-label="28 harness features arranged by axis1 (inner/outer) × axis2 (pre/in/post-loop)"
+        aria-label="28개 하네스 피처를 axis1 (내부/외부) × axis2 (루프 진입 전/내부/종료 후) 로 배치"
       >
         <defs>
           <radialGradient id="cm-bg" cx="50%" cy="0%" r="95%">
@@ -474,7 +474,7 @@ export default function CatalogMatrix() {
                 {activeF.slug}
               </text>
               <text x={42} y={22} fontSize="10" fontFamily="ui-monospace, monospace" fill="#8a7a58" textAnchor="start" dx={activeF.slug.length * 7.3 + 10}>
-                Article {activeF.article} · {activeF.axis1} · {activeF.axis2}
+                조항 {activeF.article} · {activeF.axis1} · {activeF.axis2}
               </text>
               <text x={42} y={40} fontSize="10.5" fontFamily="ui-monospace, monospace" fill="#c8bfa0">
                 {activeF.blurb.length > 110 ? activeF.blurb.slice(0, 108) + "…" : activeF.blurb}
@@ -482,17 +482,17 @@ export default function CatalogMatrix() {
             </>
           ) : (
             <text x={22} y={30} fontSize="11" fontFamily="ui-monospace, monospace" fill="#6a5f48">
-              hover a node — 28 features · axis1 ∈ {"{inner, outer}"} · axis2 ∈ {"{pre-loop, in-loop, post-loop}"} · Article I
+              노드 위에 호버 — 28개 피처 · axis1 ∈ {"{inner, outer}"} · axis2 ∈ {"{pre-loop, in-loop, post-loop}"} · 조항 I
             </text>
           )}
         </g>
       </svg>
 
       <figcaption className="mt-2 text-xs text-stone-500 text-center">
-        Catalog matrix — 28 features, Article I axis classification. Inner cells are CC-native
-        (<span className="text-[#7B9EB8]">blue</span>); outer cells are shell/MCP
-        (<span className="text-[#D4A853]">gold</span>). The middle column (in-loop) is HITL-forbidden
-        under Article III except graduated-confirm + Ctrl+C.
+        카탈로그 매트릭스 — 28개 피처, 조항 I 축 분류. 내부 셀은 CC 네이티브
+        (<span className="text-[#7B9EB8]">파랑</span>); 외부 셀은 셸/MCP
+        (<span className="text-[#D4A853]">금색</span>). 중앙 열 (루프 내부) 은 단계적 확인과
+        Ctrl+C를 제외하면 조항 III에 따라 HITL 금지.
       </figcaption>
     </figure>
   );

@@ -17,57 +17,57 @@ const TRIGGERS: Trigger[] = [
   {
     id: "bounded",
     num: 1,
-    label: "Iterations: N reached",
+    label: "Iterations: N 도달",
     source: "auto",
     feature: "harness-progress-cadence",
     article: "VI",
     lossy: false,
     detail:
-      "Spec declares a hard budget. Counter in the statusline ticks toward N; when it hits, the loop exits cleanly and /harness:report fires.",
+      "Spec이 단단한 예산을 선언. 상태 줄의 카운터가 N을 향해 틱; 도달 시 루프가 깔끔히 종료되고 /harness:report이 발화한다.",
   },
   {
     id: "goal",
     num: 2,
-    label: "Goal-achieved (metric hits target)",
+    label: "목표 달성 (메트릭이 타깃에 도달)",
     source: "auto",
     feature: "statistical-tc-runner",
     article: "VI",
     lossy: false,
     detail:
-      "Verify returns a run where the ratchet meets spec's target. The statistical runner must confirm with ≥N trials — single-trial wins do not stop the loop.",
+      "Verify가 래칫이 spec의 타깃을 만족시키는 런을 반환. 통계적 러너가 N회 이상으로 확정해야 한다 — 단일 시행 승리로는 루프를 멈추지 않는다.",
   },
   {
     id: "plateau",
     num: 3,
-    label: "Plateau (patience AND slope)",
+    label: "플래토 (patience AND slope)",
     source: "auto",
     feature: "plateau-detection",
     article: "VI",
     lossy: false,
     detail:
-      "Both conditions fire: patience (P iters without a new MAX) AND slope (linear fit over window < ε). Either alone is insufficient — ratchet noise can fake a plateau.",
+      "두 조건 모두 발화: patience (P회 동안 신규 MAX 없음) AND slope (윈도우 위 선형 피팅 < ε). 어느 하나로는 부족 — 래칫 노이즈가 플래토를 위장할 수 있다.",
   },
   {
     id: "abandon",
     num: 4,
-    label: "Operator abandon",
+    label: "운영자 포기",
     source: "operator",
     feature: "harness-pause-resume",
     article: "III, VIII",
     lossy: false,
     detail:
-      "/harness:abandon writes a final checkpoint, commits any in-flight candidate, and calls /harness:report. The loop exits but history stays intact.",
+      "/harness:abandon이 최종 체크포인트를 기록하고, 진행 중 후보를 커밋하며, /harness:report을 호출한다. 루프는 종료되지만 히스토리는 온전히 남는다.",
   },
   {
     id: "ctrlc",
     num: 5,
-    label: "Ctrl+C (emergency stop)",
+    label: "Ctrl+C (비상 정지)",
     source: "operator",
     feature: "harness-pause-resume",
     article: "III",
     lossy: true,
     detail:
-      "The second Article III carve-out. Immediate interrupt — any in-flight modification is NOT committed, telemetry may miss the last event, and the report must be reconstructed from the last stable commit.",
+      "조항 III의 두 번째 예외. 즉시 인터럽트 — 진행 중 수정은 커밋되지 않고, 텔레메트리는 마지막 이벤트를 놓칠 수 있으며, 리포트는 마지막 안정 커밋에서 재구성해야 한다.",
   },
 ];
 
@@ -94,7 +94,7 @@ export default function StopConditionsChart() {
           className="w-full"
           xmlns="http://www.w3.org/2000/svg"
           role="img"
-          aria-label="Five stop conditions grouped by auto vs operator"
+          aria-label="자동 vs 운영자로 그룹화된 5개 정지 조건"
         >
           <rect x="0" y="0" width={W} height={H} fill="#0b0b0b" />
 
@@ -120,7 +120,7 @@ export default function StopConditionsChart() {
               fontFamily="ui-monospace, monospace"
               fontWeight="600"
             >
-              AUTOMATIC
+              자동
             </text>
             <text
               x={PAD_L / 2}
@@ -131,7 +131,7 @@ export default function StopConditionsChart() {
               fontSize="9"
               fontFamily="ui-monospace, monospace"
             >
-              3 of 5
+              5 중 3
             </text>
 
             <rect
@@ -154,7 +154,7 @@ export default function StopConditionsChart() {
               fontFamily="ui-monospace, monospace"
               fontWeight="600"
             >
-              OPERATOR
+              운영자
             </text>
             <text
               x={PAD_L / 2}
@@ -165,7 +165,7 @@ export default function StopConditionsChart() {
               fontSize="9"
               fontFamily="ui-monospace, monospace"
             >
-              2 of 5
+              5 중 2
             </text>
           </g>
 
@@ -178,7 +178,7 @@ export default function StopConditionsChart() {
             fontFamily="ui-monospace, monospace"
             letterSpacing="1"
           >
-            FIVE STOP TRIGGERS · a loop terminates on exactly one
+            5개 정지 트리거 · 루프는 정확히 하나에서 종료한다
           </text>
 
           {/* triggers */}
@@ -272,7 +272,7 @@ export default function StopConditionsChart() {
               !
             </text>
             <text x="16" y="0" fill="#888" fontSize="10" fontFamily="ui-monospace, monospace">
-              lossy: in-flight work may not be fully committed/reported
+              손실: 진행 중 작업이 완전히 커밋/리포트되지 않을 수 있다
             </text>
           </g>
         </svg>
@@ -288,7 +288,7 @@ export default function StopConditionsChart() {
                     borderColor: activeTrigger.source === "auto" ? "#7B9EB8" : "#C17B5E",
                   }}
                 >
-                  {activeTrigger.source.toUpperCase()}
+                  {activeTrigger.source === "auto" ? "자동" : "운영자"}
                 </span>
                 <span className="font-semibold text-stone-100">
                   #{activeTrigger.num} · {activeTrigger.label}
@@ -297,7 +297,7 @@ export default function StopConditionsChart() {
                   {activeTrigger.feature}
                 </code>
                 <span className="text-[11px] px-1.5 py-0.5 rounded bg-[#D4A853]/10 border border-[#D4A853]/30 text-[#D4A853] font-mono">
-                  Art. {activeTrigger.article}
+                  조항 {activeTrigger.article}
                 </span>
               </div>
               <div className="mt-2 text-stone-300 text-[13px] leading-relaxed">
@@ -306,9 +306,9 @@ export default function StopConditionsChart() {
             </>
           ) : (
             <div className="text-stone-500 italic text-[13px]">
-              Hover a trigger. Exactly one fires per loop — three are automatic
-              (bounded, goal, plateau), two are operator-initiated (abandon,
-              Ctrl+C). Only Ctrl+C is lossy.
+              트리거 위에 호버. 루프당 정확히 하나가 발화한다 — 셋은 자동
+              (유한, 목표, 플래토), 둘은 운영자가 시작 (포기, Ctrl+C). Ctrl+C만
+              손실이다.
             </div>
           )}
         </div>

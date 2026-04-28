@@ -34,112 +34,112 @@ const GATES: Gate[] = [
   {
     id: "review",
     idx: 0,
-    title: "1 · Review",
-    short: "load state",
+    title: "1 · 리뷰",
+    short: "상태 로드",
     detail:
-      "Pull git log, TSV, reflexion trace, and wiki keyword-surface. The Constitution is already pinned.",
+      "git log, TSV, reflexion 트레이스, 위키 키워드 표면화를 가져온다. 헌법은 이미 고정되어 있다.",
     features: ["harness-llm-wiki", "reflexion", "harness-constitution"],
     articles: ["I", "VII"],
     hitl: "forbidden",
-    failure: "skipping review → ideation loses the prior-iter lesson ledger",
+    failure: "리뷰 생략 → 발상이 직전 이터레이션의 교훈 원장을 잃는다",
     color: "#7B9EB8",
     category: "read",
   },
   {
     id: "ideate",
     idx: 1,
-    title: "2 · Ideate",
-    short: "propose change",
+    title: "2 · 발상",
+    short: "변경 제안",
     detail:
-      "Agent drafts one atomic change. No side effects yet. Direction is set by the spec, not the operator.",
+      "에이전트가 원자적인 변경 하나를 작성한다. 부수 효과는 아직 없다. 방향은 운영자가 아닌 spec이 정한다.",
     features: ["adas-meta-agent-search", "dgm-h-archive-parent-selection"],
     articles: ["IV", "V"],
     hitl: "forbidden",
-    failure: "unscoped ideation → drift from Direction, later-phase discard",
+    failure: "범위 없는 발상 → 방향에서 표류, 후속 단계에서 폐기",
     color: "#B8A9C9",
     category: "write",
   },
   {
     id: "modify",
     idx: 2,
-    title: "3 · Modify",
-    short: "edit files",
+    title: "3 · 수정",
+    short: "파일 편집",
     detail:
-      "L0 ops silent · L1 ops notify with 30s auto-approve · L2 ops pause. Hook guardrail denies Bash outside scope.",
+      "L0 작업 침묵 · L1 작업 30초 자동 승인 알림 · L2 작업 일시 정지. 훅 가드레일이 범위 밖 Bash를 거부한다.",
     features: ["harness-graduated-confirm", "cc-hook-guardrail", "sandboxed-open-ended-exploration"],
     articles: ["III"],
     hitl: "carve-out",
-    failure: "modify without sandbox → irreversible damage on L2 miss",
+    failure: "샌드박스 없는 수정 → L2 누락 시 비가역 피해",
     color: "#D4A853",
     category: "write",
   },
   {
     id: "commit",
     idx: 3,
-    title: "4 · Commit",
+    title: "4 · 커밋",
     short: "git commit",
     detail:
-      "Every candidate commits before verify — discards use git revert, not git reset (Article VIII). Failure is a lesson in history.",
+      "모든 후보는 verify 전에 커밋된다 — 폐기는 git reset이 아니라 git revert로 (조항 VIII). 실패는 히스토리에 남는 교훈이다.",
     features: ["harness-loop-scaffold"],
     articles: ["VIII"],
     hitl: "forbidden",
-    failure: "reset --hard on discard → lost lesson, un-auditable history",
+    failure: "폐기 시 reset --hard → 교훈 소실, 감사 불가능한 히스토리",
     color: "#C17B5E",
     category: "write",
   },
   {
     id: "verify",
     idx: 4,
-    title: "5 · Verify",
-    short: "n-trial run",
+    title: "5 · 검증",
+    short: "n회 시행",
     detail:
-      "Statistical runner with ≥N trials; noise-aware. composite-guard.sh must pass schema + crosscheck 11/11.",
+      "N회 이상 시행하는 통계적 러너; 노이즈 인지. composite-guard.sh가 스키마 + crosscheck 11/11을 통과해야 한다.",
     features: ["statistical-tc-runner", "harness-rip-test"],
     articles: ["VI"],
     hitl: "forbidden",
-    failure: "single-trial verify → noise mistaken for signal, false keep",
+    failure: "단일 시행 verify → 노이즈를 신호로 오인, 거짓 keep",
     color: "#6BA368",
     category: "check",
   },
   {
     id: "decide",
     idx: 5,
-    title: "6 · Decide",
+    title: "6 · 결정",
     short: "keep / discard",
     detail:
-      "Ratchet on MAX with σ tolerance — never weaken anchor on noise. Parent-selection pulls from the archive if none pass.",
+      "σ 허용과 함께 MAX 래칫 — 노이즈로 앵커를 약화시키지 않는다. 통과하는 후보가 없으면 부모 선택이 아카이브에서 끌어온다.",
     features: ["noise-aware-ratchet", "dgm-h-archive-parent-selection", "plateau-detection"],
     articles: ["VI"],
     hitl: "forbidden",
-    failure: "MEAN ratchet → ratchet walks backward on a bad-luck iter",
+    failure: "MEAN 래칫 → 운이 나쁜 이터레이션에서 래칫이 뒤로 걷는다",
     color: "#8FA376",
     category: "decide",
   },
   {
     id: "log",
     idx: 6,
-    title: "7 · Log",
-    short: "telemetry tick",
+    title: "7 · 로그",
+    short: "텔레메트리 틱",
     detail:
-      "One-line per-iter entry, a 5-iter milestone block, a statusline refresh, a telemetry event. No operator prompt.",
+      "이터레이션당 한 줄, 5회마다 마일스톤 블록, 상태 줄 갱신, 텔레메트리 이벤트. 운영자 프롬프트 없음.",
     features: ["harness-progress-cadence", "gcli-agent-run-telemetry"],
     articles: ["III", "VIII"],
     hitl: "forbidden",
-    failure: "silent loop → operator can't glance-monitor; oversight dies",
+    failure: "조용한 루프 → 운영자가 한눈에 모니터링 불가; 감시 사망",
     color: "#7B9EB8",
     category: "log",
   },
   {
     id: "reflect",
     idx: 7,
-    title: "8 · Reflect",
-    short: "critique → wiki",
+    title: "8 · 성찰",
+    short: "비평 → 위키",
     detail:
-      "Append a reflexion entry. Check plateau (patience AND slope). If either trips, exit loop; else return to Review.",
+      "reflexion 항목 추가. 플래토 검사 (patience AND slope). 어느 한 쪽이라도 발화하면 루프 종료; 아니면 리뷰로 복귀.",
     features: ["reflexion", "plateau-detection", "meta-hyperagents-metacognitive"],
     articles: ["IV", "VII"],
     hitl: "forbidden",
-    failure: "no reflexion → next iter repeats the same dead-end",
+    failure: "reflexion 없음 → 다음 이터레이션이 같은 막다른 길을 반복",
     color: "#D4A853",
     category: "check",
   },
@@ -152,17 +152,17 @@ const HITL_COLOR: Record<HitlPolicy, string> = {
 };
 
 const HITL_LABEL: Record<HitlPolicy, string> = {
-  forbidden: "HITL forbidden",
-  "carve-out": "HITL carve-out",
-  allowed: "HITL allowed",
+  forbidden: "HITL 금지",
+  "carve-out": "HITL 예외",
+  allowed: "HITL 허용",
 };
 
 const CATEGORY_LABEL: Record<Gate["category"], string> = {
-  read: "READ",
-  write: "WRITE",
-  check: "CHECK",
-  decide: "DECIDE",
-  log: "LOG",
+  read: "읽기",
+  write: "쓰기",
+  check: "검사",
+  decide: "결정",
+  log: "로그",
 };
 
 /* polar → cartesian around (cx, cy) */
@@ -225,7 +225,7 @@ export default function InLoopTick() {
             className="w-full"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
-            aria-label="Eight-wedge radial diagram of one in-loop iteration tick"
+            aria-label="루프 내부 한 이터레이션 틱의 8개 웨지 방사 다이어그램"
           >
             <defs>
               <radialGradient id="tick-bg" cx="50%" cy="50%" r="50%">
@@ -255,7 +255,7 @@ export default function InLoopTick() {
               fontFamily="ui-monospace, monospace"
               letterSpacing="2"
             >
-              IN-LOOP TICK
+              루프 내부 틱
             </text>
             <text
               x={CX}
@@ -276,7 +276,7 @@ export default function InLoopTick() {
               fontSize="10"
               fontFamily="ui-monospace, monospace"
             >
-              gates / iter
+              게이트 / 이터
             </text>
             <text
               x={CX}
@@ -287,7 +287,7 @@ export default function InLoopTick() {
               fontFamily="ui-monospace, monospace"
               opacity="0.8"
             >
-              Article III, VI, VIII
+              조항 III, VI, VIII
             </text>
 
             {/* wedges */}
@@ -406,19 +406,19 @@ export default function InLoopTick() {
                 fontFamily="ui-monospace, monospace"
                 letterSpacing="1"
               >
-                HITL DOT (Art. III)
+                HITL 점 (조항 III)
               </text>
               <circle cx="6" cy="22" r="4" fill={HITL_COLOR.forbidden} />
               <text x="18" y="26" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">
-                forbidden
+                금지
               </text>
               <circle cx="6" cy="42" r="4" fill={HITL_COLOR["carve-out"]} />
               <text x="18" y="46" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">
-                carve-out (L2)
+                예외 (L2)
               </text>
               <circle cx="6" cy="62" r="4" fill={HITL_COLOR.allowed} />
               <text x="18" y="66" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">
-                allowed
+                허용
               </text>
             </g>
 
@@ -432,7 +432,7 @@ export default function InLoopTick() {
                 fontFamily="ui-monospace, monospace"
                 letterSpacing="1"
               >
-                GATE CATEGORY
+                게이트 카테고리
               </text>
               {(["read", "write", "check", "decide", "log"] as Gate["category"][]).map(
                 (cat, i) => (
@@ -473,7 +473,7 @@ export default function InLoopTick() {
                 fontFamily="ui-monospace, monospace"
                 letterSpacing="1"
               >
-                loop back
+                루프 복귀
               </text>
             </g>
           </svg>
@@ -502,7 +502,7 @@ export default function InLoopTick() {
 
                 <div className="mt-4">
                   <div className="text-[10px] uppercase tracking-wide text-stone-500">
-                    Features
+                    피처
                   </div>
                   <div className="mt-1 flex flex-wrap gap-1.5">
                     {active.features.map((f) => (
@@ -518,7 +518,7 @@ export default function InLoopTick() {
 
                 <div className="mt-3">
                   <div className="text-[10px] uppercase tracking-wide text-stone-500">
-                    Articles
+                    조항
                   </div>
                   <div className="mt-1 flex flex-wrap gap-1.5">
                     {active.articles.map((a) => (
@@ -526,7 +526,7 @@ export default function InLoopTick() {
                         key={a}
                         className="text-[11px] px-1.5 py-0.5 rounded bg-[#D4A853]/10 border border-[#D4A853]/30 text-[#D4A853] font-mono"
                       >
-                        Art. {a}
+                        조항 {a}
                       </span>
                     ))}
                   </div>
@@ -534,7 +534,7 @@ export default function InLoopTick() {
 
                 <div className="mt-4 rounded border border-[#C17B5E]/30 bg-[#C17B5E]/[0.06] p-2.5">
                   <div className="text-[10px] uppercase tracking-wide text-[#C17B5E]">
-                    Failure mode
+                    실패 모드
                   </div>
                   <div className="mt-1 text-[12px] text-stone-300 leading-snug">
                     {active.failure}
@@ -543,10 +543,10 @@ export default function InLoopTick() {
               </>
             ) : (
               <div className="text-stone-500 italic text-[13px]">
-                Hover or click a wedge. Eight gates fire in fixed clockwise order
-                per iteration — seven are HITL-forbidden, one (Modify) carves out
-                L2 graduated-confirm. The wheel is <em>cyclic</em>: Reflect loops
-                back to Review unless plateau or goal-achieved trips.
+                웨지 위에 호버하거나 클릭한다. 8개 게이트가 이터레이션마다 시계방향으로
+                고정된 순서로 발화한다 — 7개는 HITL 금지, 하나 (수정) 만 L2 단계적
+                확인을 예외로 둔다. 바퀴는 <em>순환적</em>이다: 플래토나 목표 달성이
+                발화하지 않는 한 성찰은 리뷰로 되돌아간다.
               </div>
             )}
           </aside>
@@ -555,34 +555,34 @@ export default function InLoopTick() {
         <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-[11px]">
           <div className="rounded border border-stone-800 bg-stone-900/40 p-2.5">
             <div className="text-stone-600 uppercase tracking-wide text-[9px]">
-              commit-before-verify
+              커밋 후 검증
             </div>
             <div className="mt-1 text-stone-300">
-              every candidate lives in history (Art. VIII); discard = git revert.
+              모든 후보가 히스토리에 산다 (조항 VIII); 폐기 = git revert.
             </div>
           </div>
           <div className="rounded border border-stone-800 bg-stone-900/40 p-2.5">
             <div className="text-stone-600 uppercase tracking-wide text-[9px]">
-              ratchet = MAX, not MEAN
+              래칫 = MAX, MEAN 아님
             </div>
             <div className="mt-1 text-stone-300">
-              judge noise (σ≈10) cannot walk anchor backward (Art. VI).
+              저지 노이즈 (σ≈10) 가 앵커를 뒤로 못 끈다 (조항 VI).
             </div>
           </div>
           <div className="rounded border border-stone-800 bg-stone-900/40 p-2.5">
             <div className="text-stone-600 uppercase tracking-wide text-[9px]">
-              7/8 gates silent
+              8개 중 7개 침묵
             </div>
             <div className="mt-1 text-stone-300">
-              only Modify can pause; visibility runs on the statusline (Art. III).
+              수정만 일시 정지 가능; 가시성은 상태 줄에서 (조항 III).
             </div>
           </div>
           <div className="rounded border border-stone-800 bg-stone-900/40 p-2.5">
             <div className="text-stone-600 uppercase tracking-wide text-[9px]">
-              reflexion in-band
+              인밴드 reflexion
             </div>
             <div className="mt-1 text-stone-300">
-              gate 8 writes a lesson read at gate 1 next tick (Art. VII).
+              8번 게이트가 다음 틱의 1번 게이트가 읽을 교훈을 작성 (조항 VII).
             </div>
           </div>
         </div>

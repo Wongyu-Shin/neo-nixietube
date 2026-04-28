@@ -124,13 +124,13 @@ export default function CrossRefGraph() {
           <circle key={i} cx={CX} cy={CY} r={r} fill="none" stroke="#2a2418" strokeWidth="0.8" strokeDasharray="2 4" />
         ))}
         <text x={CX} y={CY - R2 - 10} textAnchor="middle" fontSize="9" fontFamily="ui-monospace,monospace" fill="#6a5f48">
-          outer · specialised
+          외부 · 특수화
         </text>
         <text x={CX} y={CY - R1 - 6} textAnchor="middle" fontSize="9" fontFamily="ui-monospace,monospace" fill="#6a5f48">
-          middle · phase primitives
+          중간 · 단계 프리미티브
         </text>
         <text x={CX} y={CY - R0 - 6} textAnchor="middle" fontSize="9" fontFamily="ui-monospace,monospace" fill="#8a7a58">
-          inner · anchors
+          내부 · 앵커
         </text>
 
         {/* Edges */}
@@ -188,7 +188,7 @@ export default function CrossRefGraph() {
         })}
       </svg>
       <figcaption className="mt-2 text-xs text-stone-500 text-center">
-        Cross-reference graph — hover a node to trace its Article VI crosscheck neighbourhood.
+        교차 참조 그래프 — 노드 위에 호버하면 조항 VI crosscheck 이웃을 추적한다.
       </figcaption>
     </figure>
   );
