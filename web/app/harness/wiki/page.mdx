@@ -24,182 +24,164 @@ import FeatureCrossRef from '../../components/harness/FeatureCrossRef'
 
 export const metadata = { title: 'LLM-Wiki — Keyword-Triggered Knowledge' }
 
-# LLM-Wiki — Keyword-Triggered Knowledge
+# LLM 위키 — 키워드 트리거 지식
 
-> The missing fourth knowledge layer: committable, project-scoped, surfaced
-> only when the operator's message tokens match an entry's triggers. Implements
-> **Article VII** of the [Constitution](../constitution) via the feature
-> `harness-llm-wiki`.
+> 빠져 있던 4번째 지식 계층. 커밋 가능하고, 프로젝트 범위이며, 운영자 메시지의 토큰이
+> 항목의 트리거와 매치될 때만 표면화된다. 피처 `harness-llm-wiki` 를 통해
+> [헌법](../constitution)의 **조항 VII** 를 구현한다.
 
-The operator's recurring question — *"LLM 위키의 영속화는 어떤 과정으로 진행되지?"* —
-has four load-bearing answers below. Each H2 maps to a specific section of
-`harness/research/harness-llm-wiki.md`; each interactive block is a live
-demo of the mechanic it annotates.
+운영자가 반복적으로 던지는 질문 — *"LLM 위키의 영속화는 어떤 과정으로 진행되지?"* —
+에는 아래 4개의 하중 부재 답이 있다. 각 H2는 `harness/research/harness-llm-wiki.md` 의
+특정 절에 매핑되며, 각 인터랙티브 블록은 그것이 주석하는 메커니즘의 라이브 데모다.
 
 ---
 
-## 1. The four-layer stack
+## 1. 4계층 스택
 
-Claude Code already ships three persistence layers; none is
-project-scoped **and** keyword-triggered at once. That gap is the reason
-Article VII exists.
+Claude Code는 이미 3개의 영속 계층을 출하한다. 그러나 어느 것도 *프로젝트 범위* 와
+*키워드 트리거* 를 동시에 갖지 못한다. 이 공백이 조항 VII가 존재하는 이유다.
 
 <KnowledgeStack />
 
-The stack is described at `harness/UX.md §7 "Persistence layers"`. L0–L1
-are CC-native (user memory, `CLAUDE.md`). L2 (wiki) is defined by feature
-`harness-llm-wiki`. L3 (research notes) is explicit-read only — never
-auto-surfaced — so it can host long-form proofs without burning every
-session's context budget.
+스택은 `harness/UX.md §7 "Persistence layers"` 에 기술되어 있다. L0–L1 은
+CC 네이티브다 (사용자 메모리, `CLAUDE.md`). L2 (위키) 는 피처 `harness-llm-wiki` 가
+정의한다. L3 (리서치 노트) 는 명시적 읽기 전용이며 — 자동 표면화되지 않는다 — 그래서
+세션마다 컨텍스트 예산을 태우지 않고도 장문의 증명을 호스팅할 수 있다.
 
 ---
 
-## 2. Anatomy of a wiki entry
+## 2. 위키 항목의 해부
 
-Every entry under `harness/wiki/<slug>.md` carries a fixed frontmatter
-schema. Hover any field to see its role; the invariants are enforced by
-`harness/wiki/SCHEMA.md` and by the composite guard
-(`harness/composite-guard.sh`, per **Article VI**).
+`harness/wiki/<slug>.md` 하위의 모든 항목은 고정된 프론트매터 스키마를 가진다. 각
+필드를 호버하면 역할이 보인다. 불변 조건은 `harness/wiki/SCHEMA.md` 와 합성 가드
+(`harness/composite-guard.sh`, **조항 VI** 에 따라) 가 강제한다.
 
 <WikiEntrySchema />
 
-The schema deliberately includes *provenance* (`created`,
-`last_verified`, `sources`) alongside *matching* (`triggers`) and
-*decay* (`half_life_days`) — revisable knowledge must know its own age.
-Bodies stay short (under ~40 lines); long-form rationale lives in
-`harness/research/*.md` with a back-link.
+스키마는 의도적으로 *출처* (`created`, `last_verified`, `sources`) 를 *매칭*
+(`triggers`) 과 *부패* (`half_life_days`) 와 함께 포함시킨다 — 개정 가능한 지식은
+자기 자신의 나이를 알아야 한다. 본문은 짧게 유지되며 (대략 40줄 이하), 장문의 논거는
+백링크와 함께 `harness/research/*.md` 에 산다.
 
 ---
 
-## 3. Live keyword matcher
+## 3. 라이브 키워드 매처
 
-This is the core mechanic. The SessionStart hook tokenizes the operator's
-initial message, scores every wiki entry by trigger overlap, and injects
-the top-3 as `<system-reminder>` blocks. Try editing the textarea below —
-the constellation redraws live, and cards re-rank by hit count.
+이것이 핵심 메커니즘이다. SessionStart 훅이 운영자의 첫 메시지를 토큰화하고, 모든
+위키 항목을 트리거 겹침으로 점수 매기며, 상위 3개를 `<system-reminder>` 블록으로
+주입한다. 아래 텍스트영역을 편집해 보면 — 별자리가 라이브로 다시 그려지고, 카드는
+히트 수에 따라 재정렬된다.
 
 <KeywordMatcher />
 
-Backed by `scripts/harness/wiki_match.sh` (see feature
-`harness-llm-wiki` §"Minimal viable implementation" step 2). The cap of
-three keeps the surfaced-context cost bounded; the 4th-Nth matches are
-reachable via `/harness:wiki-search` but never auto-injected. This is
-the same "no in-loop flooding" discipline **Article III** (HITL
-boundary) imposes on `AskUserQuestion`.
+`scripts/harness/wiki_match.sh` 가 받쳐준다 (피처 `harness-llm-wiki` §"Minimal
+viable implementation" 2단계 참조). 3개 상한은 표면화된 컨텍스트 비용을 유한하게
+유지한다. 4번째 이후 매치는 `/harness:wiki-search` 로 도달 가능하지만 자동 주입되지
+않는다. 이는 **조항 III** (HITL 경계) 가 `AskUserQuestion` 에 부과하는 동일한
+"루프 내부 범람 금지" 규율이다.
 
 ---
 
-## 4. Half-life & re-verification
+## 4. 반감기와 재검증
 
-Wiki entries are *revisable*, not permanent. Each carries
-`half_life_days`; after `last_verified + half_life_days`, the entry
-still surfaces — Article VII permits stale knowledge — but with a
-`restale-due` flag that prompts re-verification on the next loop that
-cites it.
+위키 항목은 영구적이지 않고 *개정 가능* 하다. 각 항목은 `half_life_days` 를 가지며,
+`last_verified + half_life_days` 이후에도 항목은 표면화된다 — 조항 VII는 노후화된
+지식을 허용한다 — 그러나 이것을 인용하는 다음 루프에서 재검증을 촉구하는
+`restale-due` 플래그와 함께 표면화된다.
 
 <HalfLifeTimeline />
 
-The zones map directly to the reporter's behavior:
+영역들은 리포터의 동작에 직접 매핑된다.
 
-- **fresh** (0-50% hl) — surfaced silently.
-- **warming** (50-100% hl) — surfaced with a green check.
-- **restale-due** (>100% hl) — surfaced with a stale banner; the
-  post-loop reporter (`cc-post-loop-slash`) prompts the operator to
-  either bump `last_verified` or edit the body.
-- **purge candidate** (>150% hl) — operator-only decision, via
-  `/harness:wiki-add --cull`. Deletion follows the amendment template
-  of **Article IX** so the culled knowledge lineage survives in `git
-  log`.
+- **fresh** (반감기의 0–50%) — 침묵 표면화.
+- **warming** (반감기의 50–100%) — 초록 체크와 함께 표면화.
+- **restale-due** (반감기의 100% 초과) — 노후화 배너와 함께 표면화. 루프 종료 후
+  리포터(`cc-post-loop-slash`)가 운영자에게 `last_verified` 를 갱신할지 본문을
+  편집할지 묻는다.
+- **purge candidate** (반감기의 150% 초과) — 운영자만의 결정. `/harness:wiki-add --cull`
+  을 통한다. 삭제는 **조항 IX** 의 개정 템플릿을 따르므로, 폐기된 지식 계보는
+  `git log` 에 살아남는다.
 
-This decay model is why the wiki can't be replaced by a big CLAUDE.md:
-CLAUDE.md has no notion of verification age.
+이 부패 모델이 위키를 거대한 CLAUDE.md로 대체할 수 없는 이유다. CLAUDE.md는 검증
+나이의 개념을 가지지 않는다.
 
 ---
 
-## 5. Read / write flow
+## 5. 읽기 / 쓰기 플로우
 
-The wiki is bidirectional by design (feature `harness-llm-wiki`,
-`axis2: pre-loop (primary) + post-loop (secondary)`). The tab below
-toggles between the two halves:
+위키는 설계상 양방향이다 (피처 `harness-llm-wiki`,
+`axis2: pre-loop (primary) + post-loop (secondary)`). 아래 탭은 두 절반을 토글한다.
 
 <ReadWriteFlow />
 
-Both flows respect **Article III**: the operator interacts only at
-pre-loop SessionStart (read side, via the hook) and post-loop
-(`/harness:wiki-add`, write side). The in-loop body never calls
-`AskUserQuestion` about the wiki — the operator's carve-outs are
-**graduated-confirm** (`harness-graduated-confirm`, L2 irreversible
-ops) and **pause/resume** (`harness-pause-resume`). The wiki simply
-surfaces and is cited; citations are logged by
-`gcli-agent-run-telemetry` for audit.
+두 플로우 모두 **조항 III** 를 존중한다. 운영자는 루프 진입 전 SessionStart
+(읽기 측, 훅을 통해)와 루프 종료 후(`/harness:wiki-add`, 쓰기 측) 에서만 상호작용한다.
+루프 내부 본체는 위키에 대해 결코 `AskUserQuestion` 을 호출하지 않는다. 운영자의
+예외는 **단계적 확인** (`harness-graduated-confirm`, L2 비가역 작업) 과 **일시 정지/
+재개** (`harness-pause-resume`) 다. 위키는 단지 표면화될 뿐이고 인용된다. 인용은
+`gcli-agent-run-telemetry` 가 감사용으로 로깅한다.
 
-**Article VIII** applies too: the commit of each accepted wiki entry
-is an iteration artifact. `loops/NNN-<slug>/wiki-refs.md` records what
-the loop read *and* wrote, so the knowledge lineage is recoverable
-from `git log` even years later.
+**조항 VIII** 도 적용된다. 수락된 모든 위키 항목의 커밋은 이터레이션 산출물이다.
+`loops/NNN-<slug>/wiki-refs.md` 가 루프가 읽은 *그리고* 작성한 것을 기록하므로,
+지식 계보는 수년 뒤에도 `git log` 에서 복구 가능하다.
 
 ---
 
-## 6. Integration map
+## 6. 통합 지도
 
-The wiki sits at the center of six other features. None of the
-integrations is optional — each solves a problem the wiki inherits from
-its axis position (outer / pre-loop primary, post-loop secondary).
+위키는 다른 6개 피처의 한가운데에 앉아 있다. 어느 통합도 선택적이지 않다 — 각각이
+위키가 자신의 축 위치(외부 / 루프 진입 전 일차, 루프 종료 후 이차)로부터 상속하는
+문제를 해결한다.
 
 <FeatureCrossRef />
 
-The most load-bearing edges:
+가장 하중을 많이 받는 간선들.
 
-- **`cc-post-loop-slash`** hosts the write mechanic. Without it, no
-  entries are ever proposed.
-- **`gcli-agent-run-telemetry`** closes the usage-audit loop — every
-  `see wiki:<slug>` citation inside an iteration is recorded.
-- **`harness-rip-test`** runs the rippable probe: migrate one entry
-  into CC-native memory, start a fresh session, check whether the
-  entry surfaces without prompting. If it does, feature `harness-llm-wiki`
-  is absorbed upstream and the outer scripts become dead weight
-  (**Article II**).
-- **`voyager-skill-library`** is deliberately *non-overlap*: skills are
-  authored procedures, wiki entries are facts. Mixing them produces the
-  "skill catalog as knowledge base" anti-pattern described in the
-  research note's §Contrast.
+- **`cc-post-loop-slash`** 가 쓰기 메커니즘을 호스팅한다. 이것이 없으면 어떤 항목도
+  제안되지 않는다.
+- **`gcli-agent-run-telemetry`** 가 사용-감사 루프를 닫는다 — 이터레이션 안의 모든
+  `see wiki:<slug>` 인용이 기록된다.
+- **`harness-rip-test`** 가 흡수 가능성 프로브를 실행한다. 항목 하나를 CC 네이티브
+  메모리로 옮기고, 새 세션을 시작해, 항목이 프롬프트 없이 표면화되는지 확인한다.
+  표면화되면, 피처 `harness-llm-wiki` 는 본체로 흡수된 것이며 외부 스크립트는 죽은
+  무게가 된다 (**조항 II**).
+- **`voyager-skill-library`** 는 의도적으로 *겹치지 않는다*. 스킬은 작성된 절차이고,
+  위키 항목은 사실이다. 둘을 섞으면 리서치 노트 §Contrast 에 기술된 "지식 베이스로
+  쓰이는 스킬 카탈로그" 안티패턴이 발생한다.
 
 ---
 
-## 7. Rippable signal
+## 7. 흡수 가능 신호
 
-Per **Article II**, every feature must declare the empirical signal
-that tells the operator it has been absorbed upstream. For
-`harness-llm-wiki`:
+**조항 II** 에 따라, 모든 피처는 본체로 흡수되었음을 운영자에게 알려주는 경험적
+신호를 선언해야 한다. `harness-llm-wiki` 의 경우는 이렇다.
 
-> Migrate one wiki entry (e.g. `cad-path-2-room-temp.md`) into CC's
-> native memory primitive. Start a fresh session, send a message
-> containing two trigger keywords. If CC surfaces the entry unprompted
-> with a cite-able source, **rip**.
+> 위키 항목 하나를 (예: `cad-path-2-room-temp.md`) CC의 네이티브 메모리 프리미티브로
+> 옮긴다. 새 세션을 시작하고, 두 개의 트리거 키워드를 포함하는 메시지를 보낸다.
+> CC가 인용 가능한 출처와 함께 항목을 프롬프트 없이 표면화하면, **흡수다**.
 
-The `tc_script` at `harness/tests/harness-llm-wiki.sh` runs this probe
-automatically on every CC version bump. Passing = still needed;
-failing = time to delete the outer scripts and the
-`.claude/skills/wiki-surface/` directory.
+`harness/tests/harness-llm-wiki.sh` 의 `tc_script` 가 모든 CC 버전 점프마다 이
+프로브를 자동으로 돌린다. 통과 = 여전히 필요. 실패 = 외부 스크립트와
+`.claude/skills/wiki-surface/` 디렉터리를 삭제할 시간.
 
 ---
 
-## 8. See also
+## 8. 함께 보기
 
-| From | Reads | Writes |
+| 출발지 | 읽기 | 쓰기 |
 |---|---|---|
-| [Catalog](../catalog) | `features/harness-llm-wiki.md` frontmatter | — |
-| [Constitution](../constitution) | Article VII (mandate) | — |
-| [Flow](../flow) | UX §7 (persistence layers) | post-loop `wiki-refs.md` |
+| [카탈로그](../catalog) | `features/harness-llm-wiki.md` 프론트매터 | — |
+| [헌법](../constitution) | 조항 VII (의무) | — |
+| [플로우](../flow) | UX §7 (영속 계층) | 루프 종료 후 `wiki-refs.md` |
 
-*Feature slugs referenced on this page:* `harness-llm-wiki`,
+*이 페이지에서 참조되는 피처 슬러그:* `harness-llm-wiki`,
 `harness-constitution`, `cc-post-loop-slash`, `gcli-agent-run-telemetry`,
 `voyager-skill-library`, `harness-rip-test`, `harness-progress-cadence`,
 `harness-clarify-gate`, `harness-pause-resume`, `harness-graduated-confirm`.
 
 ---
 
-## 9. Appendix — wiki adjacent visuals
+## 9. 부록 — 위키 인접 시각
 
 import AxisMatrix2x3 from '../../components/harness/AxisMatrix2x3'
 import ArticleBadge from '../../components/harness/ArticleBadge'
@@ -211,28 +193,28 @@ import FeatureCard from '../../components/harness/FeatureCard'
 import CommandCheatsheet from '../../components/harness/CommandCheatsheet'
 import ArtifactTree from '../../components/harness/ArtifactTree'
 
-### Wiki feature on the 2×3 axis matrix (compact)
+### 2×3 축 매트릭스 위의 위키 피처 (컴팩트)
 <AxisMatrix2x3 />
 
-### Article badge: <ArticleBadge n="VII" status="enforced" />
+### 조항 배지: <ArticleBadge n="VII" status="enforced" />
 
-### Article index quick reference
+### 조항 인덱스 빠른 참조
 <ArticleIndex />
 
-### Constitution cards (read on the constitution page)
+### 헌법 카드 (헌법 페이지에서 읽기)
 <ConstitutionCards />
 
-### Wiki feature rippability score
+### 위키 피처 흡수 가능성 점수
 <RippabilityMeter />
 
-### Wiki vs ratchet — different timelines
+### 위키 vs 래칫 — 다른 타임라인
 <RatchetTimeline />
 
-### Feature card: harness-llm-wiki
+### 피처 카드: harness-llm-wiki
 <FeatureCard slug="harness-llm-wiki" />
 
-### Wiki-related slash commands
+### 위키 관련 슬래시 명령
 <CommandCheatsheet />
 
-### Per-loop wiki-refs.md placement
+### 루프별 wiki-refs.md 배치
 <ArtifactTree />
