@@ -23,159 +23,154 @@ import ArticleBadge from '../../components/harness/ArticleBadge'
 
 export const metadata = { title: 'Harness Constitution — 9 Articles' }
 
-# Harness Constitution — 9 Articles
+# 하네스 헌법 — 9개 조항
 
-> The durable, project-wide invariants every loop must respect.
-> Authoritative source: [`harness/CONSTITUTION.md`](https://github.com/Wongyu-Shin/neo-nixetube/blob/main/harness/CONSTITUTION.md).
-> Inspired by spec-kit's `.specify/memory/constitution.md` pattern, scoped to this
-> project's agent-harness charter rather than generic software engineering.
+> 모든 루프가 존중해야 하는 프로젝트 차원의 지속적 불변 조건이다.
+> 권위 있는 출처: [`harness/CONSTITUTION.md`](https://github.com/Wongyu-Shin/neo-nixetube/blob/main/harness/CONSTITUTION.md).
+> spec-kit의 `.specify/memory/constitution.md` 패턴에서 영감을 받되, 일반적인
+> 소프트웨어 엔지니어링이 아닌 이 프로젝트의 에이전트 하네스 헌장으로 범위를 좁혔다.
 
-The Constitution is **separated from per-loop spec documents** so no single loop can
-redefine what the harness fundamentally is. The agent reads it at Phase-1 review of
-every loop *before* reading the loop's `spec.md`; conflicts halt the loop. Implemented
-by feature `harness-constitution` ([catalog entry](../catalog#harness-constitution)).
+헌법은 **루프별 스펙 문서로부터 분리되어** 있어, 어느 단일 루프도 하네스가 근본적으로
+무엇인지를 재정의할 수 없다. 에이전트는 모든 루프의 Phase 1 리뷰에서 루프의 `spec.md`
+*이전에* 헌법을 읽으며, 충돌이 발생하면 루프를 정지시킨다. 피처 `harness-constitution`
+([카탈로그 항목](../catalog#harness-constitution))이 이를 구현한다.
 
 ---
 
-## 1. The 9 Articles at a glance
+## 1. 9개 조항 한눈에 보기
 
-Each Article is mechanically enforced by at least one catalog feature plus the
-composite guard (`harness/composite-guard.sh`). Click any cell to expand the full
-text; the right column shows the features that operationalise it.
+각 조항은 적어도 하나의 카탈로그 피처와 합성 가드(`harness/composite-guard.sh`)에 의해
+기계적으로 강제된다. 셀을 클릭하면 전문이 펼쳐지고, 오른쪽 열은 그것을 운용 가능한
+형태로 만드는 피처를 보여준다.
 
 <ConstitutionArticlesMap />
 
-The colour ring distinguishes:
+색 고리는 다음을 구분한다.
 
-- **Mechanism Articles** (I–II) — declare *what* every feature must carry.
-- **HITL Articles** (III, V, IX) — declare *who* may interrupt the loop and when.
-- **Discipline Articles** (IV, VI, VII, VIII) — declare *how* artefacts persist
-  across loops without contradicting each other.
+- **메커니즘 조항** (I–II) — 모든 피처가 *무엇*을 가져야 하는지를 선언한다.
+- **HITL 조항** (III, V, IX) — *누가* 언제 루프를 중단할 수 있는지를 선언한다.
+- **규율 조항** (IV, VI, VII, VIII) — 산출물이 루프를 가로질러 *어떻게* 서로 모순 없이
+  유지되는지를 선언한다.
 
 ---
 
-## 2. Article III — HITL belongs outside the loop
+## 2. 조항 III — HITL은 루프 바깥에 산다
 
-The single most load-bearing rule. In-loop `AskUserQuestion` is forbidden with
-exactly two carve-outs: operator-initiated pause (feature `harness-pause-resume`)
-and graduated confirmation for irreversible operations (feature
-`harness-graduated-confirm`). Everything else routes through pre-loop or post-loop.
+가장 결정적인 단일 규칙이다. 루프 내부의 `AskUserQuestion` 은 정확히 두 예외를
+제외하고 금지된다. 운영자가 시작하는 일시 정지(피처 `harness-pause-resume`),
+그리고 비가역적 작업에 대한 단계적 확인(피처 `harness-graduated-confirm`) 두 가지다.
+그 외 모든 것은 루프 진입 전 또는 종료 후로 라우팅된다.
 
 <HitlBoundaryDiagram />
 
-The diagram makes the asymmetry visible: pre-loop (green) and post-loop (blue)
-permit *active HITL*; in-loop (red) is HITL-silent except for the two carve-outs.
-A transcript linter (`scripts/harness/transcript-lint.sh`, planned) flags any
-cross-boundary `AskUserQuestion` post-hoc.
+다이어그램은 비대칭을 가시화한다. 루프 진입 전(초록)과 종료 후(파랑)는 *능동적
+HITL* 을 허용하지만, 루프 내부(빨강)는 두 예외를 제외하면 HITL이 침묵해야 한다.
+트랜스크립트 린터(`scripts/harness/transcript-lint.sh`, 계획 중)가 경계를 넘는
+모든 `AskUserQuestion` 을 사후에 표시한다.
 
-> **Why the asymmetry matters.** Without it, the agent slips into
-> "ask-the-user-mid-iteration" patterns that destroy parallel-session viability.
-> See `harness/UX.md` §1-3 for the entry → start flow that depends on this rule.
+> **이 비대칭이 왜 중요한가.** 이것이 없으면 에이전트는 "이터레이션 중간에 사용자에게
+> 묻기" 패턴으로 빠지고, 이는 병렬 세션 운용을 무너뜨린다. 진입 → 시작 플로우가
+> 이 규칙에 의존하므로 `harness/UX.md` §1–3 을 참고한다.
 
 ---
 
-## 3. Article II — Rippability
+## 3. 조항 II — 흡수 가능성
 
-A feature that cannot be mechanically tested for obsolescence has no place in
-the catalog. Every entry must carry a `tc_script` (passes when still needed,
-fails when absorbed upstream) and an `applicability` block (CC semver range +
-model list).
+기계적으로 노후화 테스트가 불가능한 피처는 카탈로그에 자리가 없다. 모든 항목은
+`tc_script` (여전히 필요할 때 통과, 본체로 흡수되었을 때 실패) 와 `applicability`
+블록 (CC semver 범위 + 모델 목록) 을 가져야 한다.
 
 <RippabilityMeter />
 
-The meter visualises how the project's 28 (now 29 incl. `harness-constitution`
-itself) features score on three rippability axes:
+이 미터는 프로젝트의 28개 (지금은 `harness-constitution` 자체를 포함해 29개) 피처가
+세 흡수 가능성 축에서 어떤 점수를 받는지를 시각화한다.
 
-- **TC mechanicality** — does it pass/fail without LLM judgment?
-- **Applicability tightness** — narrow CC-version + model range = high score.
-- **Probe specificity** — does the rippable_check name a concrete experiment?
+- **TC 기계성** — LLM 판단 없이 통과/실패가 결정되는가?
+- **적용 범위 협소성** — 좁은 CC 버전 + 모델 범위 = 높은 점수.
+- **프로브 구체성** — `rippable_check` 가 구체적인 실험을 명시하는가?
 
-Features near the centre are rip-test-ready today; features near the rim need
-their probes hardened before the next CC version bump. See feature
-[`statistical-tc-runner`](../catalog#statistical-tc-runner) for the parallel
-N-sample runner that operationalises Article II at scale.
+중심 가까이 있는 피처는 오늘 당장 흡수 테스트 준비가 끝나 있고, 가장자리에 있는
+피처는 다음 CC 버전 점프 전에 프로브를 단단히 다져야 한다. 조항 II를 규모 있게
+운용 가능하게 만드는 병렬 N-샘플 러너는 피처
+[`statistical-tc-runner`](../catalog#statistical-tc-runner) 에 산다.
 
 ---
 
-## 4. Article IV — Alignment-free separation
+## 4. 조항 IV — 정렬 무관 분리
 
-Eval skills must not equal self-modification skills. The harness domain
-(`harness/`, `scripts/harness/`, `.claude/`) and the content domain (`cad/`,
-`sim/`, `reason/`, `predict/`, `scenario/`, `web/`, `tests/`) are disjoint by
-charter. Loop `Scope:` must live in exactly one. Implemented by feature
-`alignment-free-self-improvement` (catalog entry).
+평가 스킬과 자기 수정 스킬은 같지 않아야 한다. 하네스 도메인 (`harness/`,
+`scripts/harness/`, `.claude/`) 과 콘텐츠 도메인 (`cad/`, `sim/`, `reason/`,
+`predict/`, `scenario/`, `web/`, `tests/`) 은 헌장상 서로 분리된다. 루프의 `Scope:` 는
+정확히 한쪽에만 살아야 한다. 피처 `alignment-free-self-improvement` 가 이를 구현한다
+(카탈로그 항목 참조).
 
-A scope-straddle `[ASSUMPTION]` in the loop's `clarifications.md` (per
-Article V + feature `harness-clarify-gate`) trips the composite guard and
-the loop cannot start.
+루프의 `clarifications.md` 안에서 범위를 가로지르는 `[ASSUMPTION]` 이 발견되면
+(조항 V + 피처 `harness-clarify-gate` 에 따라) 합성 가드가 발화하며 루프는 시작될 수
+없다.
 
 <ArticleBadge n="IV" status="enforced" />
 
 ---
 
-## 5. Article VI — No contradiction (composite-guard)
+## 5. 조항 VI — 모순 금지 (합성 가드)
 
-Every iteration's Guard MUST run `harness/composite-guard.sh`, which combines:
+매 이터레이션의 가드는 반드시 `harness/composite-guard.sh` 를 실행해야 하며, 이는
+다음을 결합한다.
 
-- `harness/guard.sh` — frontmatter schema for every catalog feature.
-- `harness/crosscheck.sh` — must report `CROSSCHECK_PASS=11/11` (consistency
-  between `features/`, `research/`, `tests/`).
+- `harness/guard.sh` — 모든 카탈로그 피처의 프론트매터 스키마.
+- `harness/crosscheck.sh` — `CROSSCHECK_PASS=11/11` 을 보고해야 한다 (`features/`,
+  `research/`, `tests/` 사이의 일관성).
 
-A feature addition that introduces an asymmetric cross-reference, breaks
-disambiguation, or shrinks the triad is reverted automatically. The composite
-guard is what made the catalog grow from 13 → 28 entries with **zero**
-silent regressions across multiple loops.
-
----
-
-## 6. Article VII — LLM-Wiki persistence
-
-Knowledge the agent discovers during a loop that would be useful to future loops
-MUST be persisted as a keyword-triggered entry under `harness/wiki/<slug>.md`.
-
-This is the layer between user memory (cross-repo, always loaded) and explicit
-research notes. See [LLM-Wiki page](../wiki) for the live demo of the four-layer
-stack and the keyword matcher.
+비대칭적 교차 참조를 도입하거나, 명확한 구분을 깨거나, 삼각 구조를 축소시키는 피처
+추가는 자동으로 리버트된다. 합성 가드 덕분에 카탈로그가 13 → 28 항목으로 성장하면서
+여러 루프를 가로질러 **무묵음 회귀 0건**을 유지할 수 있었다.
 
 ---
 
-## 7. Article IX — Amendment procedure (self-referential)
+## 6. 조항 VII — LLM 위키 영속
 
-The Constitution can be changed only via a loop whose `Scope:` is this file
-alone, with a dedicated `loops/NNN-constitutional-amendment/spec.md` and an
-explicit `[RATIFIED]` marker in the Clarifications section.
+루프 도중 에이전트가 발견한, 향후 루프에 유용할 지식은 반드시 `harness/wiki/<slug>.md`
+하위에 키워드 트리거 항목으로 영속화되어야 한다.
 
-Article IX **itself** can only be changed via the procedure it describes — the
-self-referential anchor that prevents a single loop from invalidating the
-amendment safeguard.
+이는 사용자 메모리(레포 횡단, 항상 로드됨)와 명시적인 리서치 노트 사이의 계층이다.
+4계층 스택과 키워드 매처의 라이브 데모는 [LLM 위키 페이지](../wiki) 에서 본다.
+
+---
+
+## 7. 조항 IX — 개정 절차 (자기 참조적)
+
+헌법은 오직 다음 조건의 루프를 통해서만 변경될 수 있다. 즉 `Scope:` 가 이 파일
+하나뿐이며, 전용 `loops/NNN-constitutional-amendment/spec.md` 와, Clarifications 절에
+명시적인 `[RATIFIED]` 마커가 있어야 한다.
+
+조항 IX는 **자기 자신** 또한 그것이 기술하는 절차를 통해서만 변경할 수 있다 — 단일
+루프가 개정 안전장치를 무효화하는 것을 막는 자기 참조 앵커다.
 
 <AmendmentProcedureFlow />
 
-The flow visualises the four required commits per amendment: **propose →
-clarify → ratify → audit-existing-features**. Step 4 is non-trivial: every
-existing feature's `applicability` field must be re-audited against the
-amended Article. This makes amendments expensive *by design* — frequent
-constitutional change is exactly what the safeguard exists to prevent.
+이 플로우는 개정마다 요구되는 4개 커밋을 시각화한다. **제안 → 명료화 → 비준 →
+기존 피처 감사**. 4단계는 사소하지 않다. 모든 기존 피처의 `applicability` 필드가
+개정된 조항에 대해 재감사되어야 한다. 이로써 개정은 *설계상 비싸진다* — 잦은 헌법적
+변경이야말로 이 안전장치가 막고자 하는 바로 그것이다.
 
 ---
 
-## 8. See also
+## 8. 함께 보기
 
-| Topic | Where |
+| 주제 | 위치 |
 |---|---|
-| Full Constitution text | [`harness/CONSTITUTION.md`](https://github.com/Wongyu-Shin/neo-nixetube/blob/main/harness/CONSTITUTION.md) |
-| Entry → completion flow | [Harness UX Flow](../flow) |
-| LLM-wiki demo | [LLM-Wiki page](../wiki) |
-| 28 feature catalog | [Feature Catalog](../catalog) |
-| Implementing feature | [`harness-constitution`](../catalog#harness-constitution) |
+| 헌법 전문 | [`harness/CONSTITUTION.md`](https://github.com/Wongyu-Shin/neo-nixetube/blob/main/harness/CONSTITUTION.md) |
+| 진입 → 종료 플로우 | [하네스 UX 플로우](../flow) |
+| LLM 위키 데모 | [LLM 위키 페이지](../wiki) |
+| 28개 피처 카탈로그 | [피처 카탈로그](../catalog) |
+| 구현 피처 | [`harness-constitution`](../catalog#harness-constitution) |
 
 ---
 
-## 9. Appendix — Article cross-references
+## 9. 부록 — 조항 교차 참조
 
-Every Article has at least one feature operationalising it. The components
-below preview the implementation detail; full versions live on the
-companion pages linked in §8.
+모든 조항은 그것을 운용 가능하게 만드는 적어도 하나의 피처를 가진다. 아래 컴포넌트는
+구현 디테일의 미리보기이며, 전체 버전은 §8 에 링크된 동반 페이지에 산다.
 
 import ArticleIndex from '../../components/harness/ArticleIndex'
 import ArticleWeave from '../../components/harness/ArticleWeave'
@@ -188,32 +183,32 @@ import KnowledgeStack from '../../components/harness/KnowledgeStack'
 import PersistenceLayers from '../../components/harness/PersistenceLayers'
 import SafetyTiers from '../../components/harness/SafetyTiers'
 
-### Article index
+### 조항 인덱스
 <ArticleIndex />
 
-### Article weave
+### 조항 위빙
 <ArticleWeave />
 
-### Articles preview (cards)
+### 조항 미리보기 (카드)
 <ConstitutionCards />
 
-### Article V — Clarify dimensions
+### 조항 V — 클래리파이 차원
 <ClarifyDimensionsRadar />
 
-### Article III — HITL boundary chart
+### 조항 III — HITL 경계 차트
 <HITLBoundaryChart />
 
-### Article I — axis classification (compact)
+### 조항 I — 축 분류 (컴팩트)
 <AxisMatrix2x3 />
 
-### Article VII — half-life (revisable knowledge)
+### 조항 VII — 반감기 (개정 가능한 지식)
 <HalfLifeTimeline />
 
-### Article VII — knowledge stack
+### 조항 VII — 지식 스택
 <KnowledgeStack />
 
-### Article VII — persistence layers
+### 조항 VII — 영속 계층
 <PersistenceLayers />
 
-### Article III — safety tier ladder (L0/L1/L2)
+### 조항 III — 안전 등급 사다리 (L0/L1/L2)
 <SafetyTiers />
