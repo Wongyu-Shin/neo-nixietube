@@ -263,8 +263,8 @@ export default function HarnessFlowDiagram() {
               x="114"
               y="106"
               fill="#6BA368"
-              fontSize="10"
-              opacity="0.7"
+              fontSize="12"
+              opacity="0.92"
               textAnchor="middle"
             >
               조항 III · HITL 허용
@@ -299,8 +299,8 @@ export default function HarnessFlowDiagram() {
               x="846"
               y="106"
               fill="#B8A9C9"
-              fontSize="10"
-              opacity="0.7"
+              fontSize="12"
+              opacity="0.92"
               textAnchor="middle"
             >
               조항 III · HITL 허용
@@ -349,8 +349,8 @@ export default function HarnessFlowDiagram() {
             x={centerX}
             y={centerY - ringR - 42}
             fill="#D4A853"
-            fontSize="10"
-            opacity="0.7"
+            fontSize="12"
+            opacity="0.92"
             textAnchor="middle"
           >
             조항 III · HITL 금지 (예외 둘)
@@ -417,7 +417,7 @@ export default function HarnessFlowDiagram() {
                   x={114}
                   y={y + 13}
                   fill="#9ec8a0"
-                  fontSize="9"
+                  fontSize="11"
                   textAnchor="middle"
                 >
                   조항 {p.article}
@@ -453,7 +453,7 @@ export default function HarnessFlowDiagram() {
             x={(204 + centerX - ringR - 48) / 2}
             y={centerY - 12}
             fill="#6BA368"
-            fontSize="10"
+            fontSize="12"
             textAnchor="middle"
             opacity="0.8"
           >
@@ -499,7 +499,7 @@ export default function HarnessFlowDiagram() {
                   x={x}
                   y={y + 12}
                   fill="#e6c97a"
-                  fontSize="9"
+                  fontSize="11"
                   textAnchor="middle"
                 >
                   {p.label.split(" · ")[1] ?? ""}
@@ -523,7 +523,7 @@ export default function HarnessFlowDiagram() {
               x={centerX}
               y={centerY - 14}
               fill="#D4A853"
-              fontSize="10"
+              fontSize="12"
               textAnchor="middle"
               fontWeight="600"
               letterSpacing="0.08em"
@@ -544,7 +544,7 @@ export default function HarnessFlowDiagram() {
               x={centerX}
               y={centerY + 18}
               fill="#9a8660"
-              fontSize="9"
+              fontSize="11"
               textAnchor="middle"
             >
               조항 III
@@ -553,7 +553,7 @@ export default function HarnessFlowDiagram() {
               x={centerX}
               y={centerY + 32}
               fill="#7a6850"
-              fontSize="9"
+              fontSize="11"
               textAnchor="middle"
             >
               (예외는 둘뿐)
@@ -575,7 +575,7 @@ export default function HarnessFlowDiagram() {
             x={(centerX + ringR + 48 + 756) / 2}
             y={centerY - 12}
             fill="#B8A9C9"
-            fontSize="10"
+            fontSize="12"
             textAnchor="middle"
             opacity="0.8"
           >
@@ -619,7 +619,7 @@ export default function HarnessFlowDiagram() {
                   x={846}
                   y={y + 13}
                   fill="#c4b5d2"
-                  fontSize="9"
+                  fontSize="11"
                   textAnchor="middle"
                 >
                   조항 {p.article}
@@ -645,19 +645,19 @@ export default function HarnessFlowDiagram() {
             <rect width="912" height="32" rx="8" fill="#120d08" stroke="#3a2e1e" />
             <g transform="translate(16, 16)">
               <circle cx="6" cy="0" r="6" fill={HITL_COLORS.active} opacity="0.6" />
-              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL 능동 (진입 전/종료 후)</text>
+              <text x="18" y="3" fill="#c7c7c7" fontSize="12">HITL 능동 (진입 전/종료 후)</text>
             </g>
             <g transform="translate(210, 16)">
               <circle cx="6" cy="0" r="6" fill={HITL_COLORS.forbidden} opacity="0.7" />
-              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL 금지 (루프 내부)</text>
+              <text x="18" y="3" fill="#c7c7c7" fontSize="12">HITL 금지 (루프 내부)</text>
             </g>
             <g transform="translate(420, 16)">
               <circle cx="6" cy="0" r="6" fill={HITL_COLORS.gated} opacity="0.7" />
-              <text x="18" y="3" fill="#c7c7c7" fontSize="10">HITL 게이트 (L2 예외)</text>
+              <text x="18" y="3" fill="#c7c7c7" fontSize="12">HITL 게이트 (L2 예외)</text>
             </g>
             <g transform="translate(620, 16)">
               <rect x="-2" y="-6" width="12" height="12" rx="2" fill="#D4A853" opacity="0.35" />
-              <text x="18" y="3" fill="#c7c7c7" fontSize="10">노드를 클릭해 패널 고정</text>
+              <text x="18" y="3" fill="#c7c7c7" fontSize="12">노드를 클릭해 패널 고정</text>
             </g>
           </g>
         </svg>
@@ -668,7 +668,7 @@ export default function HarnessFlowDiagram() {
           aria-live="polite"
         >
           <div
-            className="uppercase tracking-widest text-[10px] mb-1"
+            className="uppercase tracking-widest text-[11px] mb-1"
             style={{ color: ZONE_COLORS[activePhase.zone] }}
           >
             {activePhase.zone === "pre"
