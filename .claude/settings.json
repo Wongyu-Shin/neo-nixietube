@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "_doc": "Project-level Claude Code settings. Wires the harness runtime hooks declared in harness/features/cc-hook-guardrail.md, harness-graduated-confirm.md, and harness-llm-wiki.md. Source of truth for hook contracts is harness/CONSTITUTION.md (Article III, V, VII).",
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~)",
+      "Bash(sudo rm*)",
+      "Bash(chmod 777*)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git reset --hard origin*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $CLAUDE_PROJECT_DIR/.claude/hooks/graduated-confirm.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $CLAUDE_PROJECT_DIR/.claude/hooks/wiki-keyword-matcher.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
