@@ -47,3 +47,5 @@ autoresearch-translate-results.tsv
 # Component translation loop state
 loops/docs-loop-translate-comp/baseline-residue.txt
 autoresearch-comp-translate-results.tsv
+autoresearch-qa-results.tsv
+autoresearch-csv-render-results.tsv
