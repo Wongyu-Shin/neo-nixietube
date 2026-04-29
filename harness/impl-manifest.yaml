@@ -1,0 +1,127 @@
+# harness/impl-manifest.yaml — production-grade implementation manifest
+# for Tier 1 runtime features. Each feature lists the artifacts that must
+# exist + minimum content invariants. The verify script (harness/impl-verify.sh)
+# walks the manifest, counts unmet rows, prints IMPL_MISSING=N.
+#
+# Entry shape:
+#   <feature-slug>:
+#     paths: [...]          # files that must exist
+#     contains: { path: regex, ... }   # path → regex that must match
+#     command_frontmatter: # for slash commands — required frontmatter keys
+#       <path>: [argument-hint, allowed-tools, ...]
+#     hook: { settings_path: <jq path>, present: true }
+#     not_empty: [<dir>, ...]    # directories that must have ≥ 1 entry
+#
+# A feature is "implemented" iff EVERY check in its block passes.
+# IMPL_MISSING = count of features with at least one failing check.
+# Goal: IMPL_MISSING = 0.
+
+harness-loop-scaffold:
+  paths:
+    - .claude/commands/harness/new-loop.md
+    - loops/TEMPLATE/spec.md
+    - loops/TEMPLATE/clarifications.md
+    - loops/TEMPLATE/plan.md
+    - loops/TEMPLATE/report.mdx
+    - loops/TEMPLATE/wiki-refs.md
+  contains:
+    .claude/commands/harness/new-loop.md: '/harness:new-loop'
+
+harness-clarify-gate:
+  paths:
+    - .claude/commands/harness/clarify.md
+  contains:
+    .claude/commands/harness/clarify.md: 'D1.*D2.*D3.*D4.*D5.*D6.*D7'
+    # also must mention [ASSUMPTION] convention
+  contains_extra:
+    .claude/commands/harness/clarify.md: '\[ASSUMPTION\]'
+
+plan-mode-discipline:
+  # autoresearch:plan plugin already provides this; require local
+  # passthrough or doc that it is the canonical entry-point.
+  paths:
+    - .claude/commands/autoresearch/plan.md
+  contains:
+    .claude/commands/autoresearch/plan.md: 'ExitPlanMode'
+
+harness-constitution:
+  paths:
+    - scripts/harness/load-constitution.sh
+    - harness/CONSTITUTION.md
+  contains:
+    scripts/harness/load-constitution.sh: 'CONSTITUTION.md'
+
+harness-graduated-confirm:
+  paths:
+    - .claude/hooks/graduated-confirm.sh
+    - .claude/settings.json
+  contains:
+    .claude/hooks/graduated-confirm.sh: 'L0.*L1.*L2|L2.*confirm|graduated'
+    .claude/settings.json: 'graduated-confirm|PreToolUse'
+
+cc-hook-guardrail:
+  paths:
+    - .claude/settings.json
+  contains:
+    .claude/settings.json: 'PreToolUse|hooks'
+
+harness-pause-resume:
+  paths:
+    - .claude/commands/harness/pause.md
+    - .claude/commands/harness/resume.md
+    - scripts/harness/pause-state.sh
+  contains:
+    .claude/commands/harness/pause.md: '/harness:pause'
+    .claude/commands/harness/resume.md: '/harness:resume'
+
+harness-rip-test:
+  paths:
+    - harness/rip-test.sh
+  contains:
+    harness/rip-test.sh: 'rippable_check'
+
+statistical-tc-runner:
+  paths:
+    - harness/statistical-tc-runner.sh
+  contains:
+    harness/statistical-tc-runner.sh: 'parallel|N-sample|--samples|jobs'
+
+harness-progress-cadence:
+  paths:
+    - scripts/harness/progress-cadence.sh
+  contains:
+    scripts/harness/progress-cadence.sh: 'milestone|every 5|cadence'
+
+harness-llm-wiki:
+  paths:
+    - .claude/commands/harness/wiki-add.md
+    - .claude/hooks/wiki-keyword-matcher.sh
+    - harness/wiki/SCHEMA.md
+  contains:
+    .claude/commands/harness/wiki-add.md: '/harness:wiki-add'
+    .claude/hooks/wiki-keyword-matcher.sh: 'keyword|match|wiki'
+    .claude/settings.json: 'SessionStart|wiki-keyword-matcher'
+
+cc-post-loop-slash:
+  paths:
+    - .claude/commands/harness/report.md
+  contains:
+    .claude/commands/harness/report.md: '/harness:report'
+
+noise-aware-ratchet:
+  paths:
+    - scripts/ratchet.py
+  contains:
+    scripts/ratchet.py: 'SUM=MAX|max\(.*anchor|ratchet'
+
+plateau-detection:
+  paths:
+    - scripts/plateau-detect.py
+  contains:
+    scripts/plateau-detect.py: 'patience|slope|plateau'
+
+reflexion:
+  paths:
+    - loops/TEMPLATE/reflexion.md
+  contains:
+    loops/TEMPLATE/reflexion.md: 'reflexion|reflection|lesson'
