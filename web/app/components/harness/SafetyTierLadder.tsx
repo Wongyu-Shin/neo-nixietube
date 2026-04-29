@@ -81,10 +81,10 @@ export default function SafetyTierLadder() {
           <line x1="58" y1="36" x2="58" y2="226" stroke="#3a2e1e" strokeWidth="2" />
           <circle cx="58" cy="36" r="4" fill="#8a7a58" />
           <circle cx="58" cy="226" r="4" fill="#8a7a58" />
-          <text x="58" y="22" fill="#8a7a58" fontSize="10" textAnchor="middle">
+          <text x="58" y="22" fill="#8a7a58" fontSize="12" textAnchor="middle">
             안전
           </text>
-          <text x="58" y="246" fill="#8a7a58" fontSize="10" textAnchor="middle">
+          <text x="58" y="246" fill="#8a7a58" fontSize="12" textAnchor="middle">
             비가역
           </text>
 
@@ -111,7 +111,7 @@ export default function SafetyTierLadder() {
                   x="58"
                   y={y + 4}
                   fill="#eaeaea"
-                  fontSize="11"
+                  fontSize="12"
                   fontWeight="700"
                   textAnchor="middle"
                 >
@@ -131,12 +131,12 @@ export default function SafetyTierLadder() {
                   x="104"
                   y={y - 2}
                   fill={t.color}
-                  fontSize="11"
+                  fontSize="12"
                   fontWeight="600"
                 >
                   {t.label}
                 </text>
-                <text x="104" y={y + 11} fill="#9a8660" fontSize="9">
+                <text x="104" y={y + 11} fill="#9a8660" fontSize="12">
                   HITL: {t.hitl}
                 </text>
               </g>
@@ -146,7 +146,7 @@ export default function SafetyTierLadder() {
 
         <aside className="rounded-xl border border-white/10 bg-stone-900/60 p-5 text-sm">
           <div
-            className="uppercase tracking-widest text-[10px] mb-1"
+            className="uppercase tracking-widest text-[12px] mb-1"
             style={{ color: active.color }}
           >
             등급 {active.id}

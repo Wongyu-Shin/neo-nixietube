@@ -134,7 +134,7 @@ export default function AxisMatrix2x3() {
               return (
                 <div
                   key={`${a1}-${a2}`}
-                  className="rounded-lg border p-2 min-h-[110px] text-[11px] leading-relaxed"
+                  className="rounded-lg border p-2 min-h-[110px] text-[12px] leading-relaxed"
                   style={{
                     borderColor: `${AXIS2_COLOR[a2]}35`,
                     background: `${AXIS2_COLOR[a2]}08`,
@@ -145,7 +145,7 @@ export default function AxisMatrix2x3() {
                   }}
                 >
                   <div
-                    className="font-mono text-[9px] mb-1 opacity-60"
+                    className="font-mono text-[12px] mb-1 opacity-60"
                     style={{ color: AXIS2_COLOR[a2] }}
                   >
                     {visible.length}/{cellFeatures.length}
@@ -154,7 +154,7 @@ export default function AxisMatrix2x3() {
                     {cellFeatures.map((f) => (
                       <code
                         key={f.slug}
-                        className="text-[10px] text-stone-300 opacity-80"
+                        className="text-[12px] text-stone-300 opacity-80"
                         style={{
                           opacity: matches(f) ? 0.9 : 0.25,
                         }}

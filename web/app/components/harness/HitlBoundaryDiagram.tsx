@@ -183,7 +183,7 @@ export default function HitlBoundaryDiagram() {
                 x={m.x + 24}
                 y={y + 20}
                 fontFamily="ui-sans-serif, system-ui"
-                fontSize="11"
+                fontSize="12"
                 fontWeight="500"
                 fill={a.allowed ? "#e8dbc2" : "#ffb8b8"}
               >
@@ -193,7 +193,7 @@ export default function HitlBoundaryDiagram() {
                 x={m.x + 24}
                 y={y + 36}
                 fontFamily="ui-monospace, monospace"
-                fontSize="9"
+                fontSize="12"
                 fill={a.allowed ? m.color : "#ff7878"}
                 opacity="0.8"
               >

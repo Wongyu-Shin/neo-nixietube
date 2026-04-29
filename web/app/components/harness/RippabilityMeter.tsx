@@ -98,7 +98,7 @@ export default function RippabilityMeter() {
               y="82"
               textAnchor="middle"
               fontFamily="ui-monospace, monospace"
-              fontSize="10"
+              fontSize="12"
               fill={m.color}
               letterSpacing="2"
               fontWeight="600"
@@ -124,20 +124,20 @@ export default function RippabilityMeter() {
         {/* Scenario card */}
         <g transform="translate(40, 160)">
           <rect width="600" height="92" rx="8" fill="#1a1208" stroke={meta.color} strokeOpacity="0.5" strokeWidth="1" />
-          <text x="16" y="22" fontFamily="ui-monospace, monospace" fontSize="9" fill="#D4A853" opacity="0.6" letterSpacing="2">
+          <text x="16" y="22" fontFamily="ui-monospace, monospace" fontSize="12" fill="#D4A853" opacity="0.6" letterSpacing="2">
             피처
           </text>
           <text x="16" y="42" fontFamily="ui-monospace, monospace" fontSize="13" fill="#e8dbc2" fontWeight="500">
             {scenario.feature}
           </text>
-          <text x="16" y="62" fontFamily="ui-sans-serif, system-ui" fontSize="11" fill="#bbb" opacity="0.85">
+          <text x="16" y="62" fontFamily="ui-sans-serif, system-ui" fontSize="12" fill="#bbb" opacity="0.85">
             CC {scenario.ccVersion} · {scenario.model}
           </text>
-          <text x="16" y="80" fontFamily="ui-sans-serif, system-ui" fontSize="10" fill="#999" opacity="0.9">
+          <text x="16" y="80" fontFamily="ui-sans-serif, system-ui" fontSize="12" fill="#999" opacity="0.9">
             <tspan>{scenario.explanation.slice(0, 95)}</tspan>
           </text>
           {scenario.explanation.length > 95 && (
-            <text x="16" y="94" fontFamily="ui-sans-serif, system-ui" fontSize="10" fill="#999" opacity="0.9">
+            <text x="16" y="94" fontFamily="ui-sans-serif, system-ui" fontSize="12" fill="#999" opacity="0.9">
               <tspan>{scenario.explanation.slice(95, 195)}</tspan>
             </text>
           )}

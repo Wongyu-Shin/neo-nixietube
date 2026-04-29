@@ -98,7 +98,7 @@ export default function ReadWriteFlow() {
             role="tab"
             aria-selected={mode === "read"}
             onClick={() => setMode("read")}
-            className={`px-3 py-1 text-[11px] font-mono rounded transition ${
+            className={`px-3 py-1 text-[12px] font-mono rounded transition ${
               mode === "read"
                 ? "bg-emerald-500/20 text-emerald-200"
                 : "text-stone-400 hover:text-stone-200"
@@ -110,7 +110,7 @@ export default function ReadWriteFlow() {
             role="tab"
             aria-selected={mode === "write"}
             onClick={() => setMode("write")}
-            className={`px-3 py-1 text-[11px] font-mono rounded transition ${
+            className={`px-3 py-1 text-[12px] font-mono rounded transition ${
               mode === "write"
                 ? "bg-amber-500/20 text-amber-200"
                 : "text-stone-400 hover:text-stone-200"
@@ -129,7 +129,7 @@ export default function ReadWriteFlow() {
             <li key={s.id} className="relative grid grid-cols-[auto_1fr] gap-3">
               <div className="flex flex-col items-center">
                 <div
-                  className="flex items-center justify-center rounded-full w-7 h-7 text-[11px] font-mono font-bold"
+                  className="flex items-center justify-center rounded-full w-7 h-7 text-[12px] font-mono font-bold"
                   style={{
                     background: accent + "22",
                     color: accent,
@@ -150,7 +150,7 @@ export default function ReadWriteFlow() {
                   <span className="text-sm font-semibold text-stone-100">
                     {s.label}
                   </span>
-                  <code className="text-[10px] font-mono text-stone-500">
+                  <code className="text-[12px] font-mono text-stone-500">
                     {s.cite}
                   </code>
                 </div>
@@ -163,7 +163,7 @@ export default function ReadWriteFlow() {
         })}
       </ol>
 
-      <figcaption className="mt-2 text-[11px] text-stone-500">
+      <figcaption className="mt-2 text-[12px] text-stone-500">
         탭을 전환하면 반대 플로우가 보인다. 양쪽 모두 HITL 괄호 안에 있다
         (루프 진입 전/종료 후만 &mdash; 조항 III가 루프 내부의{" "}
         <code>AskUserQuestion</code> 을 금지).

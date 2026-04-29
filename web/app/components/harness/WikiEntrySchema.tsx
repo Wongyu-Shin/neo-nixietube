@@ -85,7 +85,7 @@ export default function WikiEntrySchema() {
             <span className="text-stone-500">: </span>
             <span className="text-stone-200">{f.value}</span>
             {hovered === f.key && (
-              <span className="ml-2 text-[10px] text-stone-500">
+              <span className="ml-2 text-[12px] text-stone-500">
                 ← {f.role}
               </span>
             )}
@@ -113,12 +113,12 @@ export default function WikiEntrySchema() {
           >
             {active.key}
           </code>
-          <span className="ml-auto text-[10px] font-mono uppercase tracking-wider text-stone-500">
+          <span className="ml-auto text-[12px] font-mono uppercase tracking-wider text-stone-500">
             {active.role}
           </span>
         </div>
         <p className="mt-3 text-sm text-stone-300 leading-relaxed">{active.note}</p>
-        <div className="mt-auto pt-4 text-[10px] font-mono text-stone-500 border-t border-stone-800">
+        <div className="mt-auto pt-4 text-[12px] font-mono text-stone-500 border-t border-stone-800">
           정의:{" "}
           <code className="text-stone-400">
             harness/research/harness-llm-wiki.md

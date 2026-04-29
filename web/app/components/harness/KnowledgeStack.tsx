@@ -65,7 +65,7 @@ export default function KnowledgeStack() {
         <div className="text-xs font-mono uppercase tracking-wider text-stone-400">
           4계층 영속 스택
         </div>
-        <div className="text-[10px] font-mono text-stone-500">
+        <div className="text-[12px] font-mono text-stone-500">
           헌법 · 조항 VII
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function KnowledgeStack() {
             >
               {/* Index + color chip ------------------------------ */}
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] text-stone-500 w-4">
+                <span className="font-mono text-[12px] text-stone-500 w-4">
                   L{i}
                 </span>
                 <svg width="20" height="28" viewBox="0 0 20 28" aria-hidden="true">
@@ -131,7 +131,7 @@ export default function KnowledgeStack() {
                   <span className="text-sm font-semibold text-stone-100">
                     {l.title}
                   </span>
-                  <code className="text-[11px] font-mono text-stone-400 truncate">
+                  <code className="text-[12px] font-mono text-stone-400 truncate">
                     {l.path}
                   </code>
                 </div>
@@ -143,7 +143,7 @@ export default function KnowledgeStack() {
               </div>
 
               {/* Trigger pill ------------------------------------- */}
-              <div className="flex flex-col items-end gap-1 text-[10px] font-mono">
+              <div className="flex flex-col items-end gap-1 text-[12px] font-mono">
                 <span
                   className="rounded px-1.5 py-0.5 uppercase tracking-wider"
                   style={{
@@ -161,7 +161,7 @@ export default function KnowledgeStack() {
         })}
       </div>
 
-      <figcaption className="mt-3 text-[11px] text-stone-500 leading-relaxed">
+      <figcaption className="mt-3 text-[12px] text-stone-500 leading-relaxed">
         계층 위에 호버하거나 탭한다. 키워드 트리거 표면화는 오직 <em>하네스 위키</em>(L2) 만이
         사용한다 &mdash; 바로 이 공백이 <code>harness-llm-wiki</code>(조항 VII)의 동기다.
       </figcaption>

@@ -75,7 +75,7 @@ export default function RatchetTimeline() {
         <h4 className="text-sm font-semibold text-stone-200">
           SUM=MAX 래칫 — 12 이터레이션 (모의 ±{SIGMA} 저지 노이즈)
         </h4>
-        <div className="flex gap-3 text-[11px] text-stone-400">
+        <div className="flex gap-3 text-[12px] text-stone-400">
           <span className="inline-flex items-center gap-1">
             <span className="inline-block h-0.5 w-5 bg-emerald-600" />
             래칫
@@ -121,7 +121,7 @@ export default function RatchetTimeline() {
               x={PAD.left - 6}
               y={y(v) + 3}
               textAnchor="end"
-              fontSize="9"
+              fontSize="12"
               fill="#9ca3af"
             >
               {v}
@@ -206,7 +206,7 @@ export default function RatchetTimeline() {
                 x={x(r.n)}
                 y={H - PAD.bottom + 14}
                 textAnchor="middle"
-                fontSize="9"
+                fontSize="12"
                 fill={isHover ? "#111827" : "#6b7280"}
                 fontWeight={isHover ? 700 : 400}
               >
@@ -241,7 +241,7 @@ export default function RatchetTimeline() {
             x="0"
             y="8"
             textAnchor="middle"
-            fontSize="9"
+            fontSize="12"
             fontWeight="600"
             fill="#92400e"
           >
@@ -253,7 +253,7 @@ export default function RatchetTimeline() {
         <text
           x={PAD.left}
           y={H - 6}
-          fontSize="10"
+          fontSize="12"
           fill="#6b7280"
           fontFamily="ui-monospace, SFMono-Regular, monospace"
         >
@@ -262,7 +262,7 @@ export default function RatchetTimeline() {
         <text
           x={PAD.left - 28}
           y={PAD.top + 6}
-          fontSize="10"
+          fontSize="12"
           fill="#6b7280"
           fontFamily="ui-monospace, SFMono-Regular, monospace"
           transform={`rotate(-90 ${PAD.left - 28} ${PAD.top + 6})`}
@@ -271,7 +271,7 @@ export default function RatchetTimeline() {
         </text>
       </svg>
 
-      <div className="mt-2 flex items-start gap-3 border-t border-neutral-200 pt-2 text-[11.5px] dark:border-neutral-800">
+      <div className="mt-2 flex items-start gap-3 border-t border-neutral-200 pt-2 text-[12px] dark:border-neutral-800">
         <div className="flex-1">
           {active ? (
             <>
@@ -282,7 +282,7 @@ export default function RatchetTimeline() {
               <span>ratchet={activeRatchet}</span>
               <span className="mx-1 text-neutral-500">·</span>
               <span
-                className="rounded px-1.5 py-0.5 text-[10px] font-semibold uppercase"
+                className="rounded px-1.5 py-0.5 text-[12px] font-semibold uppercase"
                 style={{
                   background: DECISION_COLOR[active.decision] + "22",
                   color: DECISION_COLOR[active.decision],
@@ -296,7 +296,7 @@ export default function RatchetTimeline() {
             <span className="italic text-neutral-500">점 위에 호버</span>
           )}
         </div>
-        <div className="flex gap-3 text-[10.5px]">
+        <div className="flex gap-3 text-[12px]">
           {(["keep", "rework", "discard"] as const).map((k) => (
             <span key={k} className="inline-flex items-center gap-1">
               <span

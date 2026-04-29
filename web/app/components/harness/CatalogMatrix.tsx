@@ -149,7 +149,7 @@ export default function CatalogMatrix() {
 
   return (
     <figure className="my-8 not-prose">
-      <div className="mb-3 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-wider text-stone-400">
+      <div className="mb-3 flex flex-wrap items-center gap-2 text-[12px] uppercase tracking-wider text-stone-400">
         <span className="mr-1">tier filter:</span>
         {(["all", "inner", "outer"] as const).map((k) => (
           <button
@@ -265,7 +265,7 @@ export default function CatalogMatrix() {
           x={PAD_L + CELL_W + CELL_W / 2}
           y={PAD_T - 20}
           textAnchor="middle"
-          fontSize="10"
+          fontSize="12"
           fill="#ef8f44"
           fontFamily="ui-monospace, monospace"
           opacity="0.85"
@@ -307,7 +307,7 @@ export default function CatalogMatrix() {
               x={PAD_L + i * CELL_W + CELL_W / 2}
               y={PAD_T - 24}
               textAnchor="middle"
-              fontSize="10"
+              fontSize="12"
               fill="#8a7a58"
               fontFamily="ui-monospace, monospace"
             >
@@ -334,7 +334,7 @@ export default function CatalogMatrix() {
               x={PAD_L - 22}
               y={PAD_T + i * CELL_H + CELL_H / 2 + 10}
               textAnchor="end"
-              fontSize="9"
+              fontSize="12"
               fill="#8a7a58"
               fontFamily="ui-monospace, monospace"
             >
@@ -371,7 +371,7 @@ export default function CatalogMatrix() {
                   x={PAD_L + ci * CELL_W + 32}
                   y={PAD_T + ri * CELL_H + 22}
                   textAnchor="middle"
-                  fontSize="10"
+                  fontSize="12"
                   fill={t.color}
                   fontFamily="ui-monospace, monospace"
                 >
@@ -426,7 +426,7 @@ export default function CatalogMatrix() {
                 x={f.cx}
                 y={f.cy + r + 14}
                 textAnchor="middle"
-                fontSize="9.5"
+                fontSize="12"
                 fill={isActive ? "#ffffff" : "#c8bfa0"}
                 fontFamily="ui-monospace, monospace"
                 style={{ pointerEvents: "none" }}
@@ -437,7 +437,7 @@ export default function CatalogMatrix() {
                 x={f.cx}
                 y={f.cy + 3}
                 textAnchor="middle"
-                fontSize="8"
+                fontSize="12"
                 fill="#000"
                 opacity="0.7"
                 fontFamily="ui-monospace, monospace"
@@ -473,15 +473,15 @@ export default function CatalogMatrix() {
               <text x={42} y={22} fontSize="12" fontFamily="ui-monospace, monospace" fill="#e8dfc8" fontWeight="600">
                 {activeF.slug}
               </text>
-              <text x={42} y={22} fontSize="10" fontFamily="ui-monospace, monospace" fill="#8a7a58" textAnchor="start" dx={activeF.slug.length * 7.3 + 10}>
+              <text x={42} y={22} fontSize="12" fontFamily="ui-monospace, monospace" fill="#8a7a58" textAnchor="start" dx={activeF.slug.length * 7.3 + 10}>
                 조항 {activeF.article} · {activeF.axis1} · {activeF.axis2}
               </text>
-              <text x={42} y={40} fontSize="10.5" fontFamily="ui-monospace, monospace" fill="#c8bfa0">
+              <text x={42} y={40} fontSize="12" fontFamily="ui-monospace, monospace" fill="#c8bfa0">
                 {activeF.blurb.length > 110 ? activeF.blurb.slice(0, 108) + "…" : activeF.blurb}
               </text>
             </>
           ) : (
-            <text x={22} y={30} fontSize="11" fontFamily="ui-monospace, monospace" fill="#6a5f48">
+            <text x={22} y={30} fontSize="12" fontFamily="ui-monospace, monospace" fill="#6a5f48">
               노드 위에 호버 — 28개 피처 · axis1 ∈ {"{inner, outer}"} · axis2 ∈ {"{pre-loop, in-loop, post-loop}"} · 조항 I
             </text>
           )}

@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types'
+import FullBleed from './app/components/FullBleed'
 
 // Category colors (ccunpacked.dev style)
 // D4A853 = gold (sealing), C17B5E = rust (electrodes), 7B9EB8 = blue (vacuum/gas), 6BA368 = green (nano), B8A9C9 = purple (measurement)
@@ -64,6 +65,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => (
       <hr className="border-white/[0.06] my-8" />
     ),
+    FullBleed,
     ...components,
   }
 }

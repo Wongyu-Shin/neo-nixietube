@@ -55,7 +55,7 @@ export default function ArtifactTree() {
                   {n.name}
                 </span>
                 {n.article && (
-                  <span className="ml-auto text-[10px] text-stone-600">
+                  <span className="ml-auto text-[12px] text-stone-600">
                     조항 {n.article}
                   </span>
                 )}
@@ -64,7 +64,7 @@ export default function ArtifactTree() {
           })}
         </div>
         <aside className="rounded-xl border border-white/10 bg-stone-900/60 p-5 text-sm">
-          <div className="uppercase tracking-widest text-[10px] text-amber-400 mb-2">
+          <div className="uppercase tracking-widest text-[12px] text-amber-400 mb-2">
             {node.kind === "dir" ? "디렉터리" : "파일"}
             {node.article ? ` · 조항 ${node.article}` : ""}
           </div>

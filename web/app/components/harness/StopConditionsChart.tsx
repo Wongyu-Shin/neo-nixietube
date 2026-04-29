@@ -116,7 +116,7 @@ export default function StopConditionsChart() {
               y={PAD_T + 42}
               textAnchor="middle"
               fill="#7B9EB8"
-              fontSize="11"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
               fontWeight="600"
             >
@@ -128,7 +128,7 @@ export default function StopConditionsChart() {
               textAnchor="middle"
               fill="#7B9EB8"
               fillOpacity="0.6"
-              fontSize="9"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
             >
               5 중 3
@@ -150,7 +150,7 @@ export default function StopConditionsChart() {
               y={PAD_T + 142}
               textAnchor="middle"
               fill="#C17B5E"
-              fontSize="11"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
               fontWeight="600"
             >
@@ -162,7 +162,7 @@ export default function StopConditionsChart() {
               textAnchor="middle"
               fill="#C17B5E"
               fillOpacity="0.6"
-              fontSize="9"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
             >
               5 중 2
@@ -174,7 +174,7 @@ export default function StopConditionsChart() {
             x={PAD_L}
             y={30}
             fill="#888"
-            fontSize="10"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             letterSpacing="1"
           >
@@ -211,7 +211,7 @@ export default function StopConditionsChart() {
                   y={cy - 10}
                   textAnchor="middle"
                   fill={color}
-                  fontSize="10"
+                  fontSize="12"
                   fontFamily="ui-monospace, monospace"
                   fontWeight="600"
                 >
@@ -222,7 +222,7 @@ export default function StopConditionsChart() {
                   y={cy + 4}
                   textAnchor="middle"
                   fill="#d4d4d4"
-                  fontSize="9.5"
+                  fontSize="12"
                   fontFamily="ui-monospace, monospace"
                 >
                   {t.label.split(" ").slice(0, 2).join(" ")}
@@ -232,7 +232,7 @@ export default function StopConditionsChart() {
                   y={cy + 16}
                   textAnchor="middle"
                   fill="#999"
-                  fontSize="9"
+                  fontSize="12"
                   fontFamily="ui-monospace, monospace"
                 >
                   {t.label.split(" ").slice(2).join(" ") || " "}
@@ -245,7 +245,7 @@ export default function StopConditionsChart() {
                       y={cy - 15}
                       textAnchor="middle"
                       fill="#0b0b0b"
-                      fontSize="8"
+                      fontSize="12"
                       fontFamily="ui-monospace, monospace"
                       fontWeight="700"
                     >
@@ -265,13 +265,13 @@ export default function StopConditionsChart() {
               y="-1"
               textAnchor="middle"
               fill="#0b0b0b"
-              fontSize="8"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
               fontWeight="700"
             >
               !
             </text>
-            <text x="16" y="0" fill="#888" fontSize="10" fontFamily="ui-monospace, monospace">
+            <text x="16" y="0" fill="#888" fontSize="12" fontFamily="ui-monospace, monospace">
               손실: 진행 중 작업이 완전히 커밋/리포트되지 않을 수 있다
             </text>
           </g>
@@ -293,10 +293,10 @@ export default function StopConditionsChart() {
                 <span className="font-semibold text-stone-100">
                   #{activeTrigger.num} · {activeTrigger.label}
                 </span>
-                <code className="text-[11px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-400 border border-stone-800 ml-auto">
+                <code className="text-[12px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-400 border border-stone-800 ml-auto">
                   {activeTrigger.feature}
                 </code>
-                <span className="text-[11px] px-1.5 py-0.5 rounded bg-[#D4A853]/10 border border-[#D4A853]/30 text-[#D4A853] font-mono">
+                <span className="text-[12px] px-1.5 py-0.5 rounded bg-[#D4A853]/10 border border-[#D4A853]/30 text-[#D4A853] font-mono">
                   조항 {activeTrigger.article}
                 </span>
               </div>

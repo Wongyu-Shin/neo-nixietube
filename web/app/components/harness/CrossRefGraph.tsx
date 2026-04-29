@@ -123,13 +123,13 @@ export default function CrossRefGraph() {
         {[R0, R1, R2].map((r, i) => (
           <circle key={i} cx={CX} cy={CY} r={r} fill="none" stroke="#2a2418" strokeWidth="0.8" strokeDasharray="2 4" />
         ))}
-        <text x={CX} y={CY - R2 - 10} textAnchor="middle" fontSize="9" fontFamily="ui-monospace,monospace" fill="#6a5f48">
+        <text x={CX} y={CY - R2 - 10} textAnchor="middle" fontSize="12" fontFamily="ui-monospace,monospace" fill="#6a5f48">
           외부 · 특수화
         </text>
-        <text x={CX} y={CY - R1 - 6} textAnchor="middle" fontSize="9" fontFamily="ui-monospace,monospace" fill="#6a5f48">
+        <text x={CX} y={CY - R1 - 6} textAnchor="middle" fontSize="12" fontFamily="ui-monospace,monospace" fill="#6a5f48">
           중간 · 단계 프리미티브
         </text>
-        <text x={CX} y={CY - R0 - 6} textAnchor="middle" fontSize="9" fontFamily="ui-monospace,monospace" fill="#8a7a58">
+        <text x={CX} y={CY - R0 - 6} textAnchor="middle" fontSize="12" fontFamily="ui-monospace,monospace" fill="#8a7a58">
           내부 · 앵커
         </text>
 
@@ -176,7 +176,7 @@ export default function CrossRefGraph() {
                 x={p.x}
                 y={p.y + r + 11}
                 textAnchor="middle"
-                fontSize="8.5"
+                fontSize="12"
                 fontFamily="ui-monospace,monospace"
                 fill={isActive ? "#fff" : "#c8bfa0"}
                 style={{ pointerEvents: "none" }}

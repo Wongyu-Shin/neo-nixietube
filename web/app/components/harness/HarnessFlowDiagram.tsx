@@ -417,7 +417,7 @@ export default function HarnessFlowDiagram() {
                   x={114}
                   y={y + 13}
                   fill="#9ec8a0"
-                  fontSize="11"
+                  fontSize="12"
                   textAnchor="middle"
                 >
                   조항 {p.article}
@@ -489,7 +489,7 @@ export default function HarnessFlowDiagram() {
                   x={x}
                   y={y - 2}
                   fill="#eaeaea"
-                  fontSize="11"
+                  fontSize="12"
                   fontWeight="600"
                   textAnchor="middle"
                 >
@@ -499,7 +499,7 @@ export default function HarnessFlowDiagram() {
                   x={x}
                   y={y + 12}
                   fill="#e6c97a"
-                  fontSize="11"
+                  fontSize="12"
                   textAnchor="middle"
                 >
                   {p.label.split(" · ")[1] ?? ""}
@@ -534,7 +534,7 @@ export default function HarnessFlowDiagram() {
               x={centerX}
               y={centerY + 2}
               fill="#eaeaea"
-              fontSize="11"
+              fontSize="12"
               textAnchor="middle"
               fontWeight="600"
             >
@@ -544,7 +544,7 @@ export default function HarnessFlowDiagram() {
               x={centerX}
               y={centerY + 18}
               fill="#9a8660"
-              fontSize="11"
+              fontSize="12"
               textAnchor="middle"
             >
               조항 III
@@ -553,7 +553,7 @@ export default function HarnessFlowDiagram() {
               x={centerX}
               y={centerY + 32}
               fill="#7a6850"
-              fontSize="11"
+              fontSize="12"
               textAnchor="middle"
             >
               (예외는 둘뿐)
@@ -619,7 +619,7 @@ export default function HarnessFlowDiagram() {
                   x={846}
                   y={y + 13}
                   fill="#c4b5d2"
-                  fontSize="11"
+                  fontSize="12"
                   textAnchor="middle"
                 >
                   조항 {p.article}
@@ -668,7 +668,7 @@ export default function HarnessFlowDiagram() {
           aria-live="polite"
         >
           <div
-            className="uppercase tracking-widest text-[11px] mb-1"
+            className="uppercase tracking-widest text-[12px] mb-1"
             style={{ color: ZONE_COLORS[activePhase.zone] }}
           >
             {activePhase.zone === "pre"

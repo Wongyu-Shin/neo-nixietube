@@ -115,7 +115,7 @@ export default function ConstitutionCards() {
                   {a.keyFeatures.map((f) => (
                     <code
                       key={f}
-                      className="text-[10px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-500 border border-stone-800"
+                      className="text-[12px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-500 border border-stone-800"
                     >
                       {f}
                     </code>

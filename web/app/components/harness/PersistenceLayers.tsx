@@ -82,13 +82,13 @@ export default function PersistenceLayers() {
               }}
             >
               <div
-                className="text-[10px] uppercase tracking-widest mb-1"
+                className="text-[12px] uppercase tracking-widest mb-1"
                 style={{ color: l.color }}
               >
                 계층 · {l.scope}
               </div>
               <div className="text-sm font-semibold text-amber-200">{l.name}</div>
-              <code className="block text-[10px] text-stone-500 mt-1 truncate">
+              <code className="block text-[12px] text-stone-500 mt-1 truncate">
                 {l.location}
               </code>
             </button>
@@ -103,7 +103,7 @@ export default function PersistenceLayers() {
         }}
       >
         <div
-          className="uppercase tracking-widest text-[10px] mb-1"
+          className="uppercase tracking-widest text-[12px] mb-1"
           style={{ color: layer.color }}
         >
           {layer.name}

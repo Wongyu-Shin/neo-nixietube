@@ -125,7 +125,7 @@ export default function ArticleIndex() {
                 조항 {a.n}
               </span>
               <span
-                className="rounded-full px-1.5 py-0.5 text-[11px] font-semibold uppercase"
+                className="rounded-full px-1.5 py-0.5 text-[12px] font-semibold uppercase"
                 style={{
                   background: PHASE_COLOR[a.phase] + "33",
                   color: PHASE_COLOR[a.phase],
@@ -146,7 +146,7 @@ export default function ArticleIndex() {
               {a.summary}
             </div>
             {isHover && (
-              <div className="mt-1 border-t border-stone-700/50 pt-1.5 text-[11px] text-stone-300">
+              <div className="mt-1 border-t border-stone-700/50 pt-1.5 text-[12px] text-stone-300">
                 <span className="font-mono">결속:</span> {a.bindsTo}
               </div>
             )}

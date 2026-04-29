@@ -151,7 +151,7 @@ export default function KeywordMatcher() {
           <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
           SessionStart 훅 — 라이브 키워드 매처
         </div>
-        <div className="text-[10px] font-mono uppercase tracking-wider text-stone-500">
+        <div className="text-[12px] font-mono uppercase tracking-wider text-stone-500">
           조항 VII · harness-llm-wiki
         </div>
       </div>
@@ -170,7 +170,7 @@ export default function KeywordMatcher() {
             className="w-full resize-none rounded-lg bg-stone-900/70 border border-stone-700/60 px-3 py-2 font-mono text-sm text-stone-100 placeholder-stone-500 focus:border-emerald-500/50 focus:outline-none"
             placeholder="트리거 키워드를 포함하는 사용자 메시지를 입력하세요…"
           />
-          <div className="absolute right-2 bottom-2 text-[10px] font-mono text-stone-500">
+          <div className="absolute right-2 bottom-2 text-[12px] font-mono text-stone-500">
             토큰 {tokens.length}개
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function KeywordMatcher() {
           return (
             <span
               key={t + i}
-              className={`rounded-md px-1.5 py-0.5 text-[10px] font-mono border ${
+              className={`rounded-md px-1.5 py-0.5 text-[12px] font-mono border ${
                 isHit
                   ? "border-emerald-500/50 bg-emerald-500/10 text-emerald-300"
                   : "border-stone-700/60 bg-stone-900/50 text-stone-500"
@@ -214,7 +214,7 @@ export default function KeywordMatcher() {
         {suppressed.length > 0 && (
           <button
             onClick={() => setRevealAll(true)}
-            className="mt-1 rounded-md border border-dashed border-stone-700/60 bg-stone-900/30 px-3 py-2 text-[11px] font-mono text-stone-500 hover:text-stone-300 hover:border-stone-600 transition-colors"
+            className="mt-1 rounded-md border border-dashed border-stone-700/60 bg-stone-900/30 px-3 py-2 text-[12px] font-mono text-stone-500 hover:text-stone-300 hover:border-stone-600 transition-colors"
           >
             + {suppressed.length}개 억제됨 (상한=3, 로딩 메커니즘 4단계에 따라)
           </button>
@@ -222,7 +222,7 @@ export default function KeywordMatcher() {
         {revealAll && scored.length > 3 && (
           <button
             onClick={() => setRevealAll(false)}
-            className="mt-1 rounded-md border border-dashed border-stone-700/60 bg-stone-900/30 px-3 py-2 text-[11px] font-mono text-stone-500 hover:text-stone-300 hover:border-stone-600 transition-colors"
+            className="mt-1 rounded-md border border-dashed border-stone-700/60 bg-stone-900/30 px-3 py-2 text-[12px] font-mono text-stone-500 hover:text-stone-300 hover:border-stone-600 transition-colors"
           >
             상위 3개로 다시 접기
           </button>
@@ -230,14 +230,14 @@ export default function KeywordMatcher() {
       </div>
 
       {/* Legend --------------------------------------------------- */}
-      <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px] font-mono text-stone-400">
+      <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[12px] font-mono text-stone-400">
         <LegendSwatch color="#6BA368" label="신선 · 나이 ≤ 반감기의 50%" />
         <LegendSwatch color="#D4A853" label="데워짐 · 50–100%" />
         <LegendSwatch color="#C17B5E" label="노후 · 100% 초과, 여전히 표면화" />
         <LegendSwatch color="#7B9EB8" label="메시지의 트리거 히트" />
       </div>
 
-      <figcaption className="mt-4 text-[11px] text-stone-500 leading-relaxed">
+      <figcaption className="mt-4 text-[12px] text-stone-500 leading-relaxed">
         <code className="text-stone-300">scripts/harness/wiki_match.sh</code> 의 데모 (피처{" "}
         <em>harness-llm-wiki</em>). 토큰은 소문자화되어 비영숫자에서 분리되고, 각 항목의{" "}
         <code>triggers</code> 필드에 매칭된다. 히트 수 기준 상위 3개가 SessionStart에서{" "}
@@ -282,7 +282,7 @@ function EntryCard({
     >
       {/* Rank badge ------------------------------------------------ */}
       <div
-        className="absolute top-0 left-0 px-2 py-0.5 text-[10px] font-mono font-bold text-stone-950 rounded-br-md"
+        className="absolute top-0 left-0 px-2 py-0.5 text-[12px] font-mono font-bold text-stone-950 rounded-br-md"
         style={{ background: entry.color }}
       >
         #{rank}
@@ -329,7 +329,7 @@ function EntryCard({
             x="24"
             y="27"
             textAnchor="middle"
-            fontSize="10"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             fill="#e7e5e4"
             fontWeight="600"
@@ -343,7 +343,7 @@ function EntryCard({
                 x="38"
                 y="13"
                 textAnchor="middle"
-                fontSize="8"
+                fontSize="12"
                 fontWeight="700"
                 fill="#1c1917"
               >
@@ -360,17 +360,17 @@ function EntryCard({
               harness/wiki/{entry.slug}.md
             </code>
             {stale && (
-              <span className="rounded px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider bg-[#C17B5E]/20 text-[#C17B5E] border border-[#C17B5E]/40">
+              <span className="rounded px-1.5 py-0.5 text-[12px] font-mono uppercase tracking-wider bg-[#C17B5E]/20 text-[#C17B5E] border border-[#C17B5E]/40">
                 restale-due
               </span>
             )}
             {warming && (
-              <span className="rounded px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider bg-[#D4A853]/20 text-[#D4A853] border border-[#D4A853]/40">
+              <span className="rounded px-1.5 py-0.5 text-[12px] font-mono uppercase tracking-wider bg-[#D4A853]/20 text-[#D4A853] border border-[#D4A853]/40">
                 데워짐
               </span>
             )}
             {!stale && !warming && (
-              <span className="rounded px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider bg-[#6BA368]/20 text-[#6BA368] border border-[#6BA368]/40">
+              <span className="rounded px-1.5 py-0.5 text-[12px] font-mono uppercase tracking-wider bg-[#6BA368]/20 text-[#6BA368] border border-[#6BA368]/40">
                 신선
               </span>
             )}
@@ -385,7 +385,7 @@ function EntryCard({
               return (
                 <span
                   key={t}
-                  className={`rounded px-1.5 py-0.5 text-[10px] font-mono border ${
+                  className={`rounded px-1.5 py-0.5 text-[12px] font-mono border ${
                     isHit
                       ? "border-emerald-400/60 bg-emerald-400/15 text-emerald-200"
                       : "border-stone-700/40 bg-stone-800/30 text-stone-500"
@@ -398,7 +398,7 @@ function EntryCard({
           </div>
 
           {/* Meta line -------------------------------------------- */}
-          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-mono text-stone-500">
+          <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] font-mono text-stone-500">
             <span>
               생성 <span className="text-stone-400">{entry.created}</span>
             </span>
@@ -418,7 +418,7 @@ function EntryCard({
           </div>
 
           {/* Hits summary ----------------------------------------- */}
-          <div className="mt-2 text-[10px] font-mono text-stone-500">
+          <div className="mt-2 text-[12px] font-mono text-stone-500">
             매치{score === 1 ? "" : ""}:{" "}
             {hits.map((h, i) => (
               <span key={h}>
@@ -589,7 +589,7 @@ function CorpusConstellation({
                 x={lx}
                 y={ny + 3}
                 textAnchor={labelSide}
-                fontSize="8.5"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 fill={hit ? "#e7e5e4" : "#78716c"}
               >
@@ -600,7 +600,7 @@ function CorpusConstellation({
                   x={lx}
                   y={ny + 13}
                   textAnchor={labelSide}
-                  fontSize="7"
+                  fontSize="12"
                   fontFamily="ui-monospace, monospace"
                   fill={e.color}
                 >
@@ -620,7 +620,7 @@ function CorpusConstellation({
             x={cx}
             y={cy + 26}
             textAnchor="middle"
-            fontSize="8"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             fill="#10b981"
           >
@@ -632,7 +632,7 @@ function CorpusConstellation({
         <text
           x="10"
           y="14"
-          fontSize="8"
+          fontSize="12"
           fontFamily="ui-monospace, monospace"
           fill="#78716c"
         >
@@ -642,7 +642,7 @@ function CorpusConstellation({
           x={W - 10}
           y="14"
           textAnchor="end"
-          fontSize="8"
+          fontSize="12"
           fontFamily="ui-monospace, monospace"
           fill="#78716c"
         >

@@ -48,7 +48,7 @@ export default function HITLBoundaryChart() {
         <text x={viewW / 2} y="28" fill="#D4A853" fontSize="12" fontWeight="600" textAnchor="middle" letterSpacing="0.12em">
           조항 III · HITL 경계
         </text>
-        <text x={viewW / 2} y="46" fill="#8a7a58" fontSize="10" textAnchor="middle">
+        <text x={viewW / 2} y="46" fill="#8a7a58" fontSize="12" textAnchor="middle">
           능동 HITL은 두 파란 띠에서만 허용된다 — 나머지는 머신 주도
         </text>
 
@@ -78,7 +78,7 @@ export default function HITLBoundaryChart() {
                 x={labelX}
                 y={barY + barH + 18}
                 fill={s.color}
-                fontSize="10"
+                fontSize="12"
                 textAnchor="middle"
                 fontWeight={s.hitl === "gate" ? "600" : "400"}
               >
@@ -101,7 +101,7 @@ export default function HITLBoundaryChart() {
                     x={labelX}
                     y={barY + barH + 36}
                     fill="#C1563E"
-                    fontSize="9"
+                    fontSize="12"
                     textAnchor="middle"
                     opacity="0.9"
                   >
@@ -114,7 +114,7 @@ export default function HITLBoundaryChart() {
                   x={labelX}
                   y={barY + barH / 2 + 4}
                   fill="#eaeaea"
-                  fontSize="11"
+                  fontSize="12"
                   textAnchor="middle"
                   fontWeight="600"
                   opacity="0.9"
@@ -134,12 +134,12 @@ export default function HITLBoundaryChart() {
           strokeOpacity="0.5"
           strokeWidth="1"
         />
-        <text x={viewW / 2} y={barY - 20} fill="#8a7a58" fontSize="9" textAnchor="middle">
+        <text x={viewW / 2} y={barY - 20} fill="#8a7a58" fontSize="12" textAnchor="middle">
           루프 전체 라이프사이클
         </text>
 
         {/* Bottom note */}
-        <text x={viewW / 2} y={viewH - 18} fill="#7a6850" fontSize="9" textAnchor="middle">
+        <text x={viewW / 2} y={viewH - 18} fill="#7a6850" fontSize="12" textAnchor="middle">
           트랜스크립트 린터가 루프 내부 AskUserQuestion을 프로토콜 위반으로 표시한다.
         </text>
       </svg>

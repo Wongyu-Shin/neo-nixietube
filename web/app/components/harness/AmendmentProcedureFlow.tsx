@@ -123,7 +123,7 @@ export default function AmendmentProcedureFlow() {
                 y={y - 50}
                 textAnchor="middle"
                 fontFamily="ui-sans-serif, system-ui"
-                fontSize="11"
+                fontSize="12"
                 fontWeight="500"
                 fill="#e8dbc2"
                 opacity={isActive ? 1 : 0.75}
@@ -137,7 +137,7 @@ export default function AmendmentProcedureFlow() {
                 y={y + 54}
                 textAnchor="middle"
                 fontFamily="ui-monospace, monospace"
-                fontSize="9"
+                fontSize="12"
                 fill="#6BA368"
                 opacity="0.7"
                 letterSpacing="1"
@@ -162,7 +162,7 @@ export default function AmendmentProcedureFlow() {
           y="240"
           textAnchor="middle"
           fontFamily="ui-monospace, monospace"
-          fontSize="9"
+          fontSize="12"
           fill="#6BA368"
           opacity="0.55"
           letterSpacing="1"

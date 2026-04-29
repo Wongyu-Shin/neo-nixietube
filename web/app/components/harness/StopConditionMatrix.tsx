@@ -69,7 +69,7 @@ export default function StopConditionMatrix() {
   return (
     <figure className="my-8">
       <div className="rounded-xl border border-white/10 bg-stone-950 overflow-hidden">
-        <div className="grid grid-cols-[88px_minmax(130px,1fr)_2fr_minmax(140px,1fr)_80px_60px] text-[10px] uppercase tracking-widest text-stone-500 bg-stone-900 border-b border-white/10">
+        <div className="grid grid-cols-[88px_minmax(130px,1fr)_2fr_minmax(140px,1fr)_80px_60px] text-[12px] uppercase tracking-widest text-stone-500 bg-stone-900 border-b border-white/10">
           <div className="px-3 py-2">종류</div>
           <div className="px-3 py-2">이름</div>
           <div className="px-3 py-2">트리거</div>
@@ -86,7 +86,7 @@ export default function StopConditionMatrix() {
             >
               <div className="px-3 py-2 flex items-center">
                 <span
-                  className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded"
+                  className="text-[12px] uppercase tracking-widest px-2 py-0.5 rounded"
                   style={{
                     background: kindColor + "22",
                     color: kindColor,

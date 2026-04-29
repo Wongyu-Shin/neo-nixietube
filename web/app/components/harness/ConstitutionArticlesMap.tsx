@@ -469,7 +469,7 @@ export default function ConstitutionArticlesMap() {
                       y={art.pos.y + 30}
                       textAnchor="middle"
                       fontFamily="ui-sans-serif, system-ui, sans-serif"
-                      fontSize="11"
+                      fontSize="12"
                       fill="#f0e6d4"
                       opacity="0.85"
                     >
@@ -483,7 +483,7 @@ export default function ConstitutionArticlesMap() {
                       y={art.pos.y + 48}
                       textAnchor="middle"
                       fontFamily="ui-monospace, SFMono-Regular, monospace"
-                      fontSize="11"
+                      fontSize="12"
                       fill={art.color}
                       opacity="0.92"
                       letterSpacing="1"
@@ -590,7 +590,7 @@ export default function ConstitutionArticlesMap() {
                 {active.features.map((f) => (
                   <code
                     key={f}
-                    className="text-[11px] px-2 py-0.5 rounded-md border"
+                    className="text-[12px] px-2 py-0.5 rounded-md border"
                     style={{
                       borderColor: `${active.color}50`,
                       background: `${active.color}10`,
@@ -614,7 +614,7 @@ export default function ConstitutionArticlesMap() {
                         <button
                           key={rid}
                           onClick={() => setPinnedId(rid)}
-                          className="text-[11px] px-2 py-0.5 rounded-md border bg-transparent hover:bg-white/5 transition"
+                          className="text-[12px] px-2 py-0.5 rounded-md border bg-transparent hover:bg-white/5 transition"
                           style={{
                             borderColor: `${ra.color}60`,
                             color: ra.color,

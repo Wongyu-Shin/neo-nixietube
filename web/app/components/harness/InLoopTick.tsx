@@ -251,7 +251,7 @@ export default function InLoopTick() {
               y={CY - 18}
               textAnchor="middle"
               fill="#666"
-              fontSize="10"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
               letterSpacing="2"
             >
@@ -273,7 +273,7 @@ export default function InLoopTick() {
               y={CY + 22}
               textAnchor="middle"
               fill="#888"
-              fontSize="10"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
             >
               게이트 / 이터
@@ -283,7 +283,7 @@ export default function InLoopTick() {
               y={CY + 42}
               textAnchor="middle"
               fill="#6BA368"
-              fontSize="9"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
               opacity="0.8"
             >
@@ -340,7 +340,7 @@ export default function InLoopTick() {
                     y={titlePt.y}
                     textAnchor="middle"
                     fill={isActive ? "#fff" : "#d4d4d4"}
-                    fontSize="11"
+                    fontSize="12"
                     fontFamily="ui-monospace, monospace"
                     fontWeight="600"
                     style={{ pointerEvents: "none" }}
@@ -353,7 +353,7 @@ export default function InLoopTick() {
                     textAnchor="middle"
                     fill={g.color}
                     fillOpacity="0.85"
-                    fontSize="9"
+                    fontSize="12"
                     fontFamily="ui-monospace, monospace"
                     style={{ pointerEvents: "none" }}
                   >
@@ -365,7 +365,7 @@ export default function InLoopTick() {
                     y={labelPt.y}
                     textAnchor="middle"
                     fill="#666"
-                    fontSize="9"
+                    fontSize="12"
                     fontFamily="ui-monospace, monospace"
                     letterSpacing="1"
                     style={{ pointerEvents: "none" }}
@@ -402,22 +402,22 @@ export default function InLoopTick() {
                 x="0"
                 y="0"
                 fill="#777"
-                fontSize="10"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 letterSpacing="1"
               >
                 HITL 점 (조항 III)
               </text>
               <circle cx="6" cy="22" r="4" fill={HITL_COLOR.forbidden} />
-              <text x="18" y="26" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">
+              <text x="18" y="26" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">
                 금지
               </text>
               <circle cx="6" cy="42" r="4" fill={HITL_COLOR["carve-out"]} />
-              <text x="18" y="46" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">
+              <text x="18" y="46" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">
                 예외 (L2)
               </text>
               <circle cx="6" cy="62" r="4" fill={HITL_COLOR.allowed} />
-              <text x="18" y="66" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">
+              <text x="18" y="66" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">
                 허용
               </text>
             </g>
@@ -428,7 +428,7 @@ export default function InLoopTick() {
                 x="0"
                 y="0"
                 fill="#777"
-                fontSize="10"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 letterSpacing="1"
               >
@@ -442,7 +442,7 @@ export default function InLoopTick() {
                       x="18"
                       y="2"
                       fill="#9a9a9a"
-                      fontSize="10"
+                      fontSize="12"
                       fontFamily="ui-monospace, monospace"
                     >
                       {CATEGORY_LABEL[cat]}
@@ -469,7 +469,7 @@ export default function InLoopTick() {
                 y={CY - (R_OUTER + 28)}
                 textAnchor="middle"
                 fill="#D4A853"
-                fontSize="9"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 letterSpacing="1"
               >
@@ -501,14 +501,14 @@ export default function InLoopTick() {
                 </p>
 
                 <div className="mt-4">
-                  <div className="text-[10px] uppercase tracking-wide text-stone-500">
+                  <div className="text-[12px] uppercase tracking-wide text-stone-500">
                     피처
                   </div>
                   <div className="mt-1 flex flex-wrap gap-1.5">
                     {active.features.map((f) => (
                       <code
                         key={f}
-                        className="text-[11px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-400 border border-stone-800"
+                        className="text-[12px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-400 border border-stone-800"
                       >
                         {f}
                       </code>
@@ -517,14 +517,14 @@ export default function InLoopTick() {
                 </div>
 
                 <div className="mt-3">
-                  <div className="text-[10px] uppercase tracking-wide text-stone-500">
+                  <div className="text-[12px] uppercase tracking-wide text-stone-500">
                     조항
                   </div>
                   <div className="mt-1 flex flex-wrap gap-1.5">
                     {active.articles.map((a) => (
                       <span
                         key={a}
-                        className="text-[11px] px-1.5 py-0.5 rounded bg-[#D4A853]/10 border border-[#D4A853]/30 text-[#D4A853] font-mono"
+                        className="text-[12px] px-1.5 py-0.5 rounded bg-[#D4A853]/10 border border-[#D4A853]/30 text-[#D4A853] font-mono"
                       >
                         조항 {a}
                       </span>
@@ -533,7 +533,7 @@ export default function InLoopTick() {
                 </div>
 
                 <div className="mt-4 rounded border border-[#C17B5E]/30 bg-[#C17B5E]/[0.06] p-2.5">
-                  <div className="text-[10px] uppercase tracking-wide text-[#C17B5E]">
+                  <div className="text-[12px] uppercase tracking-wide text-[#C17B5E]">
                     실패 모드
                   </div>
                   <div className="mt-1 text-[12px] text-stone-300 leading-snug">
@@ -552,9 +552,9 @@ export default function InLoopTick() {
           </aside>
         </div>
 
-        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-[11px]">
+        <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-[12px]">
           <div className="rounded border border-stone-800 bg-stone-900/40 p-2.5">
-            <div className="text-stone-600 uppercase tracking-wide text-[9px]">
+            <div className="text-stone-600 uppercase tracking-wide text-[12px]">
               커밋 후 검증
             </div>
             <div className="mt-1 text-stone-300">
@@ -562,7 +562,7 @@ export default function InLoopTick() {
             </div>
           </div>
           <div className="rounded border border-stone-800 bg-stone-900/40 p-2.5">
-            <div className="text-stone-600 uppercase tracking-wide text-[9px]">
+            <div className="text-stone-600 uppercase tracking-wide text-[12px]">
               래칫 = MAX, MEAN 아님
             </div>
             <div className="mt-1 text-stone-300">
@@ -570,7 +570,7 @@ export default function InLoopTick() {
             </div>
           </div>
           <div className="rounded border border-stone-800 bg-stone-900/40 p-2.5">
-            <div className="text-stone-600 uppercase tracking-wide text-[9px]">
+            <div className="text-stone-600 uppercase tracking-wide text-[12px]">
               8개 중 7개 침묵
             </div>
             <div className="mt-1 text-stone-300">
@@ -578,7 +578,7 @@ export default function InLoopTick() {
             </div>
           </div>
           <div className="rounded border border-stone-800 bg-stone-900/40 p-2.5">
-            <div className="text-stone-600 uppercase tracking-wide text-[9px]">
+            <div className="text-stone-600 uppercase tracking-wide text-[12px]">
               인밴드 reflexion
             </div>
             <div className="mt-1 text-stone-300">

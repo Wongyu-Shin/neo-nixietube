@@ -207,7 +207,7 @@ export default function IterationPhaseRing() {
         <h3 className="text-sm font-semibold uppercase tracking-wide text-stone-300">
           In-loop — 8-phase iteration ring
         </h3>
-        <div className="flex items-center gap-3 text-[11px] text-stone-400">
+        <div className="flex items-center gap-3 text-[12px] text-stone-400">
           {(["forbidden", "gated", "silent"] as const).map((k) => (
             <span key={k} className="inline-flex items-center gap-1.5">
               <span
@@ -374,7 +374,7 @@ export default function IterationPhaseRing() {
                     x={pos.x}
                     y={pos.y + 10}
                     textAnchor="middle"
-                    fontSize="11"
+                    fontSize="12"
                     fontWeight={600}
                     fill={isActive ? "#1f2937" : "#4b5563"}
                     fillOpacity={isActive ? 1 : 0.85}
@@ -404,7 +404,7 @@ export default function IterationPhaseRing() {
                       x={pos.x}
                       y={pos.y + 3}
                       textAnchor="middle"
-                      fontSize="8"
+                      fontSize="12"
                       fill="#fbbf24"
                       fontWeight={700}
                       pointerEvents="none"
@@ -473,7 +473,7 @@ export default function IterationPhaseRing() {
               x={CX}
               y={CY - 34}
               textAnchor="middle"
-              fontSize="11"
+              fontSize="12"
               fill="#78350f"
               fontWeight={600}
               letterSpacing="1.5"
@@ -504,7 +504,7 @@ export default function IterationPhaseRing() {
               x={CX}
               y={CY + 34}
               textAnchor="middle"
-              fontSize="10"
+              fontSize="12"
               fill="#6b7280"
             >
               조항 {active.article}
@@ -513,7 +513,7 @@ export default function IterationPhaseRing() {
               x={CX}
               y={CY + 50}
               textAnchor="middle"
-              fontSize="9"
+              fontSize="12"
               fill="#6b7280"
               fontFamily="ui-monospace, SFMono-Regular, monospace"
             >
@@ -543,7 +543,7 @@ export default function IterationPhaseRing() {
                 x="60"
                 y="15"
                 textAnchor="middle"
-                fontSize="10"
+                fontSize="12"
                 fontWeight={600}
                 fill="#374151"
               >
@@ -556,7 +556,7 @@ export default function IterationPhaseRing() {
         <aside className="flex flex-col gap-3 rounded-md border border-neutral-200 bg-white/70 p-3 text-sm dark:border-neutral-800 dark:bg-neutral-900/60">
           <header className="flex items-baseline justify-between gap-2">
             <div>
-              <div className="text-[10px] uppercase tracking-wider text-neutral-500">
+              <div className="text-[12px] uppercase tracking-wider text-neutral-500">
                 단계 {active.n}
               </div>
               <div className="text-lg font-bold text-stone-100">
@@ -564,7 +564,7 @@ export default function IterationPhaseRing() {
               </div>
             </div>
             <span
-              className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase"
+              className="rounded-full px-2 py-0.5 text-[12px] font-semibold uppercase"
               style={{
                 background: HITL_COLOR[active.hitl] + "22",
                 color: HITL_COLOR[active.hitl],
@@ -575,7 +575,7 @@ export default function IterationPhaseRing() {
           </header>
 
           <div>
-            <div className="text-[10px] uppercase tracking-wider text-neutral-500">
+            <div className="text-[12px] uppercase tracking-wider text-neutral-500">
               동작
             </div>
             <code className="font-mono text-[12px] text-stone-200">
@@ -587,7 +587,7 @@ export default function IterationPhaseRing() {
             {active.detail}
           </p>
 
-          <div className="flex flex-wrap gap-2 text-[10px]">
+          <div className="flex flex-wrap gap-2 text-[12px]">
             <span className="rounded border border-neutral-300 px-1.5 py-0.5 font-mono text-neutral-600 dark:border-neutral-700 dark:text-neutral-400">
               조항 {active.article}
             </span>
@@ -597,15 +597,15 @@ export default function IterationPhaseRing() {
           </div>
 
           <div>
-            <div className="text-[10px] uppercase tracking-wider text-neutral-500">
+            <div className="text-[12px] uppercase tracking-wider text-neutral-500">
               쓰기
             </div>
             {active.writes.length === 0 ? (
-              <div className="text-[11px] italic text-neutral-500">
+              <div className="text-[12px] italic text-neutral-500">
                 없음 (읽기 전용 단계)
               </div>
             ) : (
-              <ul className="mt-1 space-y-0.5 text-[11.5px] text-stone-300">
+              <ul className="mt-1 space-y-0.5 text-[12px] text-stone-300">
                 {active.writes.map((w) => (
                   <li key={w} className="flex items-center gap-1.5">
                     <span className="h-1 w-1 rounded-full bg-neutral-400" />
@@ -617,15 +617,15 @@ export default function IterationPhaseRing() {
           </div>
 
           <div>
-            <div className="text-[10px] uppercase tracking-wider text-neutral-500">
+            <div className="text-[12px] uppercase tracking-wider text-neutral-500">
               가드
             </div>
-            <code className="font-mono text-[11.5px] text-stone-300">
+            <code className="font-mono text-[12px] text-stone-300">
               {active.guard}
             </code>
           </div>
 
-          <footer className="mt-auto border-t border-neutral-200 pt-2 text-[10.5px] text-neutral-500 dark:border-neutral-800">
+          <footer className="mt-auto border-t border-neutral-200 pt-2 text-[12px] text-neutral-500 dark:border-neutral-800">
             {hover
               ? "호버 중 — 클릭으로 고정"
               : locked
@@ -635,7 +635,7 @@ export default function IterationPhaseRing() {
         </aside>
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1 text-[11px] text-neutral-600 sm:grid-cols-4 dark:text-neutral-400">
+      <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1 text-[12px] text-neutral-600 sm:grid-cols-4 dark:text-neutral-400">
         {PHASES.map((p) => (
           <button
             key={p.key + "-btn"}
@@ -649,7 +649,7 @@ export default function IterationPhaseRing() {
                 : "hover:bg-neutral-100 dark:hover:bg-neutral-800")
             }
           >
-            <span className="font-mono text-[10px] text-neutral-500">
+            <span className="font-mono text-[12px] text-neutral-500">
               {p.n}
             </span>
             <span className="font-medium">{p.label}</span>

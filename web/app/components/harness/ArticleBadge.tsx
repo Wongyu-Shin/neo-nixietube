@@ -18,7 +18,7 @@ export default function ArticleBadge({ n, children }: { n: Art; children?: React
   return (
     <span
       title={`조항 ${n} — ${title}`}
-      className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md border border-[#D4A853]/40 bg-[#D4A853]/[0.06] text-[#D4A853] font-mono text-[11px] align-middle"
+      className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md border border-[#D4A853]/40 bg-[#D4A853]/[0.06] text-[#D4A853] font-mono text-[12px] align-middle"
     >
       <svg
         width="10"

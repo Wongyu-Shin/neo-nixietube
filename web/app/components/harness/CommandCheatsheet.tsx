@@ -70,7 +70,7 @@ export default function CommandCheatsheet() {
         })}
       </div>
       <div className="rounded-xl border border-white/10 bg-stone-950 overflow-hidden">
-        <div className="grid grid-cols-[minmax(200px,1.2fr)_2fr_minmax(140px,1fr)] text-[10px] uppercase tracking-widest text-stone-500 bg-stone-900 border-b border-white/10">
+        <div className="grid grid-cols-[minmax(200px,1.2fr)_2fr_minmax(140px,1fr)] text-[12px] uppercase tracking-widest text-stone-500 bg-stone-900 border-b border-white/10">
           <div className="px-4 py-2">명령</div>
           <div className="px-4 py-2">용도</div>
           <div className="px-4 py-2">피처</div>

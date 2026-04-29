@@ -70,7 +70,7 @@ export default function SafetyTiers() {
                 </span>
                 <span className="text-sm text-stone-300">{t.label}</span>
                 {t.carveOut && (
-                  <span className="ml-auto text-[10px] px-1.5 py-0.5 rounded border border-[#C17B5E]/50 text-[#C17B5E]">
+                  <span className="ml-auto text-[12px] px-1.5 py-0.5 rounded border border-[#C17B5E]/50 text-[#C17B5E]">
                     조항 III 예외
                   </span>
                 )}
@@ -79,12 +79,12 @@ export default function SafetyTiers() {
                 {t.behavior}
               </div>
               <div className="mt-3 pt-3 border-t border-stone-800">
-                <div className="text-[10px] uppercase tracking-wide text-stone-600 mb-1">예시</div>
+                <div className="text-[12px] uppercase tracking-wide text-stone-600 mb-1">예시</div>
                 <div className="flex flex-wrap gap-1">
                   {t.examples.map((e) => (
                     <code
                       key={e}
-                      className="text-[10px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-400 border border-stone-800"
+                      className="text-[12px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-400 border border-stone-800"
                     >
                       {e}
                     </code>

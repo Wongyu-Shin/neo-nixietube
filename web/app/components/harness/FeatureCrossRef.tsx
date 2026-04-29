@@ -77,7 +77,7 @@ export default function FeatureCrossRef() {
         <div className="text-xs font-mono uppercase tracking-wider text-stone-400">
           교차 참조 그래프
         </div>
-        <div className="text-[10px] font-mono text-stone-500">
+        <div className="text-[12px] font-mono text-stone-500">
           features/harness-llm-wiki.md §Integrates-with
         </div>
       </div>
@@ -159,7 +159,7 @@ export default function FeatureCrossRef() {
                 x={lx}
                 y={p.y - 2}
                 textAnchor={labelSide}
-                fontSize="11"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 fill="#e7e5e4"
                 fontWeight="600"
@@ -170,7 +170,7 @@ export default function FeatureCrossRef() {
                 x={lx}
                 y={p.y + 11}
                 textAnchor={labelSide}
-                fontSize="9"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 fill={n.color}
               >
@@ -189,7 +189,7 @@ export default function FeatureCrossRef() {
             x={cx}
             y={cy + 44}
             textAnchor="middle"
-            fontSize="11"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             fontWeight="700"
             fill="#d1fae5"
@@ -200,7 +200,7 @@ export default function FeatureCrossRef() {
             x={cx}
             y={cy + 57}
             textAnchor="middle"
-            fontSize="9"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             fill="#10b981"
           >
@@ -209,7 +209,7 @@ export default function FeatureCrossRef() {
         </g>
       </svg>
 
-      <figcaption className="mt-2 text-[11px] text-stone-500 leading-relaxed">
+      <figcaption className="mt-2 text-[12px] text-stone-500 leading-relaxed">
         간선은 피처 프론트매터와 리서치 노트의 <code>Contrast</code> 절에 명시된
         명명된 통합이다. <em>voyager-skill-library</em> 는 의도적으로 비중첩 링크다 —
         스킬 ≠ 사실.

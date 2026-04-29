@@ -181,7 +181,7 @@ export default function PhaseTimeline() {
                 textAnchor="middle"
                 fill={g.color}
                 fillOpacity="0.55"
-                fontSize="9"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
               >
                 조항 {g.article}
@@ -233,7 +233,7 @@ export default function PhaseTimeline() {
                 y={TRACK_Y + 4}
                 textAnchor="middle"
                 fill={group.color}
-                fontSize="11"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 fontWeight="600"
                 style={{ pointerEvents: "none" }}
@@ -245,7 +245,7 @@ export default function PhaseTimeline() {
                 y={TRACK_Y + 38}
                 textAnchor="middle"
                 fill="#d4d4d4"
-                fontSize="10"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 style={{ pointerEvents: "none" }}
               >
@@ -264,15 +264,15 @@ export default function PhaseTimeline() {
 
         {/* legend */}
         <g transform={`translate(${PAD}, ${H - 40})`}>
-          <text x="0" y="0" fill="#888" fontSize="10" fontFamily="ui-monospace, monospace">
+          <text x="0" y="0" fill="#888" fontSize="12" fontFamily="ui-monospace, monospace">
             상단 점 = HITL 정책 (조항 III):
           </text>
           <circle cx="4" cy="18" r="4" fill={HITL_COLOR.allowed} />
-          <text x="14" y="22" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">허용</text>
+          <text x="14" y="22" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">허용</text>
           <circle cx="104" cy="18" r="4" fill={HITL_COLOR["carve-out"]} />
-          <text x="114" y="22" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">예외</text>
+          <text x="114" y="22" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">예외</text>
           <circle cx="214" cy="18" r="4" fill={HITL_COLOR.forbidden} />
-          <text x="224" y="22" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">금지</text>
+          <text x="224" y="22" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">금지</text>
         </g>
       </svg>
 
@@ -294,7 +294,7 @@ export default function PhaseTimeline() {
               {activePhase.features.map((f) => (
                 <code
                   key={f}
-                  className="text-[11px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-400 border border-stone-800"
+                  className="text-[12px] px-1.5 py-0.5 rounded bg-stone-900 text-stone-400 border border-stone-800"
                 >
                   {f}
                 </code>

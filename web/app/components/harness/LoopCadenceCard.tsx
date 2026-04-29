@@ -28,8 +28,8 @@ export default function LoopCadenceCard() {
     <div className="my-8 rounded-lg border border-stone-800 bg-stone-950/40 overflow-hidden">
       <div className="px-4 py-3 border-b border-stone-800 bg-stone-900/30 flex items-baseline gap-2">
         <span className="text-sm font-semibold text-stone-200">진행 케이던스</span>
-        <code className="text-[11px] text-stone-500">harness-progress-cadence</code>
-        <span className="ml-auto text-[10px] text-stone-600">조항 III 준수 — AskUserQuestion 0건</span>
+        <code className="text-[12px] text-stone-500">harness-progress-cadence</code>
+        <span className="ml-auto text-[12px] text-stone-600">조항 III 준수 — AskUserQuestion 0건</span>
       </div>
       <div className="divide-y divide-stone-800">
         {ROWS.map((r) => (

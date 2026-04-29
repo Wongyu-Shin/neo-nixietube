@@ -37,7 +37,7 @@ export default function HalfLifeTimeline() {
         <div className="text-xs font-mono uppercase tracking-wider text-stone-400">
           반감기 타임라인
         </div>
-        <div className="text-[10px] font-mono text-stone-500">
+        <div className="text-[12px] font-mono text-stone-500">
           조항 VII · half_life_days = {halfLifeDays}
         </div>
       </div>
@@ -87,7 +87,7 @@ export default function HalfLifeTimeline() {
                 x={(x0 + x1) / 2}
                 y={BAR_Y - 6}
                 textAnchor="middle"
-                fontSize="9"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 fill={z.color}
               >
@@ -114,7 +114,7 @@ export default function HalfLifeTimeline() {
                 x={tx}
                 y={BAR_Y + BAR_H + 16}
                 textAnchor="middle"
-                fontSize="8"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 fill="#78716c"
               >
@@ -124,7 +124,7 @@ export default function HalfLifeTimeline() {
                 x={tx}
                 y={BAR_Y + BAR_H + 28}
                 textAnchor="middle"
-                fontSize="7.5"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 fill="#57534e"
               >
@@ -165,7 +165,7 @@ export default function HalfLifeTimeline() {
         <text
           x={PAD_L}
           y={H - 10}
-          fontSize="9"
+          fontSize="12"
           fontFamily="ui-monospace, monospace"
           fill="#a8a29e"
         >
@@ -175,7 +175,7 @@ export default function HalfLifeTimeline() {
           x={W - PAD_R}
           y={H - 10}
           textAnchor="end"
-          fontSize="9"
+          fontSize="12"
           fontFamily="ui-monospace, monospace"
           fill={zone.color}
         >
@@ -186,7 +186,7 @@ export default function HalfLifeTimeline() {
         <text
           x={PAD_L}
           y="22"
-          fontSize="10"
+          fontSize="12"
           fontFamily="ui-monospace, monospace"
           fill="#d6d3d1"
         >
@@ -205,7 +205,7 @@ export default function HalfLifeTimeline() {
         aria-label="항목 나이 슬라이더"
       />
 
-      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-stone-400 leading-relaxed">
+      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-[12px] text-stone-400 leading-relaxed">
         <div>
           <strong className="text-stone-200">신선 → 데워짐</strong> 50% 지점:
           항목은 여전히 권위가 있으며, 운영자 조치는 필요 없다.

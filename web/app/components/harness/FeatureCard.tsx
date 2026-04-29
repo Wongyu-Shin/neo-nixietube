@@ -37,13 +37,13 @@ export default function FeatureCard({ slug, axis1, axis2, article, title, rippab
           <div className="flex items-center flex-wrap gap-2 mb-1.5">
             <code className="text-[13px] text-stone-100 font-mono">{slug}</code>
             <span
-              className="px-1.5 py-0.5 rounded text-[10px] font-mono"
+              className="px-1.5 py-0.5 rounded text-[12px] font-mono"
               style={{ color: c1, backgroundColor: `${c1}18`, border: `1px solid ${c1}40` }}
             >
               {axis1}
             </span>
             <span
-              className="px-1.5 py-0.5 rounded text-[10px] font-mono"
+              className="px-1.5 py-0.5 rounded text-[12px] font-mono"
               style={{ color: c2, backgroundColor: `${c2}18`, border: `1px solid ${c2}40` }}
             >
               {axis2}
@@ -54,7 +54,7 @@ export default function FeatureCard({ slug, axis1, axis2, article, title, rippab
           {children ? (
             <div className="text-[12px] text-stone-400 leading-relaxed mb-2">{children}</div>
           ) : null}
-          <div className="text-[11px] text-stone-500 border-t border-stone-800 pt-2 mt-2">
+          <div className="text-[12px] text-stone-500 border-t border-stone-800 pt-2 mt-2">
             <span className="text-stone-400 font-mono">rippable_check:</span>{" "}
             <span className="italic">{rippable}</span>
           </div>

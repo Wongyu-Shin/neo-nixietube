@@ -306,7 +306,7 @@ export default function AxisMatrix() {
           y={PAD_T + CELL_H - 6}
           textAnchor="end"
           fill="#C17B5E"
-          fontSize="10"
+          fontSize="12"
           fontFamily="ui-monospace, monospace"
           opacity="0.8"
         >
@@ -376,7 +376,7 @@ export default function AxisMatrix() {
               y={PAD_T + yi * CELL_H + 40}
               fill={AXIS1_COLOR[a1]}
               fillOpacity="0.6"
-              fontSize="10"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
               style={{ pointerEvents: "none" }}
             >
@@ -396,7 +396,7 @@ export default function AxisMatrix() {
                 y={PAD_T + yi * CELL_H + 18}
                 textAnchor="end"
                 fill="#555"
-                fontSize="11"
+                fontSize="12"
                 fontFamily="ui-monospace, monospace"
                 style={{ pointerEvents: "none" }}
               >
@@ -450,7 +450,7 @@ export default function AxisMatrix() {
                   y={cy - 18}
                   textAnchor="middle"
                   fill="#f5efe6"
-                  fontSize="10"
+                  fontSize="12"
                   fontFamily="ui-monospace, monospace"
                   style={{ pointerEvents: "none" }}
                 >
@@ -467,20 +467,20 @@ export default function AxisMatrix() {
             x="0"
             y="0"
             fill="#888"
-            fontSize="10"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
           >
             28개 피처 · axis1 채움 = 내부/외부 · axis2 테두리 = 단계
           </text>
           <g transform="translate(0, 14)">
             <circle cx="6" cy="6" r="6" fill={AXIS1_COLOR.inner} stroke={PHASE_COLOR["pre-loop"]} strokeWidth="1.5" />
-            <text x="18" y="10" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">내부 · 진입 전 (5)</text>
+            <text x="18" y="10" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">내부 · 진입 전 (5)</text>
             <circle cx="170" cy="6" r="6" fill={AXIS1_COLOR.inner} stroke={PHASE_COLOR["in-loop"]} strokeWidth="1.5" />
-            <text x="182" y="10" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">내부 · 내부 (3)</text>
+            <text x="182" y="10" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">내부 · 내부 (3)</text>
             <circle cx="320" cy="6" r="6" fill={AXIS1_COLOR.outer} stroke={PHASE_COLOR["in-loop"]} strokeWidth="1.5" />
-            <text x="332" y="10" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">외부 · 내부 (10)</text>
+            <text x="332" y="10" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">외부 · 내부 (10)</text>
             <circle cx="480" cy="6" r="6" fill={AXIS1_COLOR.outer} stroke={PHASE_COLOR["post-loop"]} strokeWidth="1.5" />
-            <text x="492" y="10" fill="#aaa" fontSize="10" fontFamily="ui-monospace, monospace">외부 · 종료 후 (3)</text>
+            <text x="492" y="10" fill="#aaa" fontSize="12" fontFamily="ui-monospace, monospace">외부 · 종료 후 (3)</text>
           </g>
         </g>
       </svg>

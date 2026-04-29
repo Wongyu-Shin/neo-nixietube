@@ -170,7 +170,7 @@ export default function ClarifyDimensionsRadar() {
                 x={lbl.x}
                 y={lbl.y}
                 textAnchor="middle"
-                fontSize="11"
+                fontSize="12"
                 fontWeight={isActive ? 700 : 500}
                 fill={isActive ? "#111827" : "#4b5563"}
               >
@@ -180,7 +180,7 @@ export default function ClarifyDimensionsRadar() {
                 x={lbl.x}
                 y={lbl.y + 12}
                 textAnchor="middle"
-                fontSize="9"
+                fontSize="12"
                 fill="#6b7280"
               >
                 {d.short}
@@ -194,7 +194,7 @@ export default function ClarifyDimensionsRadar() {
 
       <aside className="flex flex-col gap-2 text-sm">
         <div>
-          <div className="text-[10px] uppercase tracking-wider text-neutral-500">
+          <div className="text-[12px] uppercase tracking-wider text-neutral-500">
             Dimension
           </div>
           <div className="text-lg font-bold text-stone-100">
@@ -202,7 +202,7 @@ export default function ClarifyDimensionsRadar() {
           </div>
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-wider text-neutral-500">
+          <div className="text-[12px] uppercase tracking-wider text-neutral-500">
             질문
           </div>
           <div className="text-[12.5px] text-stone-300">
@@ -210,14 +210,14 @@ export default function ClarifyDimensionsRadar() {
           </div>
         </div>
         <div>
-          <div className="text-[10px] uppercase tracking-wider text-neutral-500">
+          <div className="text-[12px] uppercase tracking-wider text-neutral-500">
             실패 모드
           </div>
           <div className="text-[12px] italic text-red-700 dark:text-red-400">
             {active.failure}
           </div>
         </div>
-        <div className="mt-auto flex items-center justify-between text-[11px] text-neutral-500">
+        <div className="mt-auto flex items-center justify-between text-[12px] text-neutral-500">
           <span>조항 {active.article}</span>
           <span>커버리지 {(active.coverage * 100).toFixed(0)}%</span>
         </div>

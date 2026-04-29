@@ -124,7 +124,7 @@ export default function ArticleWeave() {
             x={LEFT}
             y={28}
             fill="#888"
-            fontSize="10"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             letterSpacing="1"
           >
@@ -139,7 +139,7 @@ export default function ArticleWeave() {
               y={TOP - 8}
               textAnchor="middle"
               fill="#888"
-              fontSize="9"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
             >
               {pl}
@@ -154,7 +154,7 @@ export default function ArticleWeave() {
               y={TOP + CELL_H * (r + 0.5) + 4}
               textAnchor="end"
               fill={COLORS[r]}
-              fontSize="10"
+              fontSize="12"
               fontFamily="ui-monospace, monospace"
             >
               {an}
@@ -219,7 +219,7 @@ export default function ArticleWeave() {
             y={TOP - 28}
             textAnchor="middle"
             fill="#7B9EB8"
-            fontSize="9"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             letterSpacing="1"
           >
@@ -230,7 +230,7 @@ export default function ArticleWeave() {
             y={TOP - 28}
             textAnchor="middle"
             fill="#D4A853"
-            fontSize="9"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             letterSpacing="1"
           >
@@ -241,7 +241,7 @@ export default function ArticleWeave() {
             y={TOP - 28}
             textAnchor="middle"
             fill="#6BA368"
-            fontSize="9"
+            fontSize="12"
             fontFamily="ui-monospace, monospace"
             letterSpacing="1"
           >
