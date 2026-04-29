@@ -111,8 +111,8 @@ export default function ArticleIndex() {
             className={
               "group relative flex flex-col gap-1.5 rounded-md border p-3 text-left transition-all " +
               (isHover
-                ? "scale-[1.02] border-neutral-500 shadow-md dark:border-neutral-400"
-                : "border-neutral-300 dark:border-neutral-700")
+                ? "scale-[1.02] border-amber-400/25 shadow-md shadow-amber-900/20"
+                : "border-stone-700/50")
             }
             style={{
               background: isHover
@@ -121,32 +121,32 @@ export default function ArticleIndex() {
             }}
           >
             <div className="flex items-baseline justify-between">
-              <span className="font-mono text-sm font-bold text-neutral-900 dark:text-neutral-100">
+              <span className="font-mono text-sm font-bold text-stone-100">
                 조항 {a.n}
               </span>
               <span
-                className="rounded-full px-1.5 py-0.5 text-[9px] font-semibold uppercase"
+                className="rounded-full px-1.5 py-0.5 text-[11px] font-semibold uppercase"
                 style={{
-                  background: PHASE_COLOR[a.phase] + "22",
+                  background: PHASE_COLOR[a.phase] + "33",
                   color: PHASE_COLOR[a.phase],
                 }}
               >
                 {PHASE_LABEL[a.phase]}
               </span>
             </div>
-            <div className="text-[12.5px] font-semibold text-neutral-800 dark:text-neutral-200">
+            <div className="text-[13px] font-semibold text-stone-200">
               {a.title}
             </div>
             <div
               className={
-                "text-[11px] leading-snug text-neutral-600 dark:text-neutral-400 " +
+                "text-[12px] leading-snug text-stone-400 " +
                 (isHover ? "" : "line-clamp-2")
               }
             >
               {a.summary}
             </div>
             {isHover && (
-              <div className="mt-1 border-t border-neutral-300/50 pt-1.5 text-[10.5px] text-neutral-500 dark:border-neutral-700/50">
+              <div className="mt-1 border-t border-stone-700/50 pt-1.5 text-[11px] text-stone-300">
                 <span className="font-mono">결속:</span> {a.bindsTo}
               </div>
             )}
