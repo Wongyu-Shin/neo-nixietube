@@ -16,10 +16,20 @@ export interface DropdownItem {
   groups: DropdownGroup[];
 }
 
+// pickActive — longest-prefix-wins so /harness Overview is NOT highlighted
+// when the user is on /harness/catalog, /harness/flow, etc. EXACT_OVERVIEW.
+function pickActive(pathname: string, hrefs: string[]): string | undefined {
+  return hrefs
+    .filter((h) => pathname === h || pathname.startsWith(h + "/"))
+    .sort((a, b) => b.length - a.length)[0];
+}
+
 export function NavDropdown({ item, pathname }: { item: DropdownItem; pathname: string }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const isActive = item.activePrefixes.some((p) => pathname.startsWith(p));
+  const allHrefs = item.groups.flatMap((g) => g.items.map((i) => i.href));
+  const activeHref = pickActive(pathname, allHrefs);
 
   useEffect(() => {
     if (!open) return;
@@ -82,7 +92,7 @@ export function NavDropdown({ item, pathname }: { item: DropdownItem; pathname: 
                   {group.label}
                 </div>
                 {group.items.map((entry) => {
-                  const active = pathname === entry.href || pathname.startsWith(entry.href + "/");
+                  const active = entry.href === activeHref;
                   return (
                     <Link
                       key={entry.href}
