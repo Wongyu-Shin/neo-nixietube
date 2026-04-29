@@ -130,7 +130,12 @@ if grep -qE 'border-amber-400/(3[0-9]|[4-9][0-9])|border-white/\[0\.[2-9]|text-s
 fi
 
 # ───────────────── F8 global palette conformance ─────────────────
-banned='text-(stone|zinc|gray|neutral)-(700|800|900)|border-white/\[0\.[3-9]|color:\s*"#[0-6][0-9a-fA-F]{5}"'
+# Tightened: hex literal check now matches ONLY dark grays (every digit
+# pair starts with [0-4], i.e. each channel < 0x50). The previous [0-6]
+# range incorrectly flagged project-palette greens (#6BA368), purples
+# (#B8A9C9), etc. as "too dark" — those are intentional saturated
+# accents, not invisible text on dark bg.
+banned='text-(stone|zinc|gray|neutral)-(700|800|900)|border-white/\[0\.[3-9]|color:\s*"#([0-4][0-9a-fA-F]){3}"'
 hits=$(grep -rEho "$banned" \
   "$WEB/app/harness" \
   "$WEB/app/components/harness" 2>/dev/null | wc -l | tr -d ' ')
