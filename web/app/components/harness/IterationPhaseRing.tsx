@@ -204,10 +204,10 @@ export default function IterationPhaseRing() {
   return (
     <div className="my-8 rounded-lg border border-neutral-300/70 bg-gradient-to-br from-amber-50/40 to-neutral-50 p-4 dark:border-neutral-700/70 dark:from-amber-950/20 dark:to-neutral-900">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-700 dark:text-neutral-300">
+        <h3 className="text-sm font-semibold uppercase tracking-wide text-stone-300">
           In-loop — 8-phase iteration ring
         </h3>
-        <div className="flex items-center gap-3 text-[11px] text-neutral-600 dark:text-neutral-400">
+        <div className="flex items-center gap-3 text-[11px] text-stone-400">
           {(["forbidden", "gated", "silent"] as const).map((k) => (
             <span key={k} className="inline-flex items-center gap-1.5">
               <span
@@ -559,7 +559,7 @@ export default function IterationPhaseRing() {
               <div className="text-[10px] uppercase tracking-wider text-neutral-500">
                 단계 {active.n}
               </div>
-              <div className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+              <div className="text-lg font-bold text-stone-100">
                 {active.label}
               </div>
             </div>
@@ -578,12 +578,12 @@ export default function IterationPhaseRing() {
             <div className="text-[10px] uppercase tracking-wider text-neutral-500">
               동작
             </div>
-            <code className="font-mono text-[12px] text-neutral-800 dark:text-neutral-200">
+            <code className="font-mono text-[12px] text-stone-200">
               {active.action}
             </code>
           </div>
 
-          <p className="text-[12.5px] leading-snug text-neutral-700 dark:text-neutral-300">
+          <p className="text-[12.5px] leading-snug text-stone-300">
             {active.detail}
           </p>
 
@@ -605,7 +605,7 @@ export default function IterationPhaseRing() {
                 없음 (읽기 전용 단계)
               </div>
             ) : (
-              <ul className="mt-1 space-y-0.5 text-[11.5px] text-neutral-700 dark:text-neutral-300">
+              <ul className="mt-1 space-y-0.5 text-[11.5px] text-stone-300">
                 {active.writes.map((w) => (
                   <li key={w} className="flex items-center gap-1.5">
                     <span className="h-1 w-1 rounded-full bg-neutral-400" />
@@ -620,7 +620,7 @@ export default function IterationPhaseRing() {
             <div className="text-[10px] uppercase tracking-wider text-neutral-500">
               가드
             </div>
-            <code className="font-mono text-[11.5px] text-neutral-700 dark:text-neutral-300">
+            <code className="font-mono text-[11.5px] text-stone-300">
               {active.guard}
             </code>
           </div>

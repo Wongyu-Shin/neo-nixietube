@@ -157,7 +157,7 @@ export default function AxisMatrix() {
             axis1 = {a}
           </button>
         ))}
-        <span className="text-stone-700 self-center mx-1">·</span>
+        <span className="text-stone-400 self-center mx-1">·</span>
         {AXIS2_ORDER.map((a) => (
           <button
             key={a}

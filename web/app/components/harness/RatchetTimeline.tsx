@@ -72,10 +72,10 @@ export default function RatchetTimeline() {
   return (
     <div className="my-6 rounded-lg border border-neutral-300/70 bg-white/70 p-4 dark:border-neutral-700/70 dark:bg-neutral-900/60">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-        <h4 className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
+        <h4 className="text-sm font-semibold text-stone-200">
           SUM=MAX 래칫 — 12 이터레이션 (모의 ±{SIGMA} 저지 노이즈)
         </h4>
-        <div className="flex gap-3 text-[11px] text-neutral-600 dark:text-neutral-400">
+        <div className="flex gap-3 text-[11px] text-stone-400">
           <span className="inline-flex items-center gap-1">
             <span className="inline-block h-0.5 w-5 bg-emerald-600" />
             래칫

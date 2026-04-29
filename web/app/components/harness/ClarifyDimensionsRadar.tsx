@@ -197,7 +197,7 @@ export default function ClarifyDimensionsRadar() {
           <div className="text-[10px] uppercase tracking-wider text-neutral-500">
             Dimension
           </div>
-          <div className="text-lg font-bold text-neutral-900 dark:text-neutral-100">
+          <div className="text-lg font-bold text-stone-100">
             {active.id} · {active.short}
           </div>
         </div>
@@ -205,7 +205,7 @@ export default function ClarifyDimensionsRadar() {
           <div className="text-[10px] uppercase tracking-wider text-neutral-500">
             질문
           </div>
-          <div className="text-[12.5px] text-neutral-700 dark:text-neutral-300">
+          <div className="text-[12.5px] text-stone-300">
             {active.question}
           </div>
         </div>
